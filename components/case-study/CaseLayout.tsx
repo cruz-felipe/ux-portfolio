@@ -298,12 +298,12 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
             { slug: "predictive-support-hub", index: "02", title: "Predictive Support Hub" },
             { slug: "b2b-sales-rescue", index: "03", title: "B2B Sales Rescue" },
             { slug: "field-work-order", index: "04", title: "Field Work Order" },
-            { slug: "vocabulary", index: "05", title: "Vocabulary" },
-            { slug: "quota-management", index: "06", title: "Quota Management" },
-          ].filter(w => w.slug !== (data.next?.slug) && w.title !== data.title).map((work, i, arr) => (
+            { slug: "quota-management", index: "05", title: "Quota Management" },
+            { slug: "vocabulary", index: "06", title: "Vocabulary", personal: true },
+          ].filter(w => w.title !== data.title).map((work, i, arr) => (
             <Link key={work.slug} href={`/work/${work.slug}`} style={{
               display: "flex",
-              alignItems: "baseline",
+              alignItems: "center",
               justifyContent: "space-between",
               padding: "1rem 0",
               borderBottom: i < arr.length - 1 ? "0.5px solid var(--border)" : "none",
@@ -316,35 +316,20 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
             >
               <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", color: "var(--muted)", minWidth: "2rem" }}>{work.index}</span>
               <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1rem, 2vw, 1.4rem)", fontWeight: 800, letterSpacing: "-0.02em", flex: 1, marginLeft: "1rem" }}>{work.title}</span>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ opacity: 0.4 }}>
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+                {(work as any).personal && (
+                  <span style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--muted)", border: "1px solid var(--border)", borderRadius: "2px", padding: "2px 7px" }}>Personal</span>
+                )}
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ opacity: 0.4, flexShrink: 0 }}>
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* Next case — right aligned */}
-      {data.next && (
-        <section style={{ padding: "5rem 2.5rem", display: "flex", justifyContent: "flex-end" }}>
-          <Link href={`/work/${data.next.slug}`} style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(1.4rem, 3vw, 2.4rem)",
-            fontWeight: 800, letterSpacing: "-0.02em",
-            color: "var(--ink)", textDecoration: "none",
-            display: "inline-flex", alignItems: "center", gap: "1rem",
-            transition: "color 0.2s",
-          }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--red)")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--ink)")}
-          >
-            {data.next.title}
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </Link>
-        </section>
-      )}
+
     </main>
   );
 }

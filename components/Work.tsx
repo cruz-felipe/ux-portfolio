@@ -36,21 +36,21 @@ const PROJECTS: { id: string; href: string; index: string; title: string; blurb:
     metrics: ["72% page reduction", "160 to 45 pages"],
   },
   {
+    id: "quota-management",
+    href: "/work/quota-management",
+    index: "05",
+    title: "Quota Management",
+    blurb: "A greenfield B2B asset management platform for a BSS telecom. No prior product. Designed from workshop sessions to production-ready flows as the solo designer.",
+    metrics: ["Greenfield from scratch", "3 core modules"],
+  },
+  {
     id: "vocabulary",
     href: "/work/vocabulary",
-    index: "05",
+    index: "06",
     title: "Vocabulary",
     blurb: "Every flashcard app I tried was built around someone else's curriculum. I wanted one thing: a fast, honest way to learn words. So I built it.",
     metrics: ["4 languages", "2 learning modes"],
     personal: true,
-  },
-  {
-    id: "quota-management",
-    href: "/work/quota-management",
-    index: "06",
-    title: "Quota Management",
-    blurb: "A greenfield B2B asset management platform for a BSS telecom. No prior product. Designed from workshop sessions to production-ready flows as the solo designer.",
-    metrics: ["Greenfield from scratch", "3 core modules"],
   },
 ];
 

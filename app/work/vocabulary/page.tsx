@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 const BASE = "/vocabulary";
 
 const data: CaseStudyData = {
-  index: "05",
+  index: "06",
   title: "Vocabulary",
   tagline: "Every flashcard app I tried was built around streaks, gamification and someone else's curriculum. I wanted one thing: a fast, honest way to learn words. So I built it.",
   role: "Designer and Developer",

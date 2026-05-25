@@ -8,11 +8,11 @@ export const metadata: Metadata = {
 };
 
 const data: CaseStudyData = {
-  index: "06",
+  index: "05",
   title: "Quota Management",
   tagline: "There was no product to replace. No prior version to reference. Just a set of business needs, a stack of workshop notes, and a constraint to fit seamlessly into a tool ecosystem the client already owned.",
   role: "Senior UI Designer",
-  location: "Remote",
+  location: "Remote, United States client",
   year: "2024",
   roleDetail: "Solo designer on the project. Led all design decisions from information architecture and user flows to interaction patterns and visual design. Responsible for cross-functional alignment across client and internal product, business and engineering stakeholders.",
   impactSummary: "Production-ready design for a greenfield B2B platform. Full quota and API management flows, approval workflows and reporting views designed to specification. Pending client-side launch.",
