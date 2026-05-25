@@ -1,5 +1,6 @@
 import CaseLayout, { CaseStudyData } from "@/components/case-study/CaseLayout";
 import type { Metadata } from "next";
+import { VocabularyArchDiagram } from "@/components/case-study/VocabularyDiagrams";
 
 export const metadata: Metadata = {
   title: "Vocabulary Felipe Cruz",
@@ -66,7 +67,14 @@ const data: CaseStudyData = {
       ],
     },
   ],
-  artifacts: [],
+  artifacts: [
+    {
+      id: "architecture",
+      title: "App architecture and learning flow",
+      caption: "User selects language, picks category, chooses mode. Recognition and recall branch from the same entry. Claude API handles synonym validation and cultural tips as an opt-in layer.",
+      component: <VocabularyArchDiagram />,
+    },
+  ],
   hideNda: true,
   wideHero: true,
 };

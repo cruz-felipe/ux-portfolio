@@ -1,5 +1,6 @@
 import CaseLayout, { CaseStudyData } from "@/components/case-study/CaseLayout";
 import { HeuristicMatrixArtifact, FlowCompressionArtifact, ResearchMethodologyArtifact } from "@/components/case-study/SalesArtifacts";
+import { SalesUserFlowArtifact } from "@/components/case-study/SalesFlowArtifacts";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -58,6 +59,12 @@ const data: CaseStudyData = {
       title: "7-tool flow to 3-step express flow",
       caption: "Before: 7 disconnected tools, manual data re-entry, email approvals, no tracking, 1 hour per proposal. After: 3-step unified flow with automated approvals and built-in install tracking, 15 minutes.",
       component: <FlowCompressionArtifact />,
+    },
+    {
+      id: "user-flow",
+      title: "Proposal generation: user flow before and after",
+      caption: "Before: 7 tools, ~60 minutes, manual re-entry at every step. After: 3-step express flow, ~15 minutes. Flow validated through 37 interviews and 25 usability tests.",
+      component: <SalesUserFlowArtifact />,
     },
     {
       id: "research-methodology",
