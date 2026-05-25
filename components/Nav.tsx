@@ -59,7 +59,7 @@ export default function Nav() {
         }}
       >
         {/* Wordmark */}
-        <Link href="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "0.85rem", zIndex: 101 }}>
+        <Link href="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "1.3rem", zIndex: 101 }}>
           <img src={dark ? "/logo-dark.svg" : "/logo.svg"} alt="Felipe Cruz" style={{ height: "28px", width: "auto", display: "block" }} />
           <span style={{
             fontFamily: "var(--font-display)",

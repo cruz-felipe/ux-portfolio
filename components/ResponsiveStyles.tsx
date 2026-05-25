@@ -153,6 +153,27 @@ export default function ResponsiveStyles() {
         }
       }
 
+      /* Case study layout */
+      .case-metrics {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+      .case-context {
+        grid-template-columns: 1fr 1fr !important;
+      }
+      .case-section {
+        grid-template-columns: 200px 1fr !important;
+      }
+
+      @media (max-width: 900px) {
+        .case-metrics { grid-template-columns: 1fr 1fr !important; }
+        .case-context { grid-template-columns: 1fr !important; }
+        .case-section { grid-template-columns: 1fr !important; gap: 1rem !important; }
+      }
+
+      @media (max-width: 680px) {
+        .case-metrics { grid-template-columns: 1fr !important; }
+      }
+
       /* Footer logo invert in dark mode */
       [data-theme="dark"] .footer-logo {
         filter: invert(1) brightness(2);

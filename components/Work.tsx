@@ -1,9 +1,11 @@
 "use client";
+import Link from "next/link";
 import { useRef, useEffect, useState } from "react";
 
-const PROJECTS = [
+const PROJECTS: { id: string; href: string; index: string; title: string; blurb: string; metrics: string[] }[] = [
   {
     id: "dane-telecom",
+    href: "/work/dane-telecom",
     index: "01",
     title: "Dane Telecom",
     blurb: "A fragmented design ecosystem was slowing down engineering delivery across product and engineering teams.",
@@ -11,6 +13,7 @@ const PROJECTS = [
   },
   {
     id: "predictive-support-hub",
+    href: "/work/predictive-support-hub",
     index: "02",
     title: "Predictive Support Hub",
     blurb: "3,000 support agents navigating 32 legacy tools on every call. I replaced the ecosystem with a single workspace.",
@@ -18,6 +21,7 @@ const PROJECTS = [
   },
   {
     id: "b2b-sales-rescue",
+    href: "/work/b2b-sales-rescue",
     index: "03",
     title: "B2B Sales Rescue",
     blurb: "Sales agents needed 7 tools and 3 days of training to close one deal. I reduced that to a single flow and half a day.",
@@ -49,7 +53,8 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
         height: "100%",
       }}
     >
-      <div
+      <Link
+        href={project.href}
         data-cursor
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
@@ -60,10 +65,11 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
           overflow: "hidden",
           background: hovered ? "#0A0A0A" : "transparent",
           transition: "background 0.35s ease, border-color 0.25s ease",
-          cursor: "default",
+          cursor: "pointer",
           height: "100%",
           display: "flex",
           flexDirection: "column",
+          textDecoration: "none",
         }}
       >
         {/* Coming soon badge */}
@@ -161,7 +167,7 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
           transition: "transform 0.4s cubic-bezier(0.16,1,0.3,1)",
           flexShrink: 0,
         }} />
-      </div>
+      </Link>
     </div>
   );
 }
