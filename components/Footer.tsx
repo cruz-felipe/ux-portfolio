@@ -43,7 +43,7 @@ export default function Footer() {
         </p>
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
           <a
-            href="mailto:fcruz@outlook.com"
+            href="mailto:Send me an email"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -61,7 +61,7 @@ export default function Footer() {
             onMouseEnter={(e) => (e.currentTarget.style.background = "var(--red-dark)")}
             onMouseLeave={(e) => (e.currentTarget.style.background = "var(--red)")}
           >
-            fcruz@outlook.com
+            Send me an email
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
@@ -92,13 +92,47 @@ export default function Footer() {
               <path d="M2 10L10 2M4 2h6v6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </a>
+          <a
+            href="https://www.artstation.com/felipecruz"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              fontFamily: "var(--font-body)",
+              fontSize: "14px",
+              fontWeight: 400,
+              color: "var(--ink)",
+              textDecoration: "none",
+              border: "1px solid rgba(10,10,10,0.25)",
+              padding: "10px 20px",
+              borderRadius: "2px",
+              transition: "border-color 0.2s ease",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(10,10,10,0.7)")}
+            onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(10,10,10,0.25)")}
+          >
+            Art & Illustration
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 10L10 2M4 2h6v6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
         </div>
       </div>
 
       {/* Right — Colophon */}
       <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "0.4rem" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.25rem" }}>
-          <img src="/logo.png" alt="Felipe Cruz" style={{ height: "20px", width: "auto", display: "block" }} />
+          <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" fill="#E03030"/>
+            <rect x="7" y="9" width="18" height="2.5" fill="white"/>
+            <rect x="7" y="14.75" width="13" height="2.5" fill="white"/>
+            <rect x="7" y="20.5" width="18" height="2.5" fill="white"/>
+          </svg>
+          <span style={{ fontFamily: "var(--font-display)", fontSize: "14px", fontWeight: 700 }}>
+            Felipe Cruz
+          </span>
         </div>
         <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)" }}>
           Senior UI Designer · Team Lead
