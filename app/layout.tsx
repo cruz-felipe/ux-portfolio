@@ -1,0 +1,36 @@
+import type { Metadata } from "next";
+import "./globals.css";
+import Cursor from "@/components/Cursor";
+import ResponsiveStyles from "@/components/ResponsiveStyles";
+
+export const metadata: Metadata = {
+  title: "Felipe Cruz — Senior Product Designer",
+  description: "Eleven years designing enterprise products at global scale. BSS/OSS, telecom, B2B and B2C across 9 countries.",
+  openGraph: {
+    title: "Felipe Cruz — Senior Product Designer",
+    description: "I design for the moment when complexity is no longer manageable and someone has to make it work.",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Felipe Cruz — Senior Product Designer",
+    description: "I design for the moment when complexity is no longer manageable and someone has to make it work.",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <ResponsiveStyles />
+        <Cursor />
+        {children}
+      </body>
+    </html>
+  );
+}
