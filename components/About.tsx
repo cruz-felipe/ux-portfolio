@@ -173,7 +173,7 @@ export default function About() {
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
-            fontSize: "14px",
+            fontSize: "15px",
             fontWeight: 300,
             lineHeight: 1.75,
             color: "var(--ink)",
@@ -186,7 +186,7 @@ export default function About() {
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
-            fontSize: "14px",
+            fontSize: "15px",
             fontWeight: 300,
             lineHeight: 1.75,
             color: "var(--ink)",
@@ -199,7 +199,7 @@ export default function About() {
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
-            fontSize: "14px",
+            fontSize: "15px",
             fontWeight: 300,
             lineHeight: 1.75,
             color: "var(--ink)",
@@ -212,7 +212,7 @@ export default function About() {
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
-            fontSize: "14px",
+            fontSize: "15px",
             fontWeight: 300,
             lineHeight: 1.75,
             color: "var(--ink)",
@@ -223,7 +223,7 @@ export default function About() {
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
-            fontSize: "14px",
+            fontSize: "15px",
             fontWeight: 300,
             lineHeight: 1.75,
             color: "var(--ink)",
@@ -241,7 +241,7 @@ export default function About() {
             fontFamily: "var(--font-body)",
             fontSize: "11px",
             fontWeight: 500,
-            letterSpacing: "0.1em",
+            letterSpacing: "0.12em",
             textTransform: "uppercase",
             color: "var(--muted)",
             display: "block",
@@ -281,7 +281,7 @@ export default function About() {
             fontFamily: "var(--font-body)",
             fontSize: "11px",
             fontWeight: 500,
-            letterSpacing: "0.1em",
+            letterSpacing: "0.12em",
             textTransform: "uppercase",
             color: "var(--muted)",
             display: "block",
@@ -319,7 +319,7 @@ export default function About() {
                   fontFamily: "var(--font-body)",
                   fontSize: "13px",
                   color: "var(--ink)",
-                  opacity: 0.55,
+                  opacity: 0.65,
                   lineHeight: 1.5,
                 }}>
                   {job.note}
@@ -344,7 +344,7 @@ export default function About() {
             fontFamily: "var(--font-body)",
             fontSize: "11px",
             fontWeight: 500,
-            letterSpacing: "0.1em",
+            letterSpacing: "0.12em",
             textTransform: "uppercase",
             color: "var(--muted)",
             display: "block",
@@ -378,11 +378,10 @@ export default function About() {
 
           <p style={{
             fontFamily: "var(--font-body)",
-            fontSize: "12px",
+            fontSize: "13px",
             color: "var(--muted)",
             lineHeight: 1.6,
             marginTop: "1.5rem",
-            opacity: 0.7,
           }}>
             Company names and client details are omitted across this portfolio
             in compliance with active NDAs.

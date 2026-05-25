@@ -19,8 +19,7 @@ const WORDS = [
   { text: "to", red: false },
   { text: "make", red: true },
   { text: "it", red: true },
-  { text: "work", red: true },
-  { text: ".", red: false },
+  { text: "work.", red: true, nospace: true },
 ];
 
 export default function Hero() {
@@ -53,30 +52,27 @@ export default function Hero() {
         }}
         aria-label="I design for the moment when complexity is no longer manageable and someone has to make it work."
       >
-        {WORDS.map((word, i) => {
-          const isPeriod = word.text === ".";
-          return (
-            <span
-              key={i}
-              style={{
-                display: "inline-block",
-                overflow: "hidden",
-                verticalAlign: "bottom",
-                marginRight: isPeriod ? 0 : "0.26em",
-              }}
-            >
-              <span style={{
-                display: "inline-block",
-                transform: visible ? "translateY(0)" : "translateY(110%)",
-                opacity: visible ? 1 : 0,
-                transition: `transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 42}ms, opacity 0.4s ease ${i * 42}ms`,
-                color: word.red ? "var(--red)" : "var(--ink)",
-              }}>
-                {word.text}
-              </span>
+        {WORDS.map((word, i) => (
+          <span
+            key={i}
+            style={{
+              display: "inline-block",
+              overflow: "hidden",
+              verticalAlign: "bottom",
+              marginRight: "0.26em",
+            }}
+          >
+            <span style={{
+              display: "inline-block",
+              transform: visible ? "translateY(0)" : "translateY(110%)",
+              opacity: visible ? 1 : 0,
+              transition: `transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 42}ms, opacity 0.4s ease ${i * 42}ms`,
+              color: word.red ? "var(--red)" : "var(--ink)",
+            }}>
+              {word.text}
             </span>
-          );
-        })}
+          </span>
+        ))}
       </h1>
 
       <div
@@ -115,7 +111,7 @@ export default function Hero() {
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
           <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
-        <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+        <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase" }}>
           Scroll
         </span>
       </div>

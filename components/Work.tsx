@@ -174,9 +174,9 @@ export default function Work() {
         marginBottom: "2.5rem",
       }}>
         <h2 style={{
-          fontFamily: "var(--font-display)",
+          fontFamily: "var(--font-body)",
           fontSize: "11px",
-          fontWeight: 700,
+          fontWeight: 500,
           letterSpacing: "0.12em",
           textTransform: "uppercase",
           color: "var(--muted)",

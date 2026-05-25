@@ -3,11 +3,11 @@
 @import "tailwindcss";
 
 :root {
-  --red: #E03030;
-  --red-dark: #B52525;
+  --red: #C42B2B;
+  --red-dark: #A02323;
   --ink: #0A0A0A;
   --paper: #F5F3EF;
-  --muted: #8A8880;
+  --muted: #6B6966;
   --border: rgba(10,10,10,0.12);
   --font-display: 'Syne', sans-serif;
   --font-body: 'DM Sans', sans-serif;
