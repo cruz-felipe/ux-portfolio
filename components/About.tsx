@@ -118,7 +118,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="about-bio-col">
+        <div className="about-bio-col" style={{ maxWidth: "680px" }}>
           <p style={{
             fontFamily: "var(--font-body)",
             fontSize: "clamp(1rem, 1.4vw, 1.15rem)",
@@ -274,7 +274,7 @@ export default function About() {
               display: "grid",
               gridTemplateColumns: "1fr auto",
               gap: "1rem",
-              padding: "1.1rem 0",
+              padding: "1.4rem 0",
               borderBottom: "1px solid rgba(10,10,10,0.1)",
             }}>
               <div>
@@ -334,7 +334,7 @@ export default function About() {
           </span>
           {EDUCATION.map((ed, i) => (
             <div key={i} style={{
-              padding: "1.1rem 0",
+              padding: "1.4rem 0",
               borderBottom: ed.last ? "none" : "1px solid rgba(10,10,10,0.1)",
             }}>
               <div style={{

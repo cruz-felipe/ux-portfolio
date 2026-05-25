@@ -71,8 +71,9 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
           position: "absolute",
           top: "1rem",
           right: "1rem",
-          background: "var(--red)",
-          color: "white",
+          background: "transparent",
+          color: hovered ? "rgba(255,255,255,0.45)" : "var(--muted)",
+          border: `1px solid ${hovered ? "rgba(255,255,255,0.2)" : "rgba(10,10,10,0.18)"}`,
           fontFamily: "var(--font-body)",
           fontSize: "10px",
           fontWeight: 500,
@@ -80,6 +81,7 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
           textTransform: "uppercase",
           padding: "4px 8px",
           borderRadius: "2px",
+          transition: "color 0.35s ease, border-color 0.35s ease",
         }}>
           Coming soon
         </div>
