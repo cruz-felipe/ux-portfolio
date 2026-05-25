@@ -44,6 +44,14 @@ const PROJECTS: { id: string; href: string; index: string; title: string; blurb:
     metrics: ["4 languages", "2 learning modes"],
     personal: true,
   },
+  {
+    id: "quota-management",
+    href: "/work/quota-management",
+    index: "06",
+    title: "Quota Management",
+    blurb: "A greenfield B2B asset management platform for a BSS telecom. No prior product. Designed from workshop sessions to production-ready flows as the solo designer.",
+    metrics: ["Greenfield from scratch", "3 core modules"],
+  },
 ];
 
 function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: number }) {

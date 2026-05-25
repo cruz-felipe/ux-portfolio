@@ -58,6 +58,7 @@ export interface CaseStudyData {
   sections: Section[];
   artifacts: Artifact[];
   hideNda?: boolean;
+  wideHero?: boolean;
   next?: { slug: string; title: string };
 }
 
@@ -96,7 +97,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
           All work
         </a>
         <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--muted)" }}>
-          {data.index} / 05
+          {data.index} / 06
         </span>
       </div>
 
@@ -141,7 +142,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
             fontSize: "clamp(1rem, 1.4vw, 1.2rem)",
             fontWeight: 300, lineHeight: 1.7,
             color: "var(--ink)", opacity: 0.75,
-            maxWidth: "700px", marginBottom: "3rem",
+            maxWidth: data.wideHero ? "820px" : "700px", marginBottom: "3rem",
           }}>
             {data.tagline}
           </p>
@@ -276,6 +277,52 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
           </div>
         ))}
       </div>
+
+      {/* More work */}
+      <section style={{
+        padding: "4rem 2.5rem",
+        borderTop: "0.5px solid var(--border)",
+        display: "grid",
+        gridTemplateColumns: "200px 1fr",
+        gap: "4rem",
+        alignItems: "start",
+      }} className="case-section">
+        <h2 style={{
+          fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500,
+          letterSpacing: "0.12em", textTransform: "uppercase",
+          color: "var(--muted)", margin: 0,
+        }}>More work</h2>
+        <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+          {[
+            { slug: "dane-telecom", index: "01", title: "Dane Telecom" },
+            { slug: "predictive-support-hub", index: "02", title: "Predictive Support Hub" },
+            { slug: "b2b-sales-rescue", index: "03", title: "B2B Sales Rescue" },
+            { slug: "field-work-order", index: "04", title: "Field Work Order" },
+            { slug: "vocabulary", index: "05", title: "Vocabulary" },
+            { slug: "quota-management", index: "06", title: "Quota Management" },
+          ].filter(w => w.slug !== (data.next?.slug) && w.title !== data.title).map((work, i, arr) => (
+            <Link key={work.slug} href={`/work/${work.slug}`} style={{
+              display: "flex",
+              alignItems: "baseline",
+              justifyContent: "space-between",
+              padding: "1rem 0",
+              borderBottom: i < arr.length - 1 ? "0.5px solid var(--border)" : "none",
+              textDecoration: "none",
+              color: "var(--ink)",
+              transition: "color 0.2s",
+            }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--red)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--ink)")}
+            >
+              <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", color: "var(--muted)", minWidth: "2rem" }}>{work.index}</span>
+              <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1rem, 2vw, 1.4rem)", fontWeight: 800, letterSpacing: "-0.02em", flex: 1, marginLeft: "1rem" }}>{work.title}</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ opacity: 0.4 }}>
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </Link>
+          ))}
+        </div>
+      </section>
 
       {/* Next case — right aligned */}
       {data.next && (

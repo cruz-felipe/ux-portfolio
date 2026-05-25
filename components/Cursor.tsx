@@ -13,23 +13,29 @@ export default function Cursor() {
       cursor.style.top = e.clientY + "px";
     };
 
-    const enter = () => cursor.classList.add("hover");
-    const leave = () => cursor.classList.remove("hover");
+    // Use event delegation — works for all elements including dynamically added ones
+    const enter = (e: MouseEvent) => {
+      const target = e.target as Element;
+      if (target.closest("a, button, [data-cursor]")) {
+        cursor.classList.add("hover");
+      }
+    };
+
+    const leave = (e: MouseEvent) => {
+      const target = e.target as Element;
+      if (target.closest("a, button, [data-cursor]")) {
+        cursor.classList.remove("hover");
+      }
+    };
 
     window.addEventListener("mousemove", move);
-
-    const interactives = document.querySelectorAll("a, button, [data-cursor]");
-    interactives.forEach((el) => {
-      el.addEventListener("mouseenter", enter);
-      el.addEventListener("mouseleave", leave);
-    });
+    document.addEventListener("mouseover", enter);
+    document.addEventListener("mouseout", leave);
 
     return () => {
       window.removeEventListener("mousemove", move);
-      interactives.forEach((el) => {
-        el.removeEventListener("mouseenter", enter);
-        el.removeEventListener("mouseleave", leave);
-      });
+      document.removeEventListener("mouseover", enter);
+      document.removeEventListener("mouseout", leave);
     };
   }, []);
 
