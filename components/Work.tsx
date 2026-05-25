@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useRef, useEffect, useState } from "react";
 
-const PROJECTS: { id: string; href: string; index: string; title: string; blurb: string; metrics: string[] }[] = [
+const PROJECTS: { id: string; href: string; index: string; title: string; blurb: string; metrics: string[]; personal?: boolean }[] = [
   {
     id: "dane-telecom",
     href: "/work/dane-telecom",
@@ -26,6 +26,23 @@ const PROJECTS: { id: string; href: string; index: string; title: string; blurb:
     title: "B2B Sales Rescue",
     blurb: "Sales agents needed 7 tools and 3 days of training to close one deal. I reduced that to a single flow and half a day.",
     metrics: ["75% quote acceleration", "83% faster onboarding"],
+  },
+  {
+    id: "field-work-order",
+    href: "/work/field-work-order",
+    index: "04",
+    title: "Field Work Order",
+    blurb: "A 160-page OSS installation document that engineers understood and field technicians could not. Redesigned for the people who actually used it.",
+    metrics: ["72% page reduction", "160 to 45 pages"],
+  },
+  {
+    id: "vocabulary",
+    href: "/work/vocabulary",
+    index: "05",
+    title: "Vocabulary",
+    blurb: "Every flashcard app I tried was built around someone else's curriculum. I wanted one thing: a fast, honest way to learn words. So I built it.",
+    metrics: ["4 languages", "2 learning modes"],
+    personal: true,
   },
 ];
 
@@ -76,18 +93,32 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
 
         <div style={{ padding: "2rem", flex: 1, display: "flex", flexDirection: "column" }}>
           {/* Index */}
-          <span style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "11px",
-            fontWeight: 700,
-            letterSpacing: "0.1em",
-            color: hovered ? "rgba(255,255,255,0.3)" : "var(--muted)",
-            transition: "color 0.35s ease",
-            display: "block",
-            marginBottom: "1.25rem",
-          }}>
-            {project.index}
-          </span>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1.25rem" }}>
+            <span style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "11px",
+              fontWeight: 700,
+              letterSpacing: "0.1em",
+              color: hovered ? "rgba(255,255,255,0.3)" : "var(--muted)",
+              transition: "color 0.35s ease",
+            }}>
+              {project.index}
+            </span>
+            {project.personal && (
+              <span style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "10px",
+                fontWeight: 500,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                color: hovered ? "rgba(255,255,255,0.4)" : "var(--muted)",
+                border: `1px solid ${hovered ? "rgba(255,255,255,0.15)" : "var(--border)"}`,
+                borderRadius: "2px",
+                padding: "2px 7px",
+                transition: "color 0.35s ease, border-color 0.35s ease",
+              }}>Personal</span>
+            )}
+          </div>
 
           {/* Title */}
           <h2 style={{
@@ -214,12 +245,9 @@ export default function Work() {
         </span>
       </div>
 
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(3, 1fr)",
-        gap: "1rem",
-      }}
+      <div
         className="work-grid"
+        style={{ display: "grid", gap: "1rem" }}
       >
         {PROJECTS.map((project, i) => (
           <ProjectCard key={project.id} project={project} index={i} />

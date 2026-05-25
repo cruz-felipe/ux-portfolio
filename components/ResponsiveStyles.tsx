@@ -186,6 +186,17 @@ export default function ResponsiveStyles() {
         .artifact-caption p:last-child { text-align: left !important; max-width: 100% !important; }
       }
 
+      /* Screen gallery */
+      .screen-gallery {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+      @media (max-width: 900px) {
+        .screen-gallery { grid-template-columns: repeat(2, 1fr) !important; }
+      }
+      @media (max-width: 680px) {
+        .screen-gallery { grid-template-columns: 1fr !important; }
+      }
+
       /* Footer logo dark mode swap */
       [data-theme="light"] .footer-logo-dark,
       :root:not([data-theme]) .footer-logo-dark { display: none !important; }

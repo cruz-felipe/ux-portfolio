@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { ScreenGallery } from "./ScreenGallery";
 
 function useCountUp(target: number, duration = 1400) {
   const [count, setCount] = useState(0);
@@ -39,7 +40,8 @@ function AnimatedMetric({ value }: { value: string }) {
 }
 
 interface Metric { value: string; label: string; }
-interface Section { title: string; body: string | string[]; }
+interface Screen { src: string; caption: string; }
+interface Section { title: string; body: string | string[]; screens?: Screen[]; }
 interface Artifact { id: string; title: string; caption: string; component: React.ReactNode; }
 
 export interface CaseStudyData {
@@ -233,6 +235,11 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
                   </p>
                 )}
               </div>
+              {section.screens && section.screens.length > 0 && (
+                <div style={{ maxWidth: "800px", marginTop: "2.5rem" }}>
+                  <ScreenGallery screens={section.screens} />
+                </div>
+              )}
             </section>
 
             {data.artifacts[si] && (
