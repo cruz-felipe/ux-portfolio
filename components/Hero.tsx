@@ -62,7 +62,7 @@ export default function Hero() {
               key={i}
               style={{
                 display: "inline-block",
-                overflow: "hidden",
+                overflow: "visible",
                 verticalAlign: "bottom",
                 marginRight: noGap ? 0 : "0.26em",
               }}

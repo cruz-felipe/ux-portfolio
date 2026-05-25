@@ -37,9 +37,7 @@ export default function Footer() {
           color: "var(--ink)",
           marginBottom: "2rem",
         }}>
-          Beam me up,
-          <br />
-          Scotty.
+          Engage.
         </p>
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
           <a

@@ -48,7 +48,7 @@ const SIDE = [
     role: "Penciler",
     company: "MSP Estúdios",
     period: "Apr 2026 — Present",
-    note: "Drawing comics, working within the visual language and narrative universe of established IP.",
+    note: "Working within the visual language and narrative universe of established IP.",
   },
 ];
 
@@ -193,12 +193,13 @@ export default function About() {
             opacity: 0.72,
             marginBottom: "1rem",
           }}>
-          Outside of screens I&apos;m a 2nd degree black belt in ITF Taekwondo. Not because I 
-          wanted to fight, but because I needed to know I could keep going when 
-          things stopped being comfortable (but fighting is pretty cool). 
-          I've also been drawing since before I can remember, illustration and concept art are where I think without KPIs. 
-          I got published at MSP Estúdios, the studio behind Turma da Mônica, Brazil's most enduring comics universe.
-          
+            Outside of screens I&apos;m a 2nd degree black belt in ITF Taekwondo.
+            Not because I wanted to fight, but because I needed to know I could
+            keep going when things stopped being comfortable (but fighting is
+            pretty cool). I&apos;ve also been drawing since before I can remember,
+            illustration and concept art are where I think without KPIs. I got
+            published at MSP Est&uacute;dios, the studio behind Turma da
+            M&ocirc;nica, Brazil&apos;s most enduring comics universe.
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
