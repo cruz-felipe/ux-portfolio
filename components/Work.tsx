@@ -72,25 +72,7 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
           textDecoration: "none",
         }}
       >
-        {/* Coming soon badge */}
-        <div style={{
-          position: "absolute",
-          top: "1rem",
-          right: "1rem",
-          background: "transparent",
-          color: hovered ? "rgba(255,255,255,0.45)" : "var(--muted)",
-          border: `1px solid ${hovered ? "rgba(255,255,255,0.2)" : "var(--border)"}`,
-          fontFamily: "var(--font-body)",
-          fontSize: "10px",
-          fontWeight: 500,
-          letterSpacing: "0.12em",
-          textTransform: "uppercase",
-          padding: "4px 8px",
-          borderRadius: "2px",
-          transition: "color 0.35s ease, border-color 0.35s ease",
-        }}>
-          Coming soon
-        </div>
+
 
         <div style={{ padding: "2rem", flex: 1, display: "flex", flexDirection: "column" }}>
           {/* Index */}

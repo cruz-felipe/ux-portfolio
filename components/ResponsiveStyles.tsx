@@ -186,10 +186,11 @@ export default function ResponsiveStyles() {
         .artifact-caption p:last-child { text-align: left !important; max-width: 100% !important; }
       }
 
-      /* Footer logo invert in dark mode */
-      [data-theme="dark"] .footer-logo {
-        filter: invert(1) brightness(2);
-      }
+      /* Footer logo dark mode swap */
+      [data-theme="light"] .footer-logo-dark,
+      :root:not([data-theme]) .footer-logo-dark { display: none !important; }
+      [data-theme="dark"] .footer-logo-light { display: none !important; }
+      [data-theme="dark"] .footer-logo-dark { display: block !important; }
     `}</style>
   );
 }

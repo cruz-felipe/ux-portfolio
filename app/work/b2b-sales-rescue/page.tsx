@@ -3,7 +3,7 @@ import { HeuristicMatrixArtifact, FlowCompressionArtifact, ResearchMethodologyAr
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "B2B Sales Rescue — Felipe Cruz",
+  title: "B2B Sales Rescue Felipe Cruz",
   description: "7 tools to close one deal. Collapsed to a 3-step flow. 75% quote acceleration.",
 };
 

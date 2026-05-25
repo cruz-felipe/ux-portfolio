@@ -3,8 +3,8 @@ import { ConsolidationMapArtifact, CognitiveLoadArtifact, AIOrchestrationArtifac
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Predictive Support Hub — Felipe Cruz",
-  description: "32 tools consolidated into one AI workspace. AHT dropped from 12 minutes to 3.",
+  title: "Predictive Support Hub Felipe Cruz",
+  description: "32 tools consolidated into one AI workspace. AHT dropped from 10 minutes to 3.",
 };
 
 const data: CaseStudyData = {
@@ -12,12 +12,13 @@ const data: CaseStudyData = {
   title: "Predictive Support Hub",
   tagline: "3,000 support agents were navigating 32 legacy tools on every call. What looked like a UX problem was an infrastructure problem wearing a UX mask. The solution was not a better interface. It was eliminating the reason the interface was so complex to begin with.",
   role: "End-to-end UX Strategy",
+  location: "On-site, New York & Texas",
   year: "2022",
   roleDetail: "End-to-end ownership from field research and systemic audit to AI orchestration design and agent workflow redesign. I reframed the problem and led the solution architecture.",
-  impactSummary: "AHT reduced from 12 minutes to 3. 32 legacy tools replaced by one intelligent workspace. New agent onboarding cut from 3 days to under half a day.",
+  impactSummary: "AHT reduced from 10 minutes to 3. 32 legacy tools replaced by one intelligent workspace. New agent onboarding cut from 3 days to under half a day.",
   context: "I was brought in to redesign the support experience for a global telecom with 3,000 agents across multiple countries. The initial brief was UX improvement. What the audit revealed was that every customer call required agents to context-switch across an average of 32 separate legacy tools to find billing history, technical data and open tickets. There was no single source of truth. The problem was not the interface.",
   metrics: [
-    { value: "70%", label: "AHT reduction. From 12 minutes to 3 per call" },
+    { value: "70%", label: "AHT reduction. From 10 minutes to 3 per call" },
     { value: "32→1", label: "Legacy tools consolidated into one intelligent workspace" },
     { value: "3→½d", label: "New agent onboarding time" },
   ],
@@ -58,7 +59,7 @@ const data: CaseStudyData = {
     {
       id: "cognitive-load",
       title: "Agent cognitive load per call",
-      caption: "Before: 13 context switches per call, 12 minute average, institutional knowledge on sticky notes. After: zero context switches, 3 minute average, AI surfaces all relevant data. Research conducted across 4 locations in 2 countries.",
+      caption: "Before: 13 context switches per call, 10 minute average, institutional knowledge on sticky notes. After: zero context switches, 3 minute average, AI surfaces all relevant data. Research conducted across 4 locations in 2 countries.",
       component: <CognitiveLoadArtifact />,
     },
     {

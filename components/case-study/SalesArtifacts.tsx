@@ -1,62 +1,75 @@
 export function HeuristicMatrixArtifact() {
   const issues = [
     { label: "Flow entry paralysis", crit: 9, effort: 2 },
-    { label: "Manual approval", crit: 9, effort: 3 },
-    { label: "Redundant data entry", crit: 8, effort: 3 },
+    { label: "Manual approval email", crit: 9, effort: 3 },
+    { label: "Redundant data entry", crit: 8, effort: 2 },
     { label: "No install tracking", crit: 7, effort: 4 },
     { label: "Training dependency", crit: 8, effort: 4 },
-    { label: "Unused features", crit: 2, effort: 5 },
+    { label: "Unused feature set A", crit: 2, effort: 5 },
+    { label: "Unused feature set B", crit: 3, effort: 6 },
     { label: "Branding mismatch", crit: 5, effort: 2 },
     { label: "Tool fragmentation", crit: 10, effort: 8 },
+    { label: "No progress indicator", crit: 6, effort: 2 },
+    { label: "Copy-paste data transfer", crit: 7, effort: 3 },
+    { label: "No bulk actions", crit: 4, effort: 5 },
+    { label: "Inconsistent nav", crit: 5, effort: 3 },
+    { label: "Error state missing", crit: 6, effort: 1 },
+    { label: "Search not contextual", crit: 7, effort: 5 },
+    { label: "Approval visibility", crit: 8, effort: 3 },
   ];
 
-  const originX = 70;
-  const originY = 230;
-  const scaleX = 72;
-  const scaleY = 22;
+  const originX = 50;
+  const originY = 200;
+  const chartW = 700;
+  const chartH = 160;
 
   return (
-    <svg viewBox="0 0 860 280" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
-      <text x={originX} y="16" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1.5">HEURISTIC IMPACT MATRIX: 32 ISSUES PRIORITIZED</text>
-
-      {/* Grid lines */}
-      {[2,4,6,8,10].map(v => (
-        <g key={v}>
-          <line x1={originX + v * scaleX} y1="28" x2={originX + v * scaleX} y2={originY} stroke="var(--border)" strokeWidth="0.3" strokeDasharray="2,4"/>
-          <text x={originX + v * scaleX} y={originY + 14} textAnchor="middle" fontFamily="var(--font-body)" fontSize="9" fill="var(--muted)">{v}</text>
-        </g>
-      ))}
-      {[2,4,6,8,10].map(v => (
-        <g key={v}>
-          <line x1={originX} y1={originY - v * scaleY} x2={originX + 10 * scaleX} y2={originY - v * scaleY} stroke="var(--border)" strokeWidth="0.3" strokeDasharray="2,4"/>
-          <text x={originX - 8} y={originY - v * scaleY + 4} textAnchor="end" fontFamily="var(--font-body)" fontSize="9" fill="var(--muted)">{v}</text>
-        </g>
-      ))}
-
-      {/* Axes */}
-      <line x1={originX} y1="28" x2={originX} y2={originY} stroke="var(--border)" strokeWidth="0.5"/>
-      <line x1={originX} y1={originY} x2={originX + 10 * scaleX} y2={originY} stroke="var(--border)" strokeWidth="0.5"/>
-
-      {/* Priority zone */}
-      <rect x={originX + 1} y={originY - 6 * scaleY} width={3 * scaleX} height={6 * scaleY} fill="var(--red)" fillOpacity="0.04" stroke="none"/>
-      <text x={originX + 1.5 * scaleX} y={originY - 6 * scaleY + 16} textAnchor="middle" fontFamily="var(--font-body)" fontSize="9" fill="var(--red)" fillOpacity="0.6">Ship first</text>
-
-      {/* Axis labels */}
-      <text x={originX + 5 * scaleX} y={originY + 26} textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Engineering effort</text>
-      <text x="14" y={originY - 5 * scaleY} textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" transform={`rotate(-90, 14, ${originY - 5 * scaleY})`}>Criticality</text>
-
-      {/* Data points */}
-      {issues.map((issue, i) => {
-        const cx = originX + issue.effort * scaleX;
-        const cy = originY - issue.crit * scaleY;
-        const isHighPriority = issue.crit >= 7 && issue.effort <= 4;
+    <svg viewBox="0 0 860 260" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
+      {/* Grid */}
+      {[2,4,6,8,10].map(v => {
+        const x = originX + (v / 10) * chartW;
+        const y = originY - (v / 10) * chartH;
         return (
-          <g key={i}>
-            <circle cx={cx} cy={cy} r="6" fill={isHighPriority ? "var(--red)" : "var(--muted)"} fillOpacity={isHighPriority ? 0.8 : 0.35}/>
-            <text x={cx + 10} y={cy + 4} fontFamily="var(--font-body)" fontSize="9" fill={isHighPriority ? "var(--ink)" : "var(--muted)"} fillOpacity={isHighPriority ? 0.8 : 0.6}>{issue.label}</text>
+          <g key={v}>
+            <line x1={x} y1={originY - chartH} x2={x} y2={originY} stroke="var(--border)" strokeWidth="0.3" strokeDasharray="2,4"/>
+            <text x={x} y={originY + 14} textAnchor="middle" fontFamily="var(--font-body)" fontSize="9" fill="var(--muted)">{v}</text>
+            <line x1={originX} y1={y} x2={originX + chartW} y2={y} stroke="var(--border)" strokeWidth="0.3" strokeDasharray="2,4"/>
+            <text x={originX - 8} y={y + 4} textAnchor="end" fontFamily="var(--font-body)" fontSize="9" fill="var(--muted)">{v}</text>
           </g>
         );
       })}
+
+      {/* Axes */}
+      <line x1={originX} y1={originY - chartH} x2={originX} y2={originY} stroke="var(--border)" strokeWidth="0.5"/>
+      <line x1={originX} y1={originY} x2={originX + chartW} y2={originY} stroke="var(--border)" strokeWidth="0.5"/>
+
+      {/* Priority zone: high crit (>6), low effort (<5) */}
+      <rect x={originX + 1} y={originY - chartH} width={(4/10)*chartW} height={(4/10)*chartH} fill="var(--red)" fillOpacity="0.04"/>
+      <text x={originX + (2/10)*chartW} y={originY - chartH + 14} textAnchor="middle" fontFamily="var(--font-body)" fontSize="9" fill="var(--red)" fillOpacity="0.5">Ship first</text>
+
+      {/* Labels */}
+      <text x={originX + chartW / 2} y={originY + 26} textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Engineering effort</text>
+      <text x="12" y={originY - chartH / 2} textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" transform={`rotate(-90,12,${originY - chartH/2})`}>Criticality</text>
+
+      {/* Points */}
+      {issues.map((issue, i) => {
+        const cx = originX + (issue.effort / 10) * chartW;
+        const cy = originY - (issue.crit / 10) * chartH;
+        const isHighPriority = issue.crit >= 7 && issue.effort <= 4;
+        return (
+          <g key={i}>
+            <circle cx={cx} cy={cy} r={isHighPriority ? 6 : 5}
+              fill={isHighPriority ? "var(--red)" : "var(--muted)"}
+              fillOpacity={isHighPriority ? 0.75 : 0.3}/>
+          </g>
+        );
+      })}
+
+      {/* Legend */}
+      <circle cx={originX + 20} cy={originY + 44} r="5" fill="var(--red)" fillOpacity="0.75"/>
+      <text x={originX + 32} y={originY + 48} fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">High priority (crit over 6, effort under 5)</text>
+      <circle cx={originX + 320} cy={originY + 44} r="4" fill="var(--muted)" fillOpacity="0.3"/>
+      <text x={originX + 332} y={originY + 48} fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Lower priority</text>
     </svg>
   );
 }

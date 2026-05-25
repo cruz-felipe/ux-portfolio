@@ -3,7 +3,7 @@ import { TokenArchitectureArtifact, SandboxWorkflowArtifact, VelocityDeltaArtifa
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Dane Telecom — Felipe Cruz",
+  title: "Dane Telecom Felipe Cruz",
   description: "Design system restructure for a global telecom. 50% faster handoff, 32% velocity boost.",
 };
 
