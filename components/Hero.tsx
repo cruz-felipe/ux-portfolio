@@ -48,45 +48,25 @@ export default function Hero() {
         ))}
       </h1>
 
-      {/* Sub copy — stacked, not grid */}
-      <div style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(16px)",
-        transition: "opacity 0.7s ease 0.85s, transform 0.7s ease 0.85s",
-        maxWidth: "520px",
-      }}>
-        <p style={{
-          fontFamily: "var(--font-body)",
-          fontSize: "clamp(0.95rem, 1.2vw, 1.05rem)",
-          fontWeight: 300,
-          lineHeight: 1.72,
-          color: "var(--ink)",
-          opacity: 0.82,
-          margin: "0 0 2.5rem",
-        }}>
+      {/* Two-column sub copy — bio left, currently right */}
+      <div
+        className="hero-sub"
+        style={{
+          opacity: visible ? 1 : 0,
+          transform: visible ? "translateY(0)" : "translateY(16px)",
+          transition: "opacity 0.7s ease 0.85s, transform 0.7s ease 0.85s",
+        }}
+      >
+        <p className="hero-bio">
           Eleven years designing enterprise products at global scale in BSS/OSS telecom
           infrastructure, B2B and B2C across 9 countries. I lead local design team, run
           the cross-functional process and deliver the kind of system that engineers can
           actually build and business stakeholders can explain.
         </p>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}>
-          <span style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "11px",
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            color: "var(--muted)",
-          }}>
-            Currently
-          </span>
-          <span style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "15px",
-            fontWeight: 600,
-            color: "var(--ink)",
-            lineHeight: 1.5,
-          }}>
+        <div className="hero-role">
+          <span className="hero-role-label">Currently</span>
+          <span className="hero-role-title">
             Senior UI Designer · Team Lead, Brazil
             <br />@ Netcracker Technology
           </span>

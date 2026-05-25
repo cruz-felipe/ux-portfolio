@@ -39,21 +39,7 @@ export default function Nav() {
       >
         {/* Wordmark */}
         <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "0.5rem", zIndex: 101 }}>
-          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Felipe Cruz home">
-            <rect width="32" height="32" fill="#E03030"/>
-            <rect x="7" y="9" width="18" height="2.5" fill="white"/>
-            <rect x="7" y="14.75" width="13" height="2.5" fill="white"/>
-            <rect x="7" y="20.5" width="18" height="2.5" fill="white"/>
-          </svg>
-          <span style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "15px",
-            fontWeight: 700,
-            letterSpacing: "-0.01em",
-            color: "var(--ink)",
-          }}>
-            Felipe Cruz
-          </span>
+          <img src="/logo.png" alt="Felipe Cruz" style={{ height: "22px", width: "auto", display: "block" }} />
         </Link>
 
         {/* Desktop links */}

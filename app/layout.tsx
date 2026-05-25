@@ -6,6 +6,10 @@ import ResponsiveStyles from "@/components/ResponsiveStyles";
 export const metadata: Metadata = {
   title: "Felipe Cruz — Senior Product Designer",
   description: "Eleven years designing enterprise products at global scale. BSS/OSS, telecom, B2B and B2C across 9 countries.",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     title: "Felipe Cruz — Senior Product Designer",
     description: "I design for the moment when complexity is no longer manageable and someone has to make it work.",
