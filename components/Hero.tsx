@@ -1,8 +1,27 @@
 "use client";
 import { useEffect, useState } from "react";
 
-const HEADLINE = "I design for the moment when complexity is no longer manageable and someone has to make it work.";
-const WORDS = HEADLINE.split(" ");
+const WORDS = [
+  { text: "I", red: false },
+  { text: "design", red: false },
+  { text: "for", red: false },
+  { text: "the", red: false },
+  { text: "moment", red: false },
+  { text: "when", red: false },
+  { text: "complexity", red: false },
+  { text: "is", red: false },
+  { text: "no", red: false },
+  { text: "longer", red: false },
+  { text: "manageable", red: false },
+  { text: "and", red: false },
+  { text: "someone", red: false },
+  { text: "has", red: false },
+  { text: "to", red: false },
+  { text: "make", red: true },
+  { text: "it", red: true },
+  { text: "work", red: true },
+  { text: ".", red: false },
+];
 
 export default function Hero() {
   const [visible, setVisible] = useState(false);
@@ -32,20 +51,28 @@ export default function Hero() {
           maxWidth: "1100px",
           margin: "0 0 4rem",
         }}
-        aria-label={HEADLINE}
+        aria-label="I design for the moment when complexity is no longer manageable and someone has to make it work."
       >
         {WORDS.map((word, i) => {
-          const isRed = ["make", "it", "work."].includes(word);
+          const isPeriod = word.text === ".";
           return (
-            <span key={i} style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", marginRight: "0.26em" }}>
+            <span
+              key={i}
+              style={{
+                display: "inline-block",
+                overflow: "hidden",
+                verticalAlign: "bottom",
+                marginRight: isPeriod ? 0 : "0.26em",
+              }}
+            >
               <span style={{
                 display: "inline-block",
                 transform: visible ? "translateY(0)" : "translateY(110%)",
                 opacity: visible ? 1 : 0,
                 transition: `transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 42}ms, opacity 0.4s ease ${i * 42}ms`,
-                color: isRed ? "var(--red)" : "var(--ink)",
+                color: word.red ? "var(--red)" : "var(--ink)",
               }}>
-                {word}
+                {word.text}
               </span>
             </span>
           );

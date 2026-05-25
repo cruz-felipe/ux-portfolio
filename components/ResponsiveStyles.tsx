@@ -4,9 +4,9 @@ export default function ResponsiveStyles() {
       /* ── Hero sub ── */
       .hero-sub {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1.4fr 1fr;
         gap: 3rem;
-        max-width: 820px;
+        max-width: 900px;
       }
       .hero-bio {
         font-family: var(--font-body);

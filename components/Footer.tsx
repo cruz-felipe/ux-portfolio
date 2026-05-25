@@ -124,12 +124,7 @@ export default function Footer() {
       {/* Right — Colophon */}
       <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "0.4rem" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.25rem" }}>
-          <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
-            <rect width="32" height="32" fill="#E03030"/>
-            <rect x="7" y="9" width="18" height="2.5" fill="white"/>
-            <rect x="7" y="14.75" width="13" height="2.5" fill="white"/>
-            <rect x="7" y="20.5" width="18" height="2.5" fill="white"/>
-          </svg>
+          <img src="/logo.svg" alt="Felipe Cruz" style={{ height: "24px", width: "auto", display: "block" }} />
           <span style={{ fontFamily: "var(--font-display)", fontSize: "14px", fontWeight: 700 }}>
             Felipe Cruz
           </span>

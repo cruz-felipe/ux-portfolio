@@ -41,6 +41,9 @@ const EXPERIENCE = [
     period: "Feb 2021 — Feb 2026",
     note: "Mentored designers through career transitions with portfolio reviews, interview preparation and feedback on what the industry actually rewards.",
   },
+];
+
+const SIDE = [
   {
     role: "Penciler",
     company: "MSP Estúdios",
@@ -205,8 +208,18 @@ export default function About() {
           }}>
             I draw comics. My work has been published at MSP Est&uacute;dios,
             the studio behind Turma da M&ocirc;nica, Brazil&apos;s most enduring
-            comics universe. Painting and illustration are where I think without
-            KPI&apos;s.
+            comics universe.
+          </p>
+          <p style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "14px",
+            fontWeight: 300,
+            lineHeight: 1.75,
+            color: "var(--ink)",
+            opacity: 0.72,
+            marginBottom: "1rem",
+          }}>
+            Painting and illustration are where I think without KPI&apos;s.
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
@@ -276,7 +289,7 @@ export default function About() {
           }}>
             Experience
           </span>
-          {EXPERIENCE.map((job, i) => (
+          {[...EXPERIENCE, ...SIDE].map((job, i) => (
             <div key={i} style={{
               display: "grid",
               gridTemplateColumns: "1fr auto",
