@@ -138,6 +138,37 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
               </span>
             ))}
           </div>
+
+          {/* View project */}
+          <div style={{
+            paddingTop: "1.25rem",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.4rem",
+          }}>
+            <span style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "13px",
+              fontWeight: 500,
+              color: hovered ? "var(--red)" : "var(--muted)",
+              textDecoration: "underline",
+              textDecorationColor: hovered ? "var(--red)" : "transparent",
+              textUnderlineOffset: "3px",
+              transition: "color 0.35s ease, text-decoration-color 0.35s ease",
+            }}>
+              View project
+            </span>
+            <svg
+              width="12" height="12" viewBox="0 0 12 12" fill="none"
+              style={{
+                color: hovered ? "var(--red)" : "var(--muted)",
+                transition: "color 0.35s ease, transform 0.35s ease",
+                transform: hovered ? "translateX(3px)" : "translateX(0)",
+              }}
+            >
+              <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
         </div>
 
         {/* Red bottom bar */}
@@ -179,7 +210,7 @@ export default function Work() {
           fontSize: "12px",
           color: "var(--muted)",
         }}>
-          Case studies in progress
+          
         </span>
       </div>
 
