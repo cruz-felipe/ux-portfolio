@@ -146,9 +146,9 @@ export function ResearchMethodologyArtifact() {
           ))}
           {/* Finding */}
           <line x1={i * 288 + 20} y1="148" x2={i * 288 + 254} y2="148" stroke="var(--border)" strokeWidth="0.5"/>
-          <text x={i * 288 + 20} y="163" fontFamily="var(--font-body)" fontSize="9" fill="var(--muted)" letterSpacing="1">KEY FINDING</text>
+          <text x={i * 288 + 137} y="163" textAnchor="middle" fontFamily="var(--font-body)" fontSize="9" fill="var(--muted)" letterSpacing="1">KEY FINDING</text>
           {m.finding.split("\n").map((line, li) => (
-            <text key={li} x={i * 288 + 137} y={177 + li * 14} textAnchor="middle" fontFamily="var(--font-body)" fontSize="11" fill="var(--red)">{line}</text>
+            <text key={li} x={i * 288 + 137} y={178 + li * 15} textAnchor="middle" fontFamily="var(--font-body)" fontSize="11" fill="var(--red)">{line}</text>
           ))}
         </g>
       ))}

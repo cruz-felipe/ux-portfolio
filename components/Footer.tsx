@@ -82,8 +82,8 @@ export default function Footer() {
               borderRadius: "2px",
               transition: "border-color 0.2s ease",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(10,10,10,0.7)")}
-            onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(10,10,10,0.25)")}
+            onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--ink)")}
+            onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
           >
             LinkedIn
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -108,8 +108,8 @@ export default function Footer() {
               borderRadius: "2px",
               transition: "border-color 0.2s ease",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(10,10,10,0.7)")}
-            onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(10,10,10,0.25)")}
+            onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--ink)")}
+            onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
           >
             Art & Illustration
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">

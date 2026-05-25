@@ -1,63 +1,57 @@
 export function ConsolidationMapArtifact() {
-  // 32 tools in 4 rows of 8, each 100px wide, 28px tall, 4px gap
   const tools = [
-    "Billing portal","Ticket tracker","CRM","Tech DB","Chat log","ID verify","Order sys","Network map",
-    "KB search","SLA tracker","Escalation","Routing","Call log","Auth tool","Payment hist","Fraud check",
-    "Device reg","Plan mgmt","Usage stats","Field ops","IVR data","Survey","Scheduler","Docs",
-    "Approval","Config","Asset mgr","Alert sys","Incident","Report","Audit","Compliance",
+    "Billing","Tickets","CRM","Tech DB","Chat","ID verify","Orders","Network",
+    "KB search","SLA","Escalate","Routing","Call log","Auth","Payments","Fraud",
+    "Devices","Plans","Usage","Field ops","IVR","Survey","Schedule","Docs",
+    "Approvals","Config","Assets","Alerts","Incidents","Reports","Audit","Compliance",
   ];
-  const colW = 96, rowH = 28, colGap = 6, rowGap = 6;
+  // Grid: 8 cols, 4 rows, each cell 56x26, gap 4
+  const cW = 56, rH = 26, cG = 4, rG = 4;
   const cols = 8;
-  const gridW = cols * colW + (cols - 1) * colGap;
-  const rows = 4;
-  const gridH = rows * rowH + (rows - 1) * rowGap;
+  const gW = cols * cW + (cols - 1) * cG; // 8*56 + 7*4 = 476
+  const gH = 4 * rH + 3 * rG;             // 4*26 + 3*4 = 116
 
-  // After panel x offset
-  const afterX = gridW + 60;
-  const totalW = afterX + 400;
+  const arrowX = gW + 20;
+  const afterX = arrowX + 32;
+  const afterW = 860 - afterX;             // remaining width
 
   return (
-    <svg viewBox={`0 0 ${totalW} 260`} fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
-
-      {/* BEFORE */}
-      <text x="0" y="14" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1">BEFORE: 32 TOOLS</text>
+    <svg viewBox="0 0 860 220" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
+      <text x="0" y="13" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1">BEFORE: 32 TOOLS</text>
       {tools.map((tool, i) => {
         const c = i % cols;
         const r = Math.floor(i / cols);
-        const x = c * (colW + colGap);
-        const y = 22 + r * (rowH + rowGap);
+        const x = c * (cW + cG);
+        const y = 20 + r * (rH + rG);
         return (
           <g key={i}>
-            <rect x={x} y={y} width={colW} height={rowH} rx="1" fill="none" stroke="var(--border)" strokeWidth="0.5"/>
-            <text x={x + colW / 2} y={y + 18} textAnchor="middle" fontFamily="var(--font-body)" fontSize="8" fill="var(--muted)">{tool}</text>
+            <rect x={x} y={y} width={cW} height={rH} rx="1" fill="none" stroke="var(--border)" strokeWidth="0.5"/>
+            <text x={x + cW/2} y={y + 17} textAnchor="middle" fontFamily="var(--font-body)" fontSize="7.5" fill="var(--muted)">{tool}</text>
           </g>
         );
       })}
 
-      {/* Arrow */}
-      <text x={gridW + 14} y={22 + gridH / 2 + 8} textAnchor="middle" fontFamily="var(--font-display)" fontSize="22" fontWeight="800" fill="var(--red)">→</text>
+      <text x={arrowX + 2} y={20 + gH/2 + 6} textAnchor="middle" fontFamily="var(--font-display)" fontSize="20" fontWeight="800" fill="var(--red)">→</text>
 
-      {/* AFTER */}
-      <text x={afterX} y="14" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1">AFTER: 1 WORKSPACE</text>
-      <rect x={afterX} y="22" width="390" height={gridH} rx="3" fill="var(--red)" fillOpacity="0.04" stroke="var(--red)" strokeWidth="1"/>
+      <text x={afterX} y="13" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1">AFTER: 1 WORKSPACE</text>
+      <rect x={afterX} y="20" width={afterW} height={gH} rx="3" fill="var(--red)" fillOpacity="0.04" stroke="var(--red)" strokeWidth="1"/>
 
       {[
-        { y: 40, title: "Auto-identification layer", sub: "Customer identified, full history surfaced on connect" },
-        { y: 92, title: "Contextual scripting layer", sub: "AI monitors conversation, surfaces relevant data live" },
-        { y: 144, title: "Live resolution layer", sub: "Solution presented directly in the session interface" },
+        { dy: 18, title: "Auto-identification layer", sub: "Customer identified, full history surfaced on connect" },
+        { dy: 58, title: "Contextual scripting layer", sub: "AI monitors conversation, surfaces relevant data live" },
+        { dy: 98, title: "Live resolution layer", sub: "Solution presented directly in the session interface" },
       ].map((layer, i) => (
         <g key={i}>
-          <rect x={afterX + 14} y={layer.y} width="362" height="38" rx="2" fill="none" stroke="var(--border)" strokeWidth="0.5"/>
-          <text x={afterX + 26} y={layer.y + 15} fontFamily="var(--font-body)" fontSize="11" fontWeight="500" fill="var(--ink)" fillOpacity="0.85">{layer.title}</text>
-          <text x={afterX + 26} y={layer.y + 29} fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">{layer.sub}</text>
+          <rect x={afterX + 10} y={20 + layer.dy} width={afterW - 20} height="34" rx="2" fill="none" stroke="var(--border)" strokeWidth="0.5"/>
+          <text x={afterX + 20} y={20 + layer.dy + 14} fontFamily="var(--font-body)" fontSize="10" fontWeight="500" fill="var(--ink)" fillOpacity="0.85">{layer.title}</text>
+          <text x={afterX + 20} y={20 + layer.dy + 27} fontFamily="var(--font-body)" fontSize="9" fill="var(--muted)">{layer.sub}</text>
         </g>
       ))}
 
-      {/* Stats */}
-      <text x={afterX} y={22 + gridH + 22} fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">AHT before: 10 min avg</text>
-      <text x={afterX} y={22 + gridH + 36} fontFamily="var(--font-body)" fontSize="10" fill="var(--red)">AHT after: 3 min avg. 70% reduction.</text>
-      <text x={afterX + 200} y={22 + gridH + 22} fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Onboarding before: 3 days</text>
-      <text x={afterX + 200} y={22 + gridH + 36} fontFamily="var(--font-body)" fontSize="10" fill="var(--red)">Onboarding after: under half a day</text>
+      <text x="0" y={20 + gH + 22} fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">AHT before: 10 min avg</text>
+      <text x="0" y={20 + gH + 36} fontFamily="var(--font-body)" fontSize="10" fill="var(--red)">AHT after: 3 min avg. 70% reduction.</text>
+      <text x={afterX} y={20 + gH + 22} fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Onboarding before: 3 days</text>
+      <text x={afterX} y={20 + gH + 36} fontFamily="var(--font-body)" fontSize="10" fill="var(--red)">Onboarding after: under half a day</text>
     </svg>
   );
 }

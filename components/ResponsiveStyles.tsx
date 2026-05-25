@@ -177,7 +177,7 @@ export default function ResponsiveStyles() {
         .case-callout { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
         .case-metrics { grid-template-columns: 1fr 1fr !important; }
         .case-context { grid-template-columns: 1fr !important; }
-        .case-section { grid-template-columns: 1fr !important; gap: 1rem !important; }
+        .case-section { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
       }
 
       @media (max-width: 680px) {
