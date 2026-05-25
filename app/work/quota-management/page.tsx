@@ -12,16 +12,12 @@ const data: CaseStudyData = {
   title: "Quota Management",
   tagline: "There was no product to replace. No prior version to reference. Just a set of business needs, a stack of workshop notes, and a constraint to fit seamlessly into a tool ecosystem the client already owned.",
   role: "Senior UI Designer",
-  location: "Remote, United States client",
+  location: "Remote, United States",
   year: "2024",
   roleDetail: "Solo designer on the project. Led all design decisions from information architecture and user flows to interaction patterns and visual design. Responsible for cross-functional alignment across client and internal product, business and engineering stakeholders.",
   impactSummary: "Production-ready design for a greenfield B2B platform. Full quota and API management flows, approval workflows and reporting views designed to specification. Pending client-side launch.",
   context: "A B2B BSS telecom platform needed a dedicated asset management tool. Support agents from both the client organisation and their partners use it to manage data quota usage, monitor API consumption, access usage reports and submit change requests through structured approval flows. Nothing existed before this project started.",
-  metrics: [
-    { value: "0", label: "Existing product to reference. Greenfield from scratch." },
-    { value: "4", label: "Stakeholder groups. Client business, client product, client dev, internal team." },
-    { value: "3", label: "Core modules. Quota management, API usage, change request flows." },
-  ],
+  metrics: [],
   sections: [
     {
       title: "Starting from nothing",

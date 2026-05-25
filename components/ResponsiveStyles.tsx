@@ -188,13 +188,14 @@ export default function ResponsiveStyles() {
 
       /* Screen gallery */
       .screen-gallery {
-        grid-template-columns: repeat(3, 1fr) !important;
+        grid-template-columns: repeat(3, minmax(0, 320px)) !important;
+        justify-content: start;
       }
       @media (max-width: 900px) {
-        .screen-gallery { grid-template-columns: repeat(2, 1fr) !important; }
+        .screen-gallery { grid-template-columns: repeat(2, minmax(0, 320px)) !important; }
       }
       @media (max-width: 680px) {
-        .screen-gallery { grid-template-columns: 1fr !important; }
+        .screen-gallery { grid-template-columns: minmax(0, 320px) !important; }
       }
 
       /* Footer logo dark mode swap */

@@ -7,56 +7,33 @@ interface ScreenProps {
 
 export function ScreenGallery({ screens }: { screens: ScreenProps[] }) {
   return (
-    <div style={{
-      display: "grid",
-      gridTemplateColumns: `repeat(${Math.min(screens.length, 3)}, 1fr)`,
-      gap: "2rem",
-      alignItems: "start",
-    }} className="screen-gallery">
+    <div className="screen-gallery" style={{ display: "grid", gap: "1.5rem", alignItems: "start" }}>
       {screens.map((screen, i) => (
         <div key={i}>
-          {/* Device frame */}
           <div style={{
             background: "#1A1A1A",
-            borderRadius: "28px",
-            padding: "10px 10px 12px",
-            boxShadow: "0 0 0 1px rgba(255,255,255,0.06) inset",
+            borderRadius: "32px",
+            padding: "12px 12px 14px",
             position: "relative",
           }}>
-            {/* Notch */}
             <div style={{
               position: "absolute",
-              top: "10px",
+              top: "12px",
               left: "50%",
               transform: "translateX(-50%)",
-              width: "72px",
+              width: "64px",
               height: "6px",
-              background: "#111",
+              background: "#333",
               borderRadius: "3px",
               zIndex: 2,
             }}/>
-            {/* Screen */}
-            <div style={{
-              borderRadius: "20px",
-              overflow: "hidden",
-              background: "#F5F3EF",
-            }}>
-              <img
-                src={screen.src}
-                alt={screen.caption}
-                style={{
-                  width: "100%",
-                  display: "block",
-                }}
-              />
+            <div style={{ borderRadius: "22px", overflow: "hidden", background: "#F5F3EF" }}>
+              <img src={screen.src} alt={screen.caption} style={{ width: "100%", display: "block" }}/>
             </div>
           </div>
           <p style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "12px",
-            color: "var(--muted)",
-            lineHeight: 1.55,
-            marginTop: "0.875rem",
+            fontFamily: "var(--font-body)", fontSize: "12px",
+            color: "var(--muted)", lineHeight: 1.55, marginTop: "0.75rem",
           }}>
             {screen.caption}
           </p>
