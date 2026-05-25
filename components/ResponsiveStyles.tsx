@@ -1,18 +1,18 @@
 export default function ResponsiveStyles() {
   return (
     <style>{`
-      /* ── Hero sub-headline layout ── */
+      /* ── Hero sub ── */
       .hero-sub {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 3rem;
-        max-width: 860px;
+        max-width: 820px;
       }
       .hero-bio {
         font-family: var(--font-body);
-        font-size: clamp(1rem, 1.3vw, 1.1rem);
+        font-size: clamp(0.95rem, 1.2vw, 1.05rem);
         font-weight: 300;
-        line-height: 1.7;
+        line-height: 1.72;
         color: var(--ink);
         opacity: 0.82;
         margin: 0;
@@ -20,9 +20,8 @@ export default function ResponsiveStyles() {
       .hero-role {
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
         gap: 0.4rem;
-        padding-top: 0.15rem;
+        padding-top: 0.1rem;
       }
       .hero-role-label {
         font-family: var(--font-body);
@@ -39,10 +38,10 @@ export default function ResponsiveStyles() {
         line-height: 1.6;
       }
 
-      /* ── About layout ── */
+      /* ── About ── */
       .about-top {
         display: grid;
-        grid-template-columns: 260px 1fr;
+        grid-template-columns: 240px 1fr;
         gap: 4rem;
         align-items: flex-start;
       }
@@ -56,15 +55,27 @@ export default function ResponsiveStyles() {
       .nav-hamburger { display: none !important; }
       .nav-desktop { display: flex !important; }
 
+      /* ── Work grid ── */
+      .work-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+
       /* ── Tablet ── */
-      @media (max-width: 900px) {
+      @media (max-width: 1024px) {
         .about-top {
           grid-template-columns: 200px 1fr;
           gap: 2.5rem;
         }
+      }
+
+      @media (max-width: 900px) {
         .about-bottom {
           grid-template-columns: 1fr;
           gap: 3rem;
+        }
+        .work-grid {
+          grid-template-columns: 1fr 1fr !important;
+          gap: 0.75rem !important;
         }
         .signal-strip-inner {
           grid-template-columns: 1fr 1fr !important;
@@ -75,39 +86,31 @@ export default function ResponsiveStyles() {
         .signal-strip-inner > div:nth-child(3),
         .signal-strip-inner > div:nth-child(4) {
           padding-top: 2rem !important;
-          border-top: 0.5px solid var(--border) !important;
+          border-top: 1px solid rgba(10,10,10,0.12) !important;
         }
       }
 
       /* ── Mobile ── */
       @media (max-width: 680px) {
-        /* Nav */
         .nav-hamburger { display: block !important; }
         .nav-desktop { display: none !important; }
         nav { padding: 1rem 1.25rem !important; }
 
-        /* Hero */
-        section[style*="8rem 2.5rem"] {
-          padding: 7rem 1.25rem 4rem !important;
-        }
         .hero-sub {
           grid-template-columns: 1fr !important;
           gap: 1.5rem !important;
           max-width: 100% !important;
         }
         .hero-role {
-          padding-top: 0 !important;
-          padding-left: 0 !important;
           border-left: 2px solid var(--red);
           padding-left: 1rem !important;
         }
 
-        /* Signal strip */
-        .signal-strip-inner {
-          grid-template-columns: 1fr 1fr !important;
+        .work-grid {
+          grid-template-columns: 1fr !important;
+          gap: 0.75rem !important;
         }
 
-        /* About */
         .about-top {
           grid-template-columns: 1fr !important;
           gap: 2rem !important;
@@ -121,22 +124,18 @@ export default function ResponsiveStyles() {
           gap: 2.5rem !important;
         }
 
-        /* Work */
         #work { padding: 4rem 1.25rem !important; }
+        #about { padding: 4rem 1.25rem !important; }
 
-        /* Footer */
         footer {
           grid-template-columns: 1fr !important;
           padding: 3rem 1.25rem !important;
         }
         footer > div:last-child {
           align-items: flex-start !important;
-          border-top: 0.5px solid var(--border);
+          border-top: 1px solid rgba(10,10,10,0.1);
           padding-top: 2rem;
         }
-
-        /* General */
-        section { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
       }
 
       @media (max-width: 400px) {
@@ -150,7 +149,7 @@ export default function ResponsiveStyles() {
         }
         .signal-strip-inner > div + div {
           padding-top: 1.5rem !important;
-          border-top: 0.5px solid var(--border) !important;
+          border-top: 1px solid rgba(10,10,10,0.12) !important;
         }
       }
     `}</style>

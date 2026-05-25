@@ -23,16 +23,16 @@ export default function Hero() {
         position: "relative",
       }}
     >
-      {/* Headline */}
+      {/* Headline — clamp keeps it to ~4 lines */}
       <h1
         style={{
           fontFamily: "var(--font-display)",
-          fontSize: "clamp(2.4rem, 5.5vw, 5rem)",
+          fontSize: "clamp(2.2rem, 4.2vw, 4.2rem)",
           fontWeight: 800,
-          lineHeight: 1.06,
+          lineHeight: 1.08,
           letterSpacing: "-0.03em",
           color: "var(--ink)",
-          maxWidth: "1000px",
+          maxWidth: "900px",
           margin: "0 0 3rem",
         }}
         aria-label={HEADLINE}
@@ -57,15 +57,13 @@ export default function Hero() {
             >
               {word === "manageable" ? (
                 <span style={{ color: "var(--red)" }}>{word}</span>
-              ) : (
-                word
-              )}
+              ) : word}
             </span>
           </span>
         ))}
       </h1>
 
-      {/* Sub-headline row: two columns on desktop, stacked on mobile */}
+      {/* Sub-headline + role */}
       <div
         className="hero-sub"
         style={{
@@ -74,22 +72,17 @@ export default function Hero() {
           transition: "opacity 0.7s ease 0.85s, transform 0.7s ease 0.85s",
         }}
       >
-        {/* Bio */}
         <p className="hero-bio">
-          Eleven years designing enterprise products at global scale — BSS/OSS,
-          telecom infrastructure, B2B and B2C across 9 countries. I lead design
-          teams, run the cross-functional process, and deliver the kind of system
-          that engineers can actually build and business stakeholders can actually
-          explain.
+          Eleven years designing enterprise products at global scale in BSS/OSS telecom
+          infrastructure, B2B and B2C across 9 countries. I lead local design team, run
+          the cross-functional process and deliver the kind of system that engineers can
+          actually build and business stakeholders can explain.
         </p>
-
-        {/* Role block */}
         <div className="hero-role">
           <span className="hero-role-label">Currently</span>
           <span className="hero-role-title">
             Senior UI Designer · Team Lead, Brazil
-            <br />
-            Senior Product IC · Global Projects
+            <br />@ Netcracker Technology
           </span>
         </div>
       </div>
@@ -107,7 +100,7 @@ export default function Hero() {
           transition: "opacity 0.6s ease 1.5s",
         }}
       >
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
           <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
         <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase" }}>

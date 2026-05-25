@@ -13,42 +13,61 @@ const SKILLS = [
   "Telecom B2B & B2C",
   "Stakeholder Management",
   "Figma",
-  "Illustration",
+  "Illustration & Concept Art",
 ];
 
 const EXPERIENCE = [
   {
-    role: "Senior UI Designer · Team Lead",
-    company: "Current company",
-    period: "2020 — Present",
-    note: "Leading local design team in Brazil; Senior IC on global BSS/OSS products across 9 countries.",
+    role: "Senior User Interface Designer",
+    company: "Netcracker Technology",
+    period: "Aug 2023 — Present",
+    note: "Leading the Brazil design team on global enterprise products. Design system governance, complex workflow design and cross-functional alignment with product and engineering across time zones.",
   },
   {
-    role: "Senior Product Designer",
-    company: "Telecom / Enterprise",
-    period: "2017 — 2020",
-    note: "B2C and B2B product design for telecom infrastructure across Latin America and Europe.",
+    role: "UX Mentor",
+    company: "CareerFoundry",
+    period: "Feb 2021 — Feb 2026",
+    note: "Mentored designers through career transitions with portfolio reviews, interview preparation and feedback on what the industry actually rewards.",
   },
   {
-    role: "UX Designer",
-    company: "Digital agency",
-    period: "2014 — 2017",
-    note: "First UX role. End-to-end product work across web and mobile for multiple clients.",
+    role: "Senior Experience Designer",
+    company: "EPAM Systems",
+    period: "Aug 2022 — Aug 2023",
+    note: "UX strategy and interaction design for enterprise clients across industries. Design systems, usability evaluations, and alignment between design, product and engineering teams.",
   },
   {
-    role: "Web Designer",
-    company: "Freelance",
-    period: "2011 — 2014",
-    note: "Where it started. Visual design, HTML/CSS, brand identity.",
+    role: "Group Leader → UX/UI Designer",
+    company: "Netcracker Technology",
+    period: "Dec 2018 — Jul 2022",
+    note: "Started as UX/UI Designer, promoted to Group Leader. Full-cycle product design on OSS/BSS telecom platforms.",
+  },
+  {
+    role: "Freelance Penciler",
+    company: "MSP Estúdios",
+    period: "Apr 2026 — Present",
+    note: "Working within the visual language and narrative universe of established IP.",
   },
 ];
 
 const EDUCATION = [
-  { degree: "Design & Visual Communication", school: "Undergraduate" },
-  { degree: "UX & Product Design", school: "Professional certifications" },
+  {
+    degree: "Design and Visual Communications",
+    school: "UC San Diego",
+    
+  },
+  {
+    degree: "Illustration",
+    school: "EBAC — Escola Britânica de Artes Criativas e Tecnologia",
+    
+  },
+  {
+    degree: "Bachelor, Industrial Design",
+    school: "Estácio",
+    
+  },
 ];
 
-function useVisible(threshold = 0.1) {
+function useVisible(threshold = 0.08) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -63,7 +82,7 @@ function useVisible(threshold = 0.1) {
 }
 
 export default function About() {
-  const { ref, visible } = useVisible(0.08);
+  const { ref, visible } = useVisible();
 
   return (
     <section
@@ -71,13 +90,12 @@ export default function About() {
       ref={ref}
       style={{
         padding: "6rem 2.5rem",
-        borderTop: "0.5px solid var(--border)",
+        borderTop: "1px solid rgba(10,10,10,0.12)",
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(30px)",
         transition: "opacity 0.8s ease, transform 0.8s ease",
       }}
     >
-      {/* Section label */}
       <h2 style={{
         fontFamily: "var(--font-body)",
         fontSize: "11px",
@@ -90,28 +108,25 @@ export default function About() {
         About
       </h2>
 
-      {/* Top row: photo + bio */}
+      {/* Top: photo + bio */}
       <div className="about-top">
-        {/* Photo placeholder */}
+        {/* Photo */}
         <div className="about-photo-col">
-          <div
-            style={{
-              width: "100%",
-              aspectRatio: "3/4",
-              maxWidth: "320px",
-              background: "var(--ink)",
-              borderRadius: "2px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexDirection: "column",
-              gap: "1rem",
-              position: "relative",
-              overflow: "hidden",
-            }}
-          >
-            {/* Placeholder illustration — abstract face lines */}
-            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" opacity="0.3">
+          <div style={{
+            width: "100%",
+            maxWidth: "300px",
+            aspectRatio: "3/4",
+            background: "var(--ink)",
+            borderRadius: "2px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            gap: "1rem",
+            position: "relative",
+            overflow: "hidden",
+          }}>
+            <svg width="72" height="72" viewBox="0 0 80 80" fill="none" opacity="0.25">
               <circle cx="40" cy="30" r="18" stroke="white" strokeWidth="1"/>
               <path d="M16 72c0-13.255 10.745-24 24-24s24 10.745 24 24" stroke="white" strokeWidth="1"/>
             </svg>
@@ -120,11 +135,10 @@ export default function About() {
               fontSize: "11px",
               letterSpacing: "0.1em",
               textTransform: "uppercase",
-              color: "rgba(255,255,255,0.35)",
+              color: "rgba(255,255,255,0.3)",
             }}>
-              Photo coming soon
+              Photo coming
             </span>
-            {/* Red accent strip */}
             <div style={{
               position: "absolute",
               bottom: 0,
@@ -136,20 +150,20 @@ export default function About() {
           </div>
         </div>
 
-        {/* Bio */}
+        {/* Bio — from current about page copy */}
         <div className="about-bio-col">
           <p style={{
             fontFamily: "var(--font-body)",
-            fontSize: "clamp(1.05rem, 1.5vw, 1.2rem)",
+            fontSize: "clamp(1rem, 1.4vw, 1.15rem)",
             fontWeight: 300,
             lineHeight: 1.75,
             color: "var(--ink)",
-            marginBottom: "1.5rem",
-            opacity: 0.9,
+            marginBottom: "1.25rem",
+            opacity: 0.88,
           }}>
-            I started in web design in 2011. By 2014 I moved fully into
-            product design, and since then I&apos;ve spent my career at the
-            intersection of <em>technical complexity</em> and <em>human clarity</em>.
+            Fifteen years in. Long enough to know that most design issues are
+            communication failures — between design and engineering, between product
+            and business, between what was decided in the room and what actually shipped.
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
@@ -157,13 +171,12 @@ export default function About() {
             fontWeight: 300,
             lineHeight: 1.75,
             color: "var(--ink)",
-            opacity: 0.7,
-            marginBottom: "1.5rem",
+            opacity: 0.72,
+            marginBottom: "1.25rem",
           }}>
-            Today I lead a design team in Brazil while working as a senior IC on
-            global products — BSS and OSS platforms running across 9 countries.
-            Most of my time goes to translating between business analysts,
-            engineers, and end users who rarely speak the same language.
+            I lead a design team in Brazil, contribute as an IC to global products and
+            build the systems that remain consistent at scale, making sure every decision
+            survives contact with the people who have to deliver it.
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
@@ -171,73 +184,104 @@ export default function About() {
             fontWeight: 300,
             lineHeight: 1.75,
             color: "var(--ink)",
-            opacity: 0.7,
+            opacity: 0.72,
             marginBottom: "2.5rem",
           }}>
-            Outside work I&apos;m an illustrator — which is how I keep my eye
-            sharp for the things that matter before function does.
+            Working across cultures taught me that good process may not be universal,
+            but clear communication is.
+          </p>
+
+          {/* Beyond the work */}
+          <p style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "13px",
+            fontWeight: 700,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            color: "var(--muted)",
+            marginBottom: "0.75rem",
+          }}>
+            Beyond the work
+          </p>
+          <p style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "14px",
+            fontWeight: 300,
+            lineHeight: 1.75,
+            color: "var(--ink)",
+            opacity: 0.72,
+            marginBottom: "1rem",
+          }}>
+            I&apos;m Brazilian. I grew up building things with whatever was available,
+            which probably explains why I&apos;m more interested in constraints than
+            in ideal conditions.
+          </p>
+          <p style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "14px",
+            fontWeight: 300,
+            lineHeight: 1.75,
+            color: "var(--ink)",
+            opacity: 0.72,
+            marginBottom: "1rem",
+          }}>
+            Outside of screens I&apos;m a 2nd degree black belt in ITF Taekwondo — a
+            practice that has less to do with fighting and more to do with enduring even
+            when things are hard. I&apos;ve also been drawing since before I can
+            remember. Illustration and concept art are where I think without KPIs.
+          </p>
+          <p style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "14px",
+            fontWeight: 300,
+            lineHeight: 1.75,
+            color: "var(--ink)",
+            opacity: 0.72,
+            marginBottom: "2.5rem",
+          }}>
+            I also have a genuine obsession with dinosaurs. Have you ever considered how
+            something so complex could evolve, dominate and leave behind just enough
+            evidence for us to piece together the whole picture? That&apos;s not so
+            different from what we do with products, is it?
           </p>
 
           {/* Skills */}
-          <div style={{ marginBottom: "2rem" }}>
-            <span style={{
-              fontFamily: "var(--font-body)",
-              fontSize: "11px",
-              fontWeight: 500,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "var(--muted)",
-              display: "block",
-              marginBottom: "0.75rem",
-            }}>
-              Expertise
-            </span>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-              {SKILLS.map((skill) => (
-                <span key={skill} style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "12px",
-                  color: "var(--ink)",
-                  border: "0.5px solid var(--border)",
-                  borderRadius: "2px",
-                  padding: "5px 10px",
-                  opacity: 0.85,
-                }}>
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Quote */}
-          <blockquote style={{
-            borderLeft: "2px solid var(--red)",
-            paddingLeft: "1.25rem",
-            margin: 0,
+          <span style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "11px",
+            fontWeight: 500,
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            color: "var(--muted)",
+            display: "block",
+            marginBottom: "0.75rem",
           }}>
-            <p style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "14px",
-              fontWeight: 600,
-              lineHeight: 1.65,
-              color: "var(--ink)",
-              margin: 0,
-              opacity: 0.8,
-            }}>
-              &ldquo;The best design work I do happens when everyone else has
-              already decided the problem is unsolvable.&rdquo;
-            </p>
-          </blockquote>
+            Expertise
+          </span>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+            {SKILLS.map((skill) => (
+              <span key={skill} style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "12px",
+                color: "rgba(10,10,10,0.75)",
+                border: "1px solid rgba(10,10,10,0.2)",
+                borderRadius: "2px",
+                padding: "5px 10px",
+              }}>
+                {skill}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Bottom row: experience + education */}
+      {/* Experience + Education */}
       <div
         className="about-bottom"
         style={{
           marginTop: "4rem",
           paddingTop: "3rem",
-          borderTop: "0.5px solid var(--border)",
+          borderTop: "1px solid rgba(10,10,10,0.12)",
         }}
       >
         {/* Experience */}
@@ -254,58 +298,53 @@ export default function About() {
           }}>
             Experience
           </span>
-          <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
-            {EXPERIENCE.map((job, i) => (
-              <div
-                key={i}
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr auto",
-                  gap: "1rem",
-                  alignItems: "baseline",
-                  padding: "1rem 0",
-                  borderBottom: "0.5px solid var(--border)",
-                }}
-              >
-                <div>
-                  <div style={{
-                    fontFamily: "var(--font-display)",
-                    fontSize: "14px",
-                    fontWeight: 700,
-                    color: "var(--ink)",
-                    marginBottom: "0.2rem",
-                  }}>
-                    {job.role}
-                  </div>
-                  <div style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "13px",
-                    color: "var(--muted)",
-                    marginBottom: "0.35rem",
-                  }}>
-                    {job.company}
-                  </div>
-                  <div style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "13px",
-                    color: "var(--ink)",
-                    opacity: 0.6,
-                    lineHeight: 1.5,
-                  }}>
-                    {job.note}
-                  </div>
-                </div>
-                <span style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "12px",
-                  color: "var(--muted)",
-                  whiteSpace: "nowrap",
+          {EXPERIENCE.map((job, i) => (
+            <div key={i} style={{
+              display: "grid",
+              gridTemplateColumns: "1fr auto",
+              gap: "1rem",
+              padding: "1.1rem 0",
+              borderBottom: "1px solid rgba(10,10,10,0.1)",
+            }}>
+              <div>
+                <div style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "14px",
+                  fontWeight: 700,
+                  color: "var(--ink)",
+                  marginBottom: "0.15rem",
                 }}>
-                  {job.period}
-                </span>
+                  {job.role}
+                </div>
+                <div style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "13px",
+                  color: "var(--muted)",
+                  marginBottom: "0.3rem",
+                }}>
+                  {job.company}
+                </div>
+                <div style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "13px",
+                  color: "var(--ink)",
+                  opacity: 0.55,
+                  lineHeight: 1.5,
+                }}>
+                  {job.note}
+                </div>
               </div>
-            ))}
-          </div>
+              <span style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "12px",
+                color: "var(--muted)",
+                whiteSpace: "nowrap",
+                paddingTop: "2px",
+              }}>
+                {job.period}
+              </span>
+            </div>
+          ))}
         </div>
 
         {/* Education */}
@@ -322,45 +361,39 @@ export default function About() {
           }}>
             Education
           </span>
-          <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
-            {EDUCATION.map((ed, i) => (
-              <div
-                key={i}
-                style={{
-                  padding: "1rem 0",
-                  borderBottom: "0.5px solid var(--border)",
-                }}
-              >
-                <div style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "14px",
-                  fontWeight: 700,
-                  color: "var(--ink)",
-                  marginBottom: "0.2rem",
-                }}>
-                  {ed.degree}
-                </div>
-                <div style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "13px",
-                  color: "var(--muted)",
-                }}>
-                  {ed.school}
-                </div>
+          {EDUCATION.map((ed, i) => (
+            <div key={i} style={{
+              padding: "1.1rem 0",
+              borderBottom: "1px solid rgba(10,10,10,0.1)",
+            }}>
+              <div style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "14px",
+                fontWeight: 700,
+                color: "var(--ink)",
+                marginBottom: "0.15rem",
+              }}>
+                {ed.degree}
               </div>
-            ))}
-          </div>
+              <div style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "13px",
+                color: "var(--muted)",
+                marginBottom: "0.1rem",
+              }}>
+                {ed.school}
+              </div>
+            </div>
+          ))}
 
-          {/* NDA note */}
+          {/* NDA note — no divider above */}
           <p style={{
             fontFamily: "var(--font-body)",
             fontSize: "12px",
             color: "var(--muted)",
             lineHeight: 1.6,
-            marginTop: "2rem",
-            paddingTop: "1.5rem",
-            borderTop: "0.5px solid var(--border)",
-            maxWidth: "320px",
+            marginTop: "1.5rem",
+            opacity: 0.7,
           }}>
             Company names and client details are omitted across this portfolio
             in compliance with active NDAs.

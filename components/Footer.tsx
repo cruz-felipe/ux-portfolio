@@ -7,7 +7,7 @@ export default function Footer() {
     <footer
       id="contact"
       style={{
-        borderTop: "0.5px solid var(--border)",
+        borderTop: "1px solid rgba(10,10,10,0.12)",
         padding: "4rem 2.5rem",
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
@@ -17,33 +17,29 @@ export default function Footer() {
     >
       {/* Left — CTA */}
       <div>
-        <h2
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "11px",
-            fontWeight: 500,
-            letterSpacing: "0.12em",
-            textTransform: "uppercase",
-            color: "var(--muted)",
-            marginBottom: "1.5rem",
-          }}
-        >
+        <h2 style={{
+          fontFamily: "var(--font-body)",
+          fontSize: "11px",
+          fontWeight: 500,
+          letterSpacing: "0.12em",
+          textTransform: "uppercase",
+          color: "var(--muted)",
+          marginBottom: "1.5rem",
+        }}>
           Contact
         </h2>
-        <p
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(1.4rem, 3vw, 2.2rem)",
-            fontWeight: 800,
-            letterSpacing: "-0.02em",
-            lineHeight: 1.15,
-            color: "var(--ink)",
-            marginBottom: "2rem",
-          }}
-        >
-          Let&apos;s work
+        <p style={{
+          fontFamily: "var(--font-display)",
+          fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)",
+          fontWeight: 800,
+          letterSpacing: "-0.02em",
+          lineHeight: 1.1,
+          color: "var(--ink)",
+          marginBottom: "2rem",
+        }}>
+          Beam me up,
           <br />
-          on something hard.
+          Scotty.
         </p>
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
           <a
@@ -65,7 +61,7 @@ export default function Footer() {
             onMouseEnter={(e) => (e.currentTarget.style.background = "var(--red-dark)")}
             onMouseLeave={(e) => (e.currentTarget.style.background = "var(--red)")}
           >
-            Send an email
+            fcruz@outlook.com
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
@@ -83,13 +79,13 @@ export default function Footer() {
               fontWeight: 400,
               color: "var(--ink)",
               textDecoration: "none",
-              border: "0.5px solid var(--border)",
+              border: "1px solid rgba(10,10,10,0.25)",
               padding: "10px 20px",
               borderRadius: "2px",
               transition: "border-color 0.2s ease",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--ink)")}
-            onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
+            onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(10,10,10,0.7)")}
+            onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(10,10,10,0.25)")}
           >
             LinkedIn
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -100,16 +96,9 @@ export default function Footer() {
       </div>
 
       {/* Right — Colophon */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-end",
-          gap: "0.5rem",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem" }}>
-          <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "0.4rem" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.25rem" }}>
+          <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
             <rect width="32" height="32" fill="#E03030"/>
             <rect x="7" y="9" width="18" height="2.5" fill="white"/>
             <rect x="7" y="14.75" width="13" height="2.5" fill="white"/>
@@ -120,13 +109,13 @@ export default function Footer() {
           </span>
         </div>
         <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)" }}>
-          Senior Product Designer
+          Senior UI Designer · Team Lead
         </span>
-        <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)", marginTop: "1rem" }}>
-          © {year} — Built from scratch
+        <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)", opacity: 0.6 }}>
+          Netcracker Technology · São Paulo, Brazil
         </span>
-        <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)" }}>
-          Syne + DM Sans
+        <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)", marginTop: "1rem", opacity: 0.5 }}>
+          © {year}
         </span>
       </div>
     </footer>
