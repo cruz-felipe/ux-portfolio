@@ -80,7 +80,7 @@ export default function About() {
       ref={ref}
       style={{
         padding: "6rem 2.5rem",
-        borderTop: "1px solid rgba(10,10,10,0.12)",
+        borderTop: "1px solid var(--border)",
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(30px)",
         transition: "opacity 0.8s ease, transform 0.8s ease",
@@ -118,7 +118,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="about-bio-col" style={{ maxWidth: "680px" }}>
+        <div className="about-bio-col" style={{ maxWidth: "780px" }}>
           <p style={{
             fontFamily: "var(--font-body)",
             fontSize: "clamp(1rem, 1.4vw, 1.15rem)",
@@ -234,8 +234,9 @@ export default function About() {
               <span key={skill} style={{
                 fontFamily: "var(--font-body)",
                 fontSize: "12px",
-                color: "rgba(10,10,10,0.75)",
-                border: "1px solid rgba(10,10,10,0.2)",
+                color: "var(--ink)",
+                opacity: 0.75,
+                border: "1px solid rgba(var(--ink-raw, 10,10,10),0.2)",
                 borderRadius: "2px",
                 padding: "5px 10px",
               }}>
@@ -252,7 +253,7 @@ export default function About() {
         style={{
           marginTop: "4rem",
           paddingTop: "3rem",
-          borderTop: "1px solid rgba(10,10,10,0.12)",
+          borderTop: "1px solid var(--border)",
         }}
       >
         {/* Experience */}
@@ -275,7 +276,7 @@ export default function About() {
               gridTemplateColumns: "1fr auto",
               gap: "1rem",
               padding: "1.4rem 0",
-              borderBottom: "1px solid rgba(10,10,10,0.1)",
+              borderBottom: i === ([...EXPERIENCE, ...SIDE].length - 1) ? "none" : "1px solid var(--border)",
             }}>
               <div>
                 <div style={{
@@ -335,7 +336,7 @@ export default function About() {
           {EDUCATION.map((ed, i) => (
             <div key={i} style={{
               padding: "1.4rem 0",
-              borderBottom: ed.last ? "none" : "1px solid rgba(10,10,10,0.1)",
+              borderBottom: ed.last ? "none" : "1px solid var(--border)",
             }}>
               <div style={{
                 fontFamily: "var(--font-display)",

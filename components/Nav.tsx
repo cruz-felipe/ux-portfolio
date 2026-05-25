@@ -5,6 +5,19 @@ import { useState, useEffect } from "react";
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("theme");
+    if (saved === "dark") { setDark(true); document.documentElement.setAttribute("data-theme", "dark"); }
+  }, []);
+
+  const toggleTheme = () => {
+    const next = !dark;
+    setDark(next);
+    document.documentElement.setAttribute("data-theme", next ? "dark" : "light");
+    localStorage.setItem("theme", next ? "dark" : "light");
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -39,14 +52,14 @@ export default function Nav() {
           alignItems: "center",
           justifyContent: "space-between",
           padding: "1.25rem 2.5rem",
-          background: scrolled || menuOpen ? "rgba(245,243,239,0.96)" : "rgba(245,243,239,0)",
+          background: scrolled || menuOpen ? "color-mix(in srgb, var(--paper) 96%, transparent)" : "transparent",
           backdropFilter: scrolled || menuOpen ? "blur(12px)" : "none",
           borderBottom: scrolled || menuOpen ? "0.5px solid rgba(10,10,10,0.1)" : "0.5px solid transparent",
           transition: "background 0.3s ease, border-color 0.3s ease",
         }}
       >
         {/* Wordmark */}
-        <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "0.5rem", zIndex: 101 }}>
+        <Link href="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "0.5rem", zIndex: 101 }}>
           <img src="/logo.svg" alt="Felipe Cruz" style={{ height: "28px", width: "auto", display: "block" }} />
           <span style={{
             fontFamily: "var(--font-display)",
@@ -61,6 +74,33 @@ export default function Nav() {
 
         {/* Desktop links */}
         <div className="nav-desktop" style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
+          <button
+            onClick={toggleTheme}
+            aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+            style={{
+              background: "none",
+              border: "none",
+              padding: "4px",
+              cursor: "pointer",
+              color: "var(--ink)",
+              opacity: 0.5,
+              transition: "opacity 0.2s",
+              display: "flex",
+              alignItems: "center",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.5")}
+          >
+            {dark ? (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+              </svg>
+            ) : (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+            )}
+          </button>
           {links.map(({ label, href }) => (
             <button
               key={label}

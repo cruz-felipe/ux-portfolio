@@ -55,7 +55,7 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
         onMouseLeave={() => setHovered(false)}
         style={{
           position: "relative",
-          border: `1px solid ${hovered ? "rgba(10,10,10,0.3)" : "rgba(10,10,10,0.18)"}`,
+          border: `1px solid ${hovered ? "rgba(10,10,10,0.3)" : "var(--border)"}`,
           borderRadius: "2px",
           overflow: "hidden",
           background: hovered ? "var(--ink)" : "transparent",
@@ -73,7 +73,7 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
           right: "1rem",
           background: "transparent",
           color: hovered ? "rgba(255,255,255,0.45)" : "var(--muted)",
-          border: `1px solid ${hovered ? "rgba(255,255,255,0.2)" : "rgba(10,10,10,0.18)"}`,
+          border: `1px solid ${hovered ? "rgba(255,255,255,0.2)" : "var(--border)"}`,
           fontFamily: "var(--font-body)",
           fontSize: "10px",
           fontWeight: 500,
@@ -135,7 +135,7 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
             display: "flex",
             gap: "1.5rem",
             paddingTop: "1.25rem",
-            borderTop: `1px solid ${hovered ? "rgba(255,255,255,0.12)" : "rgba(10,10,10,0.12)"}`,
+            borderTop: `1px solid ${hovered ? "rgba(255,255,255,0.12)" : "var(--border)"}`,
             transition: "border-color 0.35s ease",
           }}>
             {project.metrics.map((m) => (

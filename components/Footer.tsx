@@ -7,7 +7,7 @@ export default function Footer() {
     <footer
       id="contact"
       style={{
-        borderTop: "1px solid rgba(10,10,10,0.12)",
+        borderTop: "1px solid var(--border)",
         padding: "4rem 2.5rem",
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
@@ -41,7 +41,7 @@ export default function Footer() {
         </p>
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
           <a
-            href="mailto:Send me an email"
+            href="mailto:fcruz@outlook.com"
             style={{
               display: "inline-flex",
               alignItems: "center",

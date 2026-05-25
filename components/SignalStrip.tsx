@@ -68,8 +68,8 @@ function StatValue({ value, countTo }: { value: string; countTo?: number }) {
 export default function SignalStrip() {
   return (
     <section style={{
-      borderTop: "1px solid rgba(10,10,10,0.12)",
-      borderBottom: "1px solid rgba(10,10,10,0.12)",
+      borderTop: "1px solid var(--border)",
+      borderBottom: "1px solid var(--border)",
       padding: "2.5rem 2.5rem",
     }}>
       <div
@@ -84,7 +84,7 @@ export default function SignalStrip() {
             key={i}
             style={{
               padding: "0 2rem",
-              borderRight: i < STATS.length - 1 ? "1px solid rgba(10,10,10,0.12)" : "none",
+              borderRight: i < STATS.length - 1 ? "1px solid var(--border)" : "none",
               paddingLeft: i === 0 ? 0 : undefined,
               paddingRight: i === STATS.length - 1 ? 0 : undefined,
             }}
