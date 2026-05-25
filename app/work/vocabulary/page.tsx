@@ -2,7 +2,7 @@ import CaseLayout, { CaseStudyData } from "@/components/case-study/CaseLayout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Vocabulary — Felipe Cruz",
+  title: "Vocabulary Felipe Cruz",
   description: "A flashcard app built for how I actually learn. Shipped and used daily.",
 };
 
@@ -16,19 +16,14 @@ const data: CaseStudyData = {
   location: "Personal project",
   year: "2025",
   roleDetail: "Solo product. Designed and built in Next.js with the Claude API. Shipped to a private URL, used daily by me and a small group of friends learning Spanish, Russian, French and Italian.",
-  impactSummary: "In active daily use across four languages. Two learning modes based on real preference differences between users. Tech vocabulary category built specifically for work contexts.",
-  context: "I was using Duolingo to study Spanish and Russian. It works for gamified progress but does not work for what I actually needed — sitting down with a set of words and drilling them until they stick. Every dedicated flashcard app I found had either too much friction, too much structure I did not ask for, or none of the specific vocabulary I needed for work. Building my own was faster than settling.",
-  metrics: [
-    { value: "4", label: "Languages. Spanish, Italian, Russian, French." },
-    { value: "12", label: "Categories per language including tech-specific." },
-    { value: "2", label: "Learning modes built around real user differences." },
-  ],
+  context: "I was using Duolingo to study Spanish and Russian. It works for gamified progress but does not work for what I actually needed sitting down with a set of words and drilling them until they stick. Every dedicated flashcard app I found had either too much friction, too much structure I did not ask for, or none of the specific vocabulary I needed for work. Building my own was faster than settling.",
+  metrics: [],
   sections: [
     {
       title: "Home and language selection",
       body: [
-        "The home screen is a streak counter, a continue prompt and a language list. Nothing else. Languages you have not unlocked yet are locked behind a level gate — a small decision that keeps the first session from feeling overwhelming and gives returning users a clear sense of where they left off.",
-        "The category screen opens with the language as a full-bleed header color, which doubles as an identifier — Spanish is red, Russian is blue, Italian is green. The mode toggle in the top right switches between flashcard and ABC drill without losing your place.",
+        "The home screen is a streak counter, a continue prompt and a language list. Nothing else. Languages you have not unlocked yet are locked behind a level gate a small decision that keeps the first session from feeling overwhelming and gives returning users a clear sense of where they left off.",
+        "The category screen opens with the language as a full-bleed header color, which doubles as an identifier Spanish is red, Russian is blue, Italian is green. The mode toggle in the top right switches between flashcard and ABC drill without losing your place.",
       ],
       screens: [
         { src: `${BASE}/Screenshot_2026-05-25_at_13_17_40.png`, caption: "Home screen. Streak, continue prompt, language list with lock state." },
@@ -51,7 +46,7 @@ const data: CaseStudyData = {
     {
       title: "Recall mode",
       body: [
-        "Recall mode shows the translated word and asks you to type the original. This is the harder mode because typing forces active retrieval. A friend of mine learns better this way — she needs to produce the word, not just recognize it.",
+        "Recall mode shows the translated word and asks you to type the original. This is the harder mode because typing forces active retrieval. A friend of mine learns better this way . He needs to produce the word, not just recognize it.",
         "Correct answers turn the card border green. Wrong answers turn it red and show the correct form in a highlight block below. The cultural note appears in both cases so the context sticks regardless of whether you got it right.",
       ],
       screens: [
@@ -64,7 +59,7 @@ const data: CaseStudyData = {
       title: "Tech category",
       body: [
         "Standard language apps do not teach you how to say 'UX documentation' or 'Do you use Figma?' in Russian. I need that vocabulary for work and built the tech category specifically for it.",
-        "The tech cards include phonetic transcription because Russian script is unfamiliar to most users at this level. The cultural note goes further than vocabulary — it explains register and real usage context, like noting that 'Figma dominou o mercado russo, então a resposta é quase sempre sim.'",
+        "The tech cards include phonetic transcription because Russian script is unfamiliar to most users at this level. The cultural note goes further than vocabulary it explains register and real usage context, like noting that 'Figma dominou o mercado russo, então a resposta é quase sempre sim.'",
       ],
       screens: [
         { src: `${BASE}/Screenshot_2026-05-25_at_13_21_04.png`, caption: "Russian tech card. Cyrillic, phonetic transcription and cultural note." },
@@ -73,6 +68,7 @@ const data: CaseStudyData = {
     },
   ],
   artifacts: [],
+  hideNda: true,
   next: { slug: "field-work-order", title: "Field Work Order" },
 };
 

@@ -3,7 +3,7 @@ import { WorkOrderArtifact, PageReductionArtifact, SectionAuditArtifact } from "
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Field Work Order — Felipe Cruz",
+  title: "Field Work Order Felipe Cruz",
   description: "A 160-page installation document redesigned for field technicians. Delivered in 45 pages.",
 };
 
@@ -14,12 +14,12 @@ const data: CaseStudyData = {
   role: "UX Designer",
   location: "Remote, Canada",
   year: "2024",
-  roleDetail: "Redesigned OSS installation work order documentation for a major Canadian telecom. Worked directly with business analysts, a project manager and client stakeholders to audit, restructure and rewrite the document for field technician use.",
+  roleDetail: "Redesigned OSS installation work order documentation for a a telecom operator. Worked directly with business analysts, a project manager and client stakeholders to audit, restructure and rewrite the document for field technician use.",
   impactSummary: "Document reduced from 160 to 45 pages. Redundant sections eliminated. Navigation optimized for both digital and printed use. Delivered under executive pressure in four months.",
-  context: "OSS infrastructure installations are planned by engineers in the system and executed by field technicians on the ground — often in difficult conditions, sometimes printed on paper. The document connecting those two realities was 160 pages long, written in technical OSS terminology, with duplicated information spread across sections that no one had ever rationalized as a whole.",
+  context: "OSS infrastructure installations are planned by engineers in the system and executed by field technicians on the ground often in difficult conditions, sometimes printed on paper. The document connecting those two realities was 160 pages long, written in technical OSS terminology, with duplicated information spread across sections that no one had ever rationalized as a whole.",
   metrics: [
-    { value: "160", label: "Pages in the original document" },
-    { value: "45", label: "Pages after restructure. 72% reduction." },
+    { value: "72%", label: "Page reduction. From 160 pages to 45." },
+    { value: "45", label: "Pages in the redesigned document." },
     { value: "4mo", label: "December to March, fully remote" },
   ],
   sections: [
@@ -35,7 +35,7 @@ const data: CaseStudyData = {
       title: "Getting through 160 pages",
       body: [
         "The hardest part of this project was not the redesign. It was the audit. To propose any restructure, I needed to understand the cross-references inside a technically dense document I had no prior context for. I could not do that alone.",
-        "I worked with the client's business analysts and stakeholders to go through the document section by section, mapping what each part was for, what it referenced, and whether any field technician had ever actually used it. That process required patience and genuine collaboration. The analysts understood the technical layer. I understood the usage layer. Neither of us could do the other's job.",
+        "I worked with business analysts from my team and the client's stakeholders to go through the document section by section, mapping what each part was for, what it referenced, and whether any field technician had ever actually used it. That process required patience and genuine collaboration. The business analysts understood the technical layer. I understood the usage layer. Neither of us could do the other's job.",
         "We tackled it in sections to keep the scope manageable and avoid the kind of sprawl that kills remote projects. Every proposed change was validated against a field technician use case before it moved forward.",
       ],
     },
@@ -45,7 +45,7 @@ const data: CaseStudyData = {
         "Three decisions drove the reduction. First: redundant sections. A significant portion of the document repeated information that appeared elsewhere in a different format. Once we mapped the cross-references, the redundancy became visible and the consolidation became straightforward.",
         "Second: device identification. The original document listed device identifiers with multiple fields that engineers needed for system validation but technicians never used in the field. Removing the duplication did not lose any information technicians needed. It removed noise they had to skip past every time.",
         "Third: language. The copy throughout the document used OSS system terminology. Field technicians used different words for the same things. Rewriting to match their vocabulary was the smallest change with the largest effect on usability. It was the difference between a document someone has to decode and one they can just read.",
-        "This was delivered under pressure from top-level management. That pressure was actually useful — it kept every decision focused on what was genuinely necessary and prevented the scope from expanding into a full redesign that the timeline could not support.",
+        "This was delivered under pressure from top-level management. That pressure was actually useful it kept every decision focused on what was genuinely necessary and prevented the scope from expanding into a full redesign that the timeline could not support.",
       ],
     },
     {

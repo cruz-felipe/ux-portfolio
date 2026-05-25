@@ -50,13 +50,14 @@ export interface CaseStudyData {
   tagline: string;
   role: string;
   roleDetail: string;
-  impactSummary: string;
+  impactSummary?: string;
   context: string;
   year: string;
   location?: string;
   metrics: Metric[];
   sections: Section[];
   artifacts: Artifact[];
+  hideNda?: boolean;
   next?: { slug: string; title: string };
 }
 
@@ -95,7 +96,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
           All work
         </a>
         <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--muted)" }}>
-          {data.index} / 03
+          {data.index} / 05
         </span>
       </div>
 
@@ -155,6 +156,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
                 {data.roleDetail}
               </p>
             </div>
+            {data.impactSummary && (
             <div>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 0.5rem" }}>
                 Business impact
@@ -163,17 +165,18 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
                 {data.impactSummary}
               </p>
             </div>
+            )}
           </div>
         </div>
       </section>
 
-      {/* Metrics strip */}
-      <section style={{ borderTop: "0.5px solid var(--border)", borderBottom: "0.5px solid var(--border)", padding: "3rem 2.5rem" }}>
+      {/* Metrics strip — hidden if empty */}
+      {data.metrics.length > 0 && <section style={{ borderTop: "0.5px solid var(--border)", borderBottom: "0.5px solid var(--border)", padding: "3rem 2.5rem" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }} className="case-metrics">
           {data.metrics.map((m, i) => (
             <div key={i} style={{
               padding: "0 2rem",
-              borderRight: i < data.metrics.length - 1 ? "0.5px solid var(--border)" : "none",
+              
               paddingLeft: i === 0 ? 0 : undefined,
             }}>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 3vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1, marginBottom: "0.5rem" }}>
@@ -185,7 +188,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
             </div>
           ))}
         </div>
-      </section>
+      </section>}
 
       {/* Context */}
       <section style={{ padding: "4rem 2.5rem", borderBottom: "0.5px solid var(--border)" }}>
@@ -193,9 +196,11 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
           <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", fontWeight: 300, lineHeight: 1.75, color: "var(--ink)", opacity: 0.8, margin: 0 }}>
             {data.context}
           </p>
+          {!data.hideNda && (
           <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)", lineHeight: 1.7, margin: 0 }}>
             To respect non-disclosure agreements, the identity of this client has been omitted. Strategic challenges, decisions and outcomes are accurate. Visual artifacts are abstract representations of system architecture and design thinking, not reproductions of proprietary screens.
           </p>
+          )}
         </div>
       </section>
 
@@ -215,7 +220,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
                 fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500,
                 letterSpacing: "0.12em", textTransform: "uppercase",
                 color: "var(--muted)", margin: 0, paddingTop: "4px",
-                position: "sticky", top: "80px",
+                
               }}>
                 {section.title}
               </h2>
