@@ -41,9 +41,9 @@ export default function Footer() {
             marginBottom: "2rem",
           }}
         >
-          That&apos;s someone
+          Let&apos;s work
           <br />
-          I want to talk to.
+          on something hard.
         </p>
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
           <a
