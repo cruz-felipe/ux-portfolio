@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 
-const WORDS = [
+type Word = { text: string; red: boolean; attach?: boolean };
+const WORDS: Word[] = [
   { text: "I", red: false },
   { text: "design", red: false },
   { text: "for", red: false },
@@ -19,7 +20,8 @@ const WORDS = [
   { text: "to", red: false },
   { text: "make", red: true },
   { text: "it", red: true },
-  { text: "work.", red: true, nospace: true },
+  { text: "work", red: true },
+  { text: ".", red: false, attach: true },
 ];
 
 export default function Hero() {
@@ -52,27 +54,31 @@ export default function Hero() {
         }}
         aria-label="I design for the moment when complexity is no longer manageable and someone has to make it work."
       >
-        {WORDS.map((word, i) => (
-          <span
-            key={i}
-            style={{
-              display: "inline-block",
-              overflow: "hidden",
-              verticalAlign: "bottom",
-              marginRight: "0.26em",
-            }}
-          >
-            <span style={{
-              display: "inline-block",
-              transform: visible ? "translateY(0)" : "translateY(110%)",
-              opacity: visible ? 1 : 0,
-              transition: `transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 42}ms, opacity 0.4s ease ${i * 42}ms`,
-              color: word.red ? "var(--red)" : "var(--ink)",
-            }}>
-              {word.text}
+        {WORDS.map((word, i) => {
+          const next = WORDS[i + 1];
+          const noGap = next?.attach || word.attach;
+          return (
+            <span
+              key={i}
+              style={{
+                display: "inline-block",
+                overflow: "hidden",
+                verticalAlign: "bottom",
+                marginRight: noGap ? 0 : "0.26em",
+              }}
+            >
+              <span style={{
+                display: "inline-block",
+                transform: visible ? "translateY(0)" : "translateY(110%)",
+                opacity: visible ? 1 : 0,
+                transition: `transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 42}ms, opacity 0.4s ease ${i * 42}ms`,
+                color: word.red ? "var(--red)" : "var(--ink)",
+              }}>
+                {word.text}
+              </span>
             </span>
-          </span>
-        ))}
+          );
+        })}
       </h1>
 
       <div

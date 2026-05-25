@@ -128,9 +128,9 @@ export default function About() {
             marginBottom: "1.25rem",
             opacity: 0.88,
           }}>
-            Fifteen years in. Long enough to know that most design problems are really
-            communication failures between design and engineering, between what was
-            decided and what actually shipped.
+            I&apos;m Felipe. I&apos;ve been at this long enough to know that most
+            design problems are really communication failures. Between design and
+            engineering, between what was decided and what actually shipped.
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
