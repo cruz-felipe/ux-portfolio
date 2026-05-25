@@ -6,28 +6,22 @@ const PROJECTS = [
     id: "dane-telecom",
     index: "01",
     title: "Dane Telecom",
-    tags: ["Design System", "BSS", "Enterprise"],
-    blurb: "Engineering delivery was stalling — not because of code, but because no one could agree on what \u2018done\u2019 looked like. I rebuilt the design system and the process around it.",
+    blurb: "A fragmented design ecosystem was slowing down engineering delivery across product and engineering teams.",
     metrics: ["50% faster handoff", "32% velocity boost"],
-    status: "coming-soon",
   },
   {
     id: "predictive-support-hub",
     index: "02",
     title: "Predictive Support Hub",
-    tags: ["AI Workspace", "B2C", "Telecom"],
-    blurb: "3,000 support agents. 32 legacy tools. Every call a navigation problem. I led the redesign that collapsed the stack — and got engineering, product, and ops to agree on how.",
+    blurb: "3,000 support agents navigating 32 legacy tools on every call. I replaced the ecosystem with a single workspace.",
     metrics: ["70% AHT reduction", "32\u21921 consolidation"],
-    status: "coming-soon",
   },
   {
     id: "b2b-sales-rescue",
     index: "03",
     title: "B2B Sales Rescue",
-    tags: ["Sales UX", "B2B", "Flow Design"],
-    blurb: "7 tools. 3 days of training. One deal. I designed the flow that cut that to a single session — then worked with business analysts and stakeholders to make sure it actually shipped.",
+    blurb: "Sales agents needed 7 tools and 3 days of training to close one deal. I reduced that to a single flow and half a day.",
     metrics: ["75% quote acceleration", "83% faster onboarding"],
-    status: "coming-soon",
   },
 ];
 
@@ -77,7 +71,6 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
           position: "absolute",
           top: "1rem",
           right: "1rem",
-          zIndex: 10,
           background: "var(--red)",
           color: "white",
           fontFamily: "var(--font-body)",
@@ -92,36 +85,19 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
         </div>
 
         <div style={{ padding: "2rem", flex: 1, display: "flex", flexDirection: "column" }}>
-          {/* Index + tags */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1.5rem" }}>
-            <span style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "11px",
-              fontWeight: 700,
-              letterSpacing: "0.1em",
-              color: hovered ? "rgba(255,255,255,0.3)" : "var(--muted)",
-              transition: "color 0.35s ease",
-            }}>
-              {project.index}
-            </span>
-            <div style={{ display: "flex", gap: "5px", flexWrap: "wrap", justifyContent: "flex-end" }}>
-              {project.tags.map((tag) => (
-                <span key={tag} style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "10px",
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  color: hovered ? "rgba(255,255,255,0.5)" : "rgba(10,10,10,0.5)",
-                  border: `1px solid ${hovered ? "rgba(255,255,255,0.2)" : "rgba(10,10,10,0.2)"}`,
-                  borderRadius: "2px",
-                  padding: "3px 7px",
-                  transition: "color 0.35s ease, border-color 0.35s ease",
-                }}>
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
+          {/* Index */}
+          <span style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "11px",
+            fontWeight: 700,
+            letterSpacing: "0.1em",
+            color: hovered ? "rgba(255,255,255,0.3)" : "var(--muted)",
+            transition: "color 0.35s ease",
+            display: "block",
+            marginBottom: "1.25rem",
+          }}>
+            {project.index}
+          </span>
 
           {/* Title */}
           <h2 style={{
@@ -191,7 +167,6 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
 export default function Work() {
   return (
     <section id="work" style={{ padding: "6rem 2.5rem" }}>
-      {/* Section header — no bottom border/divider */}
       <div style={{
         display: "flex",
         alignItems: "baseline",
@@ -218,13 +193,12 @@ export default function Work() {
         </span>
       </div>
 
-      {/* Cards grid */}
       <div style={{
         display: "grid",
         gridTemplateColumns: "repeat(3, 1fr)",
         gap: "1rem",
       }}
-      className="work-grid"
+        className="work-grid"
       >
         {PROJECTS.map((project, i) => (
           <ProjectCard key={project.id} project={project} index={i} />

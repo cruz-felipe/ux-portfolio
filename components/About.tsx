@@ -17,12 +17,7 @@ const SKILLS = [
 ];
 
 const EXPERIENCE = [
-  {
-    role: "Senior User Interface Designer",
-    company: "Netcracker Technology",
-    period: "Aug 2023 — Present",
-    note: "Leading the Brazil design team on global enterprise products. Design system governance, complex workflow design and cross-functional alignment with product and engineering across time zones.",
-  },
+
   {
     role: "UX Mentor",
     company: "CareerFoundry",
@@ -36,10 +31,16 @@ const EXPERIENCE = [
     note: "UX strategy and interaction design for enterprise clients across industries. Design systems, usability evaluations, and alignment between design, product and engineering teams.",
   },
   {
-    role: "Group Leader → UX/UI Designer",
+    role: "Senior UI Designer → Group Leader",
+    company: "Netcracker Technology",
+    period: "Aug 2023 — Present",
+    note: "Joined as Senior UI Designer. Took on Group Leader responsibilities for the Brazil design team — cross-functional alignment, design system governance, and IC work on global OSS/BSS products.",
+  },
+  {
+    role: "UX/UI Designer → Group Leader",
     company: "Netcracker Technology",
     period: "Dec 2018 — Jul 2022",
-    note: "Started as UX/UI Designer, promoted to Group Leader. Full-cycle product design on OSS/BSS telecom platforms.",
+    note: "Started as UX/UI Designer, promoted to Group Leader. Full-cycle product design on OSS/BSS telecom platforms across multiple countries.",
   },
   {
     role: "Freelance Penciler",
@@ -115,30 +116,22 @@ export default function About() {
           <div style={{
             width: "100%",
             maxWidth: "300px",
-            aspectRatio: "3/4",
-            background: "var(--ink)",
-            borderRadius: "2px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-            gap: "1rem",
             position: "relative",
+            borderRadius: "2px",
             overflow: "hidden",
           }}>
-            <svg width="72" height="72" viewBox="0 0 80 80" fill="none" opacity="0.25">
-              <circle cx="40" cy="30" r="18" stroke="white" strokeWidth="1"/>
-              <path d="M16 72c0-13.255 10.745-24 24-24s24 10.745 24 24" stroke="white" strokeWidth="1"/>
-            </svg>
-            <span style={{
-              fontFamily: "var(--font-body)",
-              fontSize: "11px",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,0.3)",
-            }}>
-              Photo coming
-            </span>
+            <img
+              src="/photo.jpg"
+              alt="Felipe Cruz sketching in Tiradentes, Brazil"
+              style={{
+                width: "100%",
+                display: "block",
+                borderRadius: "2px",
+                objectFit: "cover",
+                objectPosition: "center top",
+                aspectRatio: "3/4",
+              }}
+            />
             <div style={{
               position: "absolute",
               bottom: 0,
@@ -212,7 +205,7 @@ export default function About() {
             opacity: 0.72,
             marginBottom: "1rem",
           }}>
-            I&apos;m Brazilian. I grew up building things with whatever was available,
+            I&apos;m Brazilian. I grew up building things with whatever was available —
             which probably explains why I&apos;m more interested in constraints than
             in ideal conditions.
           </p>
@@ -225,10 +218,24 @@ export default function About() {
             opacity: 0.72,
             marginBottom: "1rem",
           }}>
-            Outside of screens I&apos;m a 2nd degree black belt in ITF Taekwondo — a
-            practice that has less to do with fighting and more to do with enduring even
-            when things are hard. I&apos;ve also been drawing since before I can
-            remember. Illustration and concept art are where I think without KPIs.
+            I hold a 2nd degree black belt in ITF Taekwondo. Not because I wanted to
+            fight, but because I needed to know I could keep going when things stopped
+            being comfortable.
+          </p>
+          <p style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "14px",
+            fontWeight: 300,
+            lineHeight: 1.75,
+            color: "var(--ink)",
+            opacity: 0.72,
+            marginBottom: "1rem",
+          }}>
+            I&apos;ve been drawing my whole life. Characters, fantasy, concept art —
+            painting and illustration are where I think without deliverables. Recently
+            I got my first comic published at MSP Est&uacute;dios, the studio behind
+            Turma da M&ocirc;nica — Brazil&apos;s most enduring comics universe. That
+            one took years and it matters more than I expected.
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
@@ -239,10 +246,10 @@ export default function About() {
             opacity: 0.72,
             marginBottom: "2.5rem",
           }}>
-            I also have a genuine obsession with dinosaurs. Have you ever considered how
-            something so complex could evolve, dominate and leave behind just enough
-            evidence for us to piece together the whole picture? That&apos;s not so
-            different from what we do with products, is it?
+            I also have a genuine obsession with dinosaurs. Something so complex, so
+            dominant, that left behind just enough evidence for us to piece together
+            the whole picture. That&apos;s not so different from what we do with
+            products, is it?
           </p>
 
           {/* Skills */}
