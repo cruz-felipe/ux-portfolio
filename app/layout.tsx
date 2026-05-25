@@ -7,7 +7,10 @@ export const metadata: Metadata = {
   title: "Felipe Cruz — Senior Product Designer",
   description: "Eleven years designing enterprise products at global scale. BSS/OSS, telecom, B2B and B2C across 9 countries.",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+    ],
     apple: "/apple-touch-icon.png",
   },
   openGraph: {

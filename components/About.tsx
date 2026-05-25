@@ -118,7 +118,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="about-bio-col" style={{ maxWidth: "780px" }}>
+        <div className="about-bio-col" style={{ maxWidth: "720px" }}>
           <p style={{
             fontFamily: "var(--font-body)",
             fontSize: "clamp(1rem, 1.4vw, 1.15rem)",

@@ -55,10 +55,10 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
         onMouseLeave={() => setHovered(false)}
         style={{
           position: "relative",
-          border: `1px solid ${hovered ? "rgba(10,10,10,0.3)" : "var(--border)"}`,
+          border: `1px solid ${hovered ? "rgba(0,0,0,0.4)" : "var(--border)"}`,
           borderRadius: "2px",
           overflow: "hidden",
-          background: hovered ? "var(--ink)" : "transparent",
+          background: hovered ? "#0A0A0A" : "transparent",
           transition: "background 0.35s ease, border-color 0.25s ease",
           cursor: "default",
           height: "100%",
@@ -121,7 +121,7 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
             fontSize: "14px",
             fontWeight: 300,
             lineHeight: 1.7,
-            color: hovered ? "rgba(255,255,255,0.7)" : "var(--ink)",
+            color: hovered ? "rgba(255,255,255,0.75)" : "var(--ink)",
             opacity: hovered ? 1 : 0.72,
             marginBottom: "1.5rem",
             flex: 1,

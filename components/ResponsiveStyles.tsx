@@ -152,6 +152,11 @@ export default function ResponsiveStyles() {
           border-top: 1px solid rgba(10,10,10,0.12) !important;
         }
       }
+
+      /* Footer logo invert in dark mode */
+      [data-theme="dark"] .footer-logo {
+        filter: invert(1) brightness(2);
+      }
     `}</style>
   );
 }
