@@ -123,8 +123,8 @@ export default function Footer() {
       <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "0.4rem" }}>
         <div style={{ marginBottom: "0.25rem" }}>
           <>
-            <img src="/logo.svg" alt="Felipe Cruz" className="footer-logo-light" style={{ height: "24px", width: "auto", display: "block" }} />
-            <img src="/logo-dark.svg" alt="Felipe Cruz" className="footer-logo-dark" style={{ height: "24px", width: "auto", display: "none" }} />
+            <img src="/logo.svg" alt="Felipe Cruz" className="footer-logo-light" style={{ height: "24px", width: "auto", display: "block", background: "none" }} />
+            <img src="/logo-dark.svg" alt="Felipe Cruz" className="footer-logo-dark" style={{ height: "24px", width: "auto", display: "none", background: "none" }} />
           </>
         </div>
         <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)" }}>

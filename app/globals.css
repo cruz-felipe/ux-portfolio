@@ -109,8 +109,8 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
   border-radius: 2px;
 }
 
-/* Image loading placeholder */
-img {
+/* Image loading placeholder — content images only */
+img:not([class*='logo']):not([src$='.svg']) {
   background-color: color-mix(in srgb, var(--ink) 6%, var(--paper));
 }
 
