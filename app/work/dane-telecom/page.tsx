@@ -50,7 +50,6 @@ const data: CaseStudyData = {
       title: "Doing this without breaking what was running",
       body: [
         "The hardest constraint was that the product was live and delivering. We could not restructure the system in one move. Every change had to be batched carefully to avoid disrupting features and handoffs already in progress.",
-        "We worked in incremental batches, validating each change before moving to the next. This taught me something I apply to every system project now: the sequencing of a restructure matters as much as its architecture. A correct system that breaks ongoing work is not a solution.",
         "Being on-site for three months changed the quality of collaboration in ways remote work could not have replicated. Working directly alongside the client's designers and product team gave me a ground-level understanding of how they made decisions, what they trusted and where the real friction was. I also brought back a firsthand experience of how Danish teams work: a directness and mutual respect between disciplines that shaped how I run cross-functional projects today.",
         "If I were doing this again, I would push for the roadmap alignment conversation in week one, not week three. The two weeks before that meeting were the least efficient of the engagement because we were designing without the full picture.",
       ],

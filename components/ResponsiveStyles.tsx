@@ -188,14 +188,14 @@ export default function ResponsiveStyles() {
 
       /* Screen gallery */
       .screen-gallery {
-        grid-template-columns: repeat(3, minmax(0, 320px)) !important;
-        justify-content: start;
+        grid-template-columns: repeat(3, minmax(0, 280px)) !important;
+        justify-content: center !important;
       }
       @media (max-width: 900px) {
-        .screen-gallery { grid-template-columns: repeat(2, minmax(0, 320px)) !important; }
+        .screen-gallery { grid-template-columns: repeat(2, minmax(0, 280px)) !important; }
       }
       @media (max-width: 680px) {
-        .screen-gallery { grid-template-columns: minmax(0, 320px) !important; }
+        .screen-gallery { grid-template-columns: minmax(0, 280px) !important; }
       }
 
       /* Footer logo dark mode swap */

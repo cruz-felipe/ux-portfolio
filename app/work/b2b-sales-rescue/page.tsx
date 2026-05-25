@@ -43,8 +43,6 @@ const data: CaseStudyData = {
       body: [
         "We replaced the 7-tool labyrinth with a 3-step Express Flow for standard proposals. Manager approvals were automated. Installation tracking was built into the flow. Manual email chains were eliminated.",
         "We also rebranded the interface to match the customer's identity. That decision significantly increased sales team buy-in and accelerated platform adoption beyond what the usability improvements alone would have achieved. Sometimes the right UX decision is not about task efficiency.",
-        "The most important design decision on this project was knowing what not to build. Negotiating feature scope with stakeholders and proving through the matrix why certain requests had to wait is what allowed the MVP to land with adoption. A complete solution that nobody uses is not a solution.",
-        "If I were doing this again, I would have rebranded earlier in the process and used it as a tool for stakeholder alignment from the start. The visual identity shift changed how the sales team talked about the product to management, which made every subsequent conversation easier.",
       ],
     },
   ],

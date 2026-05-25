@@ -35,17 +35,16 @@ const data: CaseStudyData = {
       title: "Reframing the problem",
       body: [
         "Getting the client to accept an architectural solution instead of a UI improvement was the hardest part of this project. The engineering and product teams had years of investment in the existing tool stack. A consolidation conversation threatened those decisions.",
-        "The approach was to make the cost of the current architecture visible in business terms. Every minute of unnecessary AHT, multiplied by 3,000 agents and thousands of calls per day, had a calculable cost. Framing the solution as a business infrastructure investment rather than a design preference changed the conversation.",
-        "Once the reframe landed, the engineering team became partners rather than blockers. They had context on which legacy tools could be retired, which data sources could be unified and where the integration complexity would actually sit.",
+        "My first presentation of the problem was rejected. The initial response was that a better search interface across the existing tools would solve it. I disagreed and said so directly: a better search across 32 disconnected tools was still 32 disconnected tools. The problem was not findability. It was that the information lived in the wrong place.",
+        "The second conversation worked because I changed the frame. I built a cost model: average AHT multiplied by call volume multiplied by 3,000 agents, compared against the projected cost of consolidation. The number made the architectural investment look cheap. Once the conversation was about infrastructure cost rather than design preference, the engineering team stopped being blockers and became partners. They knew exactly which legacy tools could be retired and where the real integration complexity sat.",
       ],
     },
     {
       title: "The intelligence layer",
       body: [
-        "The solution was a predictive support hub: a single AI-integrated workspace that replaced the 32-tool ecosystem. Three capabilities drove the reduction in handle time.",
-        "Auto-identification: on call connection, the system identified the customer and surfaced their full interaction history automatically. Contextual scripting: the AI monitored the conversation in real time and surfaced relevant data and suggested responses without the agent having to search. Live resolution: the system surfaced the solution directly in the session interface rather than presenting a script for the agent to read aloud.",
-        "By shifting the root of data retrieval from the agent to the system, we freed the agent to focus entirely on the customer. The institutional knowledge that had lived in sticky notes was now embedded in the interface itself.",
-        "If I were doing this again, I would have pushed harder for a pilot with a single agent cohort before the full rollout. The system worked, but a controlled pilot would have surfaced edge cases earlier and given us better data for the executive conversation about full deployment.",
+        "The workspace was built on three layers, each corresponding to a stage in the agent workflow. Auto-identification surfaced the customer's full history on call connection without any manual lookup. Contextual scripting monitored the conversation in real time and pushed relevant data to the agent without them having to ask for it. Live resolution put the answer directly in the session interface rather than handing the agent a script to read.",
+        "Each layer addressed a specific source of handle time. Auto-identification removed the initial lookup. Contextual scripting removed the mid-call search. Live resolution removed the end-of-call manual documentation. The three together dropped AHT from 10 minutes to 3.",
+        "The design problem I underestimated was error states. When the AI surfaced the wrong context, agents had no clear way to override it without losing their place in the call. We caught this in testing but later than we should have. If I were doing this again I would have built explicit override controls into the first prototype rather than treating them as edge cases. The agents who struggled most with the new system were not the ones who found it complex. They were the ones who did not trust it.",
       ],
     },
   ],

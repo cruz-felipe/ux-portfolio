@@ -77,10 +77,23 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
     return () => clearTimeout(t);
   }, []);
 
+  const sectionsRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = sectionsRef.current;
+    if (!el) return;
+    const items = el.querySelectorAll("section, .artifact-section");
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); }),
+      { threshold: 0.08 }
+    );
+    items.forEach(item => { item.classList.add("reveal"); observer.observe(item); });
+    return () => observer.disconnect();
+  }, []);
+
   const maxW = data.wideHero ? "820px" : "700px";
 
   return (
-    <main style={{ background: "var(--paper)", color: "var(--ink)", minHeight: "100vh" }}>
+    <main className="page-enter" style={{ background: "var(--paper)", color: "var(--ink)", minHeight: "100vh" }}>
 
       {/* Back nav */}
       <div style={{
@@ -185,7 +198,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
       </section>
 
       {/* Body sections */}
-      <div>
+      <div ref={sectionsRef}>
         {data.sections.map((section, si) => (
           <div key={si}>
             <section style={{
@@ -205,13 +218,15 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
             </section>
 
             {section.screens && section.screens.length > 0 && (
-              <div style={{ padding: "3rem 2.5rem", borderBottom: "0.5px solid var(--border)" }}>
-                <ScreenGallery screens={section.screens} />
+              <div style={{ padding: "3rem 2.5rem", borderBottom: "0.5px solid var(--border)", display: "flex", justifyContent: "center" }}>
+                <div style={{ width: "100%", maxWidth: "960px" }}>
+                  <ScreenGallery screens={section.screens} />
+                </div>
               </div>
             )}
 
             {data.artifacts[si] && (
-              <section style={{ padding: "3rem 2.5rem", borderBottom: "0.5px solid var(--border)", background: "color-mix(in srgb, var(--ink) 2%, var(--paper))" }}>
+              <section className="artifact-section" style={{ padding: "3rem 2.5rem", borderBottom: "0.5px solid var(--border)", background: "color-mix(in srgb, var(--ink) 2%, var(--paper))" }}>
                 <div style={{ border: "0.5px solid var(--border)", borderRadius: "3px", padding: "2rem", marginBottom: "1.25rem", background: "var(--paper)", overflowX: "auto" }}>
                   {data.artifacts[si].component}
                 </div>

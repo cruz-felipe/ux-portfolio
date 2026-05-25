@@ -37,16 +37,17 @@ const data: CaseStudyData = {
     {
       title: "The alignment problem",
       body: [
-        "The hardest constraint on this project was not technical. It was that the client was still defining the product internally while we were designing it. Requirements that had been agreed in one session would shift by the next because decisions made in the workshop had not yet been ratified by people who were not in the room.",
-        "This meant a meaningful portion of the design work was reworked not because the design was wrong, but because the brief behind it had changed. I learned to design with that instability in mind, favouring modular flows that could absorb scope changes without requiring a full rebuild, and flagging alignment dependencies explicitly before committing to detailed work.",
-        "A workshop structure built around a topic roadmap, with sessions scoped to specific problem areas, would have surfaced these alignment gaps earlier. Running broad sessions where any stakeholder could introduce any topic meant we regularly finished sessions without the clarity we entered them to get.",
+        "The hardest constraint was not technical. The client was still defining the product internally while we were designing it. I became aware of this about six weeks in, when a flow we had finalised in session three was sent back for rework because a senior stakeholder who had not attended that session disagreed with the direction. The work was not wrong. The sign-off process had a gap we had not mapped.",
+        "From that point I changed how I worked. Before starting detailed design on any new flow, I asked explicitly who needed to ratify the decision before it could be treated as stable. That question was uncomfortable in early sessions but it saved more time than it cost. It also gave me a clearer picture of where the real authority sat versus where the vocal authority sat, which are often different things.",
+        "The rework itself was manageable because I had been designing in modular flows. The change request approval logic was built so the routing rules were separate from the UI. When the client changed the approval thresholds three times over four weeks, the design absorbed each change without a rebuild. That modularity was not an accident. It was a response to reading the situation early enough to build for it.",
       ],
     },
     {
-      title: "What is built",
+      title: "What shipped",
       body: [
-        "The platform covers three core modules. Quota management gives support agents visibility into data quota consumption at the client and partner level, with controls for adjustments and threshold alerts. API usage monitoring surfaces consumption data and rate limit status across the client's API products. Change requests route modification requests through a structured approval flow with configurable steps based on request type and value.",
-        "All three modules are designed to the visual language of the client's existing tools. Component choices, interaction patterns and typographic conventions match what their teams already use. The onboarding overhead for support agents is designed to be close to zero.",
+        "The platform is in production-ready design across three modules. Quota management gives support agents visibility into data consumption at the client and partner level, with manual adjustment controls and threshold alerts. API usage monitoring surfaces rate limit status and consumption trends across the client's API products. Change requests route through a configurable approval flow based on request type and value, with a full audit log.",
+        "The visual language matches the client's existing tool ecosystem by design. The decision to constrain visual exploration early was the right one: it removed a category of stakeholder debate and let the design work focus on information architecture and interaction logic, which were the actual hard problems.",
+        "The platform is pending client-side launch. The delay is on the client's internal deployment timeline, not on the design. I have used the time to stress-test edge cases in the approval flow and tighten the empty states, which were underspecified in the initial handoff.",
       ],
     },
   ],
