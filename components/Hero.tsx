@@ -29,26 +29,29 @@ export default function Hero() {
           lineHeight: 1.08,
           letterSpacing: "-0.03em",
           color: "var(--ink)",
-          maxWidth: "900px",
+          maxWidth: "1100px",
           margin: "0 0 4rem",
         }}
         aria-label={HEADLINE}
       >
-        {WORDS.map((word, i) => (
-          <span key={i} style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", marginRight: "0.26em" }}>
-            <span style={{
-              display: "inline-block",
-              transform: visible ? "translateY(0)" : "translateY(110%)",
-              opacity: visible ? 1 : 0,
-              transition: `transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 42}ms, opacity 0.4s ease ${i * 42}ms`,
-            }}>
-              {word === "manageable" ? <span style={{ color: "var(--red)" }}>{word}</span> : word}
+        {WORDS.map((word, i) => {
+          const isRed = ["make", "it", "work."].includes(word);
+          return (
+            <span key={i} style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", marginRight: "0.26em" }}>
+              <span style={{
+                display: "inline-block",
+                transform: visible ? "translateY(0)" : "translateY(110%)",
+                opacity: visible ? 1 : 0,
+                transition: `transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 42}ms, opacity 0.4s ease ${i * 42}ms`,
+                color: isRed ? "var(--red)" : "var(--ink)",
+              }}>
+                {word}
+              </span>
             </span>
-          </span>
-        ))}
+          );
+        })}
       </h1>
 
-      {/* Two-column sub copy — bio left, currently right */}
       <div
         className="hero-sub"
         style={{
@@ -63,7 +66,6 @@ export default function Hero() {
           the cross-functional process and deliver the kind of system that engineers can
           actually build and business stakeholders can explain.
         </p>
-
         <div className="hero-role">
           <span className="hero-role-label">Currently</span>
           <span className="hero-role-title">
@@ -73,7 +75,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll hint */}
       <div style={{
         position: "absolute",
         bottom: "2rem",

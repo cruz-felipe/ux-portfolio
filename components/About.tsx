@@ -42,7 +42,7 @@ const EXPERIENCE = [
     note: "Mentored designers through career transitions with portfolio reviews, interview preparation and feedback on what the industry actually rewards.",
   },
   {
-    role: "Freelance Penciler",
+    role: "Penciler",
     company: "MSP Estúdios",
     period: "Apr 2026 — Present",
     note: "Working within the visual language and narrative universe of established IP.",
@@ -50,8 +50,7 @@ const EXPERIENCE = [
 ];
 
 const EDUCATION = [
-  { degree: "Design and Visual Communications", school: "UC San Diego", last: false },
-  { degree: "Illustration", school: "EBAC — Escola Britânica de Artes Criativas e Tecnologia", last: false },
+  { degree: "Interaction Design", school: "UC San Diego", last: false },
   { degree: "Bachelor, Industrial Design", school: "Estácio", last: true },
 ];
 
@@ -204,11 +203,10 @@ export default function About() {
             opacity: 0.72,
             marginBottom: "1rem",
           }}>
-            And I&apos;ve been drawing my whole life. Painting and illustration are
-            where I think without KPI&apos;s. Recently I got my first comic published
-            at MSP Est&uacute;dios, the studio behind Turma da M&ocirc;nica,
-            Brazil&apos;s most enduring comics universe. That one took years and it
-            was a dream come true.
+            I draw comics. My work has been published at MSP Est&uacute;dios,
+            the studio behind Turma da M&ocirc;nica, Brazil&apos;s most enduring
+            comics universe. Painting and illustration are where I think without
+            KPI&apos;s.
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
