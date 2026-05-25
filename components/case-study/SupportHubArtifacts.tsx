@@ -5,53 +5,38 @@ export function ConsolidationMapArtifact() {
     "Devices","Plans","Usage","Field ops","IVR","Survey","Schedule","Docs",
     "Approvals","Config","Assets","Alerts","Incidents","Reports","Audit","Compliance",
   ];
-  // Grid: 8 cols, 4 rows, each cell 56x26, gap 4
-  const cW = 56, rH = 26, cG = 4, rG = 4;
-  const cols = 8;
-  const gW = cols * cW + (cols - 1) * cG; // 8*56 + 7*4 = 476
-  const gH = 4 * rH + 3 * rG;             // 4*26 + 3*4 = 116
-
-  const arrowX = gW + 20;
-  const afterX = arrowX + 32;
-  const afterW = 860 - afterX;             // remaining width
 
   return (
-    <svg viewBox="0 0 860 220" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
-      <text x="0" y="13" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1">BEFORE: 32 TOOLS</text>
+    <svg viewBox="0 0 860 300" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
+      {/* Big editorial numbers */}
+      <text x="0" y="90" fontFamily="var(--font-display)" fontSize="96" fontWeight="800" fill="var(--red)" fillOpacity="0.12">32</text>
+      <text x="140" y="90" fontFamily="var(--font-display)" fontSize="96" fontWeight="800" fill="var(--muted)" fillOpacity="0.08">→</text>
+      <text x="220" y="90" fontFamily="var(--font-display)" fontSize="96" fontWeight="800" fill="var(--red)" fillOpacity="0.7">1</text>
+
+      <text x="0" y="110" fontFamily="var(--font-body)" fontSize="13" fill="var(--ink)" fillOpacity="0.7">Legacy tools consolidated</text>
+      <text x="220" y="110" fontFamily="var(--font-body)" fontSize="13" fill="var(--red)">Single workspace</text>
+
+      {/* Tool grid — small cells */}
       {tools.map((tool, i) => {
-        const c = i % cols;
-        const r = Math.floor(i / cols);
-        const x = c * (cW + cG);
-        const y = 20 + r * (rH + rG);
+        const col = i % 8;
+        const row = Math.floor(i / 8);
+        const x = 330 + col * 66;
+        const y = 20 + row * 32;
         return (
           <g key={i}>
-            <rect x={x} y={y} width={cW} height={rH} rx="1" fill="none" stroke="var(--border)" strokeWidth="0.5"/>
-            <text x={x + cW/2} y={y + 17} textAnchor="middle" fontFamily="var(--font-body)" fontSize="7.5" fill="var(--muted)">{tool}</text>
+            <rect x={x} y={y} width="60" height="24" rx="2" fill="none" stroke="var(--border)" strokeWidth="0.5"/>
+            <text x={x + 30} y={y + 15} textAnchor="middle" fontFamily="var(--font-body)" fontSize="8" fill="var(--muted)">{tool}</text>
           </g>
         );
       })}
 
-      <text x={arrowX + 2} y={20 + gH/2 + 6} textAnchor="middle" fontFamily="var(--font-display)" fontSize="20" fontWeight="800" fill="var(--red)">→</text>
-
-      <text x={afterX} y="13" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1">AFTER: 1 WORKSPACE</text>
-      <rect x={afterX} y="20" width={afterW} height={gH} rx="3" fill="var(--red)" fillOpacity="0.04" stroke="var(--red)" strokeWidth="1"/>
-
-      {[
-        { dy: 18, title: "Auto-identification layer", sub: "Customer identified, full history surfaced on connect" },
-        { dy: 58, title: "Contextual scripting layer", sub: "AI monitors conversation, surfaces relevant data live" },
-        { dy: 98, title: "Live resolution layer", sub: "Solution presented directly in the session interface" },
-      ].map((layer, i) => (
-        <g key={i}>
-          <rect x={afterX + 10} y={20 + layer.dy} width={afterW - 20} height="34" rx="2" fill="none" stroke="var(--border)" strokeWidth="0.5"/>
-          <text x={afterX + 20} y={20 + layer.dy + 14} fontFamily="var(--font-body)" fontSize="10" fontWeight="500" fill="var(--ink)" fillOpacity="0.85">{layer.title}</text>
-          <text x={afterX + 20} y={20 + layer.dy + 27} fontFamily="var(--font-body)" fontSize="9" fill="var(--muted)">{layer.sub}</text>
-        </g>
-      ))}
-
-      <text x="0" y={20 + gH + 22} fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">AHT before: 10 min avg</text>
-      <text x="0" y={20 + gH + 36} fontFamily="var(--font-body)" fontSize="10" fill="var(--red)">AHT after: 3 min avg. 70% reduction.</text>
-      <text x={afterX} y={20 + gH + 22} fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Onboarding before: 3 days</text>
-      <text x={afterX} y={20 + gH + 36} fontFamily="var(--font-body)" fontSize="10" fill="var(--red)">Onboarding after: under half a day</text>
+      {/* AHT stats row */}
+      <line x1="0" y1="132" x2="320" y2="132" stroke="var(--border)" strokeWidth="0.5"/>
+      <text x="0" y="154" fontFamily="var(--font-body)" fontSize="12" fill="var(--muted)">AHT before</text>
+      <text x="0" y="174" fontFamily="var(--font-display)" fontSize="28" fontWeight="800" fill="var(--muted)" fillOpacity="0.5">10 min</text>
+      <text x="120" y="154" fontFamily="var(--font-body)" fontSize="12" fill="var(--muted)">AHT after</text>
+      <text x="120" y="174" fontFamily="var(--font-display)" fontSize="28" fontWeight="800" fill="var(--red)">3 min</text>
+      <text x="220" y="174" fontFamily="var(--font-display)" fontSize="28" fontWeight="800" fill="var(--ink)" fillOpacity="0.3">70%↓</text>
     </svg>
   );
 }
@@ -60,89 +45,89 @@ export function CognitiveLoadArtifact() {
   const beforeSwitches = ["ID","Billing","Tech","Ticket","Search","CRM","KB","Auth","Plan","Fraud","Log","SLA","Close"];
 
   return (
-    <svg viewBox="0 0 860 230" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
-      <text x="0" y="14" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1">CONTEXT SWITCHES PER CALL</text>
+    <svg viewBox="0 0 860 220" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
+      <text x="0" y="18" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1.5">CONTEXT SWITCHES PER CALL</text>
 
-      {/* BEFORE */}
-      <text x="0" y="36" fontFamily="var(--font-body)" fontSize="10" fontWeight="500" fill="var(--ink)" fillOpacity="0.6">BEFORE</text>
-      <line x1="64" y1="48" x2="840" y2="48" stroke="var(--border)" strokeWidth="0.5"/>
+      {/* Before — 13 circles spread across */}
+      <text x="0" y="44" fontFamily="var(--font-body)" fontSize="10" fontWeight="600" fill="var(--muted)">BEFORE</text>
       {beforeSwitches.map((sw, i) => {
-        const x = 64 + i * 60;
+        const x = 70 + i * 60;
         return (
           <g key={i}>
-            <circle cx={x} cy="48" r="5" fill="var(--muted)" fillOpacity="0.35" stroke="var(--border)" strokeWidth="0.5"/>
-            <text x={x} y="40" textAnchor="middle" fontFamily="var(--font-body)" fontSize="8" fill="var(--muted)">{sw}</text>
-            <line x1={x} y1="53" x2={x} y2="68" stroke="var(--border)" strokeWidth="0.4" strokeDasharray="2,2"/>
+            <circle cx={x} cy="70" r="18" fill="none" stroke="var(--muted)" strokeWidth="0.5" fillOpacity="0"/>
+            <circle cx={x} cy="70" r="18" fill="var(--muted)" fillOpacity="0.08"/>
+            <text x={x} y="66" textAnchor="middle" fontFamily="var(--font-body)" fontSize="8" fill="var(--muted)">{sw}</text>
+            {i < beforeSwitches.length - 1 && (
+              <line x1={x+18} y1="70" x2={x+42} y2="70" stroke="var(--muted)" strokeWidth="0.5" strokeDasharray="2,2"/>
+            )}
           </g>
         );
       })}
-      <text x="0" y="82" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">13 context switches. 10 min avg. Institutional knowledge on sticky notes.</text>
+      <text x="70" y="104" fontFamily="var(--font-body)" fontSize="11" fill="var(--muted)">13 switches · 10 min avg · knowledge on sticky notes</text>
 
       {/* Divider */}
-      <line x1="0" y1="100" x2="860" y2="100" stroke="var(--border)" strokeWidth="0.5"/>
+      <line x1="0" y1="118" x2="860" y2="118" stroke="var(--border)" strokeWidth="0.5"/>
 
-      {/* AFTER */}
-      <text x="0" y="122" fontFamily="var(--font-body)" fontSize="10" fontWeight="500" fill="var(--ink)" fillOpacity="0.6">AFTER</text>
-      <line x1="64" y1="134" x2="364" y2="134" stroke="var(--red)" strokeWidth="0.5"/>
+      {/* After — 3 large bold circles */}
+      <text x="0" y="140" fontFamily="var(--font-body)" fontSize="10" fontWeight="600" fill="var(--muted)">AFTER</text>
       {["Connect","Resolve","Close"].map((sw, i) => {
-        const x = 64 + i * 150;
+        const x = 70 + i * 200;
         return (
           <g key={i}>
-            <circle cx={x} cy="134" r="7" fill="var(--red)" fillOpacity="0.12" stroke="var(--red)" strokeWidth="1"/>
-            <text x={x} y="126" textAnchor="middle" fontFamily="var(--font-body)" fontSize="9" fill="var(--red)">{sw}</text>
+            <circle cx={x} cy="168" r="24" fill="var(--red)" fillOpacity={0.1 + i * 0.05} stroke="var(--red)" strokeWidth="1"/>
+            <text x={x} y="165" textAnchor="middle" fontFamily="var(--font-body)" fontSize="11" fontWeight="600" fill="var(--red)">{sw}</text>
+            {i < 2 && <line x1={x+24} y1="168" x2={x+176} y2="168" stroke="var(--red)" strokeWidth="1" strokeOpacity="0.3"/>}
           </g>
         );
       })}
-      <text x="0" y="162" fontFamily="var(--font-body)" fontSize="10" fill="var(--red)">0 context switches. 3 min avg. AI surfaces all data.</text>
-
-      <text x="0" y="192" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Research: remote sessions with agents in Egypt and Jamaica. On-site shadowing in New York and Texas.</text>
-      <text x="0" y="208" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" fontStyle="italic">Agents kept sticky notes listing which tool held which data. Institutional knowledge lived on paper, not in the system.</text>
+      <text x="70" y="205" fontFamily="var(--font-body)" fontSize="11" fill="var(--red)">0 context switches · 3 min avg · AI surfaces all data</text>
     </svg>
   );
 }
 
 export function AIOrchestrationArtifact() {
-  const sources = ["Billing history","Interaction log","Technical DB","Plan registry","Ticket system"];
-  const outputs = [
-    { title: "Auto-ID panel", sub: "Customer identified on connect" },
-    { title: "Context script", sub: "Relevant data surfaced mid-call" },
-    { title: "Live resolution", sub: "Solution in session interface" },
-  ];
-
   return (
-    <svg viewBox="0 0 860 240" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
-      <text x="0" y="14" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1">AI ORCHESTRATION ARCHITECTURE</text>
+    <svg viewBox="0 0 860 260" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
+      <text x="0" y="18" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1.5">AI ORCHESTRATION: DATA RETRIEVAL SHIFTS TO THE SYSTEM</text>
 
-      <text x="0" y="34" fontFamily="var(--font-body)" fontSize="9" fill="var(--muted)" letterSpacing="1">DATA SOURCES</text>
-      {sources.map((src, i) => (
+      {/* Sources — left column */}
+      <text x="0" y="40" fontFamily="var(--font-body)" fontSize="9" fill="var(--muted)" letterSpacing="1">DATA SOURCES</text>
+      {["Billing history","Interaction log","Technical DB","Plan registry","Ticket system"].map((src, i) => (
         <g key={i}>
-          <rect x="0" y={42 + i * 32} width="148" height="24" rx="2" fill="none" stroke="var(--border)" strokeWidth="0.5"/>
-          <text x="74" y={42 + i * 32 + 15} textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">{src}</text>
-          <line x1="148" y1={42 + i * 32 + 12} x2="220" y2="142" stroke="var(--border)" strokeWidth="0.4" strokeDasharray="2,3" opacity="0.4"/>
+          <rect x="0" y={48 + i*34} width="148" height="26" rx="2" fill="none" stroke="var(--border)" strokeWidth="0.5"/>
+          <text x="74" y={48 + i*34 + 17} textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">{src}</text>
+          <line x1="148" y1={48 + i*34 + 13} x2="200" y2="152" stroke="var(--border)" strokeWidth="0.4" strokeDasharray="2,3" strokeOpacity="0.5"/>
         </g>
       ))}
 
-      <rect x="220" y="108" width="180" height="68" rx="3" fill="var(--red)" fillOpacity="0.05" stroke="var(--red)" strokeWidth="1"/>
-      <text x="310" y="136" textAnchor="middle" fontFamily="var(--font-display)" fontSize="13" fontWeight="700" fill="var(--red)">AI Orchestration</text>
-      <text x="310" y="153" textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Real-time inference</text>
-      <text x="310" y="167" textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Context assembly, NLP</text>
+      {/* AI core — large editorial circle */}
+      <circle cx="290" cy="152" r="60" fill="var(--red)" fillOpacity="0.07" stroke="var(--red)" strokeWidth="1.5"/>
+      <text x="290" y="146" textAnchor="middle" fontFamily="var(--font-display)" fontSize="13" fontWeight="800" fill="var(--red)">AI</text>
+      <text x="290" y="162" textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Real-time</text>
+      <text x="290" y="175" textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">orchestration</text>
 
-      <text x="450" y="34" fontFamily="var(--font-body)" fontSize="9" fill="var(--muted)" letterSpacing="1">AGENT SURFACE</text>
-      {outputs.map((out, i) => (
+      {/* Output layers */}
+      <text x="400" y="40" fontFamily="var(--font-body)" fontSize="9" fill="var(--muted)" letterSpacing="1">AGENT SURFACE</text>
+      {[
+        {label:"Auto-ID panel", sub:"Customer identified on connect"},
+        {label:"Context script", sub:"Relevant data surfaced mid-call"},
+        {label:"Live resolution", sub:"Answer in session interface"},
+      ].map((out, i) => (
         <g key={i}>
-          <rect x="450" y={42 + i * 54} width="220" height="42" rx="2" fill="none" stroke="var(--border)" strokeWidth="0.5"/>
-          <text x="462" y={42 + i * 54 + 17} fontFamily="var(--font-body)" fontSize="11" fontWeight="500" fill="var(--ink)" fillOpacity="0.85">{out.title}</text>
-          <text x="462" y={42 + i * 54 + 32} fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">{out.sub}</text>
-          <line x1="400" y1="142" x2="450" y2={42 + i * 54 + 21} stroke="var(--red)" strokeWidth="0.5" strokeDasharray="3,2" opacity="0.5"/>
+          <rect x="400" y={48 + i*58} width="220" height="44" rx="3" fill="none" stroke="var(--border)" strokeWidth="0.5"/>
+          <text x="414" y={48 + i*58 + 17} fontFamily="var(--font-body)" fontSize="12" fontWeight="600" fill="var(--ink)" fillOpacity="0.85">{out.label}</text>
+          <text x="414" y={48 + i*58 + 32} fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">{out.sub}</text>
+          <line x1="350" y1="152" x2="400" y2={48 + i*58 + 22} stroke="var(--red)" strokeWidth="0.5" strokeDasharray="3,2" strokeOpacity="0.4"/>
         </g>
       ))}
 
-      <rect x="720" y="122" width="130" height="40" rx="2" fill="none" stroke="var(--border)" strokeWidth="0.5"/>
-      <text x="785" y="140" textAnchor="middle" fontFamily="var(--font-body)" fontSize="11" fill="var(--ink)" fillOpacity="0.7">Agent</text>
-      <text x="785" y="155" textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Customer only</text>
-      <line x1="670" y1="142" x2="720" y2="142" stroke="var(--border)" strokeWidth="0.5"/>
+      {/* Agent — rightmost */}
+      <rect x="680" y="130" width="120" height="44" rx="3" fill="none" stroke="var(--border)" strokeWidth="0.5"/>
+      <text x="740" y="150" textAnchor="middle" fontFamily="var(--font-body)" fontSize="12" fontWeight="600" fill="var(--ink)" fillOpacity="0.7">Agent</text>
+      <text x="740" y="165" textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Customer focus</text>
+      <line x1="620" y1="152" x2="680" y2="152" stroke="var(--border)" strokeWidth="0.5"/>
 
-      <text x="0" y="220" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">The architectural shift: data retrieval moves from the agent to the system. The agent's job becomes the customer.</text>
+      <text x="0" y="248" fontFamily="var(--font-body)" fontSize="11" fill="var(--muted)">The architectural shift: data retrieval moves from the agent to the system. The agent's job becomes the customer.</text>
     </svg>
   );
 }

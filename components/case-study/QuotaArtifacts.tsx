@@ -1,149 +1,121 @@
 export function QuotaArchitectureArtifact() {
   const modules = [
-    {
-      title: "Quota management",
-      items: ["Client quota overview", "Partner quota breakdown", "Threshold alerts", "Manual adjustments", "Usage history"],
-    },
-    {
-      title: "API usage",
-      items: ["API consumption dashboard", "Rate limit status", "Usage by product", "Trend reporting", "Export"],
-    },
-    {
-      title: "Change requests",
-      items: ["New request form", "Approval routing", "Request status tracking", "Approval history", "Audit log"],
-    },
+    {title:"Quota management", items:["Client quota overview","Partner quota breakdown","Threshold alerts","Manual adjustments","Usage history"]},
+    {title:"API usage", items:["API consumption dashboard","Rate limit status","Usage by product","Trend reporting","Export"]},
+    {title:"Change requests", items:["New request form","Approval routing","Request status tracking","Approval history","Audit log"]},
   ];
 
   return (
-    <svg viewBox="0 0 860 280" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
-      <text x="0" y="14" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1">PLATFORM INFORMATION ARCHITECTURE</text>
+    <svg viewBox="0 0 860 260" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
+      <text x="0" y="16" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1.5">PLATFORM INFORMATION ARCHITECTURE</text>
 
-      {/* Shared nav bar */}
-      <rect x="0" y="22" width="860" height="32" rx="2" fill="var(--muted)" fillOpacity="0.08" stroke="var(--border)" strokeWidth="0.5"/>
-      <text x="16" y="42" fontFamily="var(--font-body)" fontSize="11" fontWeight="500" fill="var(--ink)" fillOpacity="0.6">Shared navigation</text>
-      <text x="200" y="42" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Consistent with client existing tool ecosystem</text>
+      {/* Shared layer */}
+      <rect x="0" y="24" width="860" height="30" rx="2" fill="var(--muted)" fillOpacity="0.06" stroke="var(--border)" strokeWidth="0.5"/>
+      <text x="430" y="43" textAnchor="middle" fontFamily="var(--font-body)" fontSize="11" fill="var(--muted)">Shared navigation · Role-based access · Consistent with client tool ecosystem</text>
 
-      {/* Permission row */}
-      <rect x="0" y="60" width="860" height="24" rx="2" fill="var(--red)" fillOpacity="0.05" stroke="var(--red)" strokeWidth="0.5"/>
-      <text x="16" y="76" fontFamily="var(--font-body)" fontSize="10" fill="var(--red)">Permission model: Client support agents and partner agents, role-based access per module</text>
-
-      {/* Three modules */}
+      {/* Three module columns — reference image 4 bar style growing */}
       {modules.map((mod, mi) => {
         const x = mi * 290;
+        const h = 130 + mi * 20;
         return (
           <g key={mi}>
-            <rect x={x} y="92" width="278" height="170" rx="3" fill="none" stroke="var(--border)" strokeWidth="0.5"/>
-            <rect x={x} y="92" width="278" height="32" rx="3" fill="var(--muted)" fillOpacity="0.06"/>
-            <text x={x + 12} y="112" fontFamily="var(--font-body)" fontSize="12" fontWeight="500" fill="var(--ink)" fillOpacity="0.85">{mod.title}</text>
+            {/* Growing bar top */}
+            <rect x={x} y={64} width="278" height={h} rx="3" fill="var(--red)" fillOpacity={0.04 + mi * 0.02} stroke="var(--border)" strokeWidth="0.5"/>
+            <rect x={x} y={64} width="278" height="28" rx="3" fill="var(--muted)" fillOpacity={0.06}/>
+            <text x={x + 12} y={82} fontFamily="var(--font-body)" fontSize="12" fontWeight="600" fill="var(--ink)" fillOpacity="0.85">{`0${mi+1} ${mod.title}`}</text>
             {mod.items.map((item, ii) => (
               <g key={ii}>
-                <line x1={x + 12} y1={130 + ii * 26} x2={x + 266} y2={130 + ii * 26} stroke="var(--border)" strokeWidth="0.3"/>
-                <text x={x + 12} y={143 + ii * 26} fontFamily="var(--font-body)" fontSize="11" fill="var(--ink)" fillOpacity="0.65">{item}</text>
+                <line x1={x + 12} y1={100 + ii * 22} x2={x + 266} y2={100 + ii * 22} stroke="var(--border)" strokeWidth="0.3"/>
+                <text x={x + 12} y={112 + ii * 22} fontFamily="var(--font-body)" fontSize="10" fill="var(--ink)" fillOpacity="0.6">{item}</text>
               </g>
             ))}
           </g>
         );
       })}
 
-      <text x="0" y="276" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Visual language and interaction patterns matched to client existing tool ecosystem. Onboarding overhead for support agents designed to be minimal.</text>
+      <text x="0" y="254" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Visual language and interaction patterns matched to client existing tool ecosystem. Onboarding overhead designed to be minimal.</text>
     </svg>
   );
 }
 
 export function WorkshopMethodArtifact() {
-  const steps = [
-    { title: "Workshop session", items: ["Stakeholder input", "Requirement clarification", "Use case walkthrough", "Preliminary concept review"] },
-    { title: "Design output", items: ["Flow architecture", "Interaction decisions", "Open questions flagged", "Alignment dependencies noted"] },
-    { title: "Next session input", items: ["Updated concepts", "Decisions to ratify", "Scope changes absorbed", "New constraints mapped"] },
-  ];
-
   return (
-    <svg viewBox="0 0 860 240" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
-      <text x="0" y="14" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1">WORKSHOP INPUT TO DESIGN OUTPUT</text>
+    <svg viewBox="0 0 860 220" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
+      <text x="0" y="16" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1.5">WORKSHOP INPUT TO DESIGN OUTPUT</text>
 
-      {steps.map((step, si) => {
-        const x = si * 290;
-        const isDesign = si === 1;
+      {/* Timeline dots — reference image 5 style */}
+      <line x1="40" y1="80" x2="820" y2="80" stroke="var(--border)" strokeWidth="1"/>
+
+      {[
+        {x:40, label:"Workshop session", sub:"Stakeholder input\nclarification"},
+        {x:200, label:"Concept sketch", sub:"Preliminary drafts\nfor reaction"},
+        {x:360, label:"Workshop review", sub:"Discuss on top\nof concepts", accent:true},
+        {x:520, label:"Design output", sub:"Decisions locked\ndependencies flagged"},
+        {x:680, label:"Next session", sub:"Updated concepts\nscope absorbed"},
+      ].map((step, i) => {
+        const isAccent = step.accent;
         return (
-          <g key={si}>
-            <rect x={x} y="22" width="276" height="170" rx="3"
-              fill={isDesign ? "var(--red)" : "none"}
-              fillOpacity={isDesign ? 0.05 : 1}
-              stroke={isDesign ? "var(--red)" : "var(--border)"}
-              strokeWidth={isDesign ? 1 : 0.5}
-            />
-            <text x={x + 12} y="42" fontFamily="var(--font-body)" fontSize="12" fontWeight="500"
-              fill={isDesign ? "var(--red)" : "var(--ink)"} fillOpacity={isDesign ? 1 : 0.85}>{step.title}</text>
-            <line x1={x + 12} y1="50" x2={x + 264} y2="50" stroke={isDesign ? "var(--red)" : "var(--border)"} strokeWidth="0.5" strokeOpacity={isDesign ? 0.3 : 1}/>
-            {step.items.map((item, ii) => (
-              <text key={ii} x={x + 12} y={68 + ii * 22} fontFamily="var(--font-body)" fontSize="11"
-                fill={isDesign ? "var(--ink)" : "var(--muted)"} fillOpacity="0.75">{item}</text>
+          <g key={i}>
+            <circle cx={step.x} cy="80" r={isAccent ? 14 : 8}
+              fill={isAccent ? "var(--red)" : "var(--paper)"}
+              stroke={isAccent ? "var(--red)" : "var(--border)"}
+              strokeWidth={isAccent ? 1.5 : 1}/>
+            {isAccent && <circle cx={step.x} cy="80" r="5" fill="var(--red)" fillOpacity="0.6"/>}
+            <text x={step.x} y={isAccent ? "52" : "58"} textAnchor="middle" fontFamily="var(--font-body)" fontSize="11" fontWeight="600" fill={isAccent ? "var(--red)" : "var(--ink)"} fillOpacity={isAccent ? 1 : 0.8}>{step.label}</text>
+            {step.sub.split("\n").map((line, li) => (
+              <text key={li} x={step.x} y={112 + li * 14} textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">{line}</text>
             ))}
-            {si < steps.length - 1 && (
-              <text x={x + 284} y="110" textAnchor="middle" fontFamily="var(--font-body)" fontSize="18" fontWeight="800" fill="var(--muted)" fillOpacity="0.4">→</text>
-            )}
           </g>
         );
       })}
 
-      <text x="0" y="212" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Preliminary concepts brought into sessions as thinking tools, not proposals. Reacting to something unfinished is faster than constructing from blank paper.</text>
-      <text x="0" y="228" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Alignment dependencies flagged explicitly before committing to detailed work. Client-side ratification tracked as a blocker, not an assumption.</text>
+      <text x="0" y="175" fontFamily="var(--font-body)" fontSize="11" fill="var(--muted)">Preliminary concepts brought as thinking tools, not proposals. Reacting to something unfinished is faster than constructing from blank paper.</text>
+      <text x="0" y="192" fontFamily="var(--font-body)" fontSize="11" fill="var(--muted)">Alignment dependencies flagged explicitly before committing to detailed work. Client ratification tracked as a blocker, not an assumption.</text>
     </svg>
   );
 }
 
 export function ApprovalFlowArtifact() {
   return (
-    <svg viewBox="0 0 860 260" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
-      <text x="0" y="14" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1">CHANGE REQUEST APPROVAL FLOW</text>
+    <svg viewBox="0 0 860 240" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
+      <text x="0" y="16" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1.5">CHANGE REQUEST APPROVAL FLOW</text>
 
       {/* Request types */}
       <text x="0" y="36" fontFamily="var(--font-body)" fontSize="9" fill="var(--muted)" letterSpacing="1">REQUEST TYPE</text>
-      {[
-        { label: "Quota increase", sub: "Standard threshold" },
-        { label: "Quota increase", sub: "Above threshold" },
-        { label: "API limit change", sub: "Any value" },
-      ].map((req, i) => (
+      {["Quota increase (standard)","Quota increase (above threshold)","API limit change (any value)"].map((req, i) => (
         <g key={i}>
-          <rect x="0" y={44 + i * 52} width="180" height="40" rx="2" fill="none" stroke="var(--border)" strokeWidth="0.5"/>
-          <text x="12" y={60 + i * 52} fontFamily="var(--font-body)" fontSize="11" fontWeight="500" fill="var(--ink)" fillOpacity="0.85">{req.label}</text>
-          <text x="12" y={74 + i * 52} fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">{req.sub}</text>
-          <line x1="180" y1={64 + i * 52} x2="220" y2={64 + i * 52} stroke="var(--border)" strokeWidth="0.5"/>
+          <rect x="0" y={44 + i * 46} width="188" height="36" rx="2" fill="none" stroke="var(--border)" strokeWidth="0.5"/>
+          <text x="12" y={44 + i * 46 + 21} fontFamily="var(--font-body)" fontSize="10" fill="var(--ink)" fillOpacity="0.75">{req}</text>
+          <line x1="188" y1={44 + i * 46 + 18} x2="230" y2={44 + i * 46 + 18} stroke="var(--border)" strokeWidth="0.5"/>
         </g>
       ))}
 
-      {/* Routing logic */}
-      <rect x="220" y="44" width="160" height="148" rx="3" fill="var(--red)" fillOpacity="0.05" stroke="var(--red)" strokeWidth="0.5"/>
-      <text x="300" y="72" textAnchor="middle" fontFamily="var(--font-body)" fontSize="11" fontWeight="500" fill="var(--red)">Routing logic</text>
-      <text x="300" y="90" textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Type and value</text>
-      <text x="300" y="104" textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">threshold check</text>
-      <text x="300" y="128" textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Configurable per</text>
-      <text x="300" y="142" textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">client structure</text>
-      <text x="300" y="166" textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">No system config</text>
-      <text x="300" y="180" textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">change required</text>
+      {/* Routing circle */}
+      <circle cx="270" cy="116" r="38" fill="var(--red)" fillOpacity="0.06" stroke="var(--red)" strokeWidth="1"/>
+      <text x="270" y="111" textAnchor="middle" fontFamily="var(--font-body)" fontSize="11" fontWeight="600" fill="var(--red)">Routing</text>
+      <text x="270" y="125" textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Type + value</text>
 
       {/* Approval paths */}
-      <text x="420" y="36" fontFamily="var(--font-body)" fontSize="9" fill="var(--muted)" letterSpacing="1">APPROVAL PATH</text>
+      <text x="350" y="36" fontFamily="var(--font-body)" fontSize="9" fill="var(--muted)" letterSpacing="1">APPROVAL PATH</text>
       {[
-        { y: 52, label: "Agent supervisor", sub: "Single approval" },
-        { y: 104, label: "Supervisor and manager", sub: "Two-step approval" },
-        { y: 156, label: "Manager and director", sub: "Two-step approval" },
+        {y:44, label:"Supervisor", sub:"Single approval"},
+        {y:90, label:"Supervisor + Manager", sub:"Two-step"},
+        {y:136, label:"Manager + Director", sub:"Two-step"},
       ].map((path, i) => (
         <g key={i}>
-          <line x1="380" y1={path.y + 20} x2="420" y2={path.y + 20} stroke="var(--border)" strokeWidth="0.5"/>
-          <rect x="420" y={path.y} width="200" height="40" rx="2" fill="none" stroke="var(--border)" strokeWidth="0.5"/>
-          <text x="432" y={path.y + 16} fontFamily="var(--font-body)" fontSize="11" fontWeight="500" fill="var(--ink)" fillOpacity="0.85">{path.label}</text>
-          <text x="432" y={path.y + 30} fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">{path.sub}</text>
-          <line x1="620" y1={path.y + 20} x2="660" y2={path.y + 20} stroke="var(--border)" strokeWidth="0.5"/>
+          <line x1="308" y1="116" x2="350" y2={path.y + 18} stroke="var(--border)" strokeWidth="0.5" strokeDasharray="2,2"/>
+          <rect x="350" y={path.y} width="200" height="36" rx="2" fill="none" stroke="var(--border)" strokeWidth="0.5"/>
+          <text x="362" y={path.y + 15} fontFamily="var(--font-body)" fontSize="11" fontWeight="600" fill="var(--ink)" fillOpacity="0.85">{path.label}</text>
+          <text x="362" y={path.y + 28} fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">{path.sub}</text>
+          <line x1="550" y1={path.y + 18} x2="590" y2={path.y + 18} stroke="var(--border)" strokeWidth="0.5"/>
         </g>
       ))}
 
-      {/* Outcome */}
-      <rect x="660" y="84" width="140" height="40" rx="2" fill="none" stroke="var(--border)" strokeWidth="0.5"/>
-      <text x="730" y="102" textAnchor="middle" fontFamily="var(--font-body)" fontSize="11" fontWeight="500" fill="var(--ink)" fillOpacity="0.85">Applied or rejected</text>
-      <text x="730" y="116" textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Audit log updated</text>
+      {/* Result */}
+      <rect x="590" y="98" width="130" height="36" rx="18" fill="var(--muted)" fillOpacity="0.08" stroke="var(--border)" strokeWidth="0.5"/>
+      <text x="655" y="118" textAnchor="middle" fontFamily="var(--font-body)" fontSize="11" fontWeight="600" fill="var(--ink)" fillOpacity="0.7">Applied or rejected</text>
 
-      <text x="0" y="232" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Approval routing configurable to the client's internal sign-off structure. Change request types and thresholds defined in collaboration with client business stakeholders.</text>
+      <text x="0" y="220" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Approval routing configurable to the client's internal sign-off structure. No system configuration change required.</text>
     </svg>
   );
 }

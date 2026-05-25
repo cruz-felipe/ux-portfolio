@@ -93,10 +93,9 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
   const maxW = data.wideHero ? "820px" : "700px";
 
   return (
-    <main className="page-enter" style={{ background: "var(--paper)", color: "var(--ink)", minHeight: "100vh" }}>
-
-      {/* Back nav */}
-      <div style={{
+    <>
+    {/* Back nav — outside main so fixed positioning isn't clipped by transform stacking context */}
+    <div style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
         padding: "1.25rem 2.5rem",
         display: "flex", alignItems: "center", justifyContent: "space-between",
@@ -122,7 +121,9 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
         <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--muted)" }}>
           {data.index} / 06
         </span>
-      </div>
+    </div>
+
+    <main className="page-enter" style={{ background: "var(--paper)", color: "var(--ink)", minHeight: "100vh" }}>
 
       {/* Hero */}
       <section style={{
@@ -278,5 +279,6 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
       </section>
 
     </main>
+    </>
   );
 }

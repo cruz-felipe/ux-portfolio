@@ -44,11 +44,6 @@ const data: CaseStudyData = {
     },
     {
       title: "What shipped",
-      screens: [
-        { src: "/wireframes/quota-list.png", caption: "Quota management list. Search by partner, API or quota name. Filter, column control and export. Status badges distinguish active from inactive quotas." },
-        { src: "/wireframes/quota-detail.png", caption: "Quota detail view. Metadata, type, limit, partner and API assignments. Changes history tab provides full audit trail per quota." },
-        { src: "/wireframes/quota-workflow.png", caption: "Change request approval workflow. Multi-level approver groups with individual approval tracking. Full status progression from submission to completion." },
-      ],
       body: [
         "The platform is in production-ready design across three modules. Quota management gives support agents visibility into data consumption at the client and partner level, with manual adjustment controls and threshold alerts. API usage monitoring surfaces rate limit status and consumption trends across the client's API products. Change requests route through a configurable approval flow based on request type and value, with a full audit log.",
         "The visual language matches the client's existing tool ecosystem by design. The decision to constrain visual exploration early was the right one: it removed a category of stakeholder debate and let the design work focus on information architecture and interaction logic, which were the actual hard problems.",
