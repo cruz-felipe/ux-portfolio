@@ -1,6 +1,5 @@
 import CaseLayout, { CaseStudyData } from "@/components/case-study/CaseLayout";
 import { ConsolidationMapArtifact, CognitiveLoadArtifact, AIOrchestrationArtifact } from "@/components/case-study/SupportHubArtifacts";
-import { AIArchitectureDiagram } from "@/components/case-study/SupportHubDiagrams";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -50,12 +49,6 @@ const data: CaseStudyData = {
     },
   ],
   artifacts: [
-    {
-      id: "ai-architecture",
-      title: "AI workspace architecture",
-      caption: "Data layer feeds real-time AI orchestration. Three agent-facing layers replace 32 disconnected tools. Data retrieval moves from the agent to the system.",
-      component: <AIArchitectureDiagram />,
-    },
     {
       id: "consolidation-map",
       title: "32-tool ecosystem to single workspace",

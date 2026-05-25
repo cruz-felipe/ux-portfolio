@@ -1,6 +1,5 @@
 import CaseLayout, { CaseStudyData } from "@/components/case-study/CaseLayout";
 import type { Metadata } from "next";
-import { VocabularyArchDiagram } from "@/components/case-study/VocabularyDiagrams";
 
 export const metadata: Metadata = {
   title: "Vocabulary Felipe Cruz",
@@ -63,18 +62,12 @@ const data: CaseStudyData = {
         "The tech cards include phonetic transcription because Russian script is unfamiliar to most users at this level. The cultural note goes further than vocabulary it explains register and real usage context, like noting that 'Figma dominou o mercado russo, então a resposta é quase sempre sim.'",
       ],
       screens: [
-        { src: `${BASE}/Screenshot_2026-05-25_at_13_22_05.png`, caption: "Recall mode, Russian tech. Correct answer, UX documentation example with context note." },
+        { src: `${BASE}/Screenshot_2026-05-25_at_13_21_04.png`, caption: "Russian tech card, recognition mode. Cyrillic, phonetic transcription and cultural note included." },
+        { src: `${BASE}/Screenshot_2026-05-25_at_13_22_05.png`, caption: "Recall mode, Russian tech. Correct answer state with UX documentation example." },
       ],
     },
   ],
-  artifacts: [
-    {
-      id: "architecture",
-      title: "App architecture and learning flow",
-      caption: "User selects language, picks category, chooses mode. Recognition and recall branch from the same entry. Claude API handles synonym validation and cultural tips as an opt-in layer.",
-      component: <VocabularyArchDiagram />,
-    },
-  ],
+  artifacts: [],
   hideNda: true,
   wideHero: true,
 };

@@ -1,6 +1,5 @@
 import CaseLayout, { CaseStudyData } from "@/components/case-study/CaseLayout";
 import { QuotaArchitectureArtifact, WorkshopMethodArtifact, ApprovalFlowArtifact } from "@/components/case-study/QuotaArtifacts";
-import { QuotaUserFlowDiagram } from "@/components/case-study/QuotaDiagrams";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -53,12 +52,6 @@ const data: CaseStudyData = {
     },
   ],
   artifacts: [
-    {
-      id: "user-flow",
-      title: "Quota management: user flow",
-      caption: "Two user types (client and partner agents) access a unified platform entry point. Three modules with role-based access. Change requests route through configurable multi-level approval.",
-      component: <QuotaUserFlowDiagram />,
-    },
     {
       id: "architecture",
       title: "Platform information architecture",
