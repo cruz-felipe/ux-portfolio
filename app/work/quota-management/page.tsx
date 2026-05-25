@@ -1,5 +1,4 @@
 import CaseLayout, { CaseStudyData } from "@/components/case-study/CaseLayout";
-import { QuotaArchitectureArtifact, WorkshopMethodArtifact, ApprovalFlowArtifact } from "@/components/case-study/QuotaArtifacts";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -51,26 +50,7 @@ const data: CaseStudyData = {
       ],
     },
   ],
-  artifacts: [
-    {
-      id: "architecture",
-      title: "Platform information architecture",
-      caption: "Three-module structure with shared navigation and permission model. Designed to extend without breaking the interaction conventions established in the first release.",
-      component: <QuotaArchitectureArtifact />,
-    },
-    {
-      id: "workshop",
-      title: "Workshop input to design output",
-      caption: "How stakeholder sessions translated into design decisions. Preliminary concepts brought into sessions as thinking tools, not proposals.",
-      component: <WorkshopMethodArtifact />,
-    },
-    {
-      id: "approval-flow",
-      title: "Change request approval flow",
-      caption: "Configurable approval routing based on request type and value threshold. Designed to accommodate the client's internal sign-off structure without requiring system configuration changes.",
-      component: <ApprovalFlowArtifact />,
-    },
-  ],
+  artifacts: [],
 };
 
 export default function QuotaManagement() {

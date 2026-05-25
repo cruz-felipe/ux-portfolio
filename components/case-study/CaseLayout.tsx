@@ -227,8 +227,8 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
             )}
 
             {data.artifacts[si] && (
-              <section className="artifact-section" style={{ padding: "3rem 2.5rem", borderBottom: "0.5px solid var(--border)", background: "color-mix(in srgb, var(--ink) 2%, var(--paper))" }}>
-                <div style={{ border: "0.5px solid var(--border)", borderRadius: "3px", padding: "2rem", marginBottom: "1.25rem", background: "var(--paper)", overflowX: "auto" }}>
+              <section className="artifact-section" style={{ padding: "3rem 2.5rem", borderBottom: "0.5px solid var(--border)", background: "var(--paper)" }}>
+                <div style={{ marginBottom: "1.25rem", overflowX: "auto" }}>
                   {data.artifacts[si].component}
                 </div>
                 <div className="artifact-caption">

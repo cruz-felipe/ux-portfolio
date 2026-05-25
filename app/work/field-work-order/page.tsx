@@ -1,5 +1,4 @@
 import CaseLayout, { CaseStudyData } from "@/components/case-study/CaseLayout";
-import { WorkOrderArtifact, PageReductionArtifact, SectionAuditArtifact } from "@/components/case-study/WorkOrderArtifacts";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -56,26 +55,7 @@ const data: CaseStudyData = {
       ],
     },
   ],
-  artifacts: [
-    {
-      id: "page-reduction",
-      title: "Document scope reduction",
-      caption: "From 160 to 45 pages through section consolidation, redundancy removal and device identifier simplification. Each reduction category mapped to a specific decision.",
-      component: <PageReductionArtifact />,
-    },
-    {
-      id: "section-audit",
-      title: "Section audit methodology",
-      caption: "Each section evaluated across three dimensions: field usage frequency, technical redundancy and vocabulary alignment. Sections with low usage and high redundancy were consolidated first.",
-      component: <SectionAuditArtifact />,
-    },
-    {
-      id: "work-order",
-      title: "Document structure before and after",
-      caption: "Abstract representation of reading flow. Before: non-linear, technically ordered, cross-referenced. After: task-ordered, field-vocabulary aligned, navigable in both digital and printed form.",
-      component: <WorkOrderArtifact />,
-    },
-  ],
+  artifacts: [],
 };
 
 export default function FieldWorkOrder() {

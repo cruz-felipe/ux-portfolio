@@ -1,5 +1,4 @@
 import CaseLayout, { CaseStudyData } from "@/components/case-study/CaseLayout";
-import { HeuristicMatrixArtifact, FlowCompressionArtifact, ResearchMethodologyArtifact } from "@/components/case-study/SalesArtifacts";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -46,26 +45,7 @@ const data: CaseStudyData = {
       ],
     },
   ],
-  artifacts: [
-    {
-      id: "heuristic-matrix",
-      title: "Heuristic Impact Matrix",
-      caption: "32 documented problems plotted by criticality vs engineering effort. The high-impact, low-effort quadrant formed the MVP roadmap presented to executives. The matrix made design debt legible as business risk.",
-      component: <HeuristicMatrixArtifact />,
-    },
-    {
-      id: "flow-compression",
-      title: "7-tool flow to 3-step express flow",
-      caption: "Before: 7 disconnected tools, manual data re-entry, email approvals, no tracking, 1 hour per proposal. After: 3-step unified flow with automated approvals and built-in install tracking, 15 minutes.",
-      component: <FlowCompressionArtifact />,
-    },
-    {
-      id: "research-methodology",
-      title: "1-month on-site research, São Paulo",
-      caption: "37 interviews, 25 usability tests, 20 shadow sessions. Research identified unused features, flow entry paralysis and the gap between stakeholder assumptions and agent reality.",
-      component: <ResearchMethodologyArtifact />,
-    },
-  ],
+  artifacts: [],
 };
 
 export default function B2BSalesRescue() {

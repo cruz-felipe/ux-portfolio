@@ -1,5 +1,4 @@
 import CaseLayout, { CaseStudyData } from "@/components/case-study/CaseLayout";
-import { TokenArchitectureArtifact, SandboxWorkflowArtifact, VelocityDeltaArtifact } from "@/components/case-study/DaneArtifacts";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -55,26 +54,7 @@ const data: CaseStudyData = {
       ],
     },
   ],
-  artifacts: [
-    {
-      id: "token-architecture",
-      title: "Token architecture: before and after",
-      caption: "Left: fragmented components with no shared foundation. Right: three-level token hierarchy mapped to production codebase via Code Connect. The architecture made tokens the single source of truth between Figma and engineering.",
-      component: <TokenArchitectureArtifact />,
-    },
-    {
-      id: "sandbox-workflow",
-      title: "Sandbox to master governance workflow",
-      caption: "New components built locally first, then evaluated for reuse potential by the UX lead. Promotion to master is a design decision, not an engineering one. The criteria: does this solve a problem that will appear again?",
-      component: <SandboxWorkflowArtifact />,
-    },
-    {
-      id: "velocity-delta",
-      title: "Feature delivery time: before and after restructure",
-      caption: "Concept-to-handoff time across representative feature types. Mobile plan management, billing widget and settings went from 2 to 3 days to under 1 day. Average reduction of 50% across the team.",
-      component: <VelocityDeltaArtifact />,
-    },
-  ],
+  artifacts: [],
 };
 
 export default function DaneTelecom() {

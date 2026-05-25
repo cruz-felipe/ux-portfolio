@@ -1,5 +1,4 @@
 import CaseLayout, { CaseStudyData } from "@/components/case-study/CaseLayout";
-import { ConsolidationMapArtifact, CognitiveLoadArtifact, AIOrchestrationArtifact } from "@/components/case-study/SupportHubArtifacts";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -48,26 +47,7 @@ const data: CaseStudyData = {
       ],
     },
   ],
-  artifacts: [
-    {
-      id: "consolidation-map",
-      title: "32-tool ecosystem to single workspace",
-      caption: "Abstract representation of the consolidation. 32 disconnected legacy tools replaced by a three-layer AI workspace. Each layer corresponds to a stage in the agent workflow: identify, assist, resolve.",
-      component: <ConsolidationMapArtifact />,
-    },
-    {
-      id: "cognitive-load",
-      title: "Agent cognitive load per call",
-      caption: "Before: 13 context switches per call, 10 minute average, institutional knowledge on sticky notes. After: zero context switches, 3 minute average, AI surfaces all relevant data. Research conducted across 4 locations in 2 countries.",
-      component: <CognitiveLoadArtifact />,
-    },
-    {
-      id: "ai-orchestration",
-      title: "AI orchestration architecture",
-      caption: "Data sources feeding a real-time inference engine, surfacing three agent-facing layers. The architectural shift: data retrieval moves from the agent to the system. The agent's job becomes the customer.",
-      component: <AIOrchestrationArtifact />,
-    },
-  ],
+  artifacts: [],
 };
 
 export default function PredictiveSupportHub() {
