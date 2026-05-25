@@ -52,8 +52,9 @@ export default function Nav() {
           alignItems: "center",
           justifyContent: "space-between",
           padding: "1.25rem 2.5rem",
-          background: scrolled || menuOpen ? "color-mix(in srgb, var(--paper) 96%, transparent)" : "transparent",
-          backdropFilter: scrolled || menuOpen ? "blur(12px)" : "none",
+          background: "color-mix(in srgb, var(--paper) 82%, transparent)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
           borderBottom: scrolled || menuOpen ? "0.5px solid rgba(10,10,10,0.1)" : "0.5px solid transparent",
           transition: "background 0.3s ease, border-color 0.3s ease",
         }}

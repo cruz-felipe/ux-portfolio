@@ -188,14 +188,21 @@ export default function ResponsiveStyles() {
 
       /* Screen gallery */
       .screen-gallery {
-        grid-template-columns: repeat(auto-fill, minmax(0, 280px)) !important;
+        grid-template-columns: repeat(3, 260px) !important;
         justify-content: center !important;
       }
+      .screen-gallery.count-2 {
+        grid-template-columns: repeat(2, 260px) !important;
+      }
+      .screen-gallery.count-1 {
+        grid-template-columns: 260px !important;
+      }
       @media (max-width: 900px) {
-        .screen-gallery { grid-template-columns: repeat(auto-fill, minmax(0, 260px)) !important; }
+        .screen-gallery { grid-template-columns: repeat(2, 240px) !important; }
+        .screen-gallery.count-1 { grid-template-columns: 240px !important; }
       }
       @media (max-width: 680px) {
-        .screen-gallery { grid-template-columns: minmax(0, 300px) !important; }
+        .screen-gallery { grid-template-columns: 280px !important; }
       }
 
       /* Footer logo dark mode swap */

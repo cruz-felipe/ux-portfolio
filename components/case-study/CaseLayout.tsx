@@ -100,8 +100,9 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
         padding: "1.25rem 2.5rem",
         display: "flex", alignItems: "center", justifyContent: "space-between",
-        background: "color-mix(in srgb, var(--paper) 92%, transparent)",
-        backdropFilter: "blur(12px)",
+        background: "color-mix(in srgb, var(--paper) 82%, transparent)",
+        backdropFilter: "blur(16px)",
+        WebkitBackdropFilter: "blur(16px)",
         borderBottom: "0.5px solid var(--border)",
       }}>
         <a href="/" style={{

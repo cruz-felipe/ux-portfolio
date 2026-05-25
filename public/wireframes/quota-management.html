@@ -2,358 +2,248 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quota Management — Illustrative Wireframes</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8f8f8; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: white; }
 
-  /* ── SHARED SHELL ── */
-  .shell { width: 1200px; background: white; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
-  .topbar { background: #C4136B; height: 56px; display: flex; align-items: center; padding: 0 24px; gap: 32px; }
-  .topbar-title { color: rgba(255,255,255,0.7); font-size: 12px; font-weight: 500; letter-spacing: 0.02em; }
-  .topbar-nav { display: flex; gap: 2px; margin-left: 12px; }
-  .tab { color: rgba(255,255,255,0.65); font-size: 13px; padding: 6px 16px; border-radius: 4px; cursor: pointer; }
-  .tab.active { background: rgba(255,255,255,0.18); color: white; font-weight: 500; }
-  .topbar-avatar { margin-left: auto; width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; }
-  .topbar-avatar svg { color: white; }
+  .frame { width: 960px; border: 1.5px solid #d0d0d0; border-radius: 6px; overflow: hidden; background: white; margin-bottom: 48px; }
 
-  .layout { display: flex; }
-  .sidebar { width: 64px; background: #2a2a2a; min-height: 600px; display: flex; flex-direction: column; align-items: center; padding: 16px 0; gap: 4px; }
-  .sideicon { width: 44px; height: 44px; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; cursor: pointer; }
-  .sideicon.active { background: #C4136B; }
-  .sideicon-dot { width: 14px; height: 2px; background: rgba(255,255,255,0.6); border-radius: 1px; }
-  .sideicon.active .sideicon-dot { background: white; }
-  .sideicon-label { color: rgba(255,255,255,0.5); font-size: 9px; letter-spacing: 0.04em; }
-  .sideicon.active .sideicon-label { color: white; }
+  /* Top bar placeholder */
+  .bar { height: 44px; background: #2a2a2a; display: flex; align-items: center; padding: 0 20px; gap: 20px; }
+  .bar-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); }
+  .bar-tab { height: 28px; background: rgba(255,255,255,0.12); border-radius: 4px; }
+  .bar-tab.active { background: rgba(255,255,255,0.22); }
 
-  .content { flex: 1; padding: 24px 32px; }
+  .body { display: flex; }
 
-  /* BREADCRUMB */
-  .breadcrumb { font-size: 12px; color: #C4136B; margin-bottom: 16px; display: flex; gap: 6px; align-items: center; }
-  .breadcrumb span { color: #999; }
+  /* Sidebar */
+  .side { width: 56px; background: #f0f0f0; border-right: 1px solid #e0e0e0; padding: 14px 8px; display: flex; flex-direction: column; gap: 8px; align-items: center; }
+  .side-item { width: 38px; height: 38px; border-radius: 6px; background: #e2e2e2; }
+  .side-item.active { background: #bbb; }
 
-  /* PAGE TITLE ROW */
-  .page-title-row { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; }
-  .page-title { font-size: 28px; font-weight: 700; color: #111; }
-  .btn-primary { background: white; color: #C4136B; border: 1.5px solid #C4136B; border-radius: 6px; padding: 8px 16px; font-size: 13px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+  /* Content */
+  .content { flex: 1; padding: 24px 28px; }
+  .breadcrumb { height: 10px; width: 200px; background: #e8e8e8; border-radius: 3px; margin-bottom: 16px; }
+  .page-title { height: 22px; width: 280px; background: #222; border-radius: 3px; margin-bottom: 18px; }
 
-  /* SEARCH ROW */
-  .search-hint { font-size: 13px; color: #666; margin-bottom: 12px; }
-  .search-row { display: flex; gap: 10px; margin-bottom: 24px; }
-  .search-input { flex: 1; border: 1px solid #ddd; border-radius: 6px; padding: 9px 14px; font-size: 13px; color: #333; outline: none; }
-  .search-input::placeholder { color: #aaa; }
-  .search-select { min-width: 160px; border: 1px solid #ddd; border-radius: 6px; padding: 9px 14px; font-size: 13px; color: #666; background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center; appearance: none; cursor: pointer; }
-  .btn-search { background: #C4136B; color: white; border: none; border-radius: 6px; padding: 9px 20px; font-size: 13px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+  /* Search row */
+  .search-row { display: flex; gap: 10px; margin-bottom: 20px; }
+  .search-field { flex: 1; height: 34px; border: 1px solid #ddd; border-radius: 5px; background: white; }
+  .search-field.narrow { flex: 0 0 140px; }
+  .search-btn { width: 80px; height: 34px; background: #555; border-radius: 5px; }
 
-  /* TABLE */
-  .table-header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-  .table-label { font-size: 16px; font-weight: 600; color: #111; }
-  .table-actions { display: flex; gap: 16px; }
-  .table-action { color: #C4136B; font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+  /* Table */
+  .table-label { height: 14px; width: 80px; background: #333; border-radius: 2px; margin-bottom: 10px; }
+  .table { border: 1px solid #e0e0e0; border-radius: 5px; overflow: hidden; }
+  .thead { height: 36px; background: #555; display: flex; align-items: center; padding: 0 14px; gap: 10px; }
+  .th { height: 8px; background: rgba(255,255,255,0.5); border-radius: 2px; }
+  .trow { height: 40px; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; padding: 0 14px; gap: 10px; }
+  .trow:last-child { border-bottom: none; }
+  .td { height: 8px; background: #e0e0e0; border-radius: 2px; }
+  .td.link { background: #aaa; }
+  .td.chip { background: #e8e8e8; height: 18px; border-radius: 3px; border: 1px solid #ddd; }
+  .td.badge-active { background: #c8e6c9; height: 18px; border-radius: 3px; }
+  .td.badge-inactive { background: #ffcdd2; height: 18px; border-radius: 3px; }
 
-  .table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  .table thead { background: #C4136B; }
-  .table thead th { color: white; padding: 11px 14px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.02em; white-space: nowrap; }
-  .table thead th:first-child { border-radius: 0; width: 36px; }
-  .table tbody tr { border-bottom: 1px solid #f0f0f0; }
-  .table tbody tr:hover { background: #fdf5fa; }
-  .table tbody td { padding: 11px 14px; color: #222; vertical-align: middle; }
-  .table tbody td:first-child { width: 36px; }
+  /* Detail */
+  .meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #eee; }
+  .meta-item { display: flex; flex-direction: column; gap: 5px; }
+  .meta-label { height: 7px; width: 80px; background: #ccc; border-radius: 2px; }
+  .meta-value { height: 9px; width: 140px; background: #444; border-radius: 2px; }
+  .field { display: flex; gap: 0; margin-bottom: 14px; align-items: flex-start; }
+  .field-label { width: 140px; height: 8px; background: #ccc; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .field-value { height: 8px; flex: 1; background: #555; border-radius: 2px; }
+  .field-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .field-chip { height: 20px; width: 90px; background: #ebebeb; border: 1px solid #ddd; border-radius: 3px; }
 
-  .quota-link { color: #C4136B; text-decoration: none; font-weight: 500; }
-  .chip { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; background: #f0f0f0; color: #555; margin: 1px 2px 1px 0; }
-  .status-active { background: #e6f4ea; color: #2e7d32; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 500; }
-  .status-inactive { background: #fce8e8; color: #c62828; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 500; }
+  /* Tabs */
+  .tabs { display: flex; border-bottom: 1px solid #e8e8e8; margin-bottom: 20px; gap: 0; }
+  .tab-item { padding: 10px 18px; font-size: 13px; color: #999; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .tab-item.active { color: #333; border-bottom-color: #555; font-weight: 500; }
 
-  .cb { width: 14px; height: 14px; border: 1.5px solid #ccc; border-radius: 3px; cursor: pointer; }
-  .row-actions { display: flex; gap: 12px; justify-content: flex-end; opacity: 0.5; }
+  /* Workflow stepper */
+  .stepper { display: flex; align-items: flex-start; position: relative; padding: 28px 0 20px; justify-content: space-between; }
+  .stepper-line { position: absolute; top: 42px; left: 40px; right: 40px; height: 2px; background: #bbb; }
+  .step { display: flex; flex-direction: column; align-items: center; gap: 8px; flex: 1; position: relative; z-index: 1; }
+  .step-circle { width: 26px; height: 26px; border-radius: 50%; background: #555; border: 2px solid #555; }
+  .step-circle.pending { background: white; border-color: #ccc; }
+  .step-label { height: 8px; width: 70px; background: #444; border-radius: 2px; }
+  .step-date { height: 7px; width: 55px; background: #ddd; border-radius: 2px; }
 
-  .pagination-row { display: flex; align-items: center; justify-content: flex-end; gap: 12px; margin-top: 16px; font-size: 13px; color: #666; }
-  .pag-btn { width: 28px; height: 28px; border: 1px solid #ddd; border-radius: 4px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #555; }
+  .approver-block { margin-top: 16px; border: 1px solid #e8e8e8; border-radius: 5px; padding: 12px; }
+  .approver-title { height: 8px; width: 100px; background: #888; border-radius: 2px; margin-bottom: 10px; }
+  .approver-row-item { display: flex; align-items: center; gap: 10px; padding: 5px 0; border-bottom: 1px solid #f5f5f5; }
+  .approver-name { height: 8px; width: 80px; background: #ccc; border-radius: 2px; }
+  .approver-badge { height: 16px; width: 55px; background: #c8e6c9; border-radius: 3px; }
 
-  /* ── DETAIL VIEW ── */
-  .detail-title-row { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
-  .detail-title { font-size: 28px; font-weight: 700; color: #111; }
-  .detail-actions { margin-left: auto; display: flex; gap: 12px; }
-  .btn-ghost { color: #C4136B; background: none; border: none; font-size: 13px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 5px; }
-
-  .tabs { display: flex; border-bottom: 1px solid #e8e8e8; margin-bottom: 24px; }
-  .dtab { font-size: 14px; font-weight: 500; padding: 10px 20px; cursor: pointer; color: #999; border-bottom: 2px solid transparent; margin-bottom: -1px; }
-  .dtab.active { color: #C4136B; border-bottom-color: #C4136B; }
-
-  .meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 0; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0; }
-  .meta-row { display: flex; gap: 16px; padding: 8px 0; }
-  .meta-label { color: #999; font-size: 13px; min-width: 140px; }
-  .meta-value { color: #111; font-size: 13px; font-weight: 500; }
-
-  .field-grid { display: grid; gap: 16px; }
-  .field-row { display: flex; align-items: flex-start; gap: 0; }
-  .field-label { color: #888; font-size: 13px; min-width: 160px; padding-top: 2px; }
-  .field-value { color: #111; font-size: 13px; }
-  .field-chips { display: flex; flex-wrap: wrap; gap: 4px; }
-
-  /* ── CHANGE REQUEST WORKFLOW ── */
-  .workflow-stepper { display: flex; align-items: flex-start; justify-content: space-between; padding: 32px 0; position: relative; }
-  .workflow-line { position: absolute; top: 47px; left: 60px; right: 60px; height: 2px; background: #C4136B; z-index: 0; }
-  .step { display: flex; flex-direction: column; align-items: center; gap: 8px; position: relative; z-index: 1; flex: 1; }
-  .step-circle { width: 28px; height: 28px; border-radius: 50%; background: #C4136B; display: flex; align-items: center; justify-content: center; }
-  .step-circle svg { color: white; }
-  .step-name { font-size: 12px; font-weight: 600; color: #111; text-align: center; }
-  .step-date { font-size: 11px; color: #999; text-align: center; line-height: 1.4; }
-
-  .approver-section { margin-top: 8px; }
-  .approver-group-title { font-size: 12px; font-weight: 600; color: #555; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-  .approver-count { background: #f0f0f0; color: #555; border-radius: 10px; padding: 1px 7px; font-size: 11px; }
-  .approver-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #f5f5f5; }
-  .approver-name { font-size: 13px; color: #333; }
-
-  /* ── LAYOUT WRAPPER ── */
   .screen-wrapper { margin-bottom: 40px; }
-  .screen-caption { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #999; margin-bottom: 8px; }
-  .screen-note { font-size: 12px; color: #aaa; margin-top: 8px; font-style: italic; }
+  .screen-caption { font-size: 11px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: #999; margin-bottom: 8px; font-family: sans-serif; }
+  .screen-note { font-size: 11px; color: #bbb; margin-top: 8px; font-style: italic; font-family: sans-serif; }
 </style>
 </head>
-<body style="padding: 40px; display: flex; flex-direction: column; gap: 48px; align-items: center;">
+<body style="padding: 40px; background: #f8f8f8;">
 
-<!-- SCREEN 1: QUOTA LIST -->
-<div class="screen-wrapper" style="width: 1200px;">
+<!-- SCREEN 1: LIST VIEW -->
+<div class="screen-wrapper">
   <div class="screen-caption">Screen 1 — Quota management list view</div>
-  <div class="shell">
-    <div class="topbar">
-      <span class="topbar-title">Asset Management Platform</span>
-      <div class="topbar-nav">
-        <div class="tab active">Quota Manager</div>
-        <div class="tab">API Usage</div>
-        <div class="tab">Change Requests</div>
-      </div>
-      <div class="topbar-avatar">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-      </div>
+  <div class="frame">
+    <div class="bar">
+      <div class="bar-dot"></div><div class="bar-dot"></div><div class="bar-dot"></div>
+      <div class="bar-tab active" style="width:100px"></div>
+      <div class="bar-tab" style="width:80px"></div>
+      <div class="bar-tab" style="width:120px"></div>
     </div>
-    <div class="layout">
-      <div class="sidebar">
-        <div class="sideicon active">
-          <div class="sideicon-dot"></div><div class="sideicon-dot" style="width:10px"></div>
-          <div class="sideicon-label">Quotas</div>
-        </div>
-        <div class="sideicon">
-          <div class="sideicon-dot"></div><div class="sideicon-dot" style="width:10px"></div>
-          <div class="sideicon-label">APIs</div>
-        </div>
+    <div class="body">
+      <div class="side">
+        <div class="side-item active"></div>
+        <div class="side-item"></div>
       </div>
       <div class="content">
-        <div class="breadcrumb">Portal <span>/</span> Quota Management</div>
-        <div class="page-title-row">
-          <div class="page-title">Quota Management</div>
-          <button class="btn-primary">+ Create New Quota</button>
-        </div>
-        <div class="search-hint">Search by Partner, API name or Quota name.</div>
+        <div class="breadcrumb"></div>
+        <div class="page-title"></div>
         <div class="search-row">
-          <input class="search-input" placeholder="Quota Name">
-          <select class="search-select"><option>Partner</option></select>
-          <select class="search-select"><option>API Name</option></select>
-          <button class="btn-search">🔍 Search</button>
+          <div class="search-field"></div>
+          <div class="search-field narrow"></div>
+          <div class="search-field narrow"></div>
+          <div class="search-btn"></div>
         </div>
-        <div class="table-header-row">
-          <div class="table-label">Quotas</div>
-          <div class="table-actions">
-            <div class="table-action">⚙ Filter</div>
-            <div class="table-action">⊞ Columns</div>
-            <div class="table-action">↓ Export</div>
+        <div class="table-label"></div>
+        <div class="table">
+          <div class="thead">
+            <div class="th" style="width:20px"></div>
+            <div class="th" style="width:90px"></div>
+            <div class="th" style="width:120px"></div>
+            <div class="th" style="width:100px"></div>
+            <div class="th" style="width:60px"></div>
+            <div class="th" style="width:60px"></div>
+            <div class="th" style="width:70px"></div>
           </div>
-        </div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th><div class="cb" style="border-color:rgba(255,255,255,0.4)"></div></th>
-              <th>Quota Name ↓</th><th>Partner</th><th>APIs</th>
-              <th>Status ↓</th><th>Type ↓</th><th>Limit ↓</th>
-              <th>Start Hour ↓</th><th>End Hour ↓</th><th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td><div class="cb"></div></td><td><a class="quota-link">Quota 12</a></td><td><span class="chip">Partner A | 91</span></td><td><span class="chip">Activate</span></td><td><span class="status-active">Active</span></td><td>Individual</td><td>1000/min</td><td>00:00</td><td>24:00</td><td><div class="row-actions">✏ 🗑</div></td></tr>
-            <tr><td><div class="cb"></div></td><td><a class="quota-link">Quota 11</a></td><td><span class="chip">Partner B | 14</span></td><td><span class="chip">Suspend</span></td><td><span class="status-active">Active</span></td><td>Individual</td><td>2000/min</td><td>10:00</td><td>16:00</td><td><div class="row-actions">✏ 🗑</div></td></tr>
-            <tr><td><div class="cb"></div></td><td><a class="quota-link">Quota 10</a></td><td><span class="chip">Partner C | 20</span></td><td><span class="chip">Restricted-update</span></td><td><span class="status-active">Active</span></td><td>Group</td><td>3000/min</td><td>10:00</td><td>16:00</td><td><div class="row-actions">✏ 🗑</div></td></tr>
-            <tr><td><div class="cb"></div></td><td><a class="quota-link">Quota 09</a></td><td><span class="chip">Partner A | 91</span></td><td><span class="chip">Suspend</span><span class="chip">Restricted-update</span></td><td><span class="status-active">Active</span></td><td>Individual</td><td>10000/day</td><td>10:00</td><td>16:00</td><td><div class="row-actions">✏ 🗑</div></td></tr>
-            <tr><td><div class="cb"></div></td><td><a class="quota-link">Quota 08</a></td><td><span class="chip">All</span></td><td><span class="chip">Suspend</span></td><td><span class="status-active">Active</span></td><td>Platform</td><td>30000/day</td><td>10:00</td><td>16:00</td><td><div class="row-actions">✏ 🗑</div></td></tr>
-            <tr><td><div class="cb"></div></td><td><a class="quota-link">Quota 07</a></td><td><span class="chip">Partner D | 73</span></td><td><span class="chip">Activate</span><span class="chip">Reactivate</span></td><td><span class="status-inactive">Inactive</span></td><td>Group</td><td>1000/min</td><td>17:00</td><td>20:00</td><td><div class="row-actions">✏ 🗑</div></td></tr>
-            <tr><td><div class="cb"></div></td><td><a class="quota-link">Quota 06</a></td><td><span class="chip">Partner E | 09</span></td><td><span class="chip">Activate</span></td><td><span class="status-inactive">Inactive</span></td><td>Platform</td><td>1000/hour</td><td>11:00</td><td>13:00</td><td><div class="row-actions">✏ 🗑</div></td></tr>
-            <tr><td><div class="cb"></div></td><td><a class="quota-link">Quota 05</a></td><td><span class="chip">Partner F | 22</span></td><td><span class="chip">Activate</span><span class="chip">Reactivate</span></td><td><span class="status-active">Active</span></td><td>Group</td><td>2000/hour</td><td>10:00</td><td>19:00</td><td><div class="row-actions">✏ 🗑</div></td></tr>
-          </tbody>
-        </table>
-        <div class="pagination-row">
-          <span>Items per page: 10</span>
-          <span>1–8 of 38</span>
-          <div class="pag-btn">‹</div>
-          <div class="pag-btn">›</div>
+          ${[
+            ['link','chip','chip badge-active',''],
+            ['link','chip','chip badge-active',''],
+            ['link','chip chip','chip badge-active',''],
+            ['link','chip','chip badge-inactive',''],
+            ['link','chip chip','chip badge-active',''],
+            ['link','chip','chip badge-inactive',''],
+            ['link','chip','chip badge-active',''],
+            ['link','chip chip','chip badge-active',''],
+          ].map(r => `
+          <div class="trow">
+            <div class="td" style="width:14px;height:14px;background:#e8e8e8;border:1px solid #ddd;border-radius:3px"></div>
+            <div class="td link" style="width:70px"></div>
+            <div class="td ${r[1]}" style="width:${r[1].includes('chip chip')?'170px':'90px'}"></div>
+            <div class="td ${r[1].includes('chip chip')?'chip':'chip'}" style="width:80px"></div>
+            <div class="td ${r[2]}" style="width:55px"></div>
+            <div class="td" style="width:60px"></div>
+            <div class="td" style="width:55px"></div>
+          </div>`).join('')}
         </div>
       </div>
     </div>
   </div>
-  <div class="screen-note">Illustrative wireframe. Client identity and real data not shown.</div>
+  <div class="screen-note">Illustrative wireframe — not a reproduction of client UI</div>
 </div>
 
-<!-- SCREEN 2: QUOTA DETAIL -->
-<div class="screen-wrapper" style="width: 1200px;">
-  <div class="screen-caption">Screen 2 — Quota detail and change history</div>
-  <div class="shell">
-    <div class="topbar">
-      <span class="topbar-title">Asset Management Platform</span>
-      <div class="topbar-nav">
-        <div class="tab active">Quota Manager</div>
-        <div class="tab">API Usage</div>
-        <div class="tab">Change Requests</div>
-      </div>
-      <div class="topbar-avatar">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-      </div>
+<!-- SCREEN 2: DETAIL -->
+<div class="screen-wrapper">
+  <div class="screen-caption">Screen 2 — Quota detail and audit trail</div>
+  <div class="frame">
+    <div class="bar">
+      <div class="bar-dot"></div><div class="bar-dot"></div><div class="bar-dot"></div>
+      <div class="bar-tab active" style="width:100px"></div>
+      <div class="bar-tab" style="width:80px"></div>
+      <div class="bar-tab" style="width:120px"></div>
     </div>
-    <div class="layout">
-      <div class="sidebar">
-        <div class="sideicon active">
-          <div class="sideicon-dot"></div><div class="sideicon-dot" style="width:10px"></div>
-          <div class="sideicon-label">Quotas</div>
-        </div>
+    <div class="body">
+      <div class="side">
+        <div class="side-item active"></div>
+        <div class="side-item"></div>
       </div>
       <div class="content">
-        <div class="breadcrumb">Portal <span>/</span> Quota Management <span>/</span> Quota 1</div>
-        <div class="detail-title-row">
-          <div class="detail-title">Quota 1</div>
-          <span class="status-active" style="font-size:13px">Active</span>
-          <div class="detail-actions">
-            <button class="btn-ghost">✏ Edit</button>
-            <button class="btn-ghost">🗑 Delete</button>
-          </div>
+        <div class="breadcrumb"></div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+          <div class="page-title" style="margin:0"></div>
+          <div class="td badge-active" style="width:50px;height:20px;border-radius:4px"></div>
         </div>
         <div class="tabs">
-          <div class="dtab active">Quota Information</div>
-          <div class="dtab">Changes History</div>
+          <div class="tab-item active">Information</div>
+          <div class="tab-item">Change history</div>
         </div>
         <div class="meta-grid">
-          <div class="meta-row"><span class="meta-label">Created By</span><span class="meta-value">Admin</span></div>
-          <div class="meta-row"><span class="meta-label">Last Update By</span><span class="meta-value">Agent User</span></div>
-          <div class="meta-row"><span class="meta-label">Creation Date</span><span class="meta-value">04/17/2025</span></div>
-          <div class="meta-row"><span class="meta-label">Last Update Date</span><span class="meta-value">04/25/2025</span></div>
+          <div class="meta-item"><div class="meta-label"></div><div class="meta-value"></div></div>
+          <div class="meta-item"><div class="meta-label"></div><div class="meta-value"></div></div>
+          <div class="meta-item"><div class="meta-label"></div><div class="meta-value"></div></div>
+          <div class="meta-item"><div class="meta-label"></div><div class="meta-value"></div></div>
         </div>
-        <div class="field-grid">
-          <div class="field-row"><span class="field-label">Quota Description</span><span class="field-value">Standard quota for partner API access during business hours.</span></div>
-          <div class="field-row"><span class="field-label">Type</span><span class="field-value">Individual</span></div>
-          <div class="field-row"><span class="field-label">Limit</span><span class="field-value">10000/day</span></div>
-          <div class="field-row"><span class="field-label">Partners</span><div class="field-chips"><span class="chip">Partner A | 91</span><span class="chip">Partner B | 14</span><span class="chip">Partner D | 73</span></div></div>
-          <div class="field-row"><span class="field-label">APIs</span><div class="field-chips"><span class="chip">Activate</span><span class="chip">Restricted-update</span></div></div>
-          <div class="field-row"><span class="field-label">Start Hour</span><span class="field-value">05:00</span></div>
-          <div class="field-row"><span class="field-label">End Hour</span><span class="field-value">22:00</span></div>
-        </div>
+        <div class="field"><div class="field-label"></div><div class="field-value" style="max-width:300px"></div></div>
+        <div class="field"><div class="field-label"></div><div class="field-value" style="width:80px"></div></div>
+        <div class="field"><div class="field-label"></div><div class="field-value" style="width:100px"></div></div>
+        <div class="field"><div class="field-label"></div><div class="field-chips"><div class="field-chip"></div><div class="field-chip"></div><div class="field-chip"></div></div></div>
+        <div class="field"><div class="field-label"></div><div class="field-chips"><div class="field-chip" style="width:70px"></div><div class="field-chip" style="width:110px"></div></div></div>
+        <div class="field"><div class="field-label"></div><div class="field-value" style="width:50px"></div></div>
+        <div class="field"><div class="field-label"></div><div class="field-value" style="width:50px"></div></div>
       </div>
     </div>
   </div>
-  <div class="screen-note">Illustrative wireframe. Client identity and real data not shown.</div>
+  <div class="screen-note">Illustrative wireframe — not a reproduction of client UI</div>
 </div>
 
-<!-- SCREEN 3: CHANGE REQUEST WORKFLOW -->
-<div class="screen-wrapper" style="width: 1200px;">
+<!-- SCREEN 3: WORKFLOW -->
+<div class="screen-wrapper">
   <div class="screen-caption">Screen 3 — Change request approval workflow</div>
-  <div class="shell">
-    <div class="topbar">
-      <span class="topbar-title">Asset Management Platform</span>
-      <div class="topbar-nav">
-        <div class="tab">Quota Manager</div>
-        <div class="tab">API Usage</div>
-        <div class="tab active">Change Requests</div>
-      </div>
-      <div class="topbar-avatar">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-      </div>
+  <div class="frame">
+    <div class="bar">
+      <div class="bar-dot"></div><div class="bar-dot"></div><div class="bar-dot"></div>
+      <div class="bar-tab" style="width:100px"></div>
+      <div class="bar-tab" style="width:80px"></div>
+      <div class="bar-tab active" style="width:120px"></div>
     </div>
-    <div class="layout">
-      <div class="sidebar">
-        <div class="sideicon active">
-          <div class="sideicon-dot"></div><div class="sideicon-dot" style="width:10px"></div>
-          <div class="sideicon-label">CR</div>
-        </div>
+    <div class="body">
+      <div class="side">
+        <div class="side-item active"></div>
       </div>
       <div class="content">
-        <div class="breadcrumb">Portal <span>/</span> Change Requests <span>/</span> Quota limit update</div>
-        <div class="detail-title-row">
-          <div class="detail-title">Quota limit update</div>
-          <span class="status-active" style="font-size:13px">Completed</span>
-          <div class="detail-actions">
-            <button class="btn-ghost" style="color:#999">⊘ Cancel Change Request</button>
-          </div>
+        <div class="breadcrumb"></div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px">
+          <div class="page-title" style="margin:0;width:220px"></div>
+          <div class="td badge-active" style="width:60px;height:20px;border-radius:4px"></div>
         </div>
-        <div style="color:#999; font-size:12px; margin-bottom:20px;">CR-48152342</div>
+        <div style="height:8px;width:100px;background:#ddd;border-radius:2px;margin-bottom:20px"></div>
         <div class="tabs">
-          <div class="dtab">CR Information</div>
-          <div class="dtab active">Workflow</div>
+          <div class="tab-item">CR Information</div>
+          <div class="tab-item active">Workflow</div>
         </div>
 
-        <!-- Stepper -->
-        <div style="position:relative;">
-          <div class="workflow-stepper">
-            <div class="workflow-line"></div>
-            <div class="step">
-              <div class="step-circle">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
-              </div>
-              <div class="step-name">Submitted</div>
-              <div class="step-date">11/22/2025<br>12:34</div>
-            </div>
-            <div class="step">
-              <div class="step-circle">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
-              </div>
-              <div class="step-name">Accepted</div>
-              <div class="step-date">11/22/2025<br>12:34</div>
-            </div>
-            <div class="step">
-              <div class="step-circle">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
-              </div>
-              <div class="step-name">Approval in Progress</div>
-              <div class="step-date">11/22/2025<br>14:56</div>
-              <div class="approver-section" style="margin-top:16px; text-align:left;">
-                <div class="approver-group-title">Level 1 Approvers <span class="approver-count">3</span></div>
-                <div class="approver-row"><span class="approver-name">Agent A</span></div>
-                <div class="approver-row"><span class="approver-name">Agent B</span><span class="status-active" style="font-size:11px;margin-left:8px">Approved</span></div>
-                <div class="approver-row"><span class="approver-name">Agent C</span></div>
-                <div style="height:12px"></div>
-                <div class="approver-group-title">Level 2 Approvers <span class="approver-count">3</span></div>
-                <div class="approver-row"><span class="approver-name">Manager A</span><span class="status-active" style="font-size:11px;margin-left:8px">Approved</span></div>
-                <div class="approver-row"><span class="approver-name">Manager B</span></div>
-                <div class="approver-row"><span class="approver-name">Manager C</span></div>
-              </div>
-            </div>
-            <div class="step">
-              <div class="step-circle">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
-              </div>
-              <div class="step-name">Approved</div>
-              <div class="step-date">11/25/2025<br>19:02</div>
-            </div>
-            <div class="step">
-              <div class="step-circle">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
-              </div>
-              <div class="step-name">Provisioning</div>
-              <div class="step-date">11/25/2025<br>19:02</div>
-            </div>
-            <div class="step">
-              <div class="step-circle">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
-              </div>
-              <div class="step-name">Completed</div>
-              <div class="step-date">11/26/2025<br>09:14</div>
-            </div>
+        <div class="stepper">
+          <div class="stepper-line"></div>
+          ${['Submitted','Accepted','Approval in Progress','Approved','Provisioning','Completed'].map((s,i) => `
+          <div class="step">
+            <div class="step-circle${i>4?'.pending':''}"></div>
+            <div class="step-label"></div>
+            <div class="step-date"></div>
+          </div>`).join('')}
+        </div>
+
+        <div style="max-width:320px;margin-top:8px">
+          <div class="approver-block">
+            <div class="approver-title"></div>
+            <div class="approver-row-item"><div class="approver-name"></div></div>
+            <div class="approver-row-item"><div class="approver-name"></div><div class="approver-badge"></div></div>
+            <div class="approver-row-item"><div class="approver-name"></div></div>
+          </div>
+          <div style="height:12px"></div>
+          <div class="approver-block">
+            <div class="approver-title"></div>
+            <div class="approver-row-item"><div class="approver-name"></div><div class="approver-badge"></div></div>
+            <div class="approver-row-item"><div class="approver-name"></div></div>
+            <div class="approver-row-item"><div class="approver-name"></div></div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="screen-note">Illustrative wireframe. Client identity and real data not shown.</div>
+  <div class="screen-note">Illustrative wireframe — not a reproduction of client UI</div>
 </div>
 
 </body>
 </html>
-ENDOFFILE
