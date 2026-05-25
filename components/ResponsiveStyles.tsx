@@ -154,6 +154,15 @@ export default function ResponsiveStyles() {
       }
 
       /* Case study layout */
+      .case-callout {
+        grid-template-columns: 1fr 1fr !important;
+      }
+      .artifact-caption {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 2rem;
+      }
       .case-metrics {
         grid-template-columns: repeat(3, 1fr) !important;
       }
@@ -165,6 +174,7 @@ export default function ResponsiveStyles() {
       }
 
       @media (max-width: 900px) {
+        .case-callout { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
         .case-metrics { grid-template-columns: 1fr 1fr !important; }
         .case-context { grid-template-columns: 1fr !important; }
         .case-section { grid-template-columns: 1fr !important; gap: 1rem !important; }
@@ -172,6 +182,8 @@ export default function ResponsiveStyles() {
 
       @media (max-width: 680px) {
         .case-metrics { grid-template-columns: 1fr !important; }
+        .artifact-caption { flex-direction: column !important; gap: 0.5rem !important; }
+        .artifact-caption p:last-child { text-align: left !important; max-width: 100% !important; }
       }
 
       /* Footer logo invert in dark mode */

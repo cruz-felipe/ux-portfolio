@@ -9,7 +9,7 @@ interface Metric {
 
 interface Section {
   title: string;
-  body: string | string[]; // string[] = multiple paragraphs
+  body: string | string[];
 }
 
 interface Artifact {
@@ -24,8 +24,11 @@ export interface CaseStudyData {
   title: string;
   tagline: string;
   role: string;
+  roleDetail: string;
+  impactSummary: string;
   context: string;
   year: string;
+  location?: string;
   metrics: Metric[];
   sections: Section[];
   artifacts: Artifact[];
@@ -77,19 +80,40 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
       {/* Hero */}
       <section style={{
         padding: "9rem 2.5rem 5rem",
-        borderBottom: "0.5px solid var(--border)",
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.7s ease, transform 0.7s ease",
       }}>
         <div style={{ maxWidth: "1100px" }}>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500,
-            letterSpacing: "0.12em", textTransform: "uppercase",
-            color: "var(--muted)", marginBottom: "1.25rem",
-          }}>
-            {data.role} · {data.year}
-          </p>
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem", flexWrap: "wrap" }}>
+            <p style={{
+              fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500,
+              letterSpacing: "0.12em", textTransform: "uppercase",
+              color: "var(--muted)", margin: 0,
+            }}>
+              {data.role}
+            </p>
+            {data.location && (
+              <>
+                <span style={{ color: "var(--border)", fontSize: "11px" }}>·</span>
+                <p style={{
+                  fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500,
+                  letterSpacing: "0.12em", textTransform: "uppercase",
+                  color: "var(--red)", margin: 0,
+                }}>
+                  {data.location}
+                </p>
+              </>
+            )}
+            <span style={{ color: "var(--border)", fontSize: "11px" }}>·</span>
+            <p style={{
+              fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500,
+              letterSpacing: "0.12em", textTransform: "uppercase",
+              color: "var(--muted)", margin: 0,
+            }}>
+              {data.year}
+            </p>
+          </div>
           <h1 style={{
             fontFamily: "var(--font-display)",
             fontSize: "clamp(2.4rem, 5vw, 4.8rem)",
@@ -106,16 +130,47 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
             fontWeight: 300, lineHeight: 1.7,
             color: "var(--ink)", opacity: 0.75,
             maxWidth: "680px",
+            marginBottom: "3rem",
           }}>
             {data.tagline}
           </p>
+
+          {/* Role callout block */}
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "2rem",
+            padding: "1.5rem",
+            background: "color-mix(in srgb, var(--ink) 4%, var(--paper))",
+            borderRadius: "3px",
+            borderLeft: "3px solid var(--red)",
+            maxWidth: "680px",
+          }} className="case-callout">
+            <div>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--muted)", marginBottom: "0.4rem" }}>
+                My role
+              </p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 300, lineHeight: 1.6, color: "var(--ink)", margin: 0, opacity: 0.85 }}>
+                {data.roleDetail}
+              </p>
+            </div>
+            <div>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--muted)", marginBottom: "0.4rem" }}>
+                Business impact
+              </p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 300, lineHeight: 1.6, color: "var(--ink)", margin: 0, opacity: 0.85 }}>
+                {data.impactSummary}
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Metrics strip */}
       <section style={{
+        borderTop: "0.5px solid var(--border)",
         borderBottom: "0.5px solid var(--border)",
-        padding: "2.5rem 2.5rem",
+        padding: "3rem 2.5rem",
       }}>
         <div style={{
           display: "grid",
@@ -132,7 +187,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
                 fontFamily: "var(--font-display)",
                 fontSize: "clamp(1.8rem, 3vw, 2.8rem)",
                 fontWeight: 800, letterSpacing: "-0.03em",
-                lineHeight: 1, marginBottom: "0.4rem",
+                lineHeight: 1, marginBottom: "0.5rem",
                 color: "var(--ink)",
               }}>
                 <span style={{ color: "var(--red)" }}>{m.value}</span>
@@ -150,42 +205,33 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
       </section>
 
       {/* Context + NDA notice */}
-      <section style={{
-        padding: "4rem 2.5rem",
-        borderBottom: "0.5px solid var(--border)",
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: "4rem",
-        alignItems: "start",
-      }} className="case-context">
+      <section style={{ padding: "4rem 2.5rem" }} className="case-context">
         <p style={{
           fontFamily: "var(--font-body)",
           fontSize: "15px", fontWeight: 300,
           lineHeight: 1.75, color: "var(--ink)",
-          opacity: 0.8, margin: 0,
+          opacity: 0.8, margin: "0 0 1.5rem",
+          maxWidth: "680px",
         }}>
           {data.context}
         </p>
-        <div style={{
-          borderLeft: "2px solid var(--border)",
-          paddingLeft: "1.5rem",
+        <p style={{
+          fontFamily: "var(--font-body)", fontSize: "12px",
+          color: "var(--muted)", lineHeight: 1.7,
+          maxWidth: "520px",
+          paddingTop: "1.5rem",
+          borderTop: "0.5px solid var(--border)",
         }}>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "12px",
-            color: "var(--muted)", lineHeight: 1.7, margin: 0,
-          }}>
-            To respect non-disclosure agreements, the identity of this client has been omitted. Strategic challenges, decisions and outcomes are accurate. Visual artifacts are abstract representations of the system architecture and design thinking — not reproductions of proprietary screens.
-          </p>
-        </div>
+          To respect non-disclosure agreements, the identity of this client has been omitted. Strategic challenges, decisions and outcomes are accurate. Visual artifacts are abstract representations of system architecture and design thinking, not reproductions of proprietary screens.
+        </p>
       </section>
 
-      {/* Body sections + artifacts interspersed */}
-      <div style={{ padding: "0 2.5rem" }}>
+      {/* Body sections + artifacts */}
+      <div style={{ borderTop: "0.5px solid var(--border)" }}>
         {data.sections.map((section, si) => (
           <div key={si}>
-            {/* Section */}
             <section style={{
-              padding: "4rem 0",
+              padding: "4rem 2.5rem",
               borderBottom: "0.5px solid var(--border)",
               display: "grid",
               gridTemplateColumns: "200px 1fr",
@@ -196,10 +242,11 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
                 fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500,
                 letterSpacing: "0.12em", textTransform: "uppercase",
                 color: "var(--muted)", margin: 0, paddingTop: "4px",
+                position: "sticky", top: "80px",
               }}>
                 {section.title}
               </h2>
-              <div style={{ maxWidth: "680px" }}>
+              <div style={{ maxWidth: "640px" }}>
                 {Array.isArray(section.body) ? section.body.map((para, pi) => (
                   <p key={pi} style={{
                     fontFamily: "var(--font-body)", fontSize: "15px",
@@ -221,32 +268,34 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
               </div>
             </section>
 
-            {/* Artifact after every other section */}
+            {/* Artifact after section */}
             {data.artifacts[si] && (
               <section style={{
-                padding: "4rem 0",
+                padding: "3rem 2.5rem",
                 borderBottom: "0.5px solid var(--border)",
+                background: "color-mix(in srgb, var(--ink) 2%, var(--paper))",
               }}>
                 <div style={{
-                  background: "color-mix(in srgb, var(--ink) 4%, var(--paper))",
-                  borderRadius: "4px",
+                  border: "0.5px solid var(--border)",
+                  borderRadius: "3px",
                   padding: "2rem",
                   marginBottom: "1rem",
-                  border: "0.5px solid var(--border)",
+                  background: "var(--paper)",
                 }}>
                   {data.artifacts[si].component}
                 </div>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                <div className="artifact-caption">
                   <p style={{
                     fontFamily: "var(--font-body)", fontSize: "12px",
-                    color: "var(--muted)", margin: 0,
+                    fontWeight: 500,
+                    color: "var(--ink)", margin: 0, opacity: 0.7,
                   }}>
                     {data.artifacts[si].title}
                   </p>
                   <p style={{
                     fontFamily: "var(--font-body)", fontSize: "12px",
-                    color: "var(--muted)", opacity: 0.6, margin: 0,
-                    maxWidth: "480px", textAlign: "right",
+                    color: "var(--muted)", margin: 0,
+                    maxWidth: "480px",
                   }}>
                     {data.artifacts[si].caption}
                   </p>
@@ -259,24 +308,13 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
 
       {/* Next case */}
       {data.next && (
-        <section style={{
-          padding: "5rem 2.5rem",
-          borderTop: "0.5px solid var(--border)",
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-        }}>
-          <span style={{
-            fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500,
-            letterSpacing: "0.12em", textTransform: "uppercase",
-            color: "var(--muted)",
-          }}>
-            Next case
-          </span>
+        <section style={{ padding: "5rem 2.5rem" }}>
           <Link href={`/work/${data.next.slug}`} style={{
             fontFamily: "var(--font-display)",
             fontSize: "clamp(1.4rem, 3vw, 2.4rem)",
             fontWeight: 800, letterSpacing: "-0.02em",
             color: "var(--ink)", textDecoration: "none",
-            display: "flex", alignItems: "center", gap: "1rem",
+            display: "inline-flex", alignItems: "center", gap: "1rem",
             transition: "color 0.2s",
           }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "var(--red)")}

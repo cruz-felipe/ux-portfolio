@@ -236,7 +236,7 @@ export default function About() {
                 fontSize: "12px",
                 color: "var(--ink)",
                 opacity: 0.75,
-                border: "1px solid rgba(var(--ink-raw, 10,10,10),0.2)",
+                border: "1px solid var(--border)",
                 borderRadius: "2px",
                 padding: "5px 10px",
               }}>
