@@ -75,7 +75,6 @@ const data: CaseStudyData = {
       component: <VelocityDeltaArtifact />,
     },
   ],
-  next: { slug: "predictive-support-hub", title: "Predictive Support Hub" },
 };
 
 export default function DaneTelecom() {

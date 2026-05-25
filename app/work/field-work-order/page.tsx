@@ -76,7 +76,6 @@ const data: CaseStudyData = {
       component: <WorkOrderArtifact />,
     },
   ],
-  next: { slug: "dane-telecom", title: "Dane Telecom" },
 };
 
 export default function FieldWorkOrder() {

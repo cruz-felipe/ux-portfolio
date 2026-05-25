@@ -58,7 +58,6 @@ export interface CaseStudyData {
   artifacts: Artifact[];
   hideNda?: boolean;
   wideHero?: boolean;
-  next?: { slug: string; title: string };
 }
 
 const ALL_WORK = [

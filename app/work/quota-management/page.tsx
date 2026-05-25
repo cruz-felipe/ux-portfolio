@@ -3,7 +3,7 @@ import { QuotaArchitectureArtifact, WorkshopMethodArtifact, ApprovalFlowArtifact
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Quota Management — Felipe Cruz",
+  title: "Quota Management / Felipe Cruz",
   description: "Greenfield B2B asset management tool for a telecom BSS platform. Solo designer, built from workshops to production-ready flows.",
 };
 
@@ -71,7 +71,6 @@ const data: CaseStudyData = {
       component: <ApprovalFlowArtifact />,
     },
   ],
-  next: { slug: "dane-telecom", title: "Dane Telecom" },
 };
 
 export default function QuotaManagement() {

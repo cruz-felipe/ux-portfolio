@@ -1,21 +1,20 @@
 export function PageReductionArtifact() {
   return (
-    <svg viewBox="0 0 860 220" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
-      {/* Giant editorial numbers — reference image 4 bar style */}
-      <text x="0" y="110" fontFamily="var(--font-display)" fontSize="120" fontWeight="800" fill="var(--muted)" fillOpacity="0.12">160</text>
-      <text x="240" y="80" fontFamily="var(--font-display)" fontSize="60" fontWeight="800" fill="var(--muted)" fillOpacity="0.25">→</text>
-      <text x="320" y="110" fontFamily="var(--font-display)" fontSize="120" fontWeight="800" fill="var(--red)" fillOpacity="0.7">45</text>
+    <svg viewBox="0 0 820 160" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
 
-      <text x="0" y="130" fontFamily="var(--font-body)" fontSize="13" fill="var(--muted)">pages before</text>
-      <text x="320" y="130" fontFamily="var(--font-body)" fontSize="13" fill="var(--red)">pages after</text>
+      {/* Before bar — full width grey */}
+      <text x="0" y="14" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1.5">DOCUMENT SCOPE: BEFORE AND AFTER</text>
+      <rect x="0" y="22" width="820" height="40" rx="3" fill="#e8e8e4"/>
+      <text x="16" y="47" fontFamily="var(--font-body)" fontSize="13" fontWeight="600" fill="#555">Before: 160 pages</text>
 
-      {/* 72% badge */}
-      <circle cx="650" cy="90" r="70" fill="var(--red)" fillOpacity="0.08" stroke="var(--red)" strokeWidth="1.5"/>
-      <text x="650" y="84" textAnchor="middle" fontFamily="var(--font-display)" fontSize="40" fontWeight="800" fill="var(--red)">72%</text>
-      <text x="650" y="104" textAnchor="middle" fontFamily="var(--font-body)" fontSize="12" fill="var(--red)">reduction</text>
+      {/* After bar — 45/160 = 28% of width, solid red */}
+      <rect x="0" y="70" width="229" height="40" rx="3" fill="var(--red)"/>
+      <text x="16" y="95" fontFamily="var(--font-body)" fontSize="13" fontWeight="600" fill="white">After: 45 pages</text>
 
-      <text x="0" y="175" fontFamily="var(--font-body)" fontSize="11" fill="var(--muted)">Redundant sections consolidated. Duplicate device identifiers removed. Engineer-only content cut.</text>
-      <text x="0" y="192" fontFamily="var(--font-body)" fontSize="11" fill="var(--muted)">Copy rewritten to match field technician vocabulary. Validated section by section with business analysts and client stakeholders.</text>
+      {/* 72% callout */}
+      <rect x="620" y="60" width="200" height="60" rx="3" fill="#1a1a1a"/>
+      <text x="720" y="93" textAnchor="middle" fontFamily="var(--font-display)" fontSize="28" fontWeight="800" fill="var(--red)">72%</text>
+      <text x="720" y="111" textAnchor="middle" fontFamily="var(--font-body)" fontSize="11" fill="rgba(255,255,255,0.6)">page reduction</text>
     </svg>
   );
 }
@@ -31,34 +30,43 @@ export function SectionAuditArtifact() {
     {name:"OSS system status codes", usage:"None", redundancy:"High", vocab:"N/A", action:"Remove"},
   ];
 
-  const actionColor = (a: string) => a === "Remove" ? "var(--red)" : a === "Consolidate" ? "var(--muted)" : "var(--ink)";
+  const actionFill = (a: string) => a === "Remove" ? "var(--red)" : a === "Consolidate" ? "#1a1a1a" : "#e8e8e4";
+  const actionText = (a: string) => a === "Keep" ? "#555" : "white";
 
   return (
-    <svg viewBox="0 0 860 230" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
-      <text x="0" y="16" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1.5">SECTION AUDIT: FIELD USAGE AND REDUNDANCY</text>
+    <svg viewBox="0 0 820 210" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
 
-      <text x="240" y="34" fontFamily="var(--font-body)" fontSize="9" fontWeight="500" fill="var(--muted)" letterSpacing="0.5">FIELD USAGE</text>
-      <text x="380" y="34" fontFamily="var(--font-body)" fontSize="9" fontWeight="500" fill="var(--muted)" letterSpacing="0.5">REDUNDANCY</text>
-      <text x="510" y="34" fontFamily="var(--font-body)" fontSize="9" fontWeight="500" fill="var(--muted)" letterSpacing="0.5">VOCABULARY</text>
-      <text x="640" y="34" fontFamily="var(--font-body)" fontSize="9" fontWeight="500" fill="var(--muted)" letterSpacing="0.5">DECISION</text>
-
-      <line x1="0" y1="40" x2="860" y2="40" stroke="var(--border)" strokeWidth="0.5"/>
+      {/* Header row */}
+      <rect x="0" y="0" width="820" height="28" rx="2" fill="#1a1a1a"/>
+      {[["Section",0,200],["Field usage",200,80],["Redundancy",290,90],["Vocabulary",390,90],["Decision",490,80]].map(([label,x,w]) => (
+        <text key={String(label)} x={Number(x)+8} y="18" fontFamily="var(--font-body)" fontSize="10" fontWeight="600" fill="rgba(255,255,255,0.7)" letterSpacing="0.5">{String(label)}</text>
+      ))}
 
       {sections.map((s, i) => {
-        const y = 56 + i * 24;
+        const y = 32 + i * 24;
+        const bg = i % 2 === 0 ? "white" : "#fafaf8";
         return (
           <g key={i}>
-            <text x="0" y={y} fontFamily="var(--font-body)" fontSize="11" fill="var(--ink)" fillOpacity="0.75">{s.name}</text>
-            <text x="240" y={y} fontFamily="var(--font-body)" fontSize="11" fill={s.usage === "None" ? "var(--muted)" : "var(--ink)"} fillOpacity={s.usage === "None" ? 0.35 : 0.75}>{s.usage}</text>
-            <text x="380" y={y} fontFamily="var(--font-body)" fontSize="11" fill={s.redundancy === "High" ? "var(--red)" : "var(--muted)"} fillOpacity={s.redundancy === "High" ? 0.7 : 0.75}>{s.redundancy}</text>
-            <text x="510" y={y} fontFamily="var(--font-body)" fontSize="11" fill="var(--muted)">{s.vocab}</text>
-            <text x="640" y={y} fontFamily="var(--font-body)" fontSize="11" fontWeight="600" fill={actionColor(s.action)}>{s.action}</text>
-            <line x1="0" y1={y + 6} x2="860" y2={y + 6} stroke="var(--border)" strokeWidth="0.3" strokeDasharray="2,4"/>
+            <rect x="0" y={y} width="820" height="24" fill={bg}/>
+            <text x="8" y={y+15} fontFamily="var(--font-body)" fontSize="11" fill="#333">{s.name}</text>
+            {/* Usage */}
+            <rect x="200" y={y+3} width="70" height="18" rx="9"
+              fill={s.usage === "High" ? "#1a1a1a" : "#e8e8e4"}/>
+            <text x="235" y={y+15} textAnchor="middle" fontFamily="var(--font-body)" fontSize="9" fontWeight="600"
+              fill={s.usage === "High" ? "white" : "#888"}>{s.usage}</text>
+            {/* Redundancy */}
+            <rect x="290" y={y+3} width="80" height="18" rx="9"
+              fill={s.redundancy === "High" ? "var(--red)" : s.redundancy === "Medium" ? "#888" : "#e8e8e4"}/>
+            <text x="330" y={y+15} textAnchor="middle" fontFamily="var(--font-body)" fontSize="9" fontWeight="600"
+              fill={s.redundancy === "Low" ? "#888" : "white"}>{s.redundancy}</text>
+            {/* Vocab */}
+            <text x="398" y={y+15} fontFamily="var(--font-body)" fontSize="11" fill="#888">{s.vocab}</text>
+            {/* Decision */}
+            <rect x="490" y={y+3} width="80" height="18" rx="9" fill={actionFill(s.action)}/>
+            <text x="530" y={y+15} textAnchor="middle" fontFamily="var(--font-body)" fontSize="9" fontWeight="600" fill={actionText(s.action)}>{s.action}</text>
           </g>
         );
       })}
-
-      <text x="0" y="228" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Assessed in section-by-section review. Field usage and redundancy ratings based on stakeholder and analyst input.</text>
     </svg>
   );
 }
@@ -76,42 +84,43 @@ export function WorkOrderArtifact() {
     {label:"Prerequisites", removed:false},
     {label:"Device ID ref C", removed:true},
   ];
-  const after = ["Field header","Prerequisites","Device identification","Installation sequence","Network configuration"];
+  const after = ["Field header","Prerequisites","Device ID","Installation","Network config"];
 
   return (
-    <svg viewBox="0 0 860 280" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
-      <text x="0" y="16" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1.5">DOCUMENT STRUCTURE: BEFORE AND AFTER</text>
+    <svg viewBox="0 0 820 220" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
+      <text x="0" y="14" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1.5">DOCUMENT STRUCTURE: BEFORE AND AFTER</text>
 
-      <text x="0" y="34" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Before: engineer-ordered, 10 sections</text>
+      <text x="0" y="32" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Before · engineer-ordered · 10 sections</text>
       {before.map((s, i) => {
-        const col = Math.floor(i / 5);
-        const row = i % 5;
-        const x = col * 220;
-        const y = 42 + row * 30;
+        const col = Math.floor(i/5), row = i%5;
+        const x = col*220, y = 38 + row*28;
         return (
           <g key={i}>
-            <rect x={x} y={y} width="208" height="22" rx="2" fill="none" stroke="var(--border)"
-              strokeWidth="0.5" strokeDasharray={s.removed ? "3,2" : "none"}/>
-            <text x={x + 8} y={y + 14} fontFamily="var(--font-body)" fontSize="10"
-              fill={s.removed ? "var(--muted)" : "var(--ink)"}
-              fillOpacity={s.removed ? 0.35 : 0.8}>{s.label}</text>
+            <rect x={x} y={y} width="208" height="22" rx="2"
+              fill={s.removed ? "#e8e8e4" : "#1a1a1a"}/>
+            <text x={x+8} y={y+14} fontFamily="var(--font-body)" fontSize="10"
+              fontWeight={s.removed ? "400" : "500"}
+              fill={s.removed ? "#bbb" : "white"}>{s.label}</text>
+            {s.removed && (
+              <line x1={x+6} y1={y+11} x2={x+100} y2={y+11} stroke="#bbb" strokeWidth="1"/>
+            )}
           </g>
         );
       })}
 
-      <line x1="450" y1="30" x2="450" y2="200" stroke="var(--border)" strokeWidth="0.5"/>
-      <text x="490" y="80" fontFamily="var(--font-display)" fontSize="32" fontWeight="800" fill="var(--red)">→</text>
+      {/* Arrow */}
+      <rect x="454" y="94" width="36" height="36" rx="18" fill="var(--red)"/>
+      <text x="472" y="116" textAnchor="middle" fontFamily="var(--font-body)" fontSize="18" fill="white">→</text>
 
-      <text x="540" y="34" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">After: task-ordered, 5 sections</text>
+      {/* After */}
+      <text x="506" y="32" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">After · task-ordered · 5 sections</text>
       {after.map((s, i) => (
         <g key={i}>
-          <rect x="540" y={42 + i * 32} width="300" height="24" rx="12" fill="var(--red)" fillOpacity={0.06 + i * 0.02} stroke="var(--red)" strokeWidth="0.5"/>
-          <text x="690" y={42 + i * 32 + 15} textAnchor="middle" fontFamily="var(--font-body)" fontSize="11" fontWeight="500" fill="var(--ink)" fillOpacity="0.85">{s}</text>
+          <rect x="506" y={38+i*28} width="310" height="22" rx="11"
+            fill={i===0 ? "var(--red)" : "#1a1a1a"}/>
+          <text x="661" y={38+i*28+14} textAnchor="middle" fontFamily="var(--font-body)" fontSize="11" fontWeight="500" fill="white">{s}</text>
         </g>
       ))}
-
-      <text x="0" y="240" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Dashed sections removed or consolidated. Reading order changed from system-generated to task-execution order.</text>
-      <text x="0" y="256" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Copy rewritten throughout to match field technician vocabulary rather than OSS system terminology.</text>
     </svg>
   );
 }

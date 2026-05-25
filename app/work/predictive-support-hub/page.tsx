@@ -68,7 +68,6 @@ const data: CaseStudyData = {
       component: <AIOrchestrationArtifact />,
     },
   ],
-  next: { slug: "b2b-sales-rescue", title: "B2B Sales Rescue" },
 };
 
 export default function PredictiveSupportHub() {

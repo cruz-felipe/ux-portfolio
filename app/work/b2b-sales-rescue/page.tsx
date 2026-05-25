@@ -66,7 +66,6 @@ const data: CaseStudyData = {
       component: <ResearchMethodologyArtifact />,
     },
   ],
-  next: { slug: "dane-telecom", title: "Dane Telecom" },
 };
 
 export default function B2BSalesRescue() {

@@ -62,7 +62,6 @@ const data: CaseStudyData = {
         "The tech cards include phonetic transcription because Russian script is unfamiliar to most users at this level. The cultural note goes further than vocabulary it explains register and real usage context, like noting that 'Figma dominou o mercado russo, então a resposta é quase sempre sim.'",
       ],
       screens: [
-        { src: `${BASE}/Screenshot_2026-05-25_at_13_21_04.png`, caption: "Russian tech card. Cyrillic, phonetic transcription and cultural note." },
         { src: `${BASE}/Screenshot_2026-05-25_at_13_22_05.png`, caption: "Recall mode, Russian tech. Correct answer, UX documentation example with context note." },
       ],
     },
@@ -70,7 +69,6 @@ const data: CaseStudyData = {
   artifacts: [],
   hideNda: true,
   wideHero: true,
-  next: { slug: "field-work-order", title: "Field Work Order" },
 };
 
 export default function Vocabulary() {
