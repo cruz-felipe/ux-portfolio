@@ -2,7 +2,7 @@
 import { useRef, useEffect, useState } from "react";
 
 const SKILLS = [
-  "Enterprise Product Design",
+  "Product Design",
   "Design Systems",
   "BSS / OSS",
   "Team Leadership",
@@ -17,12 +17,11 @@ const SKILLS = [
 ];
 
 const EXPERIENCE = [
-
   {
-    role: "UX Mentor",
-    company: "CareerFoundry",
-    period: "Feb 2021 — Feb 2026",
-    note: "Mentored designers through career transitions with portfolio reviews, interview preparation and feedback on what the industry actually rewards.",
+    role: "Senior UI Designer → Group Leader",
+    company: "Netcracker Technology",
+    period: "Aug 2023 — Present",
+    note: "Joined as Senior UI Designer. Took on Group Leader responsibilities for the Brazil design team. Cross-functional alignment, design system governance, and IC work on global OSS/BSS products.",
   },
   {
     role: "Senior Experience Designer",
@@ -31,16 +30,16 @@ const EXPERIENCE = [
     note: "UX strategy and interaction design for enterprise clients across industries. Design systems, usability evaluations, and alignment between design, product and engineering teams.",
   },
   {
-    role: "Senior UI Designer → Group Leader",
-    company: "Netcracker Technology",
-    period: "Aug 2023 — Present",
-    note: "Joined as Senior UI Designer. Took on Group Leader responsibilities for the Brazil design team — cross-functional alignment, design system governance, and IC work on global OSS/BSS products.",
-  },
-  {
     role: "UX/UI Designer → Group Leader",
     company: "Netcracker Technology",
-    period: "Dec 2018 — Jul 2022",
+    period: "Dec 2018 — Aug 2022",
     note: "Started as UX/UI Designer, promoted to Group Leader. Full-cycle product design on OSS/BSS telecom platforms across multiple countries.",
+  },
+  {
+    role: "UX Mentor",
+    company: "CareerFoundry",
+    period: "Feb 2021 — Feb 2026",
+    note: "Mentored designers through career transitions with portfolio reviews, interview preparation and feedback on what the industry actually rewards.",
   },
   {
     role: "Freelance Penciler",
@@ -51,21 +50,9 @@ const EXPERIENCE = [
 ];
 
 const EDUCATION = [
-  {
-    degree: "Design and Visual Communications",
-    school: "UC San Diego",
-    
-  },
-  {
-    degree: "Illustration",
-    school: "EBAC — Escola Britânica de Artes Criativas e Tecnologia",
-    
-  },
-  {
-    degree: "Bachelor, Industrial Design",
-    school: "Estácio",
-    
-  },
+  { degree: "Design and Visual Communications", school: "UC San Diego" },
+  { degree: "Illustration", school: "EBAC — Escola Britânica de Artes Criativas e Tecnologia" },
+  { degree: "Bachelor, Industrial Design", school: "Estácio" },
 ];
 
 function useVisible(threshold = 0.08) {
@@ -113,13 +100,7 @@ export default function About() {
       <div className="about-top">
         {/* Photo */}
         <div className="about-photo-col">
-          <div style={{
-            width: "100%",
-            maxWidth: "300px",
-            position: "relative",
-            borderRadius: "2px",
-            overflow: "hidden",
-          }}>
+          <div style={{ width: "100%", maxWidth: "300px", position: "relative", borderRadius: "2px", overflow: "hidden" }}>
             <img
               src="/photo.jpg"
               alt="Felipe Cruz sketching in Tiradentes, Brazil"
@@ -132,19 +113,13 @@ export default function About() {
                 aspectRatio: "3/4",
               }}
             />
-            <div style={{
-              position: "absolute",
-              bottom: 0,
-              left: 0,
-              right: 0,
-              height: "4px",
-              background: "var(--red)",
-            }}/>
+            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "4px", background: "var(--red)" }}/>
           </div>
         </div>
 
-        {/* Bio — from current about page copy */}
+        {/* Bio */}
         <div className="about-bio-col">
+          {/* Main bio — rewritten to match portfolio tone */}
           <p style={{
             fontFamily: "var(--font-body)",
             fontSize: "clamp(1rem, 1.4vw, 1.15rem)",
@@ -154,9 +129,9 @@ export default function About() {
             marginBottom: "1.25rem",
             opacity: 0.88,
           }}>
-            Fifteen years in. Long enough to know that most design issues are
-            communication failures — between design and engineering, between product
-            and business, between what was decided in the room and what actually shipped.
+            Fifteen years in. Long enough to know that most design problems are
+            really communication failures — between design and engineering, between
+            what was decided and what actually shipped.
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
@@ -167,9 +142,10 @@ export default function About() {
             opacity: 0.72,
             marginBottom: "1.25rem",
           }}>
-            I lead a design team in Brazil, contribute as an IC to global products and
-            build the systems that remain consistent at scale, making sure every decision
-            survives contact with the people who have to deliver it.
+            I lead a team in Brazil and contribute as an IC to global products.
+            My job is to build systems that stay consistent at scale — making sure
+            every design decision survives contact with the engineers, analysts,
+            and stakeholders who have to deliver it.
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
@@ -180,19 +156,19 @@ export default function About() {
             opacity: 0.72,
             marginBottom: "2.5rem",
           }}>
-            Working across cultures taught me that good process may not be universal,
-            but clear communication is.
+            Working across cultures taught me that good process may not be universal.
+            Clear communication is.
           </p>
 
           {/* Beyond the work */}
           <p style={{
             fontFamily: "var(--font-display)",
-            fontSize: "13px",
+            fontSize: "11px",
             fontWeight: 700,
-            letterSpacing: "0.08em",
+            letterSpacing: "0.12em",
             textTransform: "uppercase",
             color: "var(--muted)",
-            marginBottom: "0.75rem",
+            marginBottom: "1rem",
           }}>
             Beyond the work
           </p>
@@ -205,7 +181,7 @@ export default function About() {
             opacity: 0.72,
             marginBottom: "1rem",
           }}>
-            I&apos;m Brazilian. I grew up building things with whatever was available —
+            I&apos;m Brazilian. I grew up building things with whatever was available,
             which probably explains why I&apos;m more interested in constraints than
             in ideal conditions.
           </p>
@@ -218,9 +194,9 @@ export default function About() {
             opacity: 0.72,
             marginBottom: "1rem",
           }}>
-            I hold a 2nd degree black belt in ITF Taekwondo. Not because I wanted to
-            fight, but because I needed to know I could keep going when things stopped
-            being comfortable.
+            I hold a 2nd degree black belt in ITF Taekwondo. Not because I wanted
+            to fight, but because I needed to know I could keep going when things
+            stopped being comfortable.
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
@@ -231,11 +207,11 @@ export default function About() {
             opacity: 0.72,
             marginBottom: "1rem",
           }}>
-            I&apos;ve been drawing my whole life. Characters, fantasy, concept art —
-            painting and illustration are where I think without deliverables. Recently
-            I got my first comic published at MSP Est&uacute;dios, the studio behind
-            Turma da M&ocirc;nica — Brazil&apos;s most enduring comics universe. That
-            one took years and it matters more than I expected.
+            I&apos;ve been drawing my whole life. Painting and illustration are where
+            I think without deliverables. Recently I got my first comic published at
+            MSP Est&uacute;dios, the studio behind Turma da M&ocirc;nica —
+            Brazil&apos;s most enduring comics universe. That one took years and it
+            matters more than I expected.
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
@@ -246,10 +222,10 @@ export default function About() {
             opacity: 0.72,
             marginBottom: "2.5rem",
           }}>
-            I also have a genuine obsession with dinosaurs. Something so complex, so
-            dominant, that left behind just enough evidence for us to piece together
-            the whole picture. That&apos;s not so different from what we do with
-            products, is it?
+            I also have a genuine obsession with dinosaurs. Can you imagine how
+            something so complex, so dominant, left behind just enough evidence for
+            us to piece together the whole picture. That&apos;s not so different from
+            what we do with products, is it?
           </p>
 
           {/* Skills */}
@@ -386,14 +362,12 @@ export default function About() {
                 fontFamily: "var(--font-body)",
                 fontSize: "13px",
                 color: "var(--muted)",
-                marginBottom: "0.1rem",
               }}>
                 {ed.school}
               </div>
             </div>
           ))}
 
-          {/* NDA note — no divider above */}
           <p style={{
             fontFamily: "var(--font-body)",
             fontSize: "12px",
