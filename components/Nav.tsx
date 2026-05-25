@@ -18,6 +18,14 @@ export default function Nav() {
     { label: "Contact", href: "#contact" },
   ];
 
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const offset = 80; // nav height
+    const top = el.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: "smooth" });
+  };
+
   return (
     <>
       <nav
@@ -54,15 +62,18 @@ export default function Nav() {
         {/* Desktop links */}
         <div className="nav-desktop" style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
           {links.map(({ label, href }) => (
-            <Link
+            <button
               key={label}
-              href={href}
+              onClick={() => scrollTo(href.replace("#", ""))}
               style={{
                 fontFamily: "var(--font-body)",
                 fontSize: "14px",
                 fontWeight: 400,
                 color: "var(--ink)",
-                textDecoration: "none",
+                background: "none",
+                border: "none",
+                padding: 0,
+                cursor: "pointer",
                 opacity: 0.6,
                 transition: "opacity 0.2s",
               }}
@@ -70,7 +81,7 @@ export default function Nav() {
               onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.6")}
             >
               {label}
-            </Link>
+            </button>
           ))}
         </div>
 
@@ -120,24 +131,27 @@ export default function Nav() {
           onClick={() => setMenuOpen(false)}
         >
           {links.map(({ label, href }, i) => (
-            <Link
+            <button
               key={label}
-              href={href}
-              onClick={() => setMenuOpen(false)}
+              onClick={() => { scrollTo(href.replace("#", "")); setMenuOpen(false); }}
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "clamp(2.5rem, 10vw, 4rem)",
                 fontWeight: 800,
                 letterSpacing: "-0.03em",
                 color: "var(--ink)",
-                textDecoration: "none",
+                background: "none",
+                border: "none",
+                padding: 0,
+                textAlign: "left",
+                cursor: "pointer",
                 lineHeight: 1.2,
                 opacity: 0,
                 animation: `fadeUp 0.4s ease ${i * 80}ms forwards`,
               }}
             >
               {label}
-            </Link>
+            </button>
           ))}
           <style>{`
             @keyframes fadeUp {

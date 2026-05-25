@@ -20,6 +20,7 @@ html {
   background: var(--paper);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -55,6 +56,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
 ::-webkit-scrollbar-thumb { background: var(--red); }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
