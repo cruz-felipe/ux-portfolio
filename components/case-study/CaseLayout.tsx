@@ -222,6 +222,11 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
               Client identity omitted per NDA. System documentation artifacts shown are illustrative representations of the restructure approach, not reproductions of client deliverables.
             </p>
           )}
+          {!data.hideNda && !data.showNdaNote && (
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)", lineHeight: 1.7, margin: 0 }}>
+              Client identity omitted per NDA. Strategic challenges, decisions and outcomes are accurate.
+            </p>
+          )}
         </div>
       </section>
 
