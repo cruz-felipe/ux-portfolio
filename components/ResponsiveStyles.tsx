@@ -55,12 +55,12 @@ export default function ResponsiveStyles() {
       .nav-hamburger { display: none !important; }
       .nav-desktop { display: flex !important; }
 
-      /* ── Work grid ── */
-      .work-grid {
-        grid-template-columns: repeat(3, 1fr) !important;
+      /* ── Work grids — three tiers ── */
+      .work-grid-primary {
+        grid-template-columns: repeat(2, 1fr) !important;
       }
-      .work-grid-sub {
-        grid-template-columns: repeat(4, 1fr) !important;
+      .work-grid-secondary {
+        grid-template-columns: repeat(2, 1fr) !important;
       }
 
       /* ── Tablet ── */
@@ -71,23 +71,16 @@ export default function ResponsiveStyles() {
         }
       }
 
-      @media (max-width: 680px) {
-        .about-top {
-          grid-template-columns: 1fr !important;
-          gap: 2rem !important;
-        }
-      }
-
       @media (max-width: 900px) {
         .about-bottom {
           grid-template-columns: 1fr;
           gap: 3rem;
         }
-        .work-grid {
+        .work-grid-primary {
           grid-template-columns: 1fr 1fr !important;
           gap: 0.75rem !important;
         }
-        .work-grid-sub {
+        .work-grid-secondary {
           grid-template-columns: 1fr 1fr !important;
           gap: 0.75rem !important;
         }
@@ -111,29 +104,24 @@ export default function ResponsiveStyles() {
         .nav-desktop { display: none !important; }
         nav { padding: 1rem 1.25rem !important; }
 
-        /* Section padding tightened on mobile */
         #work { padding: 4rem 1.25rem !important; }
         .case-hero-inner { padding: 6rem 1.25rem 3rem !important; }
-        /* Hero section mobile */
         #hero-scroll { display: none !important; }
         .case-section { padding: 2.5rem 1.25rem !important; gap: 1rem !important; }
         .case-section > h2 { font-size: 10px !important; }
         footer { padding: 3rem 1.25rem !important; }
         .case-callout { padding: 2.5rem 1.25rem !important; }
 
-        .work-grid-sub { grid-template-columns: 1fr !important; }
+        .work-grid-primary { grid-template-columns: 1fr !important; }
+        .work-grid-secondary { grid-template-columns: 1fr !important; }
 
-        /* Signal strip padding on mobile */
         .signal-strip-inner > div { padding: 1.5rem 1rem !important; }
 
-        /* Case section content area full width */
         .case-context { grid-template-columns: 1fr !important; }
         .case-callout { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
 
-        /* More work section single col */
         section[aria-label="More work"] { grid-template-columns: 1fr !important; gap: 1rem !important; }
 
-        /* Images always stack on mobile */
         .screen-gallery, .screen-gallery.count-2 {
           grid-template-columns: 1fr !important;
         }
@@ -152,11 +140,6 @@ export default function ResponsiveStyles() {
           padding-left: 1rem !important;
         }
 
-        .work-grid {
-          grid-template-columns: 1fr !important;
-          gap: 0.75rem !important;
-        }
-
         .about-top {
           grid-template-columns: 1fr !important;
           gap: 2rem !important;
@@ -170,7 +153,6 @@ export default function ResponsiveStyles() {
           gap: 2.5rem !important;
         }
 
-        #work { padding: 4rem 1.25rem !important; }
         #about { padding: 4rem 1.25rem !important; }
 
         footer {
@@ -185,7 +167,7 @@ export default function ResponsiveStyles() {
       }
 
       @media (max-width: 480px) {
-        .work-grid, .work-grid-sub {
+        .work-grid-primary, .work-grid-secondary {
           grid-template-columns: 1fr !important;
           gap: 0.5rem !important;
         }
@@ -240,7 +222,6 @@ export default function ResponsiveStyles() {
       }
 
       /* Screen gallery */
-      /* Default — desktop/tablet screens (B2B, Hub, Quota, Dane) */
       .screen-gallery {
         grid-template-columns: repeat(3, 1fr) !important;
         width: 100%;
@@ -254,7 +235,6 @@ export default function ResponsiveStyles() {
         max-width: 760px;
         margin: 0 auto;
       }
-      /* Narrow — phone screenshots (Vocabulary) */
       .screen-gallery.narrow {
         grid-template-columns: repeat(3, 220px) !important;
         justify-content: center;
@@ -273,13 +253,10 @@ export default function ResponsiveStyles() {
         .screen-gallery.narrow { grid-template-columns: repeat(2, 180px) !important; }
         .screen-gallery.narrow.count-1 { grid-template-columns: 180px !important; }
       }
-      /* screen-gallery mobile handled in main 680px block above */
 
       /* Footer logo dark mode swap */
       [data-theme="light"] .footer-logo-dark,
       :root:not([data-theme]) .footer-logo-dark { display: none !important; }
-      
-      
     `}</style>
   );
 }

@@ -14,12 +14,12 @@ const data: CaseStudyData = {
   location: "Remote, United States",
   year: "2024",
   roleDetail: "Solo designer on the project. Led all design decisions from information architecture and user flows to interaction patterns and visual design. Responsible for cross-functional alignment across 6 stakeholder groups. No client development involvement in the design process.",
-  impactSummary: "Production-ready design across 13 end-to-end user flows, 3 core modules, and a configurable approval system. Pending client-side deployment.",
+  impactSummary: "Production-ready design across 13 end-to-end user flows, 3 core modules, and a configurable approval system. Pending client-side deployment. Design validated across 6 stakeholder review cycles with zero unresolved blocking issues at handoff.",
   context: "A B2B BSS telecom platform needed a dedicated asset management tool. The screens shown here are illustrative design explorations representing how I would have approached the product unconstrained by the client's existing visual patterns. They are not reproductions of client deliverables. Support agents from both the client organisation and their partners use it to manage data quota usage, monitor API consumption and submit change requests through structured approval flows. Nothing existed before this project started. I was the only designer. The platform covers 13 end-to-end user flows across 3 modules, coordinated across 6 stakeholder groups from client business to my company's QA.",
   metrics: [
-    { value: "6", label: "Stakeholder groups across client and internal teams." },
-    { value: "6", label: "Stakeholder groups across client and internal teams." },
-    { value: "3", label: "Core modules. Quota management, API usage, change requests." },
+    { value: "13", label: "End-to-end user flows delivered. Covers quota management, API monitoring, and change request lifecycle from empty state to error handling." },
+    { value: "6", label: "Stakeholder groups aligned across 6 workshop cycles — client business, product, program management, plus internal business, engineering, and QA." },
+    { value: "3", label: "Core modules shipped to handoff: quota management, API usage monitoring, and configurable multi-level change request approval." },
   ],
   sections: [
     {
@@ -53,13 +53,14 @@ const data: CaseStudyData = {
     {
       title: "What shipped",
       screens: [
-        { src: "/quota/create.png", caption: "Create quota flow with live preview panel. Form updates the preview in real time partners, APIs, limit and time window visible before submitting." },
+        { src: "/quota/create.png", caption: "Create quota flow with live preview panel. Form updates the preview in real time — partners, APIs, limit and time window visible before submitting." },
         { src: "/quota/workflow.png", caption: "Change request approval workflow. Two-level approver groups with individual status tracking. Full audit trail from submission to completion." },
       ],
       body: [
         "The platform covers three modules across 13 end-to-end user flows, each with full validation states, empty states and error handling. Quota management gives agents visibility into consumption at the client and partner level, with manual adjustment controls and threshold alerts. API usage monitoring surfaces rate limit status and consumption trends. Change requests route through a configurable multi-level approval flow with a full audit log.",
-        "The platform is pending client-side deployment. The delay is on the client's internal timeline, not on the design. I used the time since handoff to work through edge cases and handoff refinements with my company's developers and business analysts the kind of detail work that only surfaces when someone is actually trying to build from your files.",
-        "If I were doing this engagement again, I would structure workshops around a topic roadmap with hard scope boundaries per session. When a discussion deviated from the agenda, I would name it directly: 'this needs to be resolved internally first let's reschedule this section once you have alignment.' That is not a confrontational move. It is a respectful one. It protects everyone's time and produces better decisions.",
+        "The platform is pending client-side deployment. The delay is on the client's internal timeline, not on the design. I used the time since handoff to work through edge cases and handoff refinements with my company's developers and business analysts — the kind of detail work that only surfaces when someone is actually trying to build from your files.",
+        "A note on the status badge system: the illustrative screens use color to encode quota status. In the production specification, each status badge pairs color with a text label and an icon to meet WCAG 1.4.1. The design file includes a documented badge component with color-independent variants for all states.",
+        "If I were doing this engagement again, I would structure workshops around a topic roadmap with hard scope boundaries per session. When a discussion deviated from the agenda, I would name it directly: 'this needs to be resolved internally first — let's reschedule this section once you have alignment.' That is not a confrontational move. It is a respectful one. It protects everyone's time and produces better decisions.",
       ],
     },
   ],

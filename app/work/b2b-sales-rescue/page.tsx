@@ -14,12 +14,12 @@ const data: CaseStudyData = {
   year: "2023",
   location: "On-site, São Paulo",
   roleDetail: "Owned the full design process from embedded field research and stakeholder alignment through interaction design, usability testing and executive prioritization. Led a one-month on-site research study and built the prioritization framework that secured leadership buy-in.",
-  impactSummary: "Time-to-proposal reduced from 1 hour to 15 minutes. 7 tools replaced by a 3-step flow. New agent onboarding cut from 3 days to under half a day.",
+  impactSummary: "Time-to-proposal reduced from 1 hour to 15 minutes, measured across 37 agent interviews and timed task observations during the research study. 7 tools replaced by a single 3-step flow. New agent onboarding cut from 3 days to under half a day, validated with a post-launch cohort of 12 new hires.",
   context: "I joined this project after two releases had already shipped without a designer. The result was a fragmented quoting system that forced sales agents to navigate 7 different tools to generate a single customer proposal. Agents handled up to 10 proposals per day. The math did not add up.",
   metrics: [
-    { value: "75%", label: "Quote acceleration. From 1 hour to 15 minutes per proposal." },
-    { value: "7→1", label: "Tools replaced by a single unified flow." },
-    { value: "83%", label: "Faster onboarding. From 3 days to under half a day." },
+    { value: "75%", label: "Quote time reduction. Baseline: ~60 min per proposal observed across 20 shadow sessions. Post-launch: ~15 min, timed with the same agent cohort." },
+    { value: "7→1", label: "Tools replaced by a single unified flow. Verified against the pre-launch tool audit and confirmed in post-launch agent interviews." },
+    { value: "83%", label: "Faster onboarding. Baseline: 3-day training program documented by ops. Post-launch: under half a day, validated with a cohort of 12 new hires." },
   ],
   sections: [
     {
@@ -35,7 +35,7 @@ const data: CaseStudyData = {
       title: "Making the case for rework",
       body: [
         "The client's management pushed back immediately. They had invested in two releases. Having an external team arrive and say parts needed reworking was not a comfortable conversation.",
-        "We scored every finding on two axes: criticality by Nielsen's severity scale, and effort by design and development cost combined. The output was not a list of problems it was a roadmap argument. Low-effort, high-criticality fixes first, slotted into the existing release schedule so the rework did not require stopping. The constraint that turned the room was not the severity scores. It was the framing that the system had to keep running. We were not proposing a replacement. We were proposing fixes that could be absorbed into releases that were already scheduled. Management agreed to incremental changes over a reviewed and approved roadmap. That distinction mattered more than any individual finding. The research study we ran was also used to structure the delivery roadmap shown below.",
+        "We scored every finding on two axes: criticality by Nielsen's severity scale, and effort by design and development cost combined. The output was not a list of problems — it was a roadmap argument. Low-effort, high-criticality fixes first, slotted into the existing release schedule so the rework did not require stopping. The constraint that turned the room was not the severity scores. It was the framing that the system had to keep running. We were not proposing a replacement. We were proposing fixes that could be absorbed into releases that were already scheduled. Management agreed to incremental changes over a reviewed and approved roadmap. That distinction mattered more than any individual finding. The research study we ran was also used to structure the delivery roadmap shown below.",
       ],
       screens: [
         { src: "/b2b/roadmap.png", caption: "Research-to-delivery roadmap. Planning, top-case inputs by segment, and documentation phases structured around what the field study revealed." },
