@@ -80,14 +80,14 @@ export default function About() {
       aria-label="About Felipe Cruz"
       ref={ref}
       style={{
-        padding: "6rem 2.5rem",
+        padding: "5rem 2.5rem",
         borderTop: "1px solid var(--border)",
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(30px)",
         transition: "opacity 0.8s ease, transform 0.8s ease",
       }}
     >
-      <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "3rem", borderBottom: "1px solid var(--border)", paddingBottom: "2rem" }}>
+      <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "2rem", borderBottom: "1px solid var(--border)", paddingBottom: "1.5rem" }}>
         <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.5rem, 5vw, 5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1, color: "var(--ink)", margin: 0 }}>
           About
         </h2>

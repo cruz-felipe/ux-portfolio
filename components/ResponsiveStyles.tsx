@@ -91,7 +91,7 @@ export default function ResponsiveStyles() {
           grid-template-columns: 1fr 1fr !important;
           gap: 0.75rem !important;
         }
-        #work { padding: 4rem 1.5rem !important; }
+        #work { padding: 3.5rem 1.5rem !important; }
         .signal-strip-inner {
           grid-template-columns: 1fr 1fr !important;
         }

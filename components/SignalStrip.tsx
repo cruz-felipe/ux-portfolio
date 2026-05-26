@@ -40,7 +40,7 @@ export default function SignalStrip() {
       <div className="signal-strip-inner" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
         {STATS.map((stat, i) => (
           <div key={i} style={{
-            padding: "2.5rem 2rem",
+            padding: "2rem 2rem",
             borderRight: i < STATS.length - 1 ? "1px solid var(--border)" : "none",
             paddingLeft: i === 0 ? "2.5rem" : undefined,
             paddingRight: i === STATS.length - 1 ? "2.5rem" : undefined,
@@ -52,7 +52,7 @@ export default function SignalStrip() {
               className="stat-bar" />
 
             {/* Oversized value */}
-            <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.2rem, 4vw, 3.5rem)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, color: "var(--ink)", marginBottom: "0.6rem" }}>
+            <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.8rem, 4.5vw, 4.5rem)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, color: "var(--ink)", marginBottom: "0.6rem" }}>
               {stat.value === "9" && stat.countTo ? <><CountUp target={stat.countTo} /></> :
                stat.value === "11yr" && stat.countTo ? <><CountUp target={stat.countTo} /><span style={{ color: "var(--red)" }}>yr</span></> :
                stat.value === "1M+" ? <>1<span style={{ color: "var(--red)" }}>M+</span></> :

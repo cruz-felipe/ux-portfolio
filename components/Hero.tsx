@@ -34,11 +34,11 @@ export default function Hero() {
 
   return (
     <section style={{
-      minHeight: "100svh",
+      minHeight: "92svh",
       display: "flex",
       flexDirection: "column",
       justifyContent: "flex-end",
-      padding: "0 2.5rem 5rem",
+      padding: "0 2.5rem 4rem",
       position: "relative",
     }}>
       <h1

@@ -142,11 +142,11 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
 
   return (
     <div ref={ref} style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(32px)", transition: `opacity 0.7s ease ${index * 80}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${index * 80}ms` }}>
-      <Link href={project.href} style={{ display: "flex", flexDirection: "column", minHeight: "280px", border: `1px solid ${hovered ? "rgba(10,10,10,0.35)" : "rgba(10,10,10,0.1)"}`, borderRadius: "2px", overflow: "hidden", textDecoration: "none", color: "var(--ink)", background: hovered ? "#0A0A0A" : "color-mix(in srgb, var(--ink) 1.5%, var(--paper))", transition: "background 0.3s ease, border-color 0.2s ease" }}
+      <Link href={project.href} style={{ display: "flex", flexDirection: "column", minHeight: "280px", border: `1px solid ${hovered ? "rgba(10,10,10,0.35)" : "rgba(10,10,10,0.1)"}`, borderRadius: "2px", overflow: "hidden", textDecoration: "none", color: "var(--ink)", background: hovered ? "#0A0A0A" : "color-mix(in srgb, var(--ink) 3%, var(--paper))", transition: "background 0.3s ease, border-color 0.2s ease" }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        <div style={{ padding: "1.75rem 2rem", flex: 1, display: "flex", flexDirection: "column", position: "relative" }}>
+        <div style={{ padding: "2rem", flex: 1, display: "flex", flexDirection: "column", position: "relative" }}>
 
 
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1.25rem" }}>
@@ -163,7 +163,7 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
           </p>
 
           {/* Decorative index */}
-          <div style={{ position: "absolute", bottom: "1rem", right: "1.5rem", fontFamily: "var(--font-display)", fontSize: "72px", fontWeight: 800, lineHeight: 1, color: hovered ? "white" : "var(--ink)", opacity: hovered ? 0.05 : 0.04, letterSpacing: "-0.04em", pointerEvents: "none", userSelect: "none", transition: "color 0.3s, opacity 0.3s" }}>{project.index}</div>
+          <div style={{ position: "absolute", bottom: "1rem", right: "1.5rem", fontFamily: "var(--font-display)", fontSize: "72px", fontWeight: 800, lineHeight: 1, color: hovered ? "white" : "var(--ink)", opacity: hovered ? 0.07 : 0.055, letterSpacing: "-0.04em", pointerEvents: "none", userSelect: "none", transition: "color 0.3s, opacity 0.3s" }}>{project.index}</div>
 
           <div style={{ display: "flex", gap: "1.25rem", paddingTop: "1rem", transition: "border-color 0.3s" }}>
             {project.metrics.map(m => (
@@ -179,7 +179,7 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
 
 export default function Work() {
   return (
-    <section id="work" aria-label="Selected work" style={{ padding: "6rem 2.5rem" }}>
+    <section id="work" aria-label="Selected work" style={{ padding: "5rem 2.5rem" }}>
       <h2 style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 2rem" }}>
         Selected Work
       </h2>
