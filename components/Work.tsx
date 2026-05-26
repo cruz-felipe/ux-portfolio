@@ -28,7 +28,7 @@ const PROJECTS = [
     index: "03",
     title: "Quota Management",
     blurb: "A greenfield B2B asset management platform. No prior product. Designed from workshop sessions to production-ready flows as the solo designer.",
-    metrics: ["Greenfield from scratch", "13 flows"],
+    metrics: ["Greenfield from scratch", "3 modules"],
     tag: "Greenfield Product · BSS · 2024",
   },
   {
@@ -149,8 +149,7 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
         onMouseLeave={() => setHovered(false)}
       >
         <div style={{ padding: "1.75rem 2rem", flex: 1, display: "flex", flexDirection: "column", position: "relative" }}>
-          {/* Decorative index */}
-          <div style={{ position: "absolute", bottom: "1rem", right: "1.5rem", fontFamily: "var(--font-display)", fontSize: "72px", fontWeight: 800, lineHeight: 1, color: hovered ? "white" : "var(--ink)", opacity: hovered ? 0.04 : 0.03, letterSpacing: "-0.04em", pointerEvents: "none", userSelect: "none", transition: "color 0.3s" }}>{project.index}</div>
+
 
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1.25rem" }}>
             <span style={{ fontFamily: "var(--font-display)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", color: hovered ? "rgba(255,255,255,0.3)" : "var(--muted)", transition: "color 0.3s" }}>{project.index}</span>
@@ -165,7 +164,10 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
             {project.blurb}
           </p>
 
-          <div style={{ display: "flex", gap: "1.25rem", paddingTop: "1rem", borderTop: `1px solid ${hovered ? "rgba(255,255,255,0.08)" : "rgba(10,10,10,0.08)"}`, transition: "border-color 0.3s" }}>
+          {/* Decorative index */}
+          <div style={{ position: "absolute", bottom: "1rem", right: "1.5rem", fontFamily: "var(--font-display)", fontSize: "72px", fontWeight: 800, lineHeight: 1, color: hovered ? "white" : "var(--ink)", opacity: hovered ? 0.05 : 0.04, letterSpacing: "-0.04em", pointerEvents: "none", userSelect: "none", transition: "color 0.3s, opacity 0.3s" }}>{project.index}</div>
+
+          <div style={{ display: "flex", gap: "1.25rem", paddingTop: "1rem", transition: "border-color 0.3s" }}>
             {project.metrics.map(m => (
               <span key={m} style={{ fontFamily: "var(--font-display)", fontSize: "12px", fontWeight: 700, color: hovered ? "var(--red)" : "var(--muted)", transition: "color 0.3s" }}>{m}</span>
             ))}

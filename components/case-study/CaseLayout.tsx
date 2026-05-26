@@ -178,13 +178,13 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "clamp(1rem, 1.4vw, 1.2rem)",
             fontWeight: 400, lineHeight: 1.7, color: "var(--ink)", opacity: 0.8,
-            maxWidth: maxW, marginBottom: "3rem",
+            maxWidth: maxW, marginBottom: "2rem",
           }}>{data.tagline}</p>
 
           {/* Role + impact callout */}
-          <div className="case-callout" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", maxWidth: maxW, paddingTop: "2rem", borderTop: "0.5px solid var(--border)" }}>
+          <div className="case-callout" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: "3rem", maxWidth: maxW, paddingTop: "1.5rem", borderTop: "0.5px solid var(--border)" }}>
             <div>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 0.25rem" }}>My role</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 0.2rem" }}>My role</p>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 400, lineHeight: 1.65, color: "var(--ink)", opacity: 0.75, margin: 0 }}>{data.roleDetail}</p>
             </div>
             {data.impactSummary && (
