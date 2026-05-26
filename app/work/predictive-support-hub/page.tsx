@@ -42,6 +42,7 @@ const data: CaseStudyData = {
     },
     {
       title: "Reframing the problem",
+      pullquote: "This was not a UX problem. It was an infrastructure problem wearing a UX mask.",
       body: [
         "My first presentation was met with scepticism. The client understood the fragmentation but was not yet convinced that consolidation was the right investment. I changed the frame: instead of arguing about interface quality, I built a cost model. Average AHT multiplied by call volume multiplied by 3,000 agents, compared against the projected cost of consolidation. The infrastructure investment started to look cheap.",
         "The second conversation worked because I changed the frame. I built a cost model: average AHT multiplied by call volume multiplied by 3,000 agents, compared against the projected cost of consolidation. The number made the architectural investment look cheap. Once the conversation was about infrastructure cost rather than design preference, the engineering team stopped being blockers and became partners.",
@@ -60,10 +61,10 @@ const data: CaseStudyData = {
     {
       title: "One interface. All context. No switching.",
       body: [
-        "The full unified workspace. Every data source previously spread across 32 tools available in a single view, mid-call. The agent's job becomes the customer — not the system.",
+        "The full unified workspace. Every data source previously spread across 32 tools available in a single view, mid-call. The agent's job becomes the customer. Not the system.",
       ],
       screens: [
-        { src: "/hub/workspace.png", caption: "Unified agent workspace. Customer context, suggested interaction, services, devices and billing — one screen, mid-call." },
+        { src: "/hub/workspace.png", caption: "Unified agent workspace. Customer context, suggested interaction, services, devices and billing. One screen, mid-call." },
         { src: "/hub/workspace2.png", caption: "Workspace with bill payment modal active. Action completed without leaving the interface." },
       ],
     },

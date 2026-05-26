@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 const STATS = [
   { value: "1M+", label: "End users across B2C telecom products" },
-  { value: "9", label: "Countries — US, UK, Brazil, Denmark, Japan and 4 more", countTo: 9 },
+  { value: "9", label: "Countries. US, UK, Brazil, Denmark, Japan and 4 more.", countTo: 9 },
   { value: "32→1", label: "Legacy tools collapsed into a single workspace" },
   { value: "11yr", label: "Building enterprise products, from web to BSS/OSS", countTo: 11 },
 ];

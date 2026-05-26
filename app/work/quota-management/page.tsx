@@ -43,6 +43,7 @@ const data: CaseStudyData = {
     },
     {
       title: "The alignment problem",
+      pullquote: "I let sessions run where they ran. In retrospect that was the wrong call.",
       body: [
         "The hardest constraint was not technical. The client was still defining the product internally while we were designing it. I became aware of this pattern early: decisions agreed in one session would shift by the next because they had not been ratified by people who were not in the room.",
         "Part of what made this difficult was that I let sessions run where they ran. If a discussion deviated from the agenda, I followed it rather than redirecting. In retrospect that was the wrong call. The deviations were often symptoms of unresolved internal alignment on the client side, not genuine scope clarifications. What they needed was not more discussion time but a clearer signal from me that we needed to pause and let them resolve it internally before continuing. I should have said that more often and earlier.",

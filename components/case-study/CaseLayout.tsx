@@ -40,7 +40,7 @@ function AnimatedMetric({ value }: { value: string }) {
 
 interface Screen { src: string; caption: string; }
 interface Metric { value: string; label: string; }
-interface Section { title: string; body: string | string[]; screens?: Screen[]; narrowScreens?: boolean; }
+interface Section { title: string; body?: string | string[]; screens?: Screen[]; narrowScreens?: boolean; pullquote?: string; }
 interface Artifact { id: string; title: string; caption: string; component: React.ReactNode; }
 
 export interface CaseStudyData {
@@ -82,16 +82,9 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
     const items = el.querySelectorAll("section, .artifact-section");
     const observer = new IntersectionObserver(
       (entries) => entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add("visible");
-          // Stagger direct children: title, body, screens
-          Array.from(e.target.children).forEach((child, i) => {
-            (child as HTMLElement).style.transitionDelay = `${i * 80}ms`;
-            child.classList.add("visible");
-          });
-        }
+        if (e.isIntersecting) e.target.classList.add("visible");
       }),
-      { threshold: 0.08 }
+      { threshold: 0.06 }
     );
     items.forEach(item => { item.classList.add("reveal"); observer.observe(item); });
     return () => observer.disconnect();
@@ -173,8 +166,8 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
           {/* Role + impact callout */}
           <div className="case-callout" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", maxWidth: maxW, paddingTop: "2rem", borderTop: "0.5px solid var(--border)" }}>
             <div>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 0.5rem" }}>My role</p>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 400, lineHeight: 1.7, color: "var(--ink)", opacity: 0.75, margin: 0 }}>{data.roleDetail}</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 0.25rem" }}>My role</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 400, lineHeight: 1.65, color: "var(--ink)", opacity: 0.75, margin: 0 }}>{data.roleDetail}</p>
             </div>
             {data.impactSummary && (
               <div>
@@ -205,7 +198,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
       {/* Context */}
       <section style={{ padding: "4rem 2.5rem", borderBottom: "0.5px solid var(--border)" }}>
         <div className="case-context" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "start" }}>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", fontWeight: 300, lineHeight: 1.75, color: "var(--ink)", opacity: 0.8, margin: 0 }}>{data.context}</p>
+          <p style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: "clamp(1rem, 1.3vw, 1.1rem)", fontWeight: 400, lineHeight: 1.7, color: "var(--ink)", opacity: 0.82, margin: 0 }}>{data.context}</p>
           {!data.hideNda && (
             <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)", lineHeight: 1.7, margin: 0 }}>
               To respect non-disclosure agreements, the identity of this client has been omitted. Strategic challenges, decisions and outcomes are accurate. Visual artifacts are abstract representations of system architecture and design thinking, not reproductions of proprietary screens.
@@ -226,10 +219,13 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
                 {section.title}
               </h2>
               <div style={{ maxWidth: "700px" }}>
+                {section.pullquote && (
+                  <blockquote className="case-pullquote">{section.pullquote}</blockquote>
+                )}
                 {Array.isArray(section.body) ? section.body.map((para, pi) => (
-                  <p key={pi} className={pi === 0 ? "case-body-lead" : undefined} style={{ fontFamily: "var(--font-body)", fontSize: pi === 0 ? undefined : "15px", fontWeight: 400, lineHeight: pi === 0 ? undefined : 1.8, color: "var(--ink)", opacity: pi === 0 ? undefined : 0.78, marginBottom: pi < (section.body as string[]).length - 1 ? "1.25rem" : 0 }}>{para}</p>
+                  <p key={pi} className={pi === 0 && !section.pullquote ? "case-body-lead" : undefined} style={{ fontFamily: "var(--font-body)", fontSize: pi === 0 && !section.pullquote ? undefined : "15px", fontWeight: 400, lineHeight: pi === 0 && !section.pullquote ? undefined : 1.8, color: "var(--ink)", opacity: pi === 0 && !section.pullquote ? undefined : 0.78, marginBottom: pi < (section.body as string[]).length - 1 ? "1.25rem" : 0 }}>{para}</p>
                 )) : (
-                  <p className="case-body-lead" style={{ fontFamily: "var(--font-body)", color: "var(--ink)", margin: 0 }}>{section.body}</p>
+                  <p className={!section.pullquote ? "case-body-lead" : undefined} style={{ fontFamily: "var(--font-body)", fontSize: section.pullquote ? "15px" : undefined, color: "var(--ink)", opacity: section.pullquote ? 0.78 : undefined, margin: 0 }}>{section.body}</p>
                 )}
               </div>
             </section>
@@ -259,48 +255,53 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
       <section aria-label="More work" style={{ padding: "4rem 2.5rem", borderTop: "0.5px solid var(--border)", display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", alignItems: "start" }} className="case-section">
         <h2 style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: 0 }}>More work</h2>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          {(() => {
-            const idx = ALL_WORK.findIndex(w => w.title === data.title);
-            const next = ALL_WORK[idx + 1];
-            if (!next) return null;
-            return (
-              <a href={`/work/${next.slug}`} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "1rem 0", borderBottom: "0.5px solid var(--border)", textDecoration: "none", marginBottom: "0.5rem", gap: "1rem" }}>
-                <div>
-                  <div style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--muted)", marginBottom: "4px" }}>Next</div>
-                  <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1rem, 2vw, 1.4rem)", fontWeight: 800, letterSpacing: "-0.02em", color: "var(--ink)" }}>{next.title}</div>
-                </div>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ color: "var(--red)", flexShrink: 0 }}>
-                  <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
-            );
-          })()}
           {ALL_WORK.map((work, i) => {
             const isCurrent = work.title === data.title;
+            const isNext = ALL_WORK.findIndex(w => w.title === data.title) === i - 1;
             const style: React.CSSProperties = {
-              display: "flex", alignItems: "center", padding: "1rem 0",
+              display: "flex", alignItems: "center", padding: "0.875rem 0",
               borderBottom: i < ALL_WORK.length - 1 ? "0.5px solid var(--border)" : "none",
               textDecoration: "none", color: "var(--ink)",
-              opacity: isCurrent ? 0.35 : 1, cursor: isCurrent ? "default" : "pointer",
+              opacity: isCurrent ? 0.25 : 1, cursor: isCurrent ? "default" : "pointer",
               transition: "color 0.2s",
             };
             const inner = (
               <>
-                <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", color: "var(--muted)", minWidth: "2rem" }}>{work.index}</span>
+                <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 400, color: "var(--muted)", minWidth: "2rem", flexShrink: 0 }}>{work.index}</span>
                 <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flex: 1, marginLeft: "1rem" }}>
-                  <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1rem, 2vw, 1.4rem)", fontWeight: 800, letterSpacing: "-0.02em" }}>{work.title}</span>
-                  {work.personal && (
+                  <span style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: isCurrent ? "13px" : "13px",
+                    fontWeight: isCurrent ? 400 : isNext ? 600 : 400,
+                    letterSpacing: "0",
+                    color: isCurrent ? "var(--muted)" : "var(--ink)",
+                  }}>{work.title}</span>
+                  {isNext && <span style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--red)", border: "1px solid var(--red)", borderRadius: "2px", padding: "1px 6px", flexShrink: 0, opacity: 0.7 }}>Next</span>}
+                  {work.personal && !isCurrent && (
                     <span style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--muted)", border: "1px solid var(--border)", borderRadius: "2px", padding: "2px 7px", flexShrink: 0 }}>Personal</span>
                   )}
                 </div>
+                {!isCurrent && (
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ color: "var(--muted)", flexShrink: 0, opacity: 0 }} className="work-arrow">
+                    <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                )}
               </>
             );
             return isCurrent ? (
               <div key={work.slug} aria-current="page" style={style}>{inner}</div>
             ) : (
               <Link key={work.slug} href={`/work/${work.slug}`} style={style}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--red)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--ink)")}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "var(--red)";
+                  const arrow = e.currentTarget.querySelector(".work-arrow") as SVGElement | null;
+                  if (arrow) { arrow.style.opacity = "1"; arrow.style.color = "var(--red)"; }
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = "var(--ink)";
+                  const arrow = e.currentTarget.querySelector(".work-arrow") as SVGElement | null;
+                  if (arrow) { arrow.style.opacity = "0"; }
+                }}
               >{inner}</Link>
             );
           })}

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap');
 
 @import "tailwindcss";
 
@@ -8,18 +8,10 @@
   --ink: #0A0A0A;
   --paper: #F5F3EF;
   --muted: #6B6966;
-  --border: rgba(10,10,10,0.12);
+  --border: rgba(10,10,10,0.1);
   --font-display: 'Syne', sans-serif;
+  --font-serif: 'DM Serif Display', serif;
   --font-body: 'DM Sans', sans-serif;
-}
-
-[data-theme="dark"] {
-  --red: #E04444;
-  --red-dark: #C42B2B;
-  --ink: #F0EEE9;
-  --paper: #111110;
-  --muted: #9A9692;
-  --border: rgba(240,238,233,0.1);
 }
 
 * { box-sizing: border-box; }
@@ -30,7 +22,6 @@ html {
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
-  transition: background 0.4s ease, color 0.4s ease;
 }
 
 body {
@@ -41,17 +32,9 @@ body {
 
 h1, h2, h3, h4 { font-family: var(--font-display); }
 
-/* Case study section title hierarchy */
-.case-section-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  margin-bottom: 1.25rem;
-}
+/* ── Typography system ── */
 
-/* Lead paragraph — first para of each case section gets slightly larger treatment */
+/* Lead paragraph */
 .case-body-lead {
   font-family: var(--font-body);
   font-size: clamp(1rem, 1.5vw, 1.1rem);
@@ -62,7 +45,20 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
   margin-bottom: 1.25rem;
 }
 
-/* Metric value visual polish */
+/* Pullquote — serif italic, editorial */
+.case-pullquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+  line-height: 1.35;
+  color: var(--ink);
+  margin: 0 0 2rem;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--red);
+  max-width: 600px;
+}
+
+/* Metric value */
 .metric-value {
   font-family: var(--font-display);
   font-weight: 800;
@@ -70,28 +66,23 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
   line-height: 1;
 }
 
+/* ── Cursor ── */
 .cursor {
   position: fixed;
   top: 0; left: 0;
-  width: 10px; height: 10px;
+  width: 8px; height: 8px;
   background: var(--red);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
-  mix-blend-mode: normal;
+  transition: width 0.15s ease, height 0.15s ease, opacity 0.15s ease;
 }
-
-.cursor.hover {
-  width: 40px;
-  height: 40px;
-  opacity: 0.2;
-}
+.cursor.hover { width: 32px; height: 32px; opacity: 0.15; }
 
 ::selection { background: var(--red); color: white; }
-::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--red); }
 
 @media (max-width: 768px) {
@@ -99,69 +90,45 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
   .cursor { display: none; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; transition: none; }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-}
+/* ── Motion — minimal and purposeful ── */
 
-/* Page transition */
+/* Page enter: single fade-up, no child stagger */
 .page-enter {
-  animation: pageEnter 0.45s cubic-bezier(0.16,1,0.3,1) forwards;
+  animation: pageEnter 0.4s cubic-bezier(0.16,1,0.3,1) both;
 }
 @keyframes pageEnter {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.page-enter > *:nth-child(1) { animation: pageEnterChild 0.5s cubic-bezier(0.16,1,0.3,1) both; }
-.page-enter > *:nth-child(2) { animation: pageEnterChild 0.5s cubic-bezier(0.16,1,0.3,1) 60ms both; }
-.page-enter > *:nth-child(3) { animation: pageEnterChild 0.5s cubic-bezier(0.16,1,0.3,1) 120ms both; }
-.page-enter > *:nth-child(4) { animation: pageEnterChild 0.5s cubic-bezier(0.16,1,0.3,1) 180ms both; }
-@keyframes pageEnterChild {
-  from { opacity: 0; transform: translateY(6px); }
+  from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Section scroll reveal */
+/* Section scroll reveal: simple fade-up, no child stagger */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1);
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.16,1,0.3,1);
 }
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
-/* Section child stagger */
-.reveal > * {
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16,1,0.3,1);
-}
-.reveal > *.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+
 @media (prefers-reduced-motion: reduce) {
-  .reveal, .reveal > * { opacity: 1; transform: none; transition: none; }
-  .page-enter, .page-enter > * { animation: none; }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .page-enter { animation: none; }
 }
 
-/* Custom focus rings */
+/* ── Accessibility ── */
 :focus-visible {
   outline: 2px solid var(--red);
   outline-offset: 2px;
   border-radius: 2px;
 }
 
-/* Image loading placeholder — content images only */
 img:not([class*='logo']):not([src$='.svg']) {
-  background-color: color-mix(in srgb, var(--ink) 6%, var(--paper));
+  background-color: color-mix(in srgb, var(--ink) 5%, var(--paper));
 }
 
-/* Skip to content */
 .skip-link {
   position: absolute;
   top: -100%;
@@ -171,11 +138,9 @@ img:not([class*='logo']):not([src$='.svg']) {
   padding: 0.5rem 1rem;
   font-family: var(--font-body);
   font-size: 13px;
-  z-index: 999;
+  z-index: 9999;
   border-radius: 0 0 3px 3px;
   text-decoration: none;
   transition: top 0.15s;
 }
-.skip-link:focus {
-  top: 0;
-}
+.skip-link:focus { top: 0; }

@@ -24,6 +24,7 @@ const data: CaseStudyData = {
   sections: [
     {
       title: "Getting into the problem",
+      pullquote: "The interviews told us what agents thought they did. The shadow sessions showed us what they actually did.",
       body: [
         "We proposed and led a one-month on-site research study in São Paulo. 37 interviews, 25 usability tests, 20 shadow sessions with agents on the floor. The research was not in the brief. We proposed it because the existing releases had been built on assumptions, and no amount of interface work would fix a system built around the wrong model.",
         "The most significant finding did not come from the interviews. It came from watching agents work. The interviews told us what agents thought they did. The shadow sessions showed us what they actually did: they captured all the information for a quotation before opening the system, often in notes or spreadsheets, and then entered it manually. The system had been designed around the assumption that agents would configure products as they went. Almost no one did.",

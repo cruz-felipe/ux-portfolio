@@ -9,12 +9,13 @@ export default function ResponsiveStyles() {
         max-width: 900px;
       }
       .hero-bio {
-        font-family: var(--font-body);
-        font-size: clamp(0.95rem, 1.2vw, 1.05rem);
-        font-weight: 300;
-        line-height: 1.72;
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+        font-weight: 400;
+        line-height: 1.65;
         color: var(--ink);
-        opacity: 0.82;
+        opacity: 0.78;
         margin: 0;
       }
       .hero-role {
@@ -111,6 +112,25 @@ export default function ResponsiveStyles() {
         .case-section > h2 { font-size: 10px !important; }
         footer { padding: 3rem 1.25rem !important; }
         .case-callout { padding: 2.5rem 1.25rem !important; }
+
+        /* Signal strip padding on mobile */
+        .signal-strip-inner > div { padding: 1.5rem 1rem !important; }
+
+        /* Case section content area full width */
+        .case-context { grid-template-columns: 1fr !important; }
+        .case-callout { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+
+        /* More work section single col */
+        section[aria-label="More work"] { grid-template-columns: 1fr !important; gap: 1rem !important; }
+
+        /* Images always stack on mobile */
+        .screen-gallery, .screen-gallery.count-2 {
+          grid-template-columns: 1fr !important;
+        }
+        .screen-gallery.narrow {
+          grid-template-columns: repeat(2, 140px) !important;
+          justify-content: center !important;
+        }
 
         .hero-sub {
           grid-template-columns: 1fr !important;
@@ -243,16 +263,13 @@ export default function ResponsiveStyles() {
         .screen-gallery.narrow { grid-template-columns: repeat(2, 180px) !important; }
         .screen-gallery.narrow.count-1 { grid-template-columns: 180px !important; }
       }
-      @media (max-width: 680px) {
-        .screen-gallery { grid-template-columns: 1fr !important; max-width: 100% !important; }
-        .screen-gallery.narrow { grid-template-columns: repeat(2, 140px) !important; }
-      }
+      /* screen-gallery mobile handled in main 680px block above */
 
       /* Footer logo dark mode swap */
       [data-theme="light"] .footer-logo-dark,
       :root:not([data-theme]) .footer-logo-dark { display: none !important; }
-      [data-theme="dark"] .footer-logo-light { display: none !important; }
-      [data-theme="dark"] .footer-logo-dark { display: block !important; }
+      
+      
     `}</style>
   );
 }

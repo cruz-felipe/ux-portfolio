@@ -24,6 +24,7 @@ const data: CaseStudyData = {
   sections: [
     {
       title: "What I found on day one",
+      pullquote: "I arrived expecting mature governance. What I found was a component library with significant gaps and no process for deciding what belonged in the system.",
       screens: [
         { src: "/dane/inventory.png", caption: "Component inventory audit. 10 components mapped against Q4 roadmap, classified by status and priority. Illustrative representation of system documentation." },
       ],
