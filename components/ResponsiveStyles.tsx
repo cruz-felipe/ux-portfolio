@@ -187,25 +187,42 @@ export default function ResponsiveStyles() {
       }
 
       /* Screen gallery */
+      /* Default — desktop/tablet screens (B2B, Hub, Quota, Dane) */
       .screen-gallery {
         grid-template-columns: repeat(3, 1fr) !important;
+        width: 100%;
       }
       .screen-gallery.count-2 {
         grid-template-columns: repeat(2, 1fr) !important;
-        max-width: 860px;
-        margin: 0 auto;
+        width: 100%;
       }
       .screen-gallery.count-1 {
         grid-template-columns: 1fr !important;
-        max-width: 700px;
+        max-width: 760px;
         margin: 0 auto;
+      }
+      /* Narrow — phone screenshots (Vocabulary) */
+      .screen-gallery.narrow {
+        grid-template-columns: repeat(3, 220px) !important;
+        justify-content: center;
+      }
+      .screen-gallery.narrow.count-2 {
+        grid-template-columns: repeat(2, 220px) !important;
+        justify-content: center;
+      }
+      .screen-gallery.narrow.count-1 {
+        grid-template-columns: 220px !important;
+        justify-content: center;
       }
       @media (max-width: 900px) {
         .screen-gallery { grid-template-columns: repeat(2, 1fr) !important; }
-        .screen-gallery.count-1 { grid-template-columns: 1fr !important; }
+        .screen-gallery.count-1 { grid-template-columns: 1fr !important; max-width: 100%; }
+        .screen-gallery.narrow { grid-template-columns: repeat(2, 180px) !important; }
+        .screen-gallery.narrow.count-1 { grid-template-columns: 180px !important; }
       }
       @media (max-width: 680px) {
-        .screen-gallery { grid-template-columns: 1fr !important; }
+        .screen-gallery { grid-template-columns: 1fr !important; max-width: 100% !important; }
+        .screen-gallery.narrow { grid-template-columns: repeat(2, 140px) !important; }
       }
 
       /* Footer logo dark mode swap */

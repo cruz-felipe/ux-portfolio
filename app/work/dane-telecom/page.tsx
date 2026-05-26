@@ -24,12 +24,9 @@ const data: CaseStudyData = {
   sections: [
     {
       title: "What I found on day one",
-      screens: [
-        { src: "/dane/inventory.png", caption: "Component inventory audit — output of the first three weeks. 10 components mapped against Q4 roadmap, classified by status and priority." },
-      ],
       body: [
         "My first assumption was wrong. The client was a large, well-established company in Denmark. I arrived expecting a mature design system with clear governance. What I found was a component library with significant gaps, no documentation, and no process for deciding what belonged in the system versus what stayed local to a feature.",
-        "That assumption cost me time. I spent the first week oriented to the wrong problem before the inventory work made the real situation clear. From that point, I ran a full audit — mapping every component, every token reference, every deviation — before proposing anything. The audit was the most important output of the first three weeks. Without it, any restructure would have been built on the same incomplete picture.",
+        "That assumption cost me time. I spent the first week oriented to the wrong problem before the inventory work made the real situation clear. From that point, I ran a full audit mapping every component, every token reference, every deviation before proposing anything. The audit was the most important output of the first three weeks. Without it, any restructure would have been built on the same incomplete picture.",
       ],
     },
     {
@@ -41,10 +38,6 @@ const data: CaseStudyData = {
     },
     {
       title: "Running a restructure while the product kept shipping",
-      screens: [
-        { src: "/dane/component-audit.png", caption: "Before and after token restructure — button and input components. Three inconsistent button variants unified under a single semantic token layer." },
-        { src: "/dane/token-architecture.png", caption: "Three-tier token architecture and sandbox-to-master governance workflow. Changes batched and validated against active handoffs before master promotion." },
-      ],
       body: [
         "The hardest constraint was that the product was live. We could not restructure in one move. Every change had to be batched carefully to avoid disrupting handoffs already in progress. I introduced a sandbox-to-master workflow: new components and token changes were built in isolation, validated against active handoffs, and only promoted to the master library once confirmed safe.",
         "The scope was larger than one person could cover on the timeline we had. I coordinated with other designers to split the work into batches, each assigned and tracked against the roadmap milestones. That coordination was the part of the project that most required the on-site presence. Remote collaboration on a restructure of this complexity, across a team that was also shipping features, would have been significantly harder.",

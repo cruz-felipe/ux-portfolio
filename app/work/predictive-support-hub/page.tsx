@@ -26,10 +26,10 @@ const data: CaseStudyData = {
       title: "What existed before",
       body: [
         "Agents navigated between dozens of disconnected legacy systems on every call. Billing lived in one tool. Technical data in another. Tickets in a third. There was no shared context, no single customer view and no way to act without opening another window. Institutional knowledge lived on sticky notes next to monitors.",
-        "The two screens below are from the legacy environment. One is a raw account management tool that agents used to look up customer data — dense, technical, built for system administrators rather than support agents. The other is a bill detail view accessed through a separate portal. These are two of the 32 tools an agent was expected to navigate mid-call.",
+        "The two screens below are from the legacy environment. One is a raw account management tool that agents used to look up customer data dense, technical, built for system administrators rather than support agents. The other is a bill detail view accessed through a separate portal. These are two of the 32 tools an agent was expected to navigate mid-call.",
       ],
       screens: [
-        { src: "/hub/before2.png", caption: "Legacy account management tool. Agent lookup for customer data — built for sysadmins, not support agents on a live call." },
+        { src: "/hub/before2.png", caption: "Legacy account management tool. Agent lookup for customer data built for sysadmins, not support agents on a live call." },
         { src: "/hub/before1.png", caption: "Legacy bill detail view accessed through a separate portal. One of many tools an agent toggled between per call." },
       ],
     },
@@ -37,7 +37,7 @@ const data: CaseStudyData = {
       title: "Into the field",
       body: [
         "I conducted remote research sessions with agents in Egypt and Jamaica, observing their screens and listening to live calls. Then I went on-site to call centers in New York and Texas to shadow agents in person. Remote observation shows you what people do. On-site observation shows you why.",
-        "What became clear across every location was that the tools were actively fighting each other. The institutional knowledge that should have lived in the system lived on paper instead. New agents spent months just learning the map. When I brought this back to the client, the initial response was to request a better search interface. I pushed back. A better search across 32 disconnected tools was still 32 disconnected tools.",
+        "What became clear across every location was that the tools were actively fighting each other. The institutional knowledge that should have lived in the system lived on paper instead. New agents spent months just learning the map. When I brought this back to the client, the picture was new to them. They understood the fragmentation but had not seen it mapped as a cost. That conversation reframed the project from interface improvement to infrastructure investment.",
       ],
     },
     {
@@ -50,20 +50,19 @@ const data: CaseStudyData = {
     {
       title: "The unified workspace",
       body: [
-        "The workspace replaced all 32 tools with three layers. Auto-identification surfaced the customer's full history on call connect — name, account, interaction history, open tickets, all without the agent searching. Contextual scripting monitored the call in real time and pushed relevant data and suggested responses to the agent. Live resolution surfaced the answer directly in the session interface.",
-        "The auto-identification panel is shown below — the first screen an agent sees when a call connects. By the time they say hello, they already know who they are talking to, why that customer likely called and what the last three agents did. Below that, the full unified workspace: one interface, all context, no switching.",
+        "The workspace replaced all 32 tools with three layers. Auto-identification surfaced the customer's full history on call connect name, account, interaction history, open tickets, all without the agent searching. Contextual scripting monitored the call in real time and pushed relevant data and suggested responses to the agent. Live resolution surfaced the answer directly in the session interface.",
+        "The auto-identification panel is shown below the first screen an agent sees when a call connects. By the time they say hello, they already know who they are talking to, why that customer likely called and what the last three agents did. Below that, the full unified workspace: one interface, all context, no switching.",
       ],
       screens: [
-        { src: "/hub/auto-id.png", caption: "Auto-identification panel on call connect. Customer history, IVR path and authentication — surfaced before the agent speaks." },
-        { src: "/hub/workspace.png", caption: "Unified agent workspace. Customer context, suggested interaction, services, devices and billing — one screen, mid-call." },
+        { src: "/hub/auto-id.png", caption: "Auto-identification panel on call connect. Customer history, IVR path and authentication surfaced before the agent speaks." },
+        { src: "/hub/workspace.png", caption: "Unified agent workspace. Customer context, suggested interaction, services, devices and billing one screen, mid-call." },
         { src: "/hub/workspace2.png", caption: "Workspace with bill payment modal active. Action taken without leaving the interface." },
       ],
     },
     {
       title: "What I would do differently",
       body: [
-        "The design decision I underestimated was error states. When the AI surfaced the wrong context, agents had no clear way to override it without losing their place in the call. We caught this in testing but later than we should have. If I were doing this again I would have built explicit override controls into the first prototype rather than treating them as edge cases.",
-        "The agents who struggled most with the new system were not the ones who found it complex. They were the ones who did not trust it. Trust is a design problem. It needed more deliberate attention from the start.",
+        "If I were doing this again I would have pushed harder for a pilot with a single agent cohort before the full rollout. The system worked, but a controlled pilot with a defined group would have surfaced edge cases earlier and given us stronger data for the internal conversation about full deployment.",
       ],
     },
   ],

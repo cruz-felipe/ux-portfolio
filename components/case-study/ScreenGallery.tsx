@@ -5,10 +5,15 @@ interface ScreenProps {
   caption: string;
 }
 
-export function ScreenGallery({ screens }: { screens: ScreenProps[] }) {
+export function ScreenGallery({ screens, narrow }: { screens: ScreenProps[]; narrow?: boolean }) {
   const countClass = screens.length === 1 ? "count-1" : screens.length === 2 ? "count-2" : "";
+  const narrowClass = narrow ? "narrow" : "";
+
   return (
-    <div className={`screen-gallery ${countClass}`} style={{ display: "grid", gap: "2rem", alignItems: "start", justifyContent: "center" }}>
+    <div
+      className={`screen-gallery ${countClass} ${narrowClass}`}
+      style={{ display: "grid", gap: "2rem", alignItems: "start", justifyContent: "center" }}
+    >
       {screens.map((screen, i) => (
         <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
           <div style={{ width: "100%", borderRadius: "4px", overflow: "hidden" }}>

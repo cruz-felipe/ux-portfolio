@@ -40,7 +40,7 @@ function AnimatedMetric({ value }: { value: string }) {
 
 interface Screen { src: string; caption: string; }
 interface Metric { value: string; label: string; }
-interface Section { title: string; body: string | string[]; screens?: Screen[]; }
+interface Section { title: string; body: string | string[]; screens?: Screen[]; narrowScreens?: boolean; }
 interface Artifact { id: string; title: string; caption: string; component: React.ReactNode; }
 
 export interface CaseStudyData {
@@ -219,7 +219,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
 
             {section.screens && section.screens.length > 0 && (
               <div style={{ padding: "3rem 2.5rem", borderBottom: "0.5px solid var(--border)" }}>
-                <ScreenGallery screens={section.screens} />
+                <ScreenGallery screens={section.screens} narrow={section.narrowScreens} />
               </div>
             )}
 
