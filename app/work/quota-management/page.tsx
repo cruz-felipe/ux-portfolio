@@ -26,6 +26,8 @@ const data: CaseStudyData = {
       title: "Starting from nothing",
       screens: [
         { src: "/quota/list.png", caption: "Quota management list. Search by partner, API name or quota name. Status badges, type, limit and time window visible at a glance." },
+        { src: "/quota/detail.png", caption: "Quota detail view. Metadata, type, limit, partners and APIs in a structured field layout. Two tabs: Quota Information and Changes History." },
+        { src: "/quota/history.png", caption: "Changes history tab. Full audit trail with timestamped sessions, diff coloring for removed and added values, per-session grouping." },
       ],
       body: [
         "Greenfield projects feel like freedom until you realise the absence of constraints is itself a constraint. There is no existing behaviour to study, no baseline to improve and no shared mental model to anchor decisions to. Everything has to be established from first principles.",

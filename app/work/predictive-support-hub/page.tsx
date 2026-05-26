@@ -51,12 +51,20 @@ const data: CaseStudyData = {
       title: "The unified workspace",
       body: [
         "The workspace replaced all 32 tools with three layers. Auto-identification surfaced the customer's full history on call connect name, account, interaction history, open tickets, all without the agent searching. Contextual scripting monitored the call in real time and pushed relevant data and suggested responses to the agent. Live resolution surfaced the answer directly in the session interface.",
-        "The auto-identification panel is shown below the first screen an agent sees when a call connects. By the time they say hello, they already know who they are talking to, why that customer likely called and what the last three agents did. Below that, the full unified workspace: one interface, all context, no switching.",
+        "The auto-identification panel is the first screen an agent sees when a call connects. By the time they say hello, they already know who they are talking to, why that customer likely called and what the last three agents did.",
       ],
       screens: [
         { src: "/hub/auto-id.png", caption: "Auto-identification panel on call connect. Customer history, IVR path and authentication surfaced before the agent speaks." },
-        { src: "/hub/workspace.png", caption: "Unified agent workspace. Customer context, suggested interaction, services, devices and billing one screen, mid-call." },
-        { src: "/hub/workspace2.png", caption: "Workspace with bill payment modal active. Action taken without leaving the interface." },
+      ],
+    },
+    {
+      title: "One interface. All context. No switching.",
+      body: [
+        "The full unified workspace. Every data source previously spread across 32 tools available in a single view, mid-call. The agent's job becomes the customer — not the system.",
+      ],
+      screens: [
+        { src: "/hub/workspace.png", caption: "Unified agent workspace. Customer context, suggested interaction, services, devices and billing — one screen, mid-call." },
+        { src: "/hub/workspace2.png", caption: "Workspace with bill payment modal active. Action completed without leaving the interface." },
       ],
     },
     {
