@@ -59,6 +59,7 @@ const data: CaseStudyData = {
       ],
     },
   ],
+  showNdaNote: true,
   artifacts: [],
 };
 

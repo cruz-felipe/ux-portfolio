@@ -57,6 +57,7 @@ export interface CaseStudyData {
   sections: Section[];
   artifacts: Artifact[];
   hideNda?: boolean;
+  showNdaNote?: boolean;
   wideHero?: boolean;
 }
 
@@ -216,9 +217,9 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
       <section style={{ padding: "4rem 2.5rem", borderBottom: "0.5px solid var(--border)" }}>
         <div className="case-context" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "start" }}>
           <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", fontWeight: 300, lineHeight: 1.75, color: "var(--ink)", opacity: 0.8, margin: 0 }}>{data.context}</p>
-          {!data.hideNda && (
+          {data.showNdaNote && (
             <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)", lineHeight: 1.7, margin: 0 }}>
-              To respect non-disclosure agreements, the identity of this client has been omitted. Strategic challenges, decisions and outcomes are accurate. Visual artifacts are abstract representations of system architecture and design thinking, not reproductions of proprietary screens.
+              Client identity omitted per NDA. System documentation artifacts shown are illustrative representations of the restructure approach, not reproductions of client deliverables.
             </p>
           )}
         </div>

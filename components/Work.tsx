@@ -144,7 +144,7 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
 
   return (
     <div ref={ref} style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(32px)", transition: `opacity 0.7s ease ${index * 80}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${index * 80}ms` }}>
-      <Link href={project.href} style={{ display: "flex", flexDirection: "column", border: `1px solid ${hovered ? "rgba(10,10,10,0.35)" : "rgba(10,10,10,0.1)"}`, borderRadius: "2px", overflow: "hidden", textDecoration: "none", color: "var(--ink)", background: hovered ? "#0A0A0A" : "color-mix(in srgb, var(--ink) 1.5%, var(--paper))", transition: "background 0.3s ease, border-color 0.2s ease" }}
+      <Link href={project.href} style={{ display: "flex", flexDirection: "column", minHeight: "280px", border: `1px solid ${hovered ? "rgba(10,10,10,0.35)" : "rgba(10,10,10,0.1)"}`, borderRadius: "2px", overflow: "hidden", textDecoration: "none", color: "var(--ink)", background: hovered ? "#0A0A0A" : "color-mix(in srgb, var(--ink) 1.5%, var(--paper))", transition: "background 0.3s ease, border-color 0.2s ease" }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
@@ -152,8 +152,8 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
           {/* Decorative index */}
           <div style={{ position: "absolute", bottom: "1rem", right: "1.5rem", fontFamily: "var(--font-display)", fontSize: "72px", fontWeight: 800, lineHeight: 1, color: hovered ? "white" : "var(--ink)", opacity: hovered ? 0.04 : 0.03, letterSpacing: "-0.04em", pointerEvents: "none", userSelect: "none", transition: "color 0.3s" }}>{project.index}</div>
 
-          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "1rem" }}>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "10px", color: hovered ? "rgba(255,255,255,0.35)" : "var(--muted)", letterSpacing: "0.06em", transition: "color 0.3s" }}>{project.tag}</span>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1.25rem" }}>
+            <span style={{ fontFamily: "var(--font-display)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", color: hovered ? "rgba(255,255,255,0.3)" : "var(--muted)", transition: "color 0.3s" }}>{project.index}</span>
             {project.personal && <span style={{ fontFamily: "var(--font-body)", fontSize: "9px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: hovered ? "rgba(255,255,255,0.3)" : "var(--muted)", border: `1px solid ${hovered ? "rgba(255,255,255,0.12)" : "var(--border)"}`, borderRadius: "2px", padding: "2px 6px", transition: "all 0.3s" }}>Personal</span>}
           </div>
 

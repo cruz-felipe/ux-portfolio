@@ -91,7 +91,7 @@ export default function About() {
         <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.5rem, 5vw, 5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1, color: "var(--ink)", margin: 0 }}>
           About
         </h2>
-        <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)", paddingBottom: "0.5rem" }}>Rio de Janeiro, Brazil · Available globally</span>
+
       </div>
 
       {/* Top: photo + bio */}

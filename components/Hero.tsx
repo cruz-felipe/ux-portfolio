@@ -43,37 +43,9 @@ export default function Hero() {
       overflow: "hidden",
     }}>
 
-      {/* Large background letter — purely decorative */}
-      <div style={{
-        position: "absolute",
-        top: "50%",
-        right: "-4rem",
-        transform: "translateY(-52%)",
-        fontFamily: "var(--font-display)",
-        fontSize: "clamp(320px, 45vw, 600px)",
-        fontWeight: 800,
-        lineHeight: 1,
-        letterSpacing: "-0.06em",
-        color: "var(--ink)",
-        opacity: 0.028,
-        pointerEvents: "none",
-        userSelect: "none",
-        transition: "opacity 1.2s ease",
-      }}>
-        FC
-      </div>
 
-      {/* Thin vertical rule — left editorial accent */}
-      <div style={{
-        position: "absolute",
-        left: "2.5rem",
-        top: "8rem",
-        bottom: "8rem",
-        width: "1px",
-        background: "linear-gradient(to bottom, transparent, var(--red) 30%, var(--red) 70%, transparent)",
-        opacity: visible ? 0.35 : 0,
-        transition: "opacity 1s ease 0.3s",
-      }} />
+
+
 
       <div style={{ paddingLeft: "2rem", position: "relative", maxWidth: "1100px" }}>
         {/* Role tag — small, precise, above headline */}
@@ -105,22 +77,24 @@ export default function Hero() {
           }}
           aria-label="I design for the moment when complexity is no longer manageable and someone has to make it work."
         >
-          {WORDS.map((word, i) => {
-            const next = WORDS[i + 1];
-            const noGap = next?.attach || word.attach;
-            return (
-              <span key={i} style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", marginRight: noGap ? 0 : "0.22em" }}>
-                <span style={{
-                  display: "inline-block",
-                  transform: visible ? "translateY(0)" : "translateY(105%)",
-                  transition: `transform 0.75s cubic-bezier(0.16,1,0.3,1) ${i * 38}ms`,
-                  color: word.red ? "var(--red)" : "var(--ink)",
-                }}>
+          {/* Non-red words */}
+          {WORDS.filter(w => !w.red && !w.attach).map((word, i) => (
+            <span key={i} style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", marginRight: "0.22em" }}>
+              <span style={{ display: "inline-block", transform: visible ? "translateY(0)" : "translateY(105%)", transition: `transform 0.75s cubic-bezier(0.16,1,0.3,1) ${i * 38}ms`, color: "var(--ink)" }}>
+                {word.text}
+              </span>
+            </span>
+          ))}
+          {/* "make it work." — nowrap so it never breaks */}
+          <span style={{ whiteSpace: "nowrap", display: "inline-block" }}>
+            {WORDS.filter(w => w.red || w.attach).map((word, i) => (
+              <span key={i} style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", marginRight: word.attach ? 0 : "0.22em" }}>
+                <span style={{ display: "inline-block", transform: visible ? "translateY(0)" : "translateY(105%)", transition: `transform 0.75s cubic-bezier(0.16,1,0.3,1) ${(WORDS.filter(w => !w.red && !w.attach).length + i) * 38}ms`, color: word.red ? "var(--red)" : "var(--ink)" }}>
                   {word.text}
                 </span>
               </span>
-            );
-          })}
+            ))}
+          </span>
         </h1>
 
         {/* Sub row */}
@@ -133,10 +107,10 @@ export default function Hero() {
           }}
         >
           <p className="hero-bio">
-            Eleven years designing enterprise products at global scale in BSS/OSS telecom
-            infrastructure, B2B and B2C across 9 countries. I lead a local design team, run
-            the cross-functional process and deliver the kind of system that engineers can
-            actually build and business stakeholders can explain.
+            Eleven years designing enterprise products at global scale in BSS/OSS telecom infrastructure, B2B and B2C across 9 countries.
+          </p>
+          <p className="hero-bio" style={{ marginTop: "0.75rem" }}>
+            I lead a local design team, run the cross-functional process and deliver the kind of system that engineers can actually build and business stakeholders can explain.
           </p>
           <div className="hero-role">
             <span className="hero-role-label">Currently</span>
@@ -152,23 +126,21 @@ export default function Hero() {
       <a href="#work" aria-label="Scroll to selected work" style={{
         position: "absolute",
         bottom: "2.5rem",
-        right: "2.5rem",
+        left: "2.5rem",
         display: "flex",
         alignItems: "center",
         gap: "0.5rem",
-        opacity: visible ? 0.4 : 0,
+        opacity: visible ? 0.35 : 0,
         transition: "opacity 0.6s ease 1.6s",
         textDecoration: "none",
         color: "var(--ink)",
-        writingMode: "vertical-lr",
-        letterSpacing: "0.08em",
       }}>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M7 2v10M3 8l4 4 4-4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
         <span style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 500, letterSpacing: "0.14em", textTransform: "uppercase" }}>
           Scroll
         </span>
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ transform: "rotate(90deg)" }}>
-          <path d="M6 2v8M2 6l4 4 4-4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
       </a>
     </section>
   );
