@@ -230,7 +230,7 @@ export default function Work() {
   const secondary = PROJECTS.filter(p => p.weight === "secondary");
 
   return (
-    <section id="work" aria-label="Selected work" style={{ padding: "5rem 2.5rem" }}>
+    <section id="work" aria-label="Selected work" style={{ padding: "4rem 2.5rem" }}>
       <h2 style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 2rem" }}>
         Selected Work
       </h2>

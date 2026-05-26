@@ -15,7 +15,7 @@ const data: CaseStudyData = {
   role: "Designer and Developer",
   location: "Personal project",
   year: "2025",
-  roleDetail: "Solo product from concept to deployment. Designed the full interaction system, built in Next.js with the Claude API, shipped to a private URL. Used daily by me and a small group of friends learning Spanish, Russian, French and Italian. Every product decision — architecture, AI integration, motion, scope — was mine.",
+  roleDetail: "Solo product from concept to deployment. Designed the full interaction system, built in Next.js with the Claude API, shipped to a private URL. Used daily by me and a small group of friends learning Spanish, Russian, French and Italian. Every product decision — architecture, AI integration, interaction design, scope — was mine.",
   context: "I was using Duolingo to study Spanish and Russian. It works for gamified progress but not for what I actually needed: sitting down with a set of words and drilling them until they stick. Every dedicated flashcard app I found had too much friction, too much structure I didn't ask for, or none of the vocabulary I needed for work. Building my own was faster than settling.",
   metrics: [],
   sections: [
@@ -43,14 +43,6 @@ const data: CaseStudyData = {
         { src: `${BASE}/Screenshot_2026-05-25_at_13_19_31.png`, caption: "Recall mode. Spanish word shown, type the Portuguese equivalent." },
         { src: `${BASE}/Screenshot_2026-05-25_at_13_19_37.png`, caption: "Correct. Green border, cultural tip surfaces." },
         { src: `${BASE}/Screenshot_2026-05-25_at_13_19_53.png`, caption: "Wrong. Red border, correct form shown with context." },
-      ],
-    },
-    {
-      title: "Card flip and feedback motion",
-      body: [
-        "The card flip is a 300ms CSS 3D transform on the Y axis with ease-in-out — long enough to read as a physical card turning, short enough to not slow down a drilling session. The two faces (front word, back translation) swap at the 150ms midpoint when the card is edge-on, so the transition feels like a real flip rather than a dissolve.",
-        "Correct and incorrect feedback states animate the card border color from neutral to green or red over 150ms, then hold for 400ms before advancing. The hold is deliberate: it gives the brain a moment to register the outcome before the next card enters. Wrong answers also shake the card horizontally over 200ms — a short 4px oscillation — before showing the correct form. That micro-animation is the only piece of motion in the app that communicates failure, so it needed to be distinct without being punishing.",
-        "All motion respects prefers-reduced-motion. When the preference is set, the card flip becomes an instant face-swap, border color changes are instant, and the shake is replaced with a simple red border hold. The app is fully usable without any animation.",
       ],
     },
     {

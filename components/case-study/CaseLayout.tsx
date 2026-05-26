@@ -136,7 +136,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
 
       {/* Hero */}
       <section className="case-hero-inner" style={{
-        padding: "9rem 2.5rem 5rem",
+        padding: "7rem 2.5rem 4rem",
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.7s ease, transform 0.7s ease",
@@ -182,15 +182,15 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
           }}>{data.tagline}</p>
 
           {/* Role + impact callout */}
-          <div className="case-callout" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: "3rem", maxWidth: maxW, paddingTop: "1.5rem", borderTop: "0.5px solid var(--border)" }}>
+          <div className="case-callout" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", maxWidth: maxW, paddingTop: "1.5rem", borderTop: "0.5px solid var(--border)" }}>
             <div>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 0.2rem" }}>My role</p>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 400, lineHeight: 1.65, color: "var(--ink)", opacity: 0.75, margin: 0, display: "-webkit-box", WebkitLineClamp: 4, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{data.roleDetail}</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 400, lineHeight: 1.65, color: "var(--ink)", opacity: 0.75, margin: 0 }}>{data.roleDetail}</p>
             </div>
             {data.impactSummary && (
               <div>
                 <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 0.5rem" }}>Business impact</p>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 400, lineHeight: 1.7, color: "var(--ink)", opacity: 0.75, margin: 0, display: "-webkit-box", WebkitLineClamp: 4, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{data.impactSummary}</p>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 400, lineHeight: 1.7, color: "var(--ink)", opacity: 0.75, margin: 0 }}>{data.impactSummary}</p>
               </div>
             )}
           </div>
@@ -199,7 +199,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
 
       {/* Metrics strip */}
       {data.metrics.length > 0 && (
-        <section style={{ borderTop: "0.5px solid var(--border)", borderBottom: "0.5px solid var(--border)", padding: "3rem 2.5rem" }}>
+        <section style={{ borderTop: "0.5px solid var(--border)", borderBottom: "0.5px solid var(--border)", padding: "4rem 2.5rem" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }} className="case-metrics">
             {data.metrics.map((m, i) => (
               <div key={i} style={{ padding: "0 2rem", paddingLeft: i === 0 ? 0 : undefined }}>

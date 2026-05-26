@@ -53,12 +53,6 @@ const data: CaseStudyData = {
       ],
     },
     {
-      title: "Motion and interaction spec",
-      body: [
-        "One of the gaps the audit surfaced was inconsistent transition behavior across components. Some modals faded in, others slid. Some dropdowns had no transition at all. Before the restructure completed, I documented a motion baseline: entrance transitions use a 200ms ease-out translate-and-fade, exits use 150ms ease-in. State changes (hover, focus, active) are 100ms or less with no translate — only color and border changes. All transitions respect prefers-reduced-motion: if the user has set that preference, transitions collapse to instant. This was added to the component spec as a required property, not an optional enhancement.",
-      ],
-    },
-    {
       title: "What I would do differently",
       body: [
         "I would map the system state and the roadmap on day one, before any other work. My assumption that a company of this scale would have mature governance was the single thing that cost the most time. The lesson is not specific to this engagement: the bigger the company, the more important it is to verify rather than assume. Large organisations accumulate technical and design debt the same way smaller ones do, often more invisibly.",

@@ -56,12 +56,6 @@ const data: CaseStudyData = {
       ],
     },
     {
-      title: "Motion and step transitions",
-      body: [
-        "The 3-step flow needed transitions that communicated progress without adding friction — agents were processing high-value B2B quotes on a clock. Step advances use a 220ms horizontal slide with ease-out: far enough to signal forward movement, fast enough to not feel theatrical. Back navigation reverses the direction. Pricing recalculations in Step 2 update with a 120ms cross-fade on the affected values rather than a full panel re-render, so the agent's eye stays on the number that changed. Approval confirmation uses a brief scale-and-fade on the success state — the only moment in the flow where a slight pause is appropriate because it marks a consequential action. All motion respects prefers-reduced-motion: if set, transitions are instant and the directional slide is replaced with a simple opacity change.",
-      ],
-    },
-    {
       title: "What I would do differently",
       body: [
         "I would have pushed for an MVP scope at the start rather than delivering a prioritized list of improvements. The matrix was the right tool for sequencing. But sequencing a long list is still a long list. A defined MVP with a subset of the highest-impact fixes would have been easier for the client to commit to and faster to demonstrate results.",

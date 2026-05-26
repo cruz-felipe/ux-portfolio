@@ -79,13 +79,6 @@ const data: CaseStudyData = {
     },
     {
       // index 5
-      title: "Motion and interaction",
-      body: [
-        "The platform is a tool, not a showcase. Motion decisions were made on that basis. Panel transitions — detail drawer opening, approval modal entering — use 180ms ease-out. Fast enough to not interrupt a task flow, slow enough to orient without jarring. Form validation errors appear immediately on blur with no delay. The live preview panel in the create flow updates synchronously as fields change: no debounce, no skeleton — because the preview is the point of the interaction and any lag undermines it. All transitions are wrapped in a prefers-reduced-motion check and collapse to instant when the user has set that preference.",
-      ],
-    },
-    {
-      // index 6
       title: "What shipped",
       body: [
         "The platform covers three modules across 13 end-to-end user flows, each with full validation states, empty states and error handling. Quota management gives agents visibility into consumption at the client and partner level, with manual adjustment controls and threshold alerts. API usage monitoring surfaces rate limit status and consumption trends. Change requests route through a configurable multi-level approval flow with a full audit log.",
@@ -104,17 +97,17 @@ const data: CaseStudyData = {
     },
     {
       // section 1
+      id: "workshop-method",
+      title: "Workshop-to-output method",
+      caption: "Preliminary concept sketches brought into sessions as thinking tools, not proposals. Each cycle produced locked decisions and flagged dependencies before the next session opened.",
+      component: <WorkshopMethodArtifact />,
+    },
+    {
+      // section 2
       id: "stakeholder-alignment",
       title: "Cross-functional alignment map",
       caption: "Six stakeholder groups, two sides. Design was the only function present in every session. Misalignment between client-side groups — not between clients and design — was the primary source of scope drift.",
       component: <StakeholderAlignmentArtifact />,
-    },
-    {
-      // section 2
-      id: "approval-flow",
-      title: "Change request approval flow",
-      caption: "Three request types routing to three approval structures. Configurable per client sign-off hierarchy without system configuration changes.",
-      component: <ApprovalFlowArtifact />,
     },
     {
       // section 3
@@ -132,10 +125,10 @@ const data: CaseStudyData = {
     },
     {
       // section 5
-      id: "workshop-method",
-      title: "Workshop-to-output method",
-      caption: "Preliminary concept sketches brought into sessions as thinking tools, not proposals. Each cycle produced locked decisions and flagged dependencies before the next session opened.",
-      component: <WorkshopMethodArtifact />,
+      id: "what-shipped-null",
+      title: "",
+      caption: "",
+      component: null,
     },
   ],
 };
