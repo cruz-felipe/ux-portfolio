@@ -2,12 +2,12 @@ import CaseLayout, { CaseStudyData } from "@/components/case-study/CaseLayout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Predictive Support Hub Felipe Cruz",
+  title: "Predictive Support Hub / Felipe Cruz",
   description: "32 tools consolidated into one AI workspace. AHT dropped from 10 minutes to 3.",
 };
 
 const data: CaseStudyData = {
-  index: "02",
+  index: "01",
   title: "Predictive Support Hub",
   tagline: "3,000 support agents were navigating 32 legacy tools on every call. What looked like a UX problem was an infrastructure problem wearing a UX mask. The solution was not a better interface. It was eliminating the reason the interface was so complex to begin with.",
   role: "End-to-end UX Strategy",
@@ -17,33 +17,53 @@ const data: CaseStudyData = {
   impactSummary: "AHT reduced from 10 minutes to 3. 32 legacy tools replaced by one intelligent workspace. New agent onboarding cut from 3 days to under half a day.",
   context: "I was brought in to redesign the support experience for a global telecom with 3,000 agents across multiple countries. The initial brief was UX improvement. What the audit revealed was that every customer call required agents to context-switch across an average of 32 separate legacy tools to find billing history, technical data and open tickets. There was no single source of truth. The problem was not the interface.",
   metrics: [
-    { value: "70%", label: "AHT reduction. From 10 minutes to 3 per call" },
-    { value: "32→1", label: "Legacy tools consolidated into one intelligent workspace" },
-    { value: "3→½d", label: "New agent onboarding time" },
+    { value: "70%", label: "AHT reduction. From 10 minutes to 3 per call." },
+    { value: "32→1", label: "Legacy tools consolidated into one intelligent workspace." },
+    { value: "3→½d", label: "New agent onboarding time." },
   ],
   sections: [
     {
+      title: "What existed before",
+      body: [
+        "Agents navigated between dozens of disconnected legacy systems on every call. Billing lived in one tool. Technical data in another. Tickets in a third. There was no shared context, no single customer view and no way to act without opening another window. Institutional knowledge lived on sticky notes next to monitors.",
+        "The two screens below are from the legacy environment. One is a raw account management tool that agents used to look up customer data — dense, technical, built for system administrators rather than support agents. The other is a bill detail view accessed through a separate portal. These are two of the 32 tools an agent was expected to navigate mid-call.",
+      ],
+      screens: [
+        { src: "/hub/before2.png", caption: "Legacy account management tool. Agent lookup for customer data — built for sysadmins, not support agents on a live call." },
+        { src: "/hub/before1.png", caption: "Legacy bill detail view accessed through a separate portal. One of many tools an agent toggled between per call." },
+      ],
+    },
+    {
       title: "Into the field",
       body: [
-        "I conducted remote research sessions with agents in Egypt and Jamaica, observing their screens and listening to live calls. Then I went on-site to call centers in New York and Texas to shadow agents in person. That choice mattered. Remote observation shows you what people do. On-site observation shows you why.",
-        "What became clear across every location was that the tools were actively fighting each other. Agents kept sticky notes next to their monitors listing which tool held which type of data. The institutional knowledge that should have lived in the system lived on paper instead. New agents spent months just learning the map.",
-        "When I brought this back to the client, the initial reaction was to request a better search interface. I pushed back. A better search across 32 disconnected tools was still 32 disconnected tools. The problem was architectural, and solving it at the interface level would not change the outcome for agents or customers.",
+        "I conducted remote research sessions with agents in Egypt and Jamaica, observing their screens and listening to live calls. Then I went on-site to call centers in New York and Texas to shadow agents in person. Remote observation shows you what people do. On-site observation shows you why.",
+        "What became clear across every location was that the tools were actively fighting each other. The institutional knowledge that should have lived in the system lived on paper instead. New agents spent months just learning the map. When I brought this back to the client, the initial response was to request a better search interface. I pushed back. A better search across 32 disconnected tools was still 32 disconnected tools.",
       ],
     },
     {
       title: "Reframing the problem",
       body: [
-        "Getting the client to accept an architectural solution instead of a UI improvement was the hardest part of this project. The engineering and product teams had years of investment in the existing tool stack. A consolidation conversation threatened those decisions.",
-        "My first presentation of the problem was rejected. The initial response was that a better search interface across the existing tools would solve it. I disagreed and said so directly: a better search across 32 disconnected tools was still 32 disconnected tools. The problem was not findability. It was that the information lived in the wrong place.",
-        "The second conversation worked because I changed the frame. I built a cost model: average AHT multiplied by call volume multiplied by 3,000 agents, compared against the projected cost of consolidation. The number made the architectural investment look cheap. Once the conversation was about infrastructure cost rather than design preference, the engineering team stopped being blockers and became partners. They knew exactly which legacy tools could be retired and where the real integration complexity sat.",
+        "My first presentation of the problem was rejected. The response was that a better search interface would solve it. I disagreed and said so directly: the problem was not findability. It was that the information lived in the wrong place.",
+        "The second conversation worked because I changed the frame. I built a cost model: average AHT multiplied by call volume multiplied by 3,000 agents, compared against the projected cost of consolidation. The number made the architectural investment look cheap. Once the conversation was about infrastructure cost rather than design preference, the engineering team stopped being blockers and became partners.",
       ],
     },
     {
-      title: "The intelligence layer",
+      title: "The unified workspace",
       body: [
-        "The workspace was built on three layers, each corresponding to a stage in the agent workflow. Auto-identification surfaced the customer's full history on call connection without any manual lookup. Contextual scripting monitored the conversation in real time and pushed relevant data to the agent without them having to ask for it. Live resolution put the answer directly in the session interface rather than handing the agent a script to read.",
-        "Each layer addressed a specific source of handle time. Auto-identification removed the initial lookup. Contextual scripting removed the mid-call search. Live resolution removed the end-of-call manual documentation. The three together dropped AHT from 10 minutes to 3.",
-        "The design problem I underestimated was error states. When the AI surfaced the wrong context, agents had no clear way to override it without losing their place in the call. We caught this in testing but later than we should have. If I were doing this again I would have built explicit override controls into the first prototype rather than treating them as edge cases. The agents who struggled most with the new system were not the ones who found it complex. They were the ones who did not trust it.",
+        "The workspace replaced all 32 tools with three layers. Auto-identification surfaced the customer's full history on call connect — name, account, interaction history, open tickets, all without the agent searching. Contextual scripting monitored the call in real time and pushed relevant data and suggested responses to the agent. Live resolution surfaced the answer directly in the session interface.",
+        "The auto-identification panel is shown below — the first screen an agent sees when a call connects. By the time they say hello, they already know who they are talking to, why that customer likely called and what the last three agents did. Below that, the full unified workspace: one interface, all context, no switching.",
+      ],
+      screens: [
+        { src: "/hub/auto-id.png", caption: "Auto-identification panel on call connect. Customer history, IVR path and authentication — surfaced before the agent speaks." },
+        { src: "/hub/workspace.png", caption: "Unified agent workspace. Customer context, suggested interaction, services, devices and billing — one screen, mid-call." },
+        { src: "/hub/workspace2.png", caption: "Workspace with bill payment modal active. Action taken without leaving the interface." },
+      ],
+    },
+    {
+      title: "What I would do differently",
+      body: [
+        "The design decision I underestimated was error states. When the AI surfaced the wrong context, agents had no clear way to override it without losing their place in the call. We caught this in testing but later than we should have. If I were doing this again I would have built explicit override controls into the first prototype rather than treating them as edge cases.",
+        "The agents who struggled most with the new system were not the ones who found it complex. They were the ones who did not trust it. Trust is a design problem. It needed more deliberate attention from the start.",
       ],
     },
   ],

@@ -4,6 +4,47 @@ import { useRef, useEffect, useState } from "react";
 
 const PROJECTS: { id: string; href: string; index: string; title: string; blurb: string; metrics: string[]; personal?: boolean }[] = [
   {
+    id: "predictive-support-hub",
+    href: "/work/predictive-support-hub",
+    index: "01",
+    title: "Predictive Support Hub",
+    blurb: "3,000 support agents navigating 32 legacy tools on every call. I replaced the ecosystem with a single AI-integrated workspace.",
+    metrics: ["70% AHT reduction", "32→1 consolidation"],
+  },
+  {
+    id: "b2b-sales-rescue",
+    href: "/work/b2b-sales-rescue",
+    index: "02",
+    title: "B2B Sales Rescue",
+    blurb: "Sales agents needed 7 tools and 3 days of training to close one deal. I reduced that to a single flow and half a day.",
+    metrics: ["75% quote acceleration", "83% faster onboarding"],
+  },
+  {
+    id: "quota-management",
+    href: "/work/quota-management",
+    index: "03",
+    title: "Quota Management",
+    blurb: "A greenfield B2B asset management platform for a BSS telecom. No prior product. Designed from workshop sessions to production-ready flows as the solo designer.",
+    metrics: ["Greenfield from scratch", "3 core modules"],
+  },
+  {
+    id: "dane-telecom",
+    href: "/work/dane-telecom",
+    index: "04",
+    title: "Dane Telecom",
+    blurb: "Three months on-site in Copenhagen. The client did not need better components. They needed a designer who understood what was coming next.",
+    metrics: ["50% faster handoff", "32% velocity boost"],
+  },
+  {
+    id: "vocabulary",
+    href: "/work/vocabulary",
+    index: "05",
+    title: "Vocabulary",
+    blurb: "Every flashcard app I tried was built around someone else's curriculum. I wanted one thing: a fast, honest way to learn words. So I built it.",
+    metrics: ["4 languages", "2 learning modes"],
+    personal: true,
+  },
+  {
     id: "dane-telecom",
     href: "/work/dane-telecom",
     index: "01",

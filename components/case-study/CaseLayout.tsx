@@ -61,12 +61,11 @@ export interface CaseStudyData {
 }
 
 const ALL_WORK = [
-  { slug: "dane-telecom", index: "01", title: "Dane Telecom" },
-  { slug: "predictive-support-hub", index: "02", title: "Predictive Support Hub" },
-  { slug: "b2b-sales-rescue", index: "03", title: "B2B Sales Rescue" },
-  { slug: "field-work-order", index: "04", title: "Field Work Order" },
-  { slug: "quota-management", index: "05", title: "Quota Management" },
-  { slug: "vocabulary", index: "06", title: "Vocabulary", personal: true },
+  { slug: "predictive-support-hub", index: "01", title: "Predictive Support Hub" },
+  { slug: "b2b-sales-rescue", index: "02", title: "B2B Sales Rescue" },
+  { slug: "quota-management", index: "03", title: "Quota Management" },
+  { slug: "dane-telecom", index: "04", title: "Dane Telecom" },
+  { slug: "vocabulary", index: "05", title: "Vocabulary", personal: true },
 ];
 
 export default function CaseLayout({ data }: { data: CaseStudyData }) {
@@ -118,7 +117,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
           All work
         </a>
         <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--muted)" }}>
-          {data.index} / 06
+          {data.index} / 05
         </span>
     </div>
 
