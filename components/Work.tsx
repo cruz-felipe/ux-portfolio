@@ -79,8 +79,6 @@ function FeaturedCard({ project, index }: { project: typeof PROJECTS[0]; index: 
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "2rem" }}>
               <span style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>Featured</span>
-              <span style={{ width: "1px", height: "10px", background: "rgba(255,255,255,0.15)" }} />
-              <span style={{ fontFamily: "var(--font-body)", fontSize: "10px", color: "rgba(255,255,255,0.35)", letterSpacing: "0.04em" }}>{project.tag}</span>
             </div>
 
             <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, color: "white", margin: "0 0 1.25rem" }}>

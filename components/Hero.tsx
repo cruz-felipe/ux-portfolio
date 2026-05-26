@@ -37,20 +37,19 @@ export default function Hero() {
       minHeight: "100svh",
       display: "flex",
       flexDirection: "column",
-      justifyContent: "center",
-      padding: "8rem 2.5rem 5rem",
+      justifyContent: "flex-end",
+      padding: "0 2.5rem 5rem",
       position: "relative",
     }}>
       <h1
         style={{
           fontFamily: "var(--font-display)",
-          fontSize: "clamp(2.2rem, 4.2vw, 4.2rem)",
+          fontSize: "clamp(2.6rem, 5.5vw, 6rem)",
           fontWeight: 800,
           lineHeight: 1.08,
           letterSpacing: "-0.03em",
           color: "var(--ink)",
-          maxWidth: "1100px",
-          margin: "0 0 4rem",
+          margin: "0 0 3.5rem",
         }}
         aria-label="I design for the moment when complexity is no longer manageable and someone has to make it work."
       >
