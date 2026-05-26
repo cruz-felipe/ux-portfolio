@@ -68,6 +68,13 @@ export default function ResponsiveStyles() {
         }
       }
 
+      @media (max-width: 680px) {
+        .about-top {
+          grid-template-columns: 1fr !important;
+          gap: 2rem !important;
+        }
+      }
+
       @media (max-width: 900px) {
         .about-bottom {
           grid-template-columns: 1fr;
@@ -77,6 +84,7 @@ export default function ResponsiveStyles() {
           grid-template-columns: 1fr 1fr !important;
           gap: 0.75rem !important;
         }
+        #work { padding: 4rem 1.5rem !important; }
         .signal-strip-inner {
           grid-template-columns: 1fr 1fr !important;
         }
@@ -95,6 +103,14 @@ export default function ResponsiveStyles() {
         .nav-hamburger { display: block !important; }
         .nav-desktop { display: none !important; }
         nav { padding: 1rem 1.25rem !important; }
+
+        /* Section padding tightened on mobile */
+        #work { padding: 4rem 1.25rem !important; }
+        .case-hero-inner { padding: 6rem 1.25rem 3rem !important; }
+        .case-section { padding: 2.5rem 1.25rem !important; gap: 1rem !important; }
+        .case-section > h2 { font-size: 10px !important; }
+        footer { padding: 3rem 1.25rem !important; }
+        .case-callout { padding: 2.5rem 1.25rem !important; }
 
         .hero-sub {
           grid-template-columns: 1fr !important;
@@ -135,6 +151,13 @@ export default function ResponsiveStyles() {
           align-items: flex-start !important;
           border-top: 1px solid rgba(10,10,10,0.1);
           padding-top: 2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .work-grid {
+          grid-template-columns: 1fr !important;
+          gap: 0.5rem !important;
         }
       }
 

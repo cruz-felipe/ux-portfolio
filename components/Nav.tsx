@@ -42,6 +42,8 @@ export default function Nav() {
   return (
     <>
       <nav
+        role="navigation"
+        aria-label="Primary navigation"
         style={{
           position: "fixed",
           top: 0,
@@ -81,7 +83,7 @@ export default function Nav() {
             style={{
               background: "none",
               border: "none",
-              padding: "4px",
+              padding: "10px",
               cursor: "pointer",
               color: "var(--ink)",
               opacity: 0.5,

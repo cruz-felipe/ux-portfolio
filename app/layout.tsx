@@ -36,7 +36,7 @@ export default function RootLayout({
       <body>
         <ResponsiveStyles />
         <Cursor />
-        <a href="#main-content" className="skip-link">Skip to content</a>
+        <a href="#main-content" className="skip-link" aria-label="Skip to main content">Skip to content</a>
         {children}
       </body>
     </html>

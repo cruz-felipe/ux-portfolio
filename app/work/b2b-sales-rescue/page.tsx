@@ -34,7 +34,7 @@ const data: CaseStudyData = {
       title: "Making the case for rework",
       body: [
         "The client's management pushed back immediately. They had invested in two releases. Having an external team arrive and say parts needed reworking was not a comfortable conversation.",
-        "We scored every finding on two axes: criticality by Nielsen's severity scale, and effort by design and development cost combined. The output was not a list of problems it was a roadmap argument. Low-effort, high-criticality fixes first, slotted into the existing release schedule so the rework did not require stopping. The research study we ran was also used to structure the delivery roadmap shown below.",
+        "We scored every finding on two axes: criticality by Nielsen's severity scale, and effort by design and development cost combined. The output was not a list of problems it was a roadmap argument. Low-effort, high-criticality fixes first, slotted into the existing release schedule so the rework did not require stopping. The constraint that turned the room was not the severity scores. It was the framing that the system had to keep running. We were not proposing a replacement. We were proposing fixes that could be absorbed into releases that were already scheduled. Management agreed to incremental changes over a reviewed and approved roadmap. That distinction mattered more than any individual finding. The research study we ran was also used to structure the delivery roadmap shown below.",
       ],
       screens: [
         { src: "/b2b/roadmap.png", caption: "Research-to-delivery roadmap. Planning, top-case inputs by segment, and documentation phases structured around what the field study revealed." },

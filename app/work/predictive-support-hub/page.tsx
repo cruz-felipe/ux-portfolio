@@ -43,7 +43,7 @@ const data: CaseStudyData = {
     {
       title: "Reframing the problem",
       body: [
-        "My first presentation of the problem was rejected. The response was that a better search interface would solve it. I disagreed and said so directly: the problem was not findability. It was that the information lived in the wrong place.",
+        "My first presentation was met with scepticism. The client understood the fragmentation but was not yet convinced that consolidation was the right investment. I changed the frame: instead of arguing about interface quality, I built a cost model. Average AHT multiplied by call volume multiplied by 3,000 agents, compared against the projected cost of consolidation. The infrastructure investment started to look cheap.",
         "The second conversation worked because I changed the frame. I built a cost model: average AHT multiplied by call volume multiplied by 3,000 agents, compared against the projected cost of consolidation. The number made the architectural investment look cheap. Once the conversation was about infrastructure cost rather than design preference, the engineering team stopped being blockers and became partners.",
       ],
     },

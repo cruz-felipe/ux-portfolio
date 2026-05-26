@@ -104,7 +104,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div style={{
+      <a href="#work" aria-label="Scroll to selected work" style={{
         position: "absolute",
         bottom: "2rem",
         left: "2.5rem",
@@ -113,6 +113,8 @@ export default function Hero() {
         gap: "0.5rem",
         opacity: visible ? 0.35 : 0,
         transition: "opacity 0.6s ease 1.5s",
+        textDecoration: "none",
+        color: "var(--ink)",
       }}>
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
           <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -120,7 +122,7 @@ export default function Hero() {
         <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase" }}>
           Scroll
         </span>
-      </div>
+      </a>
     </section>
   );
 }

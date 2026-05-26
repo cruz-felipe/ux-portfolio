@@ -6,6 +6,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
+      aria-label="Contact and links"
       style={{
         borderTop: "1px solid var(--border)",
         padding: "4rem 2.5rem",

@@ -77,6 +77,7 @@ export default function About() {
   return (
     <section
       id="about"
+      aria-label="About Felipe Cruz"
       ref={ref}
       style={{
         padding: "6rem 2.5rem",

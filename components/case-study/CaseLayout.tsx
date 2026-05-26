@@ -81,7 +81,16 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
     if (!el) return;
     const items = el.querySelectorAll("section, .artifact-section");
     const observer = new IntersectionObserver(
-      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); }),
+      (entries) => entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add("visible");
+          // Stagger direct children: title, body, screens
+          Array.from(e.target.children).forEach((child, i) => {
+            (child as HTMLElement).style.transitionDelay = `${i * 80}ms`;
+            child.classList.add("visible");
+          });
+        }
+      }),
       { threshold: 0.08 }
     );
     items.forEach(item => { item.classList.add("reveal"); observer.observe(item); });
@@ -102,16 +111,24 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
         WebkitBackdropFilter: "blur(16px)",
         borderBottom: "0.5px solid var(--border)",
       }}>
-        <a href="/" style={{
+        <a href="/" aria-label="Back to home" style={{
           display: "flex", alignItems: "center", gap: "0.5rem",
           fontFamily: "var(--font-body)", fontSize: "13px",
           color: "var(--muted)", textDecoration: "none",
           transition: "color 0.2s",
         }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--ink)")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = "var(--ink)";
+            const svg = e.currentTarget.querySelector("svg") as SVGElement | null;
+            if (svg) svg.style.transform = "translateX(-3px)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = "var(--muted)";
+            const svg = e.currentTarget.querySelector("svg") as SVGElement | null;
+            if (svg) svg.style.transform = "translateX(0)";
+          }}
         >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ transition: "transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)" }}>
             <path d="M12 7H2M6 3L2 7l4 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
           All work
@@ -121,10 +138,10 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
         </span>
     </div>
 
-    <main className="page-enter" style={{ background: "var(--paper)", color: "var(--ink)", minHeight: "100vh" }}>
+    <main id="main-content" role="main" className="page-enter" style={{ background: "var(--paper)", color: "var(--ink)", minHeight: "100vh" }}>
 
       {/* Hero */}
-      <section style={{
+      <section className="case-hero-inner" style={{
         padding: "9rem 2.5rem 5rem",
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(20px)",
@@ -149,20 +166,20 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
           {/* Tagline */}
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "clamp(1rem, 1.4vw, 1.2rem)",
-            fontWeight: 300, lineHeight: 1.7, color: "var(--ink)", opacity: 0.75,
+            fontWeight: 400, lineHeight: 1.7, color: "var(--ink)", opacity: 0.8,
             maxWidth: maxW, marginBottom: "3rem",
           }}>{data.tagline}</p>
 
           {/* Role + impact callout */}
           <div className="case-callout" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", maxWidth: maxW, paddingTop: "2rem", borderTop: "0.5px solid var(--border)" }}>
             <div>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 0.5rem" }}>My role</p>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 300, lineHeight: 1.7, color: "var(--ink)", opacity: 0.8, margin: 0 }}>{data.roleDetail}</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 0.5rem" }}>My role</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 400, lineHeight: 1.7, color: "var(--ink)", opacity: 0.75, margin: 0 }}>{data.roleDetail}</p>
             </div>
             {data.impactSummary && (
               <div>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 0.5rem" }}>Business impact</p>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 300, lineHeight: 1.7, color: "var(--ink)", opacity: 0.8, margin: 0 }}>{data.impactSummary}</p>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 0.5rem" }}>Business impact</p>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 400, lineHeight: 1.7, color: "var(--ink)", opacity: 0.75, margin: 0 }}>{data.impactSummary}</p>
               </div>
             )}
           </div>
@@ -175,10 +192,10 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }} className="case-metrics">
             {data.metrics.map((m, i) => (
               <div key={i} style={{ padding: "0 2rem", paddingLeft: i === 0 ? 0 : undefined }}>
-                <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 3vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1, marginBottom: "0.5rem" }}>
+                <div className="metric-value" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 3vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: "0.5rem" }}>
                   <span style={{ color: "var(--red)" }}><AnimatedMetric value={m.value} /></span>
                 </div>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)", lineHeight: 1.55, margin: 0, maxWidth: "160px" }}>{m.label}</p>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", fontWeight: 500, color: "var(--muted)", lineHeight: 1.55, margin: 0, maxWidth: "160px" }}>{m.label}</p>
               </div>
             ))}
           </div>
@@ -210,9 +227,9 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
               </h2>
               <div style={{ maxWidth: "700px" }}>
                 {Array.isArray(section.body) ? section.body.map((para, pi) => (
-                  <p key={pi} style={{ fontFamily: "var(--font-body)", fontSize: "15px", fontWeight: 300, lineHeight: 1.8, color: "var(--ink)", opacity: 0.82, marginBottom: pi < (section.body as string[]).length - 1 ? "1.25rem" : 0 }}>{para}</p>
+                  <p key={pi} className={pi === 0 ? "case-body-lead" : undefined} style={{ fontFamily: "var(--font-body)", fontSize: pi === 0 ? undefined : "15px", fontWeight: 400, lineHeight: pi === 0 ? undefined : 1.8, color: "var(--ink)", opacity: pi === 0 ? undefined : 0.78, marginBottom: pi < (section.body as string[]).length - 1 ? "1.25rem" : 0 }}>{para}</p>
                 )) : (
-                  <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", fontWeight: 300, lineHeight: 1.8, color: "var(--ink)", opacity: 0.82, margin: 0 }}>{section.body}</p>
+                  <p className="case-body-lead" style={{ fontFamily: "var(--font-body)", color: "var(--ink)", margin: 0 }}>{section.body}</p>
                 )}
               </div>
             </section>
@@ -239,9 +256,25 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
       </div>
 
       {/* More work */}
-      <section style={{ padding: "4rem 2.5rem", borderTop: "0.5px solid var(--border)", display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", alignItems: "start" }} className="case-section">
+      <section aria-label="More work" style={{ padding: "4rem 2.5rem", borderTop: "0.5px solid var(--border)", display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", alignItems: "start" }} className="case-section">
         <h2 style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: 0 }}>More work</h2>
         <div style={{ display: "flex", flexDirection: "column" }}>
+          {(() => {
+            const idx = ALL_WORK.findIndex(w => w.title === data.title);
+            const next = ALL_WORK[idx + 1];
+            if (!next) return null;
+            return (
+              <a href={`/work/${next.slug}`} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "1rem 0", borderBottom: "0.5px solid var(--border)", textDecoration: "none", marginBottom: "0.5rem", gap: "1rem" }}>
+                <div>
+                  <div style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--muted)", marginBottom: "4px" }}>Next</div>
+                  <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1rem, 2vw, 1.4rem)", fontWeight: 800, letterSpacing: "-0.02em", color: "var(--ink)" }}>{next.title}</div>
+                </div>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ color: "var(--red)", flexShrink: 0 }}>
+                  <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            );
+          })()}
           {ALL_WORK.map((work, i) => {
             const isCurrent = work.title === data.title;
             const style: React.CSSProperties = {
@@ -263,7 +296,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
               </>
             );
             return isCurrent ? (
-              <div key={work.slug} style={style}>{inner}</div>
+              <div key={work.slug} aria-current="page" style={style}>{inner}</div>
             ) : (
               <Link key={work.slug} href={`/work/${work.slug}`} style={style}
                 onMouseEnter={(e) => (e.currentTarget.style.color = "var(--red)")}

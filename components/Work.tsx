@@ -74,7 +74,7 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
         overflow: "hidden",
         textDecoration: "none",
         color: "var(--ink)",
-        background: hovered ? "#0A0A0A" : "transparent",
+        background: hovered ? "#0A0A0A" : "color-mix(in srgb, var(--ink) 1.5%, var(--paper))",
         transition: "background 0.35s ease, border-color 0.25s ease",
       }}
       onMouseEnter={() => setHovered(true)}
@@ -172,8 +172,8 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
             style={{
               color: hovered ? "var(--red)" : "var(--muted)",
-              transition: "color 0.35s ease, transform 0.35s ease",
-              transform: hovered ? "translateX(3px)" : "translateX(0)",
+              transform: hovered ? "translateX(5px)" : "translateX(0)",
+              transition: "color 0.25s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
             }}
           >
             <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -186,7 +186,7 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
         background: "var(--red)",
         transform: hovered ? "scaleX(1)" : "scaleX(0)",
         transformOrigin: "left",
-        transition: "transform 0.4s cubic-bezier(0.16,1,0.3,1)",
+        transition: "transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)",
       }} />
     </Link>
     </div>
@@ -195,7 +195,7 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
 
 export default function Work() {
   return (
-    <section id="work" style={{ padding: "6rem 2.5rem" }}>
+    <section id="work" aria-label="Selected work" style={{ padding: "6rem 2.5rem" }}>
       <div style={{
         display: "flex",
         alignItems: "baseline",
