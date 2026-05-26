@@ -15,7 +15,7 @@ const data: CaseStudyData = {
   location: "On-site, New York & Texas",
   year: "2022",
   roleDetail: "End-to-end ownership from field research and systemic audit to AI orchestration design and agent workflow redesign. I reframed the problem, built the infrastructure cost model that unlocked the investment, and led the solution architecture.",
-  impactSummary: "AHT reduced from 10 minutes to 3 minutes per call — a 70% reduction measured across the post-launch agent cohort. 32 legacy tools replaced by one intelligent workspace. At 3,000 agents handling an average of 40 calls per day, the 7-minute AHT saving per call represents roughly 14,000 agent-hours recovered daily. New agent onboarding cut from 3 days to under half a day.",
+  impactSummary: "AHT reduced from 10 minutes to 3 minutes per call (70% reduction, measured across the post-launch agent cohort).. 32 legacy tools replaced by one intelligent workspace. At 3,000 agents handling an average of 40 calls per day, the 7-minute AHT saving per call represents roughly 14,000 agent-hours recovered daily. New agent onboarding cut from 3 days to under half a day.",
   context: "I was brought in to redesign the support experience for a global telecom with 3,000 agents across multiple countries. The initial brief was UX improvement. What the audit revealed was that every customer call required agents to context-switch across an average of 32 separate legacy tools to find billing history, technical data and open tickets. There was no single source of truth. The problem was not the interface.",
   metrics: [
     { value: "70%", label: "AHT reduction. From 10 min to 3 min per call, measured post-launch across the agent cohort. At 3,000 agents × 40 calls/day, this is ~14,000 agent-hours recovered daily." },
@@ -28,7 +28,7 @@ const data: CaseStudyData = {
       title: "What existed before",
       body: [
         "Agents navigated between dozens of disconnected legacy systems on every call. Billing lived in one tool. Technical data in another. Tickets in a third. There was no shared context, no single customer view and no way to act without opening another window. Institutional knowledge lived on sticky notes next to monitors.",
-        "The two screens below are from the legacy environment. One is a raw account management tool that agents used to look up customer data — dense, technical, built for system administrators rather than support agents. The other is a bill detail view accessed through a separate portal. These are two of the 32 tools an agent was expected to navigate mid-call.",
+        "The two screens below are from the legacy environment. One is a raw account management tool that agents used to look up customer data. Dense, technical, built for system administrators rather than support agents. The other is a bill detail view accessed through a separate portal. These are two of the 32 tools an agent was expected to navigate mid-call.",
       ],
       screens: [
         { src: "/hub/before2.png", caption: "Legacy account management tool. Agent lookup for customer data built for sysadmins, not support agents on a live call." },
@@ -49,14 +49,14 @@ const data: CaseStudyData = {
       pullquote: "This was not a UX problem. It was an infrastructure problem wearing a UX mask.",
       body: [
         "My first presentation was met with scepticism. The client understood the fragmentation but was not yet convinced that consolidation was the right investment. Arguing about interface quality was not going to move the room.",
-        "I built a cost model instead. The inputs were public: average AHT of 10 minutes per call, call volume across 3,000 agents, average agent cost per hour. The output was a single number — the annual cost of the fragmentation in lost agent time — compared against the projected engineering cost of consolidation. The infrastructure investment looked cheap by comparison. That number changed the conversation. Engineering stopped being asked to approve a design preference and started being asked to evaluate an infrastructure ROI. They became partners.",
+        "I built a cost model instead. The inputs were public: average AHT of 10 minutes per call, call volume across 3,000 agents, average agent cost per hour. The output was a single number: the annual cost of the fragmentation in lost agent time, compared against the projected engineering cost of consolidation. The infrastructure investment looked cheap by comparison. That number changed the conversation. Engineering stopped being asked to approve a design preference and started being asked to evaluate an infrastructure ROI. They became partners.",
       ],
     },
     {
       // index 3
       title: "The unified workspace",
       body: [
-        "The workspace replaced all 32 tools with three layers. Auto-identification surfaced the customer's full history on call connect — name, account, interaction history, open tickets — all without the agent searching. Contextual scripting monitored the call in real time and pushed relevant data and suggested responses to the agent. Live resolution surfaced the answer directly in the session interface.",
+        "The workspace replaced all 32 tools with three layers. Auto-identification surfaced the customer's full history on call connect: name, account, interaction history, open tickets. All without the agent searching. Contextual scripting monitored the call in real time and pushed relevant data and suggested responses to the agent. Live resolution surfaced the answer directly in the session interface.",
         "The auto-identification panel is the first screen an agent sees when a call connects. By the time they say hello, they already know who they are talking to, why that customer likely called and what the last three agents did.",
       ],
       screens: [
@@ -76,9 +76,9 @@ const data: CaseStudyData = {
       // index 5
       title: "Designing at scale",
       body: [
-        "3,000 agents is a different design problem than 300. Every interaction pattern decision compounds. A 2-second inefficiency per call, multiplied across 3,000 agents doing 40 calls a day, is 240,000 seconds of lost productivity daily — nearly 67 agent-hours. That arithmetic shaped every micro-decision: the number of clicks to reach a record, the placement of the most-used action, the time it takes the auto-id panel to render.",
-        "It also shaped the rollout strategy. At this scale, a bad deploy does not affect a team — it affects an operations center. I designed for progressive rollout from the start: the workspace was built to coexist with the legacy tools, not replace them in a single cutover. Agents could be migrated cohort by cohort, with the legacy tools still accessible during the transition window. That architecture decision was made during the design phase, not handed back to engineering as a deployment problem.",
-        "The table below maps how the same design discipline translates from 3,000 agents to 10M users. The numbers are different. The framing — every design decision is a business outcome decision — is identical. At 10M users, a confusing onboarding screen isn't a UX problem; it's a churn number. A 100ms improvement to the most-used action isn't a performance win; it's a retention lever. The discipline of making those connections explicit before the design decision is made, not after launch, is what scales.",
+        "3,000 agents is a different design problem than 300. Every interaction pattern decision compounds. A 2-second inefficiency per call, multiplied across 3,000 agents doing 40 calls a day, is 240,000 seconds of lost productivity daily, nearly 67 agent-hours. That arithmetic shaped every micro-decision: the number of clicks to reach a record, the placement of the most-used action, the time it takes the auto-id panel to render.",
+        "It also shaped the rollout strategy. At this scale, a bad deploy does not affect a team. It affects an operations center. I designed for progressive rollout from the start: the workspace was built to coexist with the legacy tools, not replace them in a single cutover. Agents could be migrated cohort by cohort, with the legacy tools still accessible during the transition window. That architecture decision was made during the design phase, not handed back to engineering as a deployment problem.",
+        "The table below maps how the same design discipline translates from 3,000 agents to 10M users. The numbers are different. The framing is identical: every design decision is a business outcome decision. At 10M users, a confusing onboarding screen isn't a UX problem; it's a churn number. A 100ms improvement to the most-used action isn't a performance win; it's a retention lever. The discipline of making those connections explicit before the design decision is made, not after launch, is what scales.",
       ],
     },
     {
@@ -114,7 +114,7 @@ const data: CaseStudyData = {
     {
       // section 3
       id: "workspace-layers",
-      title: "Unified workspace — three intelligence layers",
+      title: "Unified workspace: three intelligence layers",
       caption: "Auto-identification, contextual scripting, live resolution. Each layer replaces a category of legacy tools. Together they cover all 32.",
       component: <UnifiedWorkspaceArtifact />,
     },
@@ -128,7 +128,7 @@ const data: CaseStudyData = {
     {
       // section 5
       id: "scale-reasoning",
-      title: "Scale reasoning — 3,000 agents → 10M users",
+      title: "Scale reasoning: 3,000 agents to 10M users",
       caption: "Same discipline, different arithmetic. Each dimension maps directly from the agent context to the consumer context. The framing changes; the requirement to connect design decisions to business outcomes does not.",
       component: <ScaleReasoningArtifact />,
     },

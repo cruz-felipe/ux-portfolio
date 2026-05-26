@@ -206,7 +206,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
                 <div className="metric-value" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 3vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: "0.5rem" }}>
                   <span style={{ color: "var(--red)" }}><AnimatedMetric value={m.value} /></span>
                 </div>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", fontWeight: 500, color: "var(--muted)", lineHeight: 1.55, margin: 0, maxWidth: "160px" }}>{m.label}</p>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", fontWeight: 500, color: "var(--muted)", lineHeight: 1.55, margin: 0, maxWidth: "260px" }}>{m.label}</p>
               </div>
             ))}
           </div>
@@ -259,7 +259,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
               </div>
             )}
 
-            {data.artifacts[si] && (
+            {data.artifacts[si]?.component && (
               <section className="artifact-section" style={{ padding: "3rem 2.5rem", borderBottom: "0.5px solid var(--border)", background: "var(--paper)" }}>
                 <div style={{ marginBottom: "1.25rem", overflowX: "auto" }}>
                   {data.artifacts[si].component}

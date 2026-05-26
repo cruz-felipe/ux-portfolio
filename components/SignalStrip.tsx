@@ -114,7 +114,7 @@ export default function SignalStrip() {
               opacity: stat.size === "lead" ? 0.75 : 1,
               lineHeight: 1.45,
               margin: 0,
-              maxWidth: "160px",
+              maxWidth: "260px",
               letterSpacing: "0.01em",
             }}>
               {stat.label}

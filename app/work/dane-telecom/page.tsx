@@ -2,7 +2,7 @@ import CaseLayout, { CaseStudyData } from "@/components/case-study/CaseLayout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Dane Telecom — Design System Restructure / Felipe Cruz",
+  title: "Dane Telecom: Design System Restructure / Felipe Cruz",
   description: "Led a production design system restructure for a major Danish telecom. Token architecture, component governance, sandbox-to-master workflow. 50% faster handoff.",
 };
 
@@ -10,7 +10,7 @@ const data: CaseStudyData = {
   index: "04",
   title: "Dane Telecom",
   tagline: "The client knew their design system lacked scalability. They did not know what to do about it. I was invited on-site in Copenhagen to find out.",
-  role: "Senior Product Designer — Design Systems",
+  role: "Senior Product Designer, Design Systems",
   location: "On-site, Copenhagen",
   year: "2023",
   roleDetail: "Led design system restructure working directly with the client's UX lead and UI designers. Introduced a three-tier token architecture, established component governance with a sandbox-to-master promotion workflow, and aligned the system roadmap with product delivery priorities across the team.",
@@ -19,7 +19,7 @@ const data: CaseStudyData = {
   metrics: [
     { value: "50%", label: "Faster handoff. Two weeks to one week, consistently. Measured against the team's own release log before and after restructure." },
     { value: "32%", label: "Velocity increase on concept production across the team, tracked across three feature cycles post-restructure." },
-    { value: "3mo", label: "On-site in Copenhagen. Proximity was not optional — this restructure required daily design and engineering coordination." },
+    { value: "3mo", label: "On-site in Copenhagen. Proximity was not optional. This restructure required daily design and engineering coordination." },
   ],
   sections: [
     {
@@ -47,8 +47,8 @@ const data: CaseStudyData = {
         { src: "/dane/token-architecture.png", caption: "Three-tier token architecture and sandbox-to-master governance workflow. Illustrative representation of the restructure approach." },
       ],
       body: [
-        "The restructure introduced three token tiers: primitive tokens (raw values — color, spacing, radius, type scale), semantic tokens (purpose-mapped aliases — surface, text, border, action), and component tokens (component-scoped overrides). This separation meant that a brand color change touched one primitive, propagated through semantic aliases, and updated every component automatically. Before the restructure, the same change required hunting through local overrides across dozens of components.",
-        "The governance model was equally important. I introduced a sandbox-to-master workflow: new components and token changes were built in isolation in a sandbox file, validated against active handoffs, reviewed by the UX lead, and only promoted to the master library once confirmed safe. Engineering not involved in the promotion decision — component governance stayed a design call. That boundary mattered. It kept the process fast.",
+        "The restructure introduced three token tiers: primitive tokens (raw values: color, spacing, radius, type scale), semantic tokens (purpose-mapped aliases: surface, text, border, action), and component tokens (component-scoped overrides). This separation meant that a brand color change touched one primitive, propagated through semantic aliases, and updated every component automatically. Before the restructure, the same change required hunting through local overrides across dozens of components.",
+        "The governance model was equally important. I introduced a sandbox-to-master workflow: new components and token changes were built in isolation in a sandbox file, validated against active handoffs, reviewed by the UX lead, and only promoted to the master library once confirmed safe. Engineering was not involved in the promotion decision. Component governance stayed a design call. That boundary mattered. It kept the process fast.",
         "The scope was larger than one person could cover on the timeline we had. I coordinated with other designers to split the work into batches, each assigned and tracked against the roadmap milestones. That coordination was the part of the project that most required the on-site presence. Remote collaboration on a restructure of this complexity, across a team that was also shipping features, would have been significantly harder.",
       ],
     },

@@ -28,16 +28,16 @@ const data: CaseStudyData = {
       pullquote: "The interviews told us what agents thought they did. The shadow sessions showed us what they actually did.",
       body: [
         "We proposed and led a one-month on-site research study in São Paulo. 37 interviews, 25 usability tests, 20 shadow sessions with agents on the floor. The research was not in the brief. We proposed it because the existing releases had been built on assumptions, and no amount of interface work would fix a system built around the wrong model.",
-        "Participants were recruited through the client's ops team — a stratified sample covering senior agents, new hires under 3 months, team leads, and one regional manager per location. Interviews followed a semi-structured protocol: we asked agents to walk us through their last five proposals end-to-end before touching any product. Usability tests ran timed task scenarios on the existing system with think-aloud. Shadow sessions were unmoderated observation only — no questions during, debrief after.",
+        "Participants were recruited through the client's ops team, covering a stratified sample of senior agents, new hires under 3 months, team leads, and one regional manager per location. Interviews followed a semi-structured protocol: we asked agents to walk us through their last five proposals end-to-end before touching any product. Usability tests ran timed task scenarios on the existing system with think-aloud. Shadow sessions were unmoderated observation only. No questions during, debrief after.",
         "The most significant finding did not come from the interviews. It came from watching agents work: they captured all the information for a quotation before opening the system, often in notes or spreadsheets, and then entered it manually. The system had been designed around the assumption that agents would configure products as they went. Almost no one did.",
-        "The second finding was harder to bring back. Several features that management considered important had near-zero usage in the field. Some agents did not know what they were. Surfacing that data required careful framing — the matrix below was built specifically to make that conversation possible.",
+        "The second finding was harder to bring back. Several features that management considered important had near-zero usage in the field. Some agents did not know what they were. Surfacing that data required careful framing. The matrix below was built specifically to make that conversation possible.",
       ],
     },
     {
       title: "Making the case for rework",
       body: [
         "The client's management pushed back immediately. They had invested in two releases. Having an external team arrive and say parts needed reworking was not a comfortable conversation.",
-        "We scored every finding on two axes: criticality by Nielsen's severity scale, and effort by design and development cost combined. The output was not a list of problems — it was a roadmap argument. Low-effort, high-criticality fixes first, slotted into the existing release schedule so the rework did not require stopping. The constraint that turned the room was not the severity scores. It was the framing that the system had to keep running. We were not proposing a replacement. We were proposing fixes that could be absorbed into releases that were already scheduled. Management agreed to incremental changes over a reviewed and approved roadmap.",
+        "We scored every finding on two axes: criticality by Nielsen's severity scale, and effort by design and development cost combined. The output was not a list of problems. It was a roadmap argument. Low-effort, high-criticality fixes first, slotted into the existing release schedule so the rework did not require stopping. The constraint that turned the room was not the severity scores. It was the framing that the system had to keep running. We were not proposing a replacement. We were proposing fixes that could be absorbed into releases that were already scheduled. Management agreed to incremental changes over a reviewed and approved roadmap.",
       ],
       screens: [
         { src: "/b2b/roadmap.png", caption: "Research-to-delivery roadmap. Planning, top-case inputs by segment, and documentation phases structured around what the field study revealed." },
@@ -66,13 +66,13 @@ const data: CaseStudyData = {
     {
       id: "research-methodology",
       title: "Research methodology breakdown",
-      caption: "37 interviews, 25 usability tests, 20 shadow sessions. Each method answered a different question. The key finding — agents pre-filling quotes offline — only surfaced through observation, not interviews.",
+      caption: "37 interviews, 25 usability tests, 20 shadow sessions. Each method answered a different question. The key finding (agents pre-filling quotes offline) only surfaced through observation, not interviews.",
       component: <ResearchMethodologyArtifact />,
     },
     {
       id: "heuristic-matrix",
       title: "Criticality vs effort prioritisation matrix",
-      caption: "Every finding scored on Nielsen severity and implementation effort. Red dots: high-criticality, low-effort — the first release targets. The matrix output was a roadmap, not a to-do list.",
+      caption: "Every finding scored on Nielsen severity and implementation effort. Red dots: high-criticality, low-effort. The first release targets. The matrix output was a roadmap, not a to-do list.",
       component: <HeuristicMatrixArtifact />,
     },
     {

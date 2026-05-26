@@ -15,15 +15,15 @@ const data: CaseStudyData = {
   role: "Designer and Developer",
   location: "Personal project",
   year: "2025",
-  roleDetail: "Solo product from concept to deployment. Designed the full interaction system, built in Next.js with the Claude API, shipped to a private URL. Used daily by me and a small group of friends learning Spanish, Russian, French and Italian. Every product decision — architecture, AI integration, interaction design, scope — was mine.",
+  roleDetail: "Solo product from concept to deployment. Designed the full interaction system, built in Next.js with the Claude API, shipped to a private URL. Used daily by me and a small group of friends learning Spanish, Russian, French and Italian. Every product decision was mine: architecture, AI integration, interaction design, scope.",
   context: "I was using Duolingo to study Spanish and Russian. It works for gamified progress but not for what I actually needed: sitting down with a set of words and drilling them until they stick. Every dedicated flashcard app I found had too much friction, too much structure I didn't ask for, or none of the vocabulary I needed for work. Building my own was faster than settling.",
   metrics: [],
   sections: [
     {
       title: "Two modes, one honest reason",
       body: [
-        "I learn by seeing the Portuguese word and trying to produce the translation. A friend learns the opposite — he sees the translated word and types the original. Neither method is better. They are different mental models for how vocabulary anchors itself.",
-        "Recognition mode shows the source word and flips to reveal the translation. Recall mode shows the translated word and requires you to type the original. Recall is harder because typing forces active retrieval rather than passive recognition. The synonym layer exists because marking a valid synonym as wrong is counterproductive — the app accepts it and notes the distinction.",
+        "I learn by seeing the Portuguese word and trying to produce the translation. A friend learns the opposite. He sees the translated word and types the original. Neither method is better. They are different mental models for how vocabulary anchors itself.",
+        "Recognition mode shows the source word and flips to reveal the translation. Recall mode shows the translated word and requires you to type the original. Recall is harder because typing forces active retrieval rather than passive recognition. The synonym layer exists because marking a valid synonym as wrong is counterproductive. The app accepts it and notes the distinction.",
       ],
       narrowScreens: true,
       screens: [
@@ -35,7 +35,7 @@ const data: CaseStudyData = {
     {
       title: "Recall mode and feedback states",
       body: [
-        "Correct answers turn the card border green. Wrong answers turn it red and show the correct form immediately. The cultural note appears in both cases — context sticks regardless of whether you got it right.",
+        "Correct answers turn the card border green. Wrong answers turn it red and show the correct form immediately. The cultural note appears in both cases. Context sticks regardless of whether you got it right.",
         "The category screen uses the language color as a full-bleed header, which acts as a persistent identifier. Spanish is red, Russian is blue, Italian is green. Switching languages does not require relearning the navigation.",
       ],
       narrowScreens: true,
@@ -61,8 +61,8 @@ const data: CaseStudyData = {
     {
       title: "What this project is actually about",
       body: [
-        "Building a consumer product solo end-to-end — design, engineering, deployment, real daily use — is a different discipline from enterprise UX. Every decision is yours with no stakeholder to validate against, no QA to catch it, and no one to blame when it ships broken.",
-        "The AI integration judgment here is the part I'd point to in a larger product context: Claude operates at the edge, not at the center. The core mechanic is instant and offline-capable. The AI layer adds value only when the user opts in. That distinction — AI as enrichment, not dependency — is a product architecture decision as much as a UX one, and it's one I'd apply the same way at scale.",
+        "Building a consumer product solo end-to-end (design, engineering, deployment, real daily use) is a different discipline from enterprise UX. Every decision is yours with no stakeholder to validate against, no QA to catch it, and no one to blame when it ships broken.",
+        "The AI integration judgment here is the part I'd point to in a larger product context: Claude operates at the edge, not at the center. The core mechanic is instant and offline-capable. The AI layer adds value only when the user opts in. That distinction is a product architecture decision: AI as enrichment, not dependency. as much as a UX one, and it's one I'd apply the same way at scale.",
       ],
     },
   ],
