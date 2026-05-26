@@ -89,7 +89,7 @@ export default function Hero() {
           transition: "opacity 0.7s ease 0.85s, transform 0.7s ease 0.85s",
         }}
       >
-        <p className="hero-bio" style={{ maxWidth: "540px" }}>
+        <p className="hero-bio" style={{ width: "540px" }}>
           Eleven years designing enterprise products at global scale in BSS/OSS telecom
           infrastructure, B2B and B2C across 9 countries. I lead local design team, run
           the cross-functional process and deliver the kind of system that engineers can

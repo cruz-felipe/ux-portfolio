@@ -161,3 +161,91 @@ export function ApprovalFlowArtifact() {
     </svg>
   );
 }
+
+export function KeyboardNavArtifact() {
+  // Shows the keyboard interaction model for the quota management list + approval flow
+  // Focus order, keyboard shortcuts, skip nav, ARIA roles
+  const flows = [
+    {
+      label: "List view",
+      interactions: [
+        { key: "Tab", action: "Move focus through quota rows" },
+        { key: "Enter / Space", action: "Open detail drawer for focused row" },
+        { key: "Escape", action: "Close drawer, return focus to row" },
+        { key: "Arrow ↑↓", action: "Navigate rows without Tab cycling" },
+      ],
+    },
+    {
+      label: "Approval workflow",
+      interactions: [
+        { key: "Tab", action: "Move through approver fields in order" },
+        { key: "Enter", action: "Submit approval or rejection" },
+        { key: "Escape", action: "Cancel, confirm intent before closing" },
+        { key: "Shift+Tab", action: "Reverse through fields" },
+      ],
+    },
+    {
+      label: "Create quota form",
+      interactions: [
+        { key: "Tab", action: "Field-by-field, preview updates live" },
+        { key: "Enter (on select)", action: "Open dropdown, confirm selection" },
+        { key: "Escape", action: "Close dropdown without committing" },
+        { key: "Ctrl+Enter", action: "Submit form from any field" },
+      ],
+    },
+  ];
+
+  const colW = 240;
+  const rowH = 28;
+  const headerH = 30;
+  const gapX = 16;
+  const startX = 20;
+  const startY = 36;
+
+  return (
+    <svg viewBox="0 0 800 290" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
+      <text x="20" y="16" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)" letterSpacing="1.5">KEYBOARD INTERACTION MODEL — QUOTA MANAGEMENT</text>
+
+      {flows.map((flow, fi) => {
+        const x = startX + fi * (colW + gapX);
+        const bodyH = flow.interactions.length * rowH;
+        const totalH = headerH + bodyH;
+
+        return (
+          <g key={fi}>
+            {/* Header */}
+            <rect x={x} y={startY} width={colW} height={headerH} rx="3" fill={fi === 0 ? "var(--red)" : "#1a1a1a"} />
+            <text x={x + 14} y={startY + 20} fontFamily="var(--font-body)" fontSize="11" fontWeight="700" fill="white">{flow.label}</text>
+
+            {/* Body */}
+            <rect x={x} y={startY + headerH} width={colW} height={bodyH} rx="0" fill="#f5f5f2" />
+            <rect x={x} y={startY + headerH + bodyH - 3} width={colW} height={3} rx="0" fill={fi === 0 ? "var(--red)" : "#1a1a1a"} opacity="0.15" />
+
+            {flow.interactions.map((item, ii) => {
+              const iy = startY + headerH + ii * rowH;
+              return (
+                <g key={ii}>
+                  {ii > 0 && <line x1={x} y1={iy} x2={x + colW} y2={iy} stroke="#e0e0da" strokeWidth="1" />}
+                  {/* Key badge */}
+                  <rect x={x + 10} y={iy + 7} width={72} height={14} rx="2" fill="#1a1a1a" />
+                  <text x={x + 46} y={iy + 18} textAnchor="middle" fontFamily="var(--font-mono, monospace)" fontSize="9" fontWeight="600" fill="white">{item.key}</text>
+                  {/* Action */}
+                  <text x={x + 90} y={iy + 18} fontFamily="var(--font-body)" fontSize="10" fill="#555">{item.action}</text>
+                </g>
+              );
+            })}
+          </g>
+        );
+      })}
+
+      {/* Focus state spec strip */}
+      <rect x="20" y="230" width="760" height="44" rx="3" fill="#1a1a1a" />
+      <text x="36" y="248" fontFamily="var(--font-body)" fontSize="11" fontWeight="600" fill="white">Focus state spec</text>
+      <text x="36" y="264" fontFamily="var(--font-body)" fontSize="10" fill="rgba(255,255,255,0.55)">2px solid outline · 2px offset · matches brand red (#C42B2B) · border-radius inherits component · never hidden or suppressed</text>
+      <rect x="700" y="238" width="60" height="24" rx="3" fill="transparent" stroke="#C42B2B" strokeWidth="2" />
+      <text x="730" y="254" textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="white">focused</text>
+
+      <text x="20" y="285" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">All interactive elements reachable by keyboard. Focus order follows visual reading order. No keyboard traps. Escape always provides a safe exit.</text>
+    </svg>
+  );
+}

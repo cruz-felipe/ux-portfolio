@@ -116,6 +116,10 @@ export default function SignalStrip() {
               margin: 0,
               maxWidth: "140px",
               letterSpacing: "0.01em",
+              display: "-webkit-box",
+              WebkitLineClamp: 3,
+              WebkitBoxOrient: "vertical" as const,
+              overflow: "hidden",
             }}>
               {stat.label}
               {stat.sublabel && (

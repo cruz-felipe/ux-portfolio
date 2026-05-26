@@ -1,5 +1,5 @@
 import CaseLayout, { CaseStudyData } from "@/components/case-study/CaseLayout";
-import { StakeholderAlignmentArtifact, WorkshopMethodArtifact, ApprovalFlowArtifact } from "@/components/case-study/QuotaArtifacts";
+import { StakeholderAlignmentArtifact, WorkshopMethodArtifact, ApprovalFlowArtifact, KeyboardNavArtifact } from "@/components/case-study/QuotaArtifacts";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -24,6 +24,7 @@ const data: CaseStudyData = {
   ],
   sections: [
     {
+      // index 0
       title: "Starting from nothing",
       screens: [
         { src: "/quota/list.png", caption: "Quota management list. Search by partner, API name or quota name. Status badges, type, limit and time window visible at a glance." },
@@ -36,6 +37,7 @@ const data: CaseStudyData = {
       ],
     },
     {
+      // index 1
       title: "Workshops as the design material",
       body: [
         "With no prior product and no user research process, workshops were the primary input. We ran sessions with six stakeholder groups: client business, client product, client program management, and from my company, business, development and QA. The goal of each session was to clarify requirements, understand who would actually use each feature and map how information would flow through real work scenarios.",
@@ -44,6 +46,7 @@ const data: CaseStudyData = {
       ],
     },
     {
+      // index 2
       title: "The alignment problem",
       pullquote: "I let sessions run where they ran. In retrospect that was the wrong call.",
       body: [
@@ -53,6 +56,7 @@ const data: CaseStudyData = {
       ],
     },
     {
+      // index 3
       title: "Edge cases, empty states, errors",
       screens: [
         { src: "/quota/create.png", caption: "Create quota flow with live preview panel. Form updates the preview in real time — partners, APIs, limit and time window visible before submitting." },
@@ -65,12 +69,23 @@ const data: CaseStudyData = {
       ],
     },
     {
+      // index 4
+      title: "Keyboard navigation and accessibility",
+      body: [
+        "Support agents using this platform process 30 or more approval requests per day. At that volume, mouse-only interaction is a productivity problem. The keyboard interaction model was specced as a first-class requirement, not a post-handoff accessibility audit.",
+        "The list view supports arrow key navigation between rows without Tab cycling — Tab is reserved for moving between UI regions, not list items. Every drawer and modal has a defined entry point (focus moves to the first interactive element on open), an exit point (Escape always returns focus to the triggering element), and no keyboard traps. The approval workflow supports Ctrl+Enter submission from any field so agents can move through a queue without reaching for the mouse.",
+        "Focus states use a 2px solid outline at 2px offset in the brand red (#C42B2B), applied consistently across every interactive element. The focus ring is never suppressed, never overridden to a lower-contrast version, and never hidden in favour of a hover state. The spec below documents the full keyboard model across the three primary flows.",
+      ],
+    },
+    {
+      // index 5
       title: "Motion and interaction",
       body: [
         "The platform is a tool, not a showcase. Motion decisions were made on that basis. Panel transitions — detail drawer opening, approval modal entering — use 180ms ease-out. Fast enough to not interrupt a task flow, slow enough to orient without jarring. Form validation errors appear immediately on blur with no delay. The live preview panel in the create flow updates synchronously as fields change: no debounce, no skeleton — because the preview is the point of the interaction and any lag undermines it. All transitions are wrapped in a prefers-reduced-motion check and collapse to instant when the user has set that preference.",
       ],
     },
     {
+      // index 6
       title: "What shipped",
       body: [
         "The platform covers three modules across 13 end-to-end user flows, each with full validation states, empty states and error handling. Quota management gives agents visibility into consumption at the client and partner level, with manual adjustment controls and threshold alerts. API usage monitoring surfaces rate limit status and consumption trends. Change requests route through a configurable multi-level approval flow with a full audit log.",
@@ -81,24 +96,42 @@ const data: CaseStudyData = {
   ],
   artifacts: [
     {
+      // section 0
       id: "architecture",
       title: "",
       caption: "",
       component: null,
     },
     {
+      // section 1
       id: "stakeholder-alignment",
       title: "Cross-functional alignment map",
       caption: "Six stakeholder groups, two sides. Design was the only function present in every session. Misalignment between client-side groups — not between clients and design — was the primary source of scope drift.",
       component: <StakeholderAlignmentArtifact />,
     },
     {
+      // section 2
       id: "approval-flow",
       title: "Change request approval flow",
       caption: "Three request types routing to three approval structures. Configurable per client sign-off hierarchy without system configuration changes.",
       component: <ApprovalFlowArtifact />,
     },
     {
+      // section 3
+      id: "edge-cases-null",
+      title: "",
+      caption: "",
+      component: null,
+    },
+    {
+      // section 4
+      id: "keyboard-nav",
+      title: "Keyboard interaction model",
+      caption: "Full keyboard spec across list view, approval workflow, and create flow. Focus order, shortcut keys, entry and exit points for every drawer and modal. Focus states use 2px solid #C42B2B at 2px offset — never suppressed.",
+      component: <KeyboardNavArtifact />,
+    },
+    {
+      // section 5
       id: "workshop-method",
       title: "Workshop-to-output method",
       caption: "Preliminary concept sketches brought into sessions as thinking tools, not proposals. Each cycle produced locked decisions and flagged dependencies before the next session opened.",

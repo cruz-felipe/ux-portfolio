@@ -93,7 +93,7 @@ function FeaturedCard({ project }: { project: typeof PROJECTS[0] }) {
             </p>
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", paddingTop: "2rem", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", paddingTop: "2rem" }}>
             <div style={{ display: "flex", gap: "2rem" }}>
               {project.metrics.map(m => (
                 <span key={m} style={{ fontFamily: "var(--font-display)", fontSize: "13px", fontWeight: 700, color: "var(--red)" }}>{m}</span>
@@ -163,7 +163,7 @@ function PrimaryCard({ project, index }: { project: typeof PROJECTS[0]; index: n
 
           <div style={{ position: "absolute", bottom: "1rem", right: "1.5rem", fontFamily: "var(--font-display)", fontSize: "72px", fontWeight: 800, lineHeight: 1, color: hovered ? "white" : "var(--ink)", opacity: hovered ? 0.07 : 0.055, letterSpacing: "-0.04em", pointerEvents: "none", userSelect: "none", transition: "color 0.3s, opacity 0.3s" }}>{project.index}</div>
 
-          <div style={{ display: "flex", gap: "1.25rem", paddingTop: "1rem", borderTop: `1px solid ${hovered ? "rgba(255,255,255,0.1)" : "var(--border)"}`, transition: "border-color 0.3s" }}>
+          <div style={{ display: "flex", gap: "1.25rem", paddingTop: "1rem",  }}>
             {project.metrics.map(m => (
               <span key={m} style={{ fontFamily: "var(--font-display)", fontSize: "12px", fontWeight: 700, color: hovered ? "var(--red)" : "var(--muted)", transition: "color 0.3s" }}>{m}</span>
             ))}

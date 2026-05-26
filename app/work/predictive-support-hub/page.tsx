@@ -1,5 +1,5 @@
 import CaseLayout, { CaseStudyData } from "@/components/case-study/CaseLayout";
-import { LegacyFragmentationArtifact, CostModelArtifact, UnifiedWorkspaceArtifact } from "@/components/case-study/SupportHubArtifacts";
+import { LegacyFragmentationArtifact, CostModelArtifact, UnifiedWorkspaceArtifact, ScaleReasoningArtifact } from "@/components/case-study/SupportHubArtifacts";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -24,6 +24,7 @@ const data: CaseStudyData = {
   ],
   sections: [
     {
+      // index 0
       title: "What existed before",
       body: [
         "Agents navigated between dozens of disconnected legacy systems on every call. Billing lived in one tool. Technical data in another. Tickets in a third. There was no shared context, no single customer view and no way to act without opening another window. Institutional knowledge lived on sticky notes next to monitors.",
@@ -35,6 +36,7 @@ const data: CaseStudyData = {
       ],
     },
     {
+      // index 1
       title: "Into the field",
       body: [
         "I conducted remote research sessions with agents in Egypt and Jamaica, observing their screens and listening to live calls. Then I went on-site to call centers in New York and Texas to shadow agents in person. Remote observation shows you what people do. On-site observation shows you why.",
@@ -42,6 +44,7 @@ const data: CaseStudyData = {
       ],
     },
     {
+      // index 2
       title: "Reframing the problem",
       pullquote: "This was not a UX problem. It was an infrastructure problem wearing a UX mask.",
       body: [
@@ -50,6 +53,7 @@ const data: CaseStudyData = {
       ],
     },
     {
+      // index 3
       title: "The unified workspace",
       body: [
         "The workspace replaced all 32 tools with three layers. Auto-identification surfaced the customer's full history on call connect — name, account, interaction history, open tickets — all without the agent searching. Contextual scripting monitored the call in real time and pushed relevant data and suggested responses to the agent. Live resolution surfaced the answer directly in the session interface.",
@@ -60,6 +64,7 @@ const data: CaseStudyData = {
       ],
     },
     {
+      // index 4
       title: "One interface. All context. No switching.",
       body: [
         "The full unified workspace. Every data source previously spread across 32 tools available in a single view, mid-call. The agent's job becomes the customer. Not the system.",
@@ -71,14 +76,16 @@ const data: CaseStudyData = {
       ],
     },
     {
+      // index 5
       title: "Designing at scale",
       body: [
         "3,000 agents is a different design problem than 300. Every interaction pattern decision compounds. A 2-second inefficiency per call, multiplied across 3,000 agents doing 40 calls a day, is 240,000 seconds of lost productivity daily — nearly 67 agent-hours. That arithmetic shaped every micro-decision: the number of clicks to reach a record, the placement of the most-used action, the time it takes the auto-id panel to render.",
         "It also shaped the rollout strategy. At this scale, a bad deploy does not affect a team — it affects an operations center. I designed for progressive rollout from the start: the workspace was built to coexist with the legacy tools, not replace them in a single cutover. Agents could be migrated cohort by cohort, with the legacy tools still accessible during the transition window. That architecture decision was made during the design phase, not handed back to engineering as a deployment problem.",
-        "If I were applying the same thinking to a 10M-user consumer product, the arithmetic changes but the discipline doesn't. The questions become: what is the cost of a confusing onboarding screen at 10M signups? What is the value of a 100ms improvement to the most-used action? Design decisions at scale are business decisions, and they should be framed that way from the start.",
+        "The table below maps how the same design discipline translates from 3,000 agents to 10M users. The numbers are different. The framing — every design decision is a business outcome decision — is identical. At 10M users, a confusing onboarding screen isn't a UX problem; it's a churn number. A 100ms improvement to the most-used action isn't a performance win; it's a retention lever. The discipline of making those connections explicit before the design decision is made, not after launch, is what scales.",
       ],
     },
     {
+      // index 6
       title: "What I would do differently",
       body: [
         "If I were doing this again I would have pushed harder for a pilot with a single agent cohort before the full rollout. The system worked, but a controlled pilot with a defined group would have surfaced edge cases earlier and given us stronger data for the internal conversation about full deployment. A pilot with 50 agents over four weeks would have cost almost nothing relative to the infrastructure investment and would have made the rollout case much harder to resist.",
@@ -87,28 +94,46 @@ const data: CaseStudyData = {
   ],
   artifacts: [
     {
+      // section 0
       id: "legacy-fragmentation",
       title: "Legacy tool map (sample)",
       caption: "12 of the 32 tools an agent navigated per call. Red: accessed on every call. Gray: situational. No guide existed. Agents were expected to learn the map through experience.",
       component: <LegacyFragmentationArtifact />,
     },
     {
+      // section 1
       id: "into-field",
       title: "",
       caption: "",
       component: null,
     },
     {
+      // section 2
       id: "cost-model",
       title: "Infrastructure cost model",
       caption: "The argument that reframed the project. Fragmentation cost modelled as AHT delta × call volume × 3,000 agents × cost per agent-hour. Consolidation investment compared against annual fragmentation cost. Actual figures are client-confidential; model structure and conclusion are accurate.",
       component: <CostModelArtifact />,
     },
     {
+      // section 3
       id: "workspace-layers",
       title: "Unified workspace — three intelligence layers",
       caption: "Auto-identification, contextual scripting, live resolution. Each layer replaces a category of legacy tools. Together they cover all 32.",
       component: <UnifiedWorkspaceArtifact />,
+    },
+    {
+      // section 4
+      id: "workspace-null",
+      title: "",
+      caption: "",
+      component: null,
+    },
+    {
+      // section 5
+      id: "scale-reasoning",
+      title: "Scale reasoning — 3,000 agents → 10M users",
+      caption: "Same discipline, different arithmetic. Each dimension maps directly from the agent context to the consumer context. The framing changes; the requirement to connect design decisions to business outcomes does not.",
+      component: <ScaleReasoningArtifact />,
     },
   ],
 };
