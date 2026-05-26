@@ -87,17 +87,12 @@ export default function About() {
         transition: "opacity 0.8s ease, transform 0.8s ease",
       }}
     >
-      <h2 style={{
-        fontFamily: "var(--font-body)",
-        fontSize: "11px",
-        fontWeight: 500,
-        letterSpacing: "0.12em",
-        textTransform: "uppercase",
-        color: "var(--muted)",
-        marginBottom: "3rem",
-      }}>
-        About
-      </h2>
+      <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "3rem", borderBottom: "1px solid var(--border)", paddingBottom: "2rem" }}>
+        <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.5rem, 5vw, 5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1, color: "var(--ink)", margin: 0 }}>
+          About
+        </h2>
+        <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)", paddingBottom: "0.5rem" }}>Rio de Janeiro, Brazil · Available globally</span>
+      </div>
 
       {/* Top: photo + bio */}
       <div className="about-top">
@@ -234,12 +229,13 @@ export default function About() {
             {SKILLS.map((skill) => (
               <span key={skill} style={{
                 fontFamily: "var(--font-body)",
-                fontSize: "12px",
+                fontSize: "11px",
+                fontWeight: 500,
                 color: "var(--ink)",
-                opacity: 0.75,
-                border: "1px solid var(--border)",
+                background: "color-mix(in srgb, var(--ink) 6%, var(--paper))",
                 borderRadius: "2px",
-                padding: "5px 10px",
+                padding: "5px 12px",
+                letterSpacing: "0.01em",
               }}>
                 {skill}
               </span>

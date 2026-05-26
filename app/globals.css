@@ -27,7 +27,6 @@ html {
 body {
   min-height: 100vh;
   overflow-x: hidden;
-  cursor: none;
 }
 
 h1, h2, h3, h4 { font-family: var(--font-display); }
@@ -66,29 +65,14 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
   line-height: 1;
 }
 
-/* ── Cursor ── */
-.cursor {
-  position: fixed;
-  top: 0; left: 0;
-  width: 8px; height: 8px;
-  background: var(--red);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width 0.15s ease, height 0.15s ease, opacity 0.15s ease;
-}
-.cursor.hover { width: 32px; height: 32px; opacity: 0.15; }
+
 
 ::selection { background: var(--red); color: white; }
 ::-webkit-scrollbar { width: 2px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--red); }
 
-@media (max-width: 768px) {
-  body { cursor: auto; }
-  .cursor { display: none; }
-}
+
 
 /* ── Motion — minimal and purposeful ── */
 

@@ -9,11 +9,10 @@ export default function ResponsiveStyles() {
         max-width: 900px;
       }
       .hero-bio {
-        font-family: var(--font-serif);
-        font-style: italic;
-        font-size: clamp(1.05rem, 1.4vw, 1.2rem);
-        font-weight: 400;
-        line-height: 1.65;
+        font-family: var(--font-body);
+        font-size: clamp(0.9rem, 1.15vw, 1rem);
+        font-weight: 300;
+        line-height: 1.72;
         color: var(--ink);
         opacity: 0.78;
         margin: 0;
@@ -60,6 +59,9 @@ export default function ResponsiveStyles() {
       .work-grid {
         grid-template-columns: repeat(3, 1fr) !important;
       }
+      .work-grid-sub {
+        grid-template-columns: repeat(4, 1fr) !important;
+      }
 
       /* ── Tablet ── */
       @media (max-width: 1024px) {
@@ -82,6 +84,10 @@ export default function ResponsiveStyles() {
           gap: 3rem;
         }
         .work-grid {
+          grid-template-columns: 1fr 1fr !important;
+          gap: 0.75rem !important;
+        }
+        .work-grid-sub {
           grid-template-columns: 1fr 1fr !important;
           gap: 0.75rem !important;
         }
@@ -108,10 +114,14 @@ export default function ResponsiveStyles() {
         /* Section padding tightened on mobile */
         #work { padding: 4rem 1.25rem !important; }
         .case-hero-inner { padding: 6rem 1.25rem 3rem !important; }
+        /* Hero section mobile */
+        #hero-scroll { display: none !important; }
         .case-section { padding: 2.5rem 1.25rem !important; gap: 1rem !important; }
         .case-section > h2 { font-size: 10px !important; }
         footer { padding: 3rem 1.25rem !important; }
         .case-callout { padding: 2.5rem 1.25rem !important; }
+
+        .work-grid-sub { grid-template-columns: 1fr !important; }
 
         /* Signal strip padding on mobile */
         .signal-strip-inner > div { padding: 1.5rem 1rem !important; }
@@ -175,7 +185,7 @@ export default function ResponsiveStyles() {
       }
 
       @media (max-width: 480px) {
-        .work-grid {
+        .work-grid, .work-grid-sub {
           grid-template-columns: 1fr !important;
           gap: 0.5rem !important;
         }

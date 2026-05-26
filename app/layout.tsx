@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Cursor from "@/components/Cursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import ResponsiveStyles from "@/components/ResponsiveStyles";
 
@@ -36,7 +35,6 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ResponsiveStyles />
-        <Cursor />
         <ScrollProgress />
         <a href="#main-content" className="skip-link" aria-label="Skip to main content">Skip to content</a>
         {children}

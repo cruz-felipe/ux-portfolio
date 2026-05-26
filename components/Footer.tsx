@@ -4,138 +4,75 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer
-      id="contact"
-      aria-label="Contact and links"
-      style={{
-        borderTop: "1px solid var(--border)",
-        padding: "4rem 2.5rem",
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: "4rem",
-        alignItems: "end",
-      }}
-    >
-      {/* Left — CTA */}
-      <div>
-        <h2 style={{
-          fontFamily: "var(--font-body)",
-          fontSize: "11px",
-          fontWeight: 500,
-          letterSpacing: "0.12em",
-          textTransform: "uppercase",
-          color: "var(--muted)",
-          marginBottom: "1.5rem",
-        }}>
+    <footer id="contact" aria-label="Contact and links" style={{ borderTop: "1px solid var(--border)", overflow: "hidden", position: "relative" }}>
+
+      {/* Top — large editorial CTA */}
+      <div style={{ padding: "6rem 2.5rem 4rem", position: "relative" }}>
+        {/* Decorative text behind */}
+        <div style={{
+          position: "absolute", bottom: "2rem", right: "-1rem",
+          fontFamily: "var(--font-display)", fontSize: "clamp(80px, 14vw, 180px)",
+          fontWeight: 800, lineHeight: 1, letterSpacing: "-0.05em",
+          color: "var(--ink)", opacity: 0.03,
+          pointerEvents: "none", userSelect: "none",
+        }}>TALK</div>
+
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 1.5rem" }}>
           Contact
-        </h2>
-        <p style={{
-          fontFamily: "var(--font-display)",
-          fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)",
-          fontWeight: 800,
-          letterSpacing: "-0.02em",
-          lineHeight: 1.1,
-          color: "var(--ink)",
-          marginBottom: "2rem",
-        }}>
-          Get in touch.
         </p>
+
+        {/* Giant headline */}
+        <a href="mailto:fcruz@outlook.com" style={{
+          display: "block",
+          fontFamily: "var(--font-display)",
+          fontSize: "clamp(2.8rem, 7vw, 7rem)",
+          fontWeight: 800,
+          letterSpacing: "-0.04em",
+          lineHeight: 1,
+          color: "var(--ink)",
+          textDecoration: "none",
+          marginBottom: "3rem",
+          transition: "color 0.2s",
+          position: "relative",
+          width: "fit-content",
+        }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--red)")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--ink)")}
+        >
+          Get in touch.
+        </a>
+
+        {/* Links row */}
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-          <a
-            href="mailto:fcruz@outlook.com"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              fontFamily: "var(--font-body)",
-              fontSize: "14px",
-              fontWeight: 500,
-              color: "white",
-              background: "var(--red)",
-              textDecoration: "none",
-              padding: "10px 20px",
-              borderRadius: "2px",
-              transition: "background 0.2s ease",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "var(--red-dark)")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "var(--red)")}
+          <a href="mailto:fcruz@outlook.com" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "var(--font-body)", fontSize: "13px", fontWeight: 500, color: "white", background: "var(--ink)", textDecoration: "none", padding: "10px 20px", borderRadius: "2px", transition: "background 0.2s" }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = "var(--red)")}
+            onMouseLeave={(e) => (e.currentTarget.style.background = "var(--ink)")}
           >
-            Send me an email
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            Send email
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </a>
-          <a
-            href="https://linkedin.com/in/fmcruz"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              fontFamily: "var(--font-body)",
-              fontSize: "14px",
-              fontWeight: 400,
-              color: "var(--ink)",
-              textDecoration: "none",
-              border: "1px solid var(--border)",
-              padding: "10px 20px",
-              borderRadius: "2px",
-              transition: "border-color 0.2s ease",
-            }}
+          <a href="https://linkedin.com/in/fmcruz" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "var(--font-body)", fontSize: "13px", fontWeight: 400, color: "var(--ink)", textDecoration: "none", border: "1px solid var(--border)", padding: "10px 20px", borderRadius: "2px", transition: "border-color 0.2s" }}
             onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--ink)")}
             onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
           >
-            LinkedIn
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M2 10L10 2M4 2h6v6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            LinkedIn ↗
           </a>
-          <a
-            href="https://www.artstation.com/felipecruz"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              fontFamily: "var(--font-body)",
-              fontSize: "14px",
-              fontWeight: 400,
-              color: "var(--ink)",
-              textDecoration: "none",
-              border: "1px solid var(--border)",
-              padding: "10px 20px",
-              borderRadius: "2px",
-              transition: "border-color 0.2s ease",
-            }}
+          <a href="https://www.artstation.com/felipecruz" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "var(--font-body)", fontSize: "13px", fontWeight: 400, color: "var(--ink)", textDecoration: "none", border: "1px solid var(--border)", padding: "10px 20px", borderRadius: "2px", transition: "border-color 0.2s" }}
             onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--ink)")}
             onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
           >
-            Art & Illustration
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M2 10L10 2M4 2h6v6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            Illustration ↗
           </a>
         </div>
       </div>
 
-      {/* Right — Colophon */}
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "0.4rem" }}>
-        <div style={{ marginBottom: "0.25rem" }}>
-          <>
-            <img src="/logo.svg" alt="Felipe Cruz" style={{ height: "24px", width: "auto", display: "block", background: "none" }} />
-          </>
+      {/* Bottom bar */}
+      <div style={{ borderTop: "1px solid var(--border)", padding: "1.5rem 2.5rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
+          <img src="/logo.svg" alt="Felipe Cruz" style={{ height: "20px", width: "auto", display: "block", background: "none" }} />
+          <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)" }}>Senior UI Designer · Team Lead · São Paulo, Brazil</span>
         </div>
-        <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)" }}>
-          Senior UI Designer · Team Lead
-        </span>
-        <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)", opacity: 0.6 }}>
-          Netcracker Technology · São Paulo, Brazil
-        </span>
-        <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)", marginTop: "1rem", opacity: 0.5 }}>
-          © {year}
-        </span>
+        <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)", opacity: 0.5 }}>© {year}</span>
       </div>
     </footer>
   );

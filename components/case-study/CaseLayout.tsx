@@ -139,8 +139,25 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.7s ease, transform 0.7s ease",
+        position: "relative",
+        overflow: "hidden",
       }}>
-        <div style={{ maxWidth: "860px" }}>
+        {/* Decorative oversized index — bleeds off right edge */}
+        <div style={{
+          position: "absolute",
+          top: "3rem", right: "-0.5rem",
+          fontFamily: "var(--font-display)",
+          fontSize: "clamp(160px, 22vw, 280px)",
+          fontWeight: 800,
+          lineHeight: 1,
+          letterSpacing: "-0.05em",
+          color: "var(--ink)",
+          opacity: 0.035,
+          pointerEvents: "none",
+          userSelect: "none",
+        }}>{data.index}</div>
+
+        <div style={{ maxWidth: "860px", position: "relative" }}>
           {/* Meta */}
           <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.5rem", flexWrap: "wrap" }}>
             <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)" }}>{data.role}</span>
@@ -198,7 +215,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
       {/* Context */}
       <section style={{ padding: "4rem 2.5rem", borderBottom: "0.5px solid var(--border)" }}>
         <div className="case-context" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "start" }}>
-          <p style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: "clamp(1rem, 1.3vw, 1.1rem)", fontWeight: 400, lineHeight: 1.7, color: "var(--ink)", opacity: 0.82, margin: 0 }}>{data.context}</p>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", fontWeight: 300, lineHeight: 1.75, color: "var(--ink)", opacity: 0.8, margin: 0 }}>{data.context}</p>
           {!data.hideNda && (
             <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)", lineHeight: 1.7, margin: 0 }}>
               To respect non-disclosure agreements, the identity of this client has been omitted. Strategic challenges, decisions and outcomes are accurate. Visual artifacts are abstract representations of system architecture and design thinking, not reproductions of proprietary screens.
@@ -271,21 +288,25 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
                 <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flex: 1, marginLeft: "1rem" }}>
                   <span style={{
                     fontFamily: "var(--font-body)",
-                    fontSize: isCurrent ? "13px" : "13px",
+                    fontSize: "13px",
                     fontWeight: isCurrent ? 400 : isNext ? 600 : 400,
                     letterSpacing: "0",
                     color: isCurrent ? "var(--muted)" : "var(--ink)",
-                  }}>{work.title}</span>
+                    display: "flex", alignItems: "center", gap: "6px",
+                  }}>
+                    {work.title}
+                    {!isCurrent && (
+                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style={{ color: "var(--muted)", flexShrink: 0, opacity: 0, transition: "opacity 0.2s, transform 0.25s cubic-bezier(0.34,1.56,0.64,1)" }} className="work-arrow">
+                        <path d="M1 5h8M5 1l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    )}
+                  </span>
                   {isNext && <span style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--red)", border: "1px solid var(--red)", borderRadius: "2px", padding: "1px 6px", flexShrink: 0, opacity: 0.7 }}>Next</span>}
                   {work.personal && !isCurrent && (
                     <span style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--muted)", border: "1px solid var(--border)", borderRadius: "2px", padding: "2px 7px", flexShrink: 0 }}>Personal</span>
                   )}
                 </div>
-                {!isCurrent && (
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ color: "var(--muted)", flexShrink: 0, opacity: 0 }} className="work-arrow">
-                    <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                )}
+
               </>
             );
             return isCurrent ? (
