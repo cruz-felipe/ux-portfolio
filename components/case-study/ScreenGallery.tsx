@@ -11,7 +11,7 @@ export function ScreenGallery({ screens }: { screens: ScreenProps[] }) {
     <div className={`screen-gallery ${countClass}`} style={{ display: "grid", gap: "2rem", alignItems: "start", justifyContent: "center" }}>
       {screens.map((screen, i) => (
         <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <div style={{ width: "100%", borderRadius: "12px", overflow: "hidden" }}>
+          <div style={{ width: "100%", borderRadius: "4px", overflow: "hidden" }}>
             <img
               src={screen.src}
               alt={screen.caption}

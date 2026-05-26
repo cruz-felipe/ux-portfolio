@@ -24,6 +24,9 @@ const data: CaseStudyData = {
   sections: [
     {
       title: "Starting from nothing",
+      screens: [
+        { src: "/quota/list.png", caption: "Quota management list. Search by partner, API name or quota name. Status badges, type, limit and time window visible at a glance." },
+      ],
       body: [
         "Greenfield projects feel like freedom until you realise the absence of constraints is itself a constraint. There is no existing behaviour to study, no baseline to improve and no shared mental model to anchor decisions to. Everything has to be established from first principles.",
         "The constraint that gave the project shape was the client's existing tool ecosystem. They already had products their teams used daily. The new platform had to match those visual patterns and interaction conventions closely enough that support agents could switch between tools without relearning. That boundary was the most useful design decision on the project, and it was established before I drew a single screen.",
@@ -46,6 +49,10 @@ const data: CaseStudyData = {
     },
     {
       title: "What shipped",
+      screens: [
+        { src: "/quota/create.png", caption: "Create quota flow with live preview panel. Form updates the preview in real time — partners, APIs, limit and time window visible before submitting." },
+        { src: "/quota/workflow.png", caption: "Change request approval workflow. Two-level approver groups with individual status tracking. Full audit trail from submission to completion." },
+      ],
       body: [
         "The platform covers three modules across 13 end-to-end user flows, each with full validation states, empty states and error handling. Quota management gives agents visibility into consumption at the client and partner level, with manual adjustment controls and threshold alerts. API usage monitoring surfaces rate limit status and consumption trends. Change requests route through a configurable multi-level approval flow with a full audit log.",
         "The platform is pending client-side deployment. The delay is on the client's internal timeline, not on the design. I used the time since handoff to work through edge cases and handoff refinements with developers and business analysts — the kind of detail work that only surfaces when someone is actually trying to build from your files.",

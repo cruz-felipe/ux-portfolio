@@ -188,21 +188,24 @@ export default function ResponsiveStyles() {
 
       /* Screen gallery */
       .screen-gallery {
-        grid-template-columns: repeat(3, 260px) !important;
-        justify-content: center !important;
+        grid-template-columns: repeat(3, 1fr) !important;
       }
       .screen-gallery.count-2 {
-        grid-template-columns: repeat(2, 260px) !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        max-width: 860px;
+        margin: 0 auto;
       }
       .screen-gallery.count-1 {
-        grid-template-columns: 260px !important;
+        grid-template-columns: 1fr !important;
+        max-width: 700px;
+        margin: 0 auto;
       }
       @media (max-width: 900px) {
-        .screen-gallery { grid-template-columns: repeat(2, 240px) !important; }
-        .screen-gallery.count-1 { grid-template-columns: 240px !important; }
+        .screen-gallery { grid-template-columns: repeat(2, 1fr) !important; }
+        .screen-gallery.count-1 { grid-template-columns: 1fr !important; }
       }
       @media (max-width: 680px) {
-        .screen-gallery { grid-template-columns: 280px !important; }
+        .screen-gallery { grid-template-columns: 1fr !important; }
       }
 
       /* Footer logo dark mode swap */

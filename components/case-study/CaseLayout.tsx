@@ -218,10 +218,8 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
             </section>
 
             {section.screens && section.screens.length > 0 && (
-              <div style={{ padding: "3rem 2.5rem", borderBottom: "0.5px solid var(--border)", display: "flex", justifyContent: "center" }}>
-                <div style={{ width: "100%", maxWidth: "960px" }}>
-                  <ScreenGallery screens={section.screens} />
-                </div>
+              <div style={{ padding: "3rem 2.5rem", borderBottom: "0.5px solid var(--border)" }}>
+                <ScreenGallery screens={section.screens} />
               </div>
             )}
 
