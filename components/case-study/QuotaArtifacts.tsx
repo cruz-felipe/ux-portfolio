@@ -58,6 +58,75 @@ export function WorkshopMethodArtifact() {
   );
 }
 
+export function StakeholderAlignmentArtifact() {
+  // 6 groups arranged in two rows — client side left, internal side right
+  // Each group shows: name, role in process, what they owned
+  const clientGroups = [
+    { name: "Client business", owns: "Requirements, acceptance", decision: "Scope sign-off" },
+    { name: "Client product", owns: "Roadmap, priorities", decision: "Feature sequencing" },
+    { name: "Client program mgmt", owns: "Timeline, dependencies", decision: "Release gates" },
+  ];
+  const internalGroups = [
+    { name: "Internal business", owns: "Commercial constraints", decision: "Pricing rules" },
+    { name: "Engineering", owns: "Feasibility, effort estimates", decision: "Tech approach" },
+    { name: "QA", owns: "Test coverage, edge cases", decision: "Acceptance criteria" },
+  ];
+
+  const colW = 220, rowH = 72, gap = 12;
+  const clientX = 20, internalX = 20 + colW + 60;
+  const labelY = 42;
+
+  return (
+    <svg viewBox="0 0 800 310" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
+      {/* Header labels */}
+      <text x={clientX} y="16" fontFamily="var(--font-body)" fontSize="10" fontWeight="600" fill="var(--muted)" letterSpacing="1.5">CLIENT SIDE</text>
+      <text x={internalX} y="16" fontFamily="var(--font-body)" fontSize="10" fontWeight="600" fill="var(--muted)" letterSpacing="1.5">INTERNAL</text>
+
+      {/* Center column — design (solo) */}
+      <rect x="370" y="80" width="100" height="140" rx="3" fill="var(--red)"/>
+      <text x="420" y="138" textAnchor="middle" fontFamily="var(--font-display)" fontSize="13" fontWeight="800" fill="white">Design</text>
+      <text x="420" y="156" textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="rgba(255,255,255,0.65)">Solo IC</text>
+      <text x="420" y="172" textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="rgba(255,255,255,0.65)">6 sessions</text>
+      <text x="420" y="188" textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="rgba(255,255,255,0.65)">13 flows</text>
+      <text x="420" y="206" textAnchor="middle" fontFamily="var(--font-body)" fontSize="10" fill="rgba(255,255,255,0.65)">3 modules</text>
+
+      {/* Client groups */}
+      {clientGroups.map((g, i) => {
+        const y = 28 + i * (rowH + gap);
+        return (
+          <g key={i}>
+            <rect x={clientX} y={y} width={colW} height={rowH} rx="3" fill="#f5f5f2"/>
+            <text x={clientX + 14} y={y + 22} fontFamily="var(--font-body)" fontSize="12" fontWeight="600" fill="#1a1a1a">{g.name}</text>
+            <text x={clientX + 14} y={y + 38} fontFamily="var(--font-body)" fontSize="10" fill="#888">{g.owns}</text>
+            <rect x={clientX + 12} y={y + 50} width={196} height="15" rx="2" fill="#e8e8e0"/>
+            <text x={clientX + 110} y={y + 61} textAnchor="middle" fontFamily="var(--font-body)" fontSize="9" fontWeight="600" fill="#555">{g.decision}</text>
+            {/* Connector to center */}
+            <line x1={clientX + colW} y1={y + rowH/2} x2="370" y2={150} stroke="#d0d0cc" strokeWidth="1" strokeDasharray="3 3"/>
+          </g>
+        );
+      })}
+
+      {/* Internal groups */}
+      {internalGroups.map((g, i) => {
+        const y = 28 + i * (rowH + gap);
+        return (
+          <g key={i}>
+            <rect x={internalX} y={y} width={colW} height={rowH} rx="3" fill="#1a1a1a"/>
+            <text x={internalX + 14} y={y + 22} fontFamily="var(--font-body)" fontSize="12" fontWeight="600" fill="white">{g.name}</text>
+            <text x={internalX + 14} y={y + 38} fontFamily="var(--font-body)" fontSize="10" fill="rgba(255,255,255,0.45)">{g.owns}</text>
+            <rect x={internalX + 12} y={y + 50} width={196} height="15" rx="2" fill="rgba(255,255,255,0.08)"/>
+            <text x={internalX + 110} y={y + 61} textAnchor="middle" fontFamily="var(--font-body)" fontSize="9" fontWeight="600" fill="rgba(255,255,255,0.55)">{g.decision}</text>
+            {/* Connector from center */}
+            <line x1="470" y1={150} x2={internalX} y2={y + rowH/2} stroke="#d0d0cc" strokeWidth="1" strokeDasharray="3 3"/>
+          </g>
+        );
+      })}
+
+      <text x="20" y="298" fontFamily="var(--font-body)" fontSize="10" fill="var(--muted)">Each group owned a decision category. Design was the only constant across all six. Misalignment between groups was the primary source of scope drift.</text>
+    </svg>
+  );
+}
+
 export function ApprovalFlowArtifact() {
   return (
     <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>

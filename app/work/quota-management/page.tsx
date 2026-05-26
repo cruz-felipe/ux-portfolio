@@ -1,4 +1,5 @@
 import CaseLayout, { CaseStudyData } from "@/components/case-study/CaseLayout";
+import { StakeholderAlignmentArtifact, WorkshopMethodArtifact, ApprovalFlowArtifact } from "@/components/case-study/QuotaArtifacts";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -39,6 +40,7 @@ const data: CaseStudyData = {
       body: [
         "With no prior product and no user research process, workshops were the primary input. We ran sessions with six stakeholder groups: client business, client product, client program management, and from my company, business, development and QA. The goal of each session was to clarify requirements, understand who would actually use each feature and map how information would flow through real work scenarios.",
         "I developed a habit of bringing preliminary concept sketches into sessions rather than arriving with blank paper. A rough flow or an unfinished layout gives people something to react to. It is faster to agree on what something is not than to construct what it is from an empty whiteboard. Those early drafts were not proposals. They were thinking tools.",
+        "The diagram below shows the cross-functional structure. Each group owned a specific decision category. Design was the only constant across all six. The most persistent source of scope drift was misalignment between groups — not between any group and design.",
       ],
     },
     {
@@ -51,20 +53,58 @@ const data: CaseStudyData = {
       ],
     },
     {
-      title: "What shipped",
+      title: "Edge cases, empty states, errors",
       screens: [
         { src: "/quota/create.png", caption: "Create quota flow with live preview panel. Form updates the preview in real time — partners, APIs, limit and time window visible before submitting." },
         { src: "/quota/workflow.png", caption: "Change request approval workflow. Two-level approver groups with individual status tracking. Full audit trail from submission to completion." },
       ],
       body: [
+        "Every flow in the platform was designed to the same completeness standard: happy path, validation errors, empty states, and loading states. For a greenfield product with no existing behaviour to reference, this mattered more than usual. Support agents switching into this tool from other parts of the platform would have no tolerance for a blank screen or a broken form — those states needed to be as considered as the primary flows.",
+        "The quota list empty state explains why the list is empty and what action creates the first record. It distinguishes between 'no quotas have been created' and 'no quotas match your filter' — two different situations that look identical if you only design one of them. The create flow validates inline, field by field, with error messages that name the constraint rather than just flagging the field. The approval workflow surfaces rejection reasons inline in the audit log, not hidden in a status badge.",
+        "A note on the status badge system: the illustrative screens use color to encode quota status. In the production specification, each status badge pairs color with a text label and an icon to meet WCAG 1.4.1 non-text contrast requirements. The design file includes a documented badge component with color-independent variants for all states.",
+      ],
+    },
+    {
+      title: "Motion and interaction",
+      body: [
+        "The platform is a tool, not a showcase. Motion decisions were made on that basis. Panel transitions — detail drawer opening, approval modal entering — use 180ms ease-out. Fast enough to not interrupt a task flow, slow enough to orient without jarring. Form validation errors appear immediately on blur with no delay. The live preview panel in the create flow updates synchronously as fields change: no debounce, no skeleton — because the preview is the point of the interaction and any lag undermines it. All transitions are wrapped in a prefers-reduced-motion check and collapse to instant when the user has set that preference.",
+      ],
+    },
+    {
+      title: "What shipped",
+      body: [
         "The platform covers three modules across 13 end-to-end user flows, each with full validation states, empty states and error handling. Quota management gives agents visibility into consumption at the client and partner level, with manual adjustment controls and threshold alerts. API usage monitoring surfaces rate limit status and consumption trends. Change requests route through a configurable multi-level approval flow with a full audit log.",
         "The platform is pending client-side deployment. The delay is on the client's internal timeline, not on the design. I used the time since handoff to work through edge cases and handoff refinements with my company's developers and business analysts — the kind of detail work that only surfaces when someone is actually trying to build from your files.",
-        "A note on the status badge system: the illustrative screens use color to encode quota status. In the production specification, each status badge pairs color with a text label and an icon to meet WCAG 1.4.1. The design file includes a documented badge component with color-independent variants for all states.",
         "If I were doing this engagement again, I would structure workshops around a topic roadmap with hard scope boundaries per session. When a discussion deviated from the agenda, I would name it directly: 'this needs to be resolved internally first — let's reschedule this section once you have alignment.' That is not a confrontational move. It is a respectful one. It protects everyone's time and produces better decisions.",
       ],
     },
   ],
-  artifacts: [],
+  artifacts: [
+    {
+      id: "architecture",
+      title: "",
+      caption: "",
+      component: null,
+    },
+    {
+      id: "stakeholder-alignment",
+      title: "Cross-functional alignment map",
+      caption: "Six stakeholder groups, two sides. Design was the only function present in every session. Misalignment between client-side groups — not between clients and design — was the primary source of scope drift.",
+      component: <StakeholderAlignmentArtifact />,
+    },
+    {
+      id: "approval-flow",
+      title: "Change request approval flow",
+      caption: "Three request types routing to three approval structures. Configurable per client sign-off hierarchy without system configuration changes.",
+      component: <ApprovalFlowArtifact />,
+    },
+    {
+      id: "workshop-method",
+      title: "Workshop-to-output method",
+      caption: "Preliminary concept sketches brought into sessions as thinking tools, not proposals. Each cycle produced locked decisions and flagged dependencies before the next session opened.",
+      component: <WorkshopMethodArtifact />,
+    },
+  ],
 };
 
 export default function QuotaManagement() {

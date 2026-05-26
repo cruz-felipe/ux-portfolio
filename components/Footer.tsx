@@ -6,9 +6,9 @@ export default function Footer() {
   return (
     <footer id="contact" aria-label="Contact and links" style={{ borderTop: "1px solid var(--border)", overflow: "hidden", position: "relative" }}>
 
-      {/* Top — large editorial CTA */}
+      {/* Top — editorial CTA */}
       <div style={{ padding: "6rem 2.5rem 4rem", position: "relative" }}>
-        {/* Decorative text behind */}
+        {/* Decorative ghost text */}
         <div style={{
           position: "absolute", bottom: "2rem", right: "-1rem",
           fontFamily: "var(--font-display)", fontSize: "clamp(80px, 14vw, 180px)",
@@ -21,7 +21,7 @@ export default function Footer() {
           Contact
         </p>
 
-        {/* Giant headline */}
+        {/* Giant headline — the primary CTA itself */}
         <a href="mailto:fcruz@outlook.com" style={{
           display: "block",
           fontFamily: "var(--font-display)",
@@ -42,26 +42,63 @@ export default function Footer() {
           Get in touch.
         </a>
 
-        {/* Links row */}
-        <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-          <a href="mailto:fcruz@outlook.com" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "var(--font-body)", fontSize: "13px", fontWeight: 500, color: "white", background: "var(--ink)", textDecoration: "none", padding: "10px 20px", borderRadius: "2px", transition: "background 0.2s" }}
+        {/* CTA row — three distinct actions with clear visual roles */}
+        <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", alignItems: "center" }}>
+
+          {/* Primary: filled — the action to take */}
+          <a href="mailto:fcruz@outlook.com"
+            style={{
+              display: "inline-flex", alignItems: "center", gap: "0.5rem",
+              fontFamily: "var(--font-body)", fontSize: "13px", fontWeight: 500,
+              color: "white", background: "var(--ink)",
+              textDecoration: "none", padding: "10px 20px",
+              borderRadius: "2px", transition: "background 0.2s",
+            }}
             onMouseEnter={(e) => (e.currentTarget.style.background = "var(--red)")}
             onMouseLeave={(e) => (e.currentTarget.style.background = "var(--ink)")}
           >
             Send email
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </a>
-          <a href="https://linkedin.com/in/fmcruz" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "var(--font-body)", fontSize: "13px", fontWeight: 400, color: "var(--ink)", textDecoration: "none", border: "1px solid var(--border)", padding: "10px 20px", borderRadius: "2px", transition: "border-color 0.2s" }}
-            onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--ink)")}
-            onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
+
+          {/* Divider */}
+          <span style={{ width: "1px", height: "20px", background: "var(--border)", flexShrink: 0 }} aria-hidden="true" />
+
+          {/* Secondary: outlined peers — professional context */}
+          <a href="https://linkedin.com/in/fmcruz" target="_blank" rel="noopener noreferrer"
+            style={{
+              display: "inline-flex", alignItems: "center", gap: "0.4rem",
+              fontFamily: "var(--font-body)", fontSize: "13px", fontWeight: 400,
+              color: "var(--ink)", textDecoration: "none",
+              border: "1px solid var(--border)", padding: "10px 18px",
+              borderRadius: "2px", transition: "border-color 0.2s, color 0.2s",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--ink)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border)"; }}
           >
-            LinkedIn ↗
+            LinkedIn
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true" style={{ opacity: 0.5 }}>
+              <path d="M1 9L9 1M9 1H4M9 1v5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </a>
-          <a href="https://www.artstation.com/felipecruz" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "var(--font-body)", fontSize: "13px", fontWeight: 400, color: "var(--ink)", textDecoration: "none", border: "1px solid var(--border)", padding: "10px 20px", borderRadius: "2px", transition: "border-color 0.2s" }}
-            onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--ink)")}
-            onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
+
+          <a href="https://www.artstation.com/felipecruz" target="_blank" rel="noopener noreferrer"
+            style={{
+              display: "inline-flex", alignItems: "center", gap: "0.4rem",
+              fontFamily: "var(--font-body)", fontSize: "13px", fontWeight: 400,
+              color: "var(--ink)", textDecoration: "none",
+              border: "1px solid var(--border)", padding: "10px 18px",
+              borderRadius: "2px", transition: "border-color 0.2s, color 0.2s",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--ink)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border)"; }}
           >
-            Illustration ↗
+            Illustration
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true" style={{ opacity: 0.5 }}>
+              <path d="M1 9L9 1M9 1H4M9 1v5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </a>
         </div>
       </div>

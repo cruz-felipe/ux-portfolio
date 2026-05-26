@@ -91,13 +91,21 @@ export default function About() {
         <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.5rem, 5vw, 5rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1, color: "var(--ink)", margin: 0 }}>
           About
         </h2>
-
       </div>
 
-      {/* Top: photo + bio */}
-      <div className="about-top">
+      {/* Top: photo + bio — photo aligns to first paragraph top, not column top */}
+      <div className="about-top" style={{ alignItems: "flex-start" }}>
         <div className="about-photo-col">
-          <div style={{ width: "100%", maxWidth: "300px", position: "relative", borderRadius: "2px", overflow: "hidden" }}>
+          {/* Offset the photo down by the same amount as the first paragraph's top margin
+              so photo top = first line of bio text, not column top */}
+          <div style={{
+            width: "100%",
+            maxWidth: "260px",
+            position: "relative",
+            borderRadius: "2px",
+            overflow: "hidden",
+            marginTop: "4px",
+          }}>
             <img
               src="/photo.jpg"
               alt="Felipe Cruz sketching in Tiradentes, Brazil"
@@ -110,7 +118,7 @@ export default function About() {
                 aspectRatio: "3/4",
               }}
             />
-            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "4px", background: "var(--red)" }}/>
+            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "3px", background: "var(--red)" }} />
           </div>
         </div>
 
@@ -155,7 +163,6 @@ export default function About() {
             but clear communication is.
           </p>
 
-          {/* Beyond the work */}
           <p style={{
             fontFamily: "var(--font-body)",
             fontSize: "11px",
@@ -212,7 +219,6 @@ export default function About() {
             what we do with products, is it?
           </p>
 
-          {/* Skills */}
           <span style={{
             fontFamily: "var(--font-body)",
             fontSize: "11px",

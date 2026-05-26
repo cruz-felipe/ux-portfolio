@@ -50,6 +50,7 @@ export default function Hero() {
           letterSpacing: "-0.03em",
           color: "var(--ink)",
           margin: "0 0 3.5rem",
+          width: "71%",
         }}
         aria-label="I design for the moment when complexity is no longer manageable and someone has to make it work."
       >
@@ -88,7 +89,7 @@ export default function Hero() {
           transition: "opacity 0.7s ease 0.85s, transform 0.7s ease 0.85s",
         }}
       >
-        <p className="hero-bio">
+        <p className="hero-bio" style={{ maxWidth: "540px" }}>
           Eleven years designing enterprise products at global scale in BSS/OSS telecom
           infrastructure, B2B and B2C across 9 countries. I lead local design team, run
           the cross-functional process and deliver the kind of system that engineers can

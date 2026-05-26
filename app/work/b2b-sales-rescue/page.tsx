@@ -1,4 +1,5 @@
 import CaseLayout, { CaseStudyData } from "@/components/case-study/CaseLayout";
+import { ResearchMethodologyArtifact, HeuristicMatrixArtifact, FlowCompressionArtifact } from "@/components/case-study/SalesArtifacts";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -27,15 +28,16 @@ const data: CaseStudyData = {
       pullquote: "The interviews told us what agents thought they did. The shadow sessions showed us what they actually did.",
       body: [
         "We proposed and led a one-month on-site research study in São Paulo. 37 interviews, 25 usability tests, 20 shadow sessions with agents on the floor. The research was not in the brief. We proposed it because the existing releases had been built on assumptions, and no amount of interface work would fix a system built around the wrong model.",
-        "The most significant finding did not come from the interviews. It came from watching agents work. The interviews told us what agents thought they did. The shadow sessions showed us what they actually did: they captured all the information for a quotation before opening the system, often in notes or spreadsheets, and then entered it manually. The system had been designed around the assumption that agents would configure products as they went. Almost no one did.",
-        "The second finding was harder to bring back. Several features that management considered important had near-zero usage in the field. Some agents did not know what they were. Those features had required significant design and development time internally. Surfacing that data required careful framing.",
+        "Participants were recruited through the client's ops team — a stratified sample covering senior agents, new hires under 3 months, team leads, and one regional manager per location. Interviews followed a semi-structured protocol: we asked agents to walk us through their last five proposals end-to-end before touching any product. Usability tests ran timed task scenarios on the existing system with think-aloud. Shadow sessions were unmoderated observation only — no questions during, debrief after.",
+        "The most significant finding did not come from the interviews. It came from watching agents work: they captured all the information for a quotation before opening the system, often in notes or spreadsheets, and then entered it manually. The system had been designed around the assumption that agents would configure products as they went. Almost no one did.",
+        "The second finding was harder to bring back. Several features that management considered important had near-zero usage in the field. Some agents did not know what they were. Surfacing that data required careful framing — the matrix below was built specifically to make that conversation possible.",
       ],
     },
     {
       title: "Making the case for rework",
       body: [
         "The client's management pushed back immediately. They had invested in two releases. Having an external team arrive and say parts needed reworking was not a comfortable conversation.",
-        "We scored every finding on two axes: criticality by Nielsen's severity scale, and effort by design and development cost combined. The output was not a list of problems — it was a roadmap argument. Low-effort, high-criticality fixes first, slotted into the existing release schedule so the rework did not require stopping. The constraint that turned the room was not the severity scores. It was the framing that the system had to keep running. We were not proposing a replacement. We were proposing fixes that could be absorbed into releases that were already scheduled. Management agreed to incremental changes over a reviewed and approved roadmap. That distinction mattered more than any individual finding. The research study we ran was also used to structure the delivery roadmap shown below.",
+        "We scored every finding on two axes: criticality by Nielsen's severity scale, and effort by design and development cost combined. The output was not a list of problems — it was a roadmap argument. Low-effort, high-criticality fixes first, slotted into the existing release schedule so the rework did not require stopping. The constraint that turned the room was not the severity scores. It was the framing that the system had to keep running. We were not proposing a replacement. We were proposing fixes that could be absorbed into releases that were already scheduled. Management agreed to incremental changes over a reviewed and approved roadmap.",
       ],
       screens: [
         { src: "/b2b/roadmap.png", caption: "Research-to-delivery roadmap. Planning, top-case inputs by segment, and documentation phases structured around what the field study revealed." },
@@ -54,13 +56,38 @@ const data: CaseStudyData = {
       ],
     },
     {
+      title: "Motion and step transitions",
+      body: [
+        "The 3-step flow needed transitions that communicated progress without adding friction — agents were processing high-value B2B quotes on a clock. Step advances use a 220ms horizontal slide with ease-out: far enough to signal forward movement, fast enough to not feel theatrical. Back navigation reverses the direction. Pricing recalculations in Step 2 update with a 120ms cross-fade on the affected values rather than a full panel re-render, so the agent's eye stays on the number that changed. Approval confirmation uses a brief scale-and-fade on the success state — the only moment in the flow where a slight pause is appropriate because it marks a consequential action. All motion respects prefers-reduced-motion: if set, transitions are instant and the directional slide is replaced with a simple opacity change.",
+      ],
+    },
+    {
       title: "What I would do differently",
       body: [
         "I would have pushed for an MVP scope at the start rather than delivering a prioritized list of improvements. The matrix was the right tool for sequencing. But sequencing a long list is still a long list. A defined MVP with a subset of the highest-impact fixes would have been easier for the client to commit to and faster to demonstrate results.",
       ],
     },
   ],
-  artifacts: [],
+  artifacts: [
+    {
+      id: "research-methodology",
+      title: "Research methodology breakdown",
+      caption: "37 interviews, 25 usability tests, 20 shadow sessions. Each method answered a different question. The key finding — agents pre-filling quotes offline — only surfaced through observation, not interviews.",
+      component: <ResearchMethodologyArtifact />,
+    },
+    {
+      id: "heuristic-matrix",
+      title: "Criticality vs effort prioritisation matrix",
+      caption: "Every finding scored on Nielsen severity and implementation effort. Red dots: high-criticality, low-effort — the first release targets. The matrix output was a roadmap, not a to-do list.",
+      component: <HeuristicMatrixArtifact />,
+    },
+    {
+      id: "flow-compression",
+      title: "7 tools → 3-step flow compression",
+      caption: "Before: 7 separate tools, sequential context-switching, ~60 min. After: 3 steps, single interface, ~15 min. The compression was possible because most proposals used a small set of predefined configurations.",
+      component: <FlowCompressionArtifact />,
+    },
+  ],
 };
 
 export default function B2BSalesRescue() {

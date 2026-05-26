@@ -2,24 +2,24 @@ import CaseLayout, { CaseStudyData } from "@/components/case-study/CaseLayout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Dane Telecom / Felipe Cruz",
-  description: "Design system restructure for a major Danish telecom. On-site Copenhagen. 50% faster handoff.",
+  title: "Dane Telecom — Design System Restructure / Felipe Cruz",
+  description: "Led a production design system restructure for a major Danish telecom. Token architecture, component governance, sandbox-to-master workflow. 50% faster handoff.",
 };
 
 const data: CaseStudyData = {
   index: "04",
   title: "Dane Telecom",
   tagline: "The client knew their design system lacked scalability. They did not know what to do about it. I was invited on-site in Copenhagen to find out.",
-  role: "Senior Product Designer",
+  role: "Senior Product Designer — Design Systems",
   location: "On-site, Copenhagen",
   year: "2023",
-  roleDetail: "Led design system restructure working directly with the client's UX lead and UI designers. Introduced token architecture, established component governance and aligned the system roadmap with product delivery priorities.",
-  impactSummary: "50% faster handoff. Concept-to-handoff dropped from two weeks to one. 32% velocity boost on concept production across the team.",
+  roleDetail: "Led design system restructure working directly with the client's UX lead and UI designers. Introduced a three-tier token architecture, established component governance with a sandbox-to-master promotion workflow, and aligned the system roadmap with product delivery priorities across the team.",
+  impactSummary: "Handoff time dropped from two weeks to one week, consistently. 32% velocity increase on concept production across the team. Component library restructured from an ungoverned collection to a token-based system with a documented promotion process.",
   context: "The client's UX lead reached out directly for help with design system optimisation. The system existed and covered the basics. The problem was that it had not been built with the product roadmap in mind. New features were forcing designers to solve the same problems locally, repeatedly, with no path back to the shared system. Before proposing any fixes, I needed to understand what the system actually contained and what it would need to support next.",
   metrics: [
-    { value: "50%", label: "Faster handoff. Two weeks to one week, consistently." },
-    { value: "32%", label: "Velocity boost on concept production across the team." },
-    { value: "3mo", label: "On-site in Copenhagen leading the restructure." },
+    { value: "50%", label: "Faster handoff. Two weeks to one week, consistently. Measured against the team's own release log before and after restructure." },
+    { value: "32%", label: "Velocity increase on concept production across the team, tracked across three feature cycles post-restructure." },
+    { value: "3mo", label: "On-site in Copenhagen. Proximity was not optional — this restructure required daily design and engineering coordination." },
   ],
   sections: [
     {
@@ -41,15 +41,21 @@ const data: CaseStudyData = {
       ],
     },
     {
-      title: "Running a restructure while the product kept shipping",
+      title: "Token architecture and governance",
       screens: [
         { src: "/dane/component-audit.png", caption: "Before and after token restructure. Three inconsistent button variants unified under a semantic token layer. Illustrative system documentation." },
         { src: "/dane/token-architecture.png", caption: "Three-tier token architecture and sandbox-to-master governance workflow. Illustrative representation of the restructure approach." },
       ],
       body: [
-        "The hardest constraint was that the product was live. We could not restructure in one move. Every change had to be batched carefully to avoid disrupting handoffs already in progress. I introduced a sandbox-to-master workflow: new components and token changes were built in isolation, validated against active handoffs, and only promoted to the master library once confirmed safe.",
+        "The restructure introduced three token tiers: primitive tokens (raw values — color, spacing, radius, type scale), semantic tokens (purpose-mapped aliases — surface, text, border, action), and component tokens (component-scoped overrides). This separation meant that a brand color change touched one primitive, propagated through semantic aliases, and updated every component automatically. Before the restructure, the same change required hunting through local overrides across dozens of components.",
+        "The governance model was equally important. I introduced a sandbox-to-master workflow: new components and token changes were built in isolation in a sandbox file, validated against active handoffs, reviewed by the UX lead, and only promoted to the master library once confirmed safe. Engineering not involved in the promotion decision — component governance stayed a design call. That boundary mattered. It kept the process fast.",
         "The scope was larger than one person could cover on the timeline we had. I coordinated with other designers to split the work into batches, each assigned and tracked against the roadmap milestones. That coordination was the part of the project that most required the on-site presence. Remote collaboration on a restructure of this complexity, across a team that was also shipping features, would have been significantly harder.",
-        "Being in Copenhagen for three months changed the quality of the work. Understanding how the client's team made decisions, what they trusted and where the real friction was, required the kind of daily proximity that remote work cannot replicate. I also got a clear view of how Danish product teams operate: direct, disciplined, with a strong mutual respect between disciplines. That shaped how I run cross-functional projects today.",
+      ],
+    },
+    {
+      title: "Motion and interaction spec",
+      body: [
+        "One of the gaps the audit surfaced was inconsistent transition behavior across components. Some modals faded in, others slid. Some dropdowns had no transition at all. Before the restructure completed, I documented a motion baseline: entrance transitions use a 200ms ease-out translate-and-fade, exits use 150ms ease-in. State changes (hover, focus, active) are 100ms or less with no translate — only color and border changes. All transitions respect prefers-reduced-motion: if the user has set that preference, transitions collapse to instant. This was added to the component spec as a required property, not an optional enhancement.",
       ],
     },
     {

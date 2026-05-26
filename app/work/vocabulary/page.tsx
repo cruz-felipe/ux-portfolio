@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Vocabulary / Felipe Cruz",
-  description: "A flashcard app built for how I actually learn. Shipped and used daily.",
+  description: "A flashcard app built for how I actually learn. Shipped solo in Next.js with the Claude API. Used daily.",
 };
 
 const BASE = "/vocabulary";
@@ -15,15 +15,15 @@ const data: CaseStudyData = {
   role: "Designer and Developer",
   location: "Personal project",
   year: "2025",
-  roleDetail: "Solo product. Designed and built in Next.js with the Claude API. Shipped to a private URL, used daily by me and a small group of friends learning Spanish, Russian, French and Italian.",
+  roleDetail: "Solo product from concept to deployment. Designed the full interaction system, built in Next.js with the Claude API, shipped to a private URL. Used daily by me and a small group of friends learning Spanish, Russian, French and Italian. Every product decision — architecture, AI integration, motion, scope — was mine.",
   context: "I was using Duolingo to study Spanish and Russian. It works for gamified progress but not for what I actually needed: sitting down with a set of words and drilling them until they stick. Every dedicated flashcard app I found had too much friction, too much structure I didn't ask for, or none of the vocabulary I needed for work. Building my own was faster than settling.",
   metrics: [],
   sections: [
     {
       title: "Two modes, one honest reason",
       body: [
-        "I learn by seeing the Portuguese word and trying to produce the translation. A friend learns the opposite he sees the translated word and types the original. Neither method is better. They are different mental models for how vocabulary anchors itself.",
-        "Recognition mode shows the source word and flips to reveal the translation. Recall mode shows the translated word and requires you to type the original. Recall is harder because typing forces active retrieval rather than passive recognition. The synonym layer exists because marking a valid synonym as wrong is counterproductive the app accepts it and notes the distinction.",
+        "I learn by seeing the Portuguese word and trying to produce the translation. A friend learns the opposite — he sees the translated word and types the original. Neither method is better. They are different mental models for how vocabulary anchors itself.",
+        "Recognition mode shows the source word and flips to reveal the translation. Recall mode shows the translated word and requires you to type the original. Recall is harder because typing forces active retrieval rather than passive recognition. The synonym layer exists because marking a valid synonym as wrong is counterproductive — the app accepts it and notes the distinction.",
       ],
       narrowScreens: true,
       screens: [
@@ -35,7 +35,7 @@ const data: CaseStudyData = {
     {
       title: "Recall mode and feedback states",
       body: [
-        "Correct answers turn the card border green. Wrong answers turn it red and show the correct form immediately. The cultural note appears in both cases context sticks regardless of whether you got it right.",
+        "Correct answers turn the card border green. Wrong answers turn it red and show the correct form immediately. The cultural note appears in both cases — context sticks regardless of whether you got it right.",
         "The category screen uses the language color as a full-bleed header, which acts as a persistent identifier. Spanish is red, Russian is blue, Italian is green. Switching languages does not require relearning the navigation.",
       ],
       narrowScreens: true,
@@ -43,6 +43,14 @@ const data: CaseStudyData = {
         { src: `${BASE}/Screenshot_2026-05-25_at_13_19_31.png`, caption: "Recall mode. Spanish word shown, type the Portuguese equivalent." },
         { src: `${BASE}/Screenshot_2026-05-25_at_13_19_37.png`, caption: "Correct. Green border, cultural tip surfaces." },
         { src: `${BASE}/Screenshot_2026-05-25_at_13_19_53.png`, caption: "Wrong. Red border, correct form shown with context." },
+      ],
+    },
+    {
+      title: "Card flip and feedback motion",
+      body: [
+        "The card flip is a 300ms CSS 3D transform on the Y axis with ease-in-out — long enough to read as a physical card turning, short enough to not slow down a drilling session. The two faces (front word, back translation) swap at the 150ms midpoint when the card is edge-on, so the transition feels like a real flip rather than a dissolve.",
+        "Correct and incorrect feedback states animate the card border color from neutral to green or red over 150ms, then hold for 400ms before advancing. The hold is deliberate: it gives the brain a moment to register the outcome before the next card enters. Wrong answers also shake the card horizontally over 200ms — a short 4px oscillation — before showing the correct form. That micro-animation is the only piece of motion in the app that communicates failure, so it needed to be distinct without being punishing.",
+        "All motion respects prefers-reduced-motion. When the preference is set, the card flip becomes an instant face-swap, border color changes are instant, and the shake is replaced with a simple red border hold. The app is fully usable without any animation.",
       ],
     },
     {
@@ -56,6 +64,13 @@ const data: CaseStudyData = {
         { src: `/vocabulary/russian-category.png`, caption: "Russian category screen. Blue as the language identifier consistent across recognition and recall modes." },
         { src: `${BASE}/Screenshot_2026-05-25_at_13_21_04.png`, caption: "Russian tech card. Cyrillic, phonetic transcription, cultural note." },
         { src: `${BASE}/Screenshot_2026-05-25_at_13_22_05.png`, caption: "Recall mode, Russian tech. Correct answer with UX documentation context." },
+      ],
+    },
+    {
+      title: "What this project is actually about",
+      body: [
+        "Building a consumer product solo end-to-end — design, engineering, deployment, real daily use — is a different discipline from enterprise UX. Every decision is yours with no stakeholder to validate against, no QA to catch it, and no one to blame when it ships broken.",
+        "The AI integration judgment here is the part I'd point to in a larger product context: Claude operates at the edge, not at the center. The core mechanic is instant and offline-capable. The AI layer adds value only when the user opts in. That distinction — AI as enrichment, not dependency — is a product architecture decision as much as a UX one, and it's one I'd apply the same way at scale.",
       ],
     },
   ],
