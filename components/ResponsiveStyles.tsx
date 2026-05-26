@@ -236,22 +236,22 @@ export default function ResponsiveStyles() {
         margin: 0 auto;
       }
       .screen-gallery.narrow {
-        grid-template-columns: repeat(3, 220px) !important;
+        grid-template-columns: repeat(3, 320px) !important;
         justify-content: center;
       }
       .screen-gallery.narrow.count-2 {
-        grid-template-columns: repeat(2, 220px) !important;
+        grid-template-columns: repeat(2, 320px) !important;
         justify-content: center;
       }
       .screen-gallery.narrow.count-1 {
-        grid-template-columns: 220px !important;
+        grid-template-columns: 320px !important;
         justify-content: center;
       }
       @media (max-width: 900px) {
         .screen-gallery { grid-template-columns: repeat(2, 1fr) !important; }
         .screen-gallery.count-1 { grid-template-columns: 1fr !important; max-width: 100%; }
-        .screen-gallery.narrow { grid-template-columns: repeat(2, 180px) !important; }
-        .screen-gallery.narrow.count-1 { grid-template-columns: 180px !important; }
+        .screen-gallery.narrow { grid-template-columns: repeat(2, 260px) !important; }
+        .screen-gallery.narrow.count-1 { grid-template-columns: 260px !important; }
       }
 
       /* Footer logo dark mode swap */

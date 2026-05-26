@@ -12,9 +12,7 @@ const PROJECTS = [
     metrics: ["70% AHT reduction", "32→1 consolidation"],
     featured: true,
     tag: "AI System Design · Telecom · 2022",
-    // Right panel: workspace image — full bleed, cropped to show agent interface density
     image: "/hub/workspace.png",
-    imagePrimary: "/hub/workspace.png",
   },
   {
     id: "b2b-sales-rescue",
@@ -25,8 +23,6 @@ const PROJECTS = [
     metrics: ["75% quote acceleration", "83% faster onboarding"],
     tag: "Enterprise UX · Research · 2023",
     weight: "primary",
-    // Step 2: quotation view — products, pricing, approval
-    image: "/b2b/step2.png",
   },
   {
     id: "quota-management",
@@ -37,8 +33,6 @@ const PROJECTS = [
     metrics: ["13 flows", "3 modules"],
     tag: "Greenfield Product · BSS · 2024",
     weight: "primary",
-    // List view — rows populated, status badges visible
-    image: "/quota/list.png",
   },
   {
     id: "dane-telecom",
@@ -49,8 +43,6 @@ const PROJECTS = [
     metrics: ["50% faster handoff", "32% velocity boost"],
     tag: "Design System · Copenhagen · 2023",
     weight: "secondary",
-    // Component audit — structured document, color-coded status
-    image: "/dane/inventory.png",
   },
   {
     id: "vocabulary",
@@ -62,8 +54,6 @@ const PROJECTS = [
     personal: true,
     tag: "Personal · Next.js · Claude API",
     weight: "secondary",
-    // Russian category — blue full-bleed header, strongest visual in the set
-    image: "/vocabulary/russian-category.png",
   },
 ];
 
@@ -82,7 +72,7 @@ function FeaturedCard({ project }: { project: typeof PROJECTS[0] }) {
 
   return (
     <div ref={ref} style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(32px)", transition: "opacity 0.7s ease, transform 0.7s cubic-bezier(0.16,1,0.3,1)" }}>
-      <Link href={project.href} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", textDecoration: "none", color: "var(--ink)", background: "var(--ink)", borderRadius: "2px", overflow: "hidden", minHeight: "340px" }}
+      <Link href={project.href} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", textDecoration: "none", color: "var(--ink)", background: hovered ? "#0A0A0A" : "var(--ink)", borderRadius: "2px", overflow: "hidden", minHeight: "340px", transition: "background 0.35s ease" }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
@@ -94,11 +84,9 @@ function FeaturedCard({ project }: { project: typeof PROJECTS[0] }) {
             <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "2rem" }}>
               <span style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>Featured</span>
             </div>
-
             <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, color: "white", margin: "0 0 1.25rem" }}>
               {project.title}
             </h2>
-
             <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", fontWeight: 300, lineHeight: 1.7, color: "rgba(255,255,255,0.6)", margin: 0, maxWidth: "380px" }}>
               {project.blurb}
             </p>
@@ -123,7 +111,7 @@ function FeaturedCard({ project }: { project: typeof PROJECTS[0] }) {
         <div style={{ position: "relative", overflow: "hidden", minHeight: "340px" }}>
           <img
             src={project.image}
-            alt={project.title}
+            alt={`${project.title} interface`}
             style={{
               position: "absolute",
               inset: 0,
@@ -131,13 +119,11 @@ function FeaturedCard({ project }: { project: typeof PROJECTS[0] }) {
               height: "100%",
               objectFit: "cover",
               objectPosition: "top left",
-              opacity: hovered ? 0.85 : 0.7,
-              transition: "opacity 0.35s ease, transform 0.5s ease",
+              opacity: hovered ? 0.9 : 0.75,
               transform: hovered ? "scale(1.02)" : "scale(1)",
+              transition: "opacity 0.35s ease, transform 0.5s ease",
             }}
           />
-          {/* Subtle dark vignette on edges so it feels contained */}
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(0,0,0,0.35) 0%, transparent 60%)", pointerEvents: "none" }} />
         </div>
       </Link>
     </div>
@@ -159,38 +145,16 @@ function PrimaryCard({ project, index }: { project: typeof PROJECTS[0]; index: n
 
   return (
     <div ref={ref} style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(32px)", transition: `opacity 0.7s ease ${index * 60}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${index * 60}ms` }}>
-      <Link href={project.href} style={{ display: "flex", flexDirection: "column", border: `1px solid ${hovered ? "rgba(10,10,10,0.35)" : "rgba(10,10,10,0.1)"}`, borderRadius: "2px", overflow: "hidden", textDecoration: "none", color: "var(--ink)", background: hovered ? "#0A0A0A" : "color-mix(in srgb, var(--ink) 3%, var(--paper))", transition: "background 0.3s ease, border-color 0.2s ease" }}
+      <Link href={project.href} style={{ display: "flex", flexDirection: "column", minHeight: "260px", border: `1px solid ${hovered ? "rgba(10,10,10,0.35)" : "rgba(10,10,10,0.1)"}`, borderRadius: "2px", overflow: "hidden", textDecoration: "none", color: "var(--ink)", background: hovered ? "#0A0A0A" : "color-mix(in srgb, var(--ink) 3%, var(--paper))", transition: "background 0.3s ease, border-color 0.2s ease" }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        {/* Image — 16:10 crop, top-aligned to show UI above the fold */}
-        {project.image && (
-          <div style={{ aspectRatio: "16/10", overflow: "hidden", position: "relative" }}>
-            <img
-              src={project.image}
-              alt={project.title}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "top left",
-                display: "block",
-                opacity: hovered ? 0.6 : 1,
-                transform: hovered ? "scale(1.02)" : "scale(1)",
-                transition: "opacity 0.3s ease, transform 0.5s ease",
-                filter: hovered ? "brightness(0.4)" : "none",
-              }}
-            />
-          </div>
-        )}
-
-        {/* Content */}
-        <div style={{ padding: "1.5rem 2rem 2rem", flex: 1, display: "flex", flexDirection: "column" }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.75rem" }}>
+        <div style={{ padding: "2rem", flex: 1, display: "flex", flexDirection: "column", position: "relative" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1.25rem" }}>
             <span style={{ fontFamily: "var(--font-display)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", color: hovered ? "rgba(255,255,255,0.3)" : "var(--muted)", transition: "color 0.3s" }}>{project.index}</span>
           </div>
 
-          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.15rem, 1.8vw, 1.4rem)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: "0.6rem", color: hovered ? "white" : "var(--ink)", transition: "color 0.3s" }}>
+          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.25rem, 2vw, 1.55rem)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: "0.75rem", color: hovered ? "white" : "var(--ink)", transition: "color 0.3s" }}>
             {project.title}
           </h2>
 
@@ -198,7 +162,9 @@ function PrimaryCard({ project, index }: { project: typeof PROJECTS[0]; index: n
             {project.blurb}
           </p>
 
-          <div style={{ display: "flex", gap: "1.25rem" }}>
+          <div style={{ position: "absolute", bottom: "1rem", right: "1.5rem", fontFamily: "var(--font-display)", fontSize: "72px", fontWeight: 800, lineHeight: 1, color: hovered ? "white" : "var(--ink)", opacity: hovered ? 0.07 : 0.055, letterSpacing: "-0.04em", pointerEvents: "none", userSelect: "none", transition: "color 0.3s, opacity 0.3s" }}>{project.index}</div>
+
+          <div style={{ display: "flex", gap: "1.25rem", paddingTop: "1rem" }}>
             {project.metrics.map(m => (
               <span key={m} style={{ fontFamily: "var(--font-display)", fontSize: "12px", fontWeight: 700, color: hovered ? "var(--red)" : "var(--muted)", transition: "color 0.3s" }}>{m}</span>
             ))}
@@ -225,49 +191,25 @@ function SecondaryCard({ project, index }: { project: typeof PROJECTS[0]; index:
 
   return (
     <div ref={ref} style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(32px)", transition: `opacity 0.7s ease ${index * 60}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${index * 60}ms` }}>
-      <Link href={project.href} style={{ display: "flex", flexDirection: "column", border: `1px solid ${hovered ? "rgba(10,10,10,0.2)" : "var(--border)"}`, borderRadius: "2px", overflow: "hidden", textDecoration: "none", color: "var(--ink)", background: hovered ? "#0A0A0A" : "var(--paper)", transition: "background 0.3s ease, border-color 0.2s ease" }}
+      <Link href={project.href} style={{ display: "flex", flexDirection: "column", minHeight: "160px", border: `1px solid ${hovered ? "rgba(10,10,10,0.2)" : "var(--border)"}`, borderRadius: "2px", overflow: "hidden", textDecoration: "none", color: "var(--ink)", background: hovered ? "#0A0A0A" : "var(--paper)", transition: "background 0.3s ease, border-color 0.2s ease" }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        {/* Image strip — narrower than primary, 3:1 ratio */}
-        {project.image && (
-          <div style={{ aspectRatio: "3/1", overflow: "hidden", position: "relative" }}>
-            <img
-              src={project.image}
-              alt={project.title}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: project.id === "vocabulary" ? "top center" : "top left",
-                display: "block",
-                opacity: hovered ? 0.5 : 0.9,
-                transform: hovered ? "scale(1.02)" : "scale(1)",
-                transition: "opacity 0.3s ease, transform 0.5s ease",
-                filter: hovered ? "brightness(0.35)" : "none",
-              }}
-            />
-          </div>
-        )}
-
-        <div style={{ padding: "1.25rem 1.5rem 1.5rem", flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+        <div style={{ padding: "1.5rem 1.75rem", flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
           <div>
-            <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: "0.5rem" }}>
+            <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: "0.6rem" }}>
               <span style={{ fontFamily: "var(--font-display)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", color: hovered ? "rgba(255,255,255,0.3)" : "var(--muted)", transition: "color 0.3s" }}>{project.index}</span>
               {project.personal && (
                 <span style={{ fontFamily: "var(--font-body)", fontSize: "9px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: hovered ? "rgba(255,255,255,0.3)" : "var(--muted)", border: `1px solid ${hovered ? "rgba(255,255,255,0.12)" : "var(--border)"}`, borderRadius: "2px", padding: "2px 6px", transition: "all 0.3s" }}>Personal</span>
               )}
             </div>
-
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1rem, 1.4vw, 1.15rem)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: "0.4rem", color: hovered ? "white" : "var(--ink)", transition: "color 0.3s" }}>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1rem, 1.4vw, 1.15rem)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: "0.5rem", color: hovered ? "white" : "var(--ink)", transition: "color 0.3s" }}>
               {project.title}
             </h2>
-
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: hovered ? "rgba(255,255,255,0.45)" : "var(--muted)", margin: "0 0 0.75rem", transition: "color 0.3s", lineHeight: 1.5 }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: hovered ? "rgba(255,255,255,0.45)" : "var(--muted)", margin: "0 0 0.9rem", transition: "color 0.3s", lineHeight: 1.5 }}>
               {project.tag}
             </p>
           </div>
-
           <div style={{ display: "flex", gap: "1rem" }}>
             {project.metrics.map(m => (
               <span key={m} style={{ fontFamily: "var(--font-display)", fontSize: "11px", fontWeight: 700, color: hovered ? "var(--red)" : "var(--muted)", transition: "color 0.3s" }}>{m}</span>
@@ -292,13 +234,11 @@ export default function Work() {
 
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
         <FeaturedCard project={PROJECTS[0]} />
-
         <div className="work-grid-primary" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1rem" }}>
           {primary.map((project, i) => (
             <PrimaryCard key={project.id} project={project} index={i + 1} />
           ))}
         </div>
-
         <div className="work-grid-secondary" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1rem" }}>
           {secondary.map((project, i) => (
             <SecondaryCard key={project.id} project={project} index={i + 1} />
