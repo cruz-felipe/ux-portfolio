@@ -66,10 +66,7 @@ const data: CaseStudyData = {
     {
       // index 4
       title: "One interface. All context. No switching.",
-      body: [
-        "The full unified workspace. Every data source previously spread across 32 tools available in a single view, mid-call. The agent's job becomes the customer. Not the system.",
-        "Interaction transitions in the workspace were designed for time pressure. Panel expansions and modal entries use a 150ms ease-out — fast enough to not feel slow on a live call, slow enough to orient the agent. No full-page navigations. No loading states between tools. Context persists across every action. The motion spec was treated as a performance requirement, not a visual detail.",
-      ],
+      body: "The full unified workspace. Every data source previously spread across 32 tools available in a single view, mid-call. The agent's job becomes the customer. Not the system.",
       screens: [
         { src: "/hub/workspace.png", caption: "Unified agent workspace. Customer context, suggested interaction, services, devices and billing. One screen, mid-call." },
         { src: "/hub/workspace2.png", caption: "Workspace with bill payment modal active. Action completed without leaving the interface." },
