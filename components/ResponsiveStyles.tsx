@@ -17,6 +17,7 @@ export default function ResponsiveStyles() {
         opacity: 0.78;
         margin: 0;
         max-width: 540px;
+        text-wrap: pretty;
       }
       .hero-sub {
         display: grid;

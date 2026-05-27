@@ -33,98 +33,106 @@ function buildProjects(cards: any[]) {
   }));
 }
 
-// ── Featured card right panel — bespoke typographic data display ──
+// ── Featured card right panel — real data from product mockups ──
 function AgentWorkspacePanel({ hovered }: { hovered: boolean }) {
-  const rows = [
-    { label: "Customer", value: "María González", sub: "Account #4821-BR" },
-    { label: "Reason", value: "Billing dispute", sub: "3rd contact this month" },
-    { label: "Last agent", value: "C. Ferreira", sub: "2 days ago — unresolved" },
-    { label: "Open tickets", value: "2 active", sub: "Priority: high" },
+  // Real data from the workspace mockup: customer Eli Manning, modem issue
+  const afterRows = [
+    { label: "Customer", value: "Eli Manning", sub: "Account #73514-4" },
+    { label: "IVR path", value: "Modem issue", sub: "3rd contact in 30 days" },
+    { label: "Last agent", value: "Kate Austen", sub: "01.21.20 — technical complaint" },
+    { label: "Debt", value: "$69.98 overdue", sub: "35 days — Pay Now flagged" },
   ];
-  const tools = ["Billing", "CRM", "Tickets", "Tech", "IVR", "Orders", "SIM", "KB", "Auth", "Script", "Escalate", "Network"];
+  // Real legacy tool tabs from before2.png
+  const beforeTools = ["Account Info", "ID Management", "Manage Modem", "Transaction History", "Security", "StaticIP", "Web DVR Mgmt", "Wifi", "Managed Device", "Add On Svcs", "Billing", "Tickets"];
 
   return (
-    <div style={{
-      position: "relative",
-      height: "100%",
-      padding: "2rem",
-      display: "flex",
-      flexDirection: "column",
-      gap: "1.25rem",
-      overflow: "hidden",
-    }}>
-      {/* Before state — faint, crossing out */}
+    <div style={{ position: "relative", height: "100%", overflow: "hidden" }}>
+
+      {/* BEFORE — legacy tool tabs, visible at rest, fades on hover */}
       <div style={{
         position: "absolute",
         inset: 0,
         padding: "2rem",
-        opacity: hovered ? 0 : 0.18,
-        transition: "opacity 0.5s ease",
+        opacity: hovered ? 0 : 1,
+        transition: "opacity 0.45s ease",
         pointerEvents: "none",
+        display: "flex",
+        flexDirection: "column",
       }}>
-        <div style={{ fontSize: "9px", fontFamily: "var(--font-body)", color: "rgba(255,255,255,0.5)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.75rem" }}>Before — 32 tools</div>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
-          {tools.map((t, i) => (
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem", paddingBottom: "0.75rem", borderBottom: "0.5px solid rgba(255,255,255,0.1)" }}>
+          <span style={{ fontFamily: "var(--font-body)", fontSize: "9px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>Before — 32 tools per call</span>
+        </div>
+        {/* Simulate the tab bar from the actual legacy UI */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "4px", marginBottom: "1.25rem" }}>
+          {beforeTools.map((t, i) => (
             <div key={i} style={{
               fontFamily: "var(--font-body)",
-              fontSize: "10px",
-              color: "rgba(255,255,255,0.45)",
-              border: "0.5px solid rgba(255,255,255,0.15)",
+              fontSize: "9px",
+              color: i === 0 ? "white" : "rgba(255,255,255,0.35)",
+              background: i === 0 ? "rgba(255,140,0,0.25)" : "rgba(255,255,255,0.05)",
+              border: `0.5px solid ${i === 0 ? "rgba(255,140,0,0.4)" : "rgba(255,255,255,0.1)"}`,
               borderRadius: "2px",
-              padding: "3px 7px",
-              textDecoration: i < 6 ? "line-through" : "none",
-              opacity: i < 6 ? 0.4 : 0.7,
+              padding: "3px 8px",
+              letterSpacing: "0.02em",
             }}>{t}</div>
           ))}
         </div>
+        {/* Legacy account info block */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.5rem 1.5rem" }}>
+          {[
+            ["Account No", "0780107351404"],
+            ["Account status", "ACTIVE"],
+            ["Name", "JERICHO TSG"],
+            ["Collection Status", "NotOnHold"],
+            ["Address", "200 Jericho Quad, NY 11753"],
+            ["Service", "OL,iOPREMIER,ULTRA101"],
+          ].map(([k, v], i) => (
+            <div key={i}>
+              <div style={{ fontFamily: "var(--font-body)", fontSize: "9px", color: "rgba(255,255,255,0.3)", marginBottom: "1px" }}>{k}</div>
+              <div style={{ fontFamily: "var(--font-body)", fontSize: "10px", color: "rgba(255,255,255,0.55)", fontWeight: 500 }}>{v}</div>
+            </div>
+          ))}
+        </div>
+        <div style={{ marginTop: "auto", fontFamily: "var(--font-body)", fontSize: "9px", color: "rgba(255,255,255,0.2)", letterSpacing: "0.04em" }}>Switch tools to find billing → open another tab → check tickets...</div>
       </div>
 
-      {/* After state — the unified workspace */}
+      {/* AFTER — unified workspace, visible on hover */}
       <div style={{
-        opacity: hovered ? 1 : 0.72,
-        transition: "opacity 0.4s ease",
-        flex: 1,
+        position: "absolute",
+        inset: 0,
+        padding: "2rem",
+        opacity: hovered ? 1 : 0,
+        transition: "opacity 0.45s ease",
+        pointerEvents: "none",
         display: "flex",
         flexDirection: "column",
-        gap: "0",
       }}>
-        {/* Header bar */}
-        <div style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          paddingBottom: "0.75rem",
-          borderBottom: "0.5px solid rgba(255,255,255,0.12)",
-          marginBottom: "0.75rem",
-        }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.75rem", paddingBottom: "0.75rem", borderBottom: "0.5px solid rgba(255,255,255,0.12)" }}>
           <span style={{ fontFamily: "var(--font-body)", fontSize: "9px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>After — 1 workspace</span>
-          <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
             <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#4ade80" }} />
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "10px", color: "rgba(255,255,255,0.4)" }}>Call active</span>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "9px", color: "rgba(255,255,255,0.4)" }}>Call active · 02:46</span>
           </div>
         </div>
-
-        {/* Customer data rows */}
-        {rows.map((row, i) => (
+        {afterRows.map((row, i) => (
           <div key={i} style={{
             display: "grid",
-            gridTemplateColumns: "80px 1fr",
+            gridTemplateColumns: "88px 1fr",
             gap: "0.75rem",
-            padding: "0.5rem 0",
-            borderBottom: i < rows.length - 1 ? "0.5px solid rgba(255,255,255,0.07)" : "none",
+            padding: "0.45rem 0",
+            borderBottom: i < afterRows.length - 1 ? "0.5px solid rgba(255,255,255,0.07)" : "none",
             alignItems: "start",
           }}>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "10px", color: "rgba(255,255,255,0.3)", letterSpacing: "0.04em", paddingTop: "1px" }}>{row.label}</span>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "10px", color: "rgba(255,255,255,0.28)", paddingTop: "1px" }}>{row.label}</span>
             <div>
               <div style={{ fontFamily: "var(--font-body)", fontSize: "12px", fontWeight: 500, color: "white", lineHeight: 1.3 }}>{row.value}</div>
               <div style={{ fontFamily: "var(--font-body)", fontSize: "10px", color: "rgba(255,255,255,0.35)", marginTop: "1px" }}>{row.sub}</div>
             </div>
           </div>
         ))}
-
-        {/* AHT callout */}
         <div style={{
-          marginTop: "1rem",
+          marginTop: "auto",
+          paddingTop: "1rem",
           padding: "0.75rem",
           background: "rgba(196,43,43,0.15)",
           border: "0.5px solid rgba(196,43,43,0.3)",

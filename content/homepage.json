@@ -1,7 +1,7 @@
 {
   "heroHeadline": "I design for the moment when complexity is no longer manageable and someone has to make it work.",
   "heroRedWords": "make,it,work",
-  "heroBio": "Eleven years designing enterprise products at global scale in BSS/OSS telecom infrastructure, B2B and B2C across 9 countries. I lead local design team, run the cross-functional process and deliver the kind of system that engineers can actually build and business stakeholders can explain.",
+  "heroBio": "Eleven years designing enterprise products at global scale in BSS/OSS telecom infrastructure, B2B and B2C across 9 countries. I lead local design team, run the cross-functional process and deliver the kind of system that engineers can actually build and business stakeholders can explain.",
   "heroCurrentLabel": "Currently",
   "heroCurrentRole": "Senior UI Designer · Team Lead, Brazil",
   "heroCurrentCompany": "@ Netcracker Technology",
@@ -14,10 +14,18 @@
   "aboutBeyond3": "I also have a genuine obsession with dinosaurs. Can you imagine how something so complex, so dominant, left behind just enough evidence for us to piece together the whole picture. That's not so different from what we do with products, is it?",
   "aboutBeyond4": "",
   "skills": [
-    "Product Design", "Design Systems", "BSS / OSS", "Team Leadership",
-    "Cross-functional Influence", "UX Research", "Interaction Design",
-    "Design Ops", "Telecom B2B & B2C", "Stakeholder Management",
-    "Figma", "Illustration & Concept Art"
+    "Product Design",
+    "Design Systems",
+    "BSS / OSS",
+    "Team Leadership",
+    "Cross-functional Influence",
+    "UX Research",
+    "Interaction Design",
+    "Design Ops",
+    "Telecom B2B & B2C",
+    "Stakeholder Management",
+    "Figma",
+    "Illustration & Concept Art"
   ],
   "experience": [
     {
@@ -52,8 +60,14 @@
     }
   ],
   "education": [
-    { "degree": "Interaction Design", "school": "UC San Diego" },
-    { "degree": "Bachelor, Industrial Design", "school": "Estácio" }
+    {
+      "degree": "Interaction Design",
+      "school": "UC San Diego"
+    },
+    {
+      "degree": "Bachelor, Industrial Design",
+      "school": "Estácio"
+    }
   ],
   "contactHeadline": "Get in touch.",
   "contactEmail": "fcruz@outlook.com",
