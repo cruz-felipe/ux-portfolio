@@ -144,7 +144,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
         overflow: "hidden",
       }}>
         {/* Decorative oversized index — bleeds off right edge */}
-        <div style={{
+        <div className="case-hero-index" style={{
           position: "absolute",
           top: "3rem", right: "-0.5rem",
           fontFamily: "var(--font-display)",
@@ -198,10 +198,10 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
 
       {/* Metrics strip */}
       {data.metrics.length > 0 && (
-        <section style={{ borderTop: "0.5px solid var(--border)", borderBottom: "0.5px solid var(--border)", padding: "4rem 2.5rem" }}>
+        <section className="metrics-section" style={{ borderTop: "0.5px solid var(--border)", borderBottom: "0.5px solid var(--border)", padding: "4rem 2.5rem" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }} className="case-metrics">
             {data.metrics.map((m, i) => (
-              <div key={i} style={{ padding: "0 2rem", paddingLeft: i === 0 ? 0 : undefined }}>
+              <div key={i} className="metric-cell" style={{ padding: "0 2rem", paddingLeft: i === 0 ? 0 : undefined }}>
                 <div className="metric-value" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 3vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: "0.5rem" }}>
                   <span style={{ color: "var(--red)" }}><AnimatedMetric value={m.value} /></span>
                 </div>
@@ -213,7 +213,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
       )}
 
       {/* Context */}
-      <section style={{ padding: "4rem 2.5rem", borderBottom: "0.5px solid var(--border)" }}>
+      <section className="context-section" style={{ padding: "4rem 2.5rem", borderBottom: "0.5px solid var(--border)" }}>
         <div className="case-context" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "start" }}>
           <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", fontWeight: 300, lineHeight: 1.75, color: "var(--ink)", opacity: 0.8, margin: 0 }}>{data.context}</p>
           {data.showNdaNote && (
@@ -240,7 +240,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
               <h2 style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: 0, paddingTop: "4px" }}>
                 {section.title}
               </h2>
-              <div style={{ maxWidth: "700px" }}>
+              <div style={{ maxWidth: "700px", width: "100%" }}>
                 {section.pullquote && (
                   <blockquote className="case-pullquote">{section.pullquote}</blockquote>
                 )}
@@ -253,14 +253,14 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
             </section>
 
             {section.screens && section.screens.length > 0 && (
-              <div style={{ padding: "3rem 2.5rem", borderBottom: "0.5px solid var(--border)" }}>
+              <div className="screen-gallery-section" style={{ padding: "3rem 2.5rem", borderBottom: "0.5px solid var(--border)" }}>
                 <ScreenGallery screens={section.screens} narrow={section.narrowScreens} />
               </div>
             )}
 
             {data.artifacts[si]?.component && (
               <section className="artifact-section" style={{ padding: "3rem 2.5rem", borderBottom: "0.5px solid var(--border)", background: "var(--paper)" }}>
-                <div style={{ marginBottom: "1.25rem", overflowX: "auto" }}>
+                <div className="artifact-scroll" style={{ marginBottom: "1.25rem", overflowX: "auto", minWidth: 0 }}>
                   {data.artifacts[si].component}
                 </div>
                 <div className="artifact-caption">
