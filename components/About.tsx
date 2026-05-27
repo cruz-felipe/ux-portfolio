@@ -293,7 +293,7 @@ export default function About({ data }: { data: any }) {
                   {job.note}
                 </div>
               </div>
-              <span style={{
+              <span className="experience-period" style={{
                 fontFamily: "var(--font-body)",
                 fontSize: "12px",
                 color: "var(--muted)",

@@ -48,12 +48,12 @@ function FeaturedCard({ project }: { project: Project }) {
 
   return (
     <div ref={ref} style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(32px)", transition: "opacity 0.7s ease, transform 0.7s cubic-bezier(0.16,1,0.3,1)" }}>
-      <Link href={project.href} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", textDecoration: "none", color: "var(--ink)", background: "var(--ink)", borderRadius: "2px", overflow: "hidden", minHeight: "340px" }}
+      <Link href={project.href} className="featured-card-link" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", textDecoration: "none", color: "var(--ink)", background: "var(--ink)", borderRadius: "2px", overflow: "hidden", minHeight: "340px" }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
         {/* Left — content */}
-        <div style={{ padding: "3rem", display: "flex", flexDirection: "column", justifyContent: "space-between", position: "relative" }}>
+        <div className="featured-card-content" style={{ padding: "3rem", display: "flex", flexDirection: "column", justifyContent: "space-between", position: "relative" }}>
           <div style={{ position: "absolute", top: "1.5rem", right: "2rem", fontFamily: "var(--font-display)", fontSize: "120px", fontWeight: 800, lineHeight: 1, color: "white", opacity: 0.04, letterSpacing: "-0.05em", pointerEvents: "none", userSelect: "none" }}>01</div>
 
           <div>

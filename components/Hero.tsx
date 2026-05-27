@@ -32,7 +32,7 @@ export default function Hero({ data }: { data: any }) {
   }, []);
 
   return (
-    <section style={{
+    <section className="hero-section" style={{
       minHeight: "92svh",
       display: "flex",
       flexDirection: "column",
@@ -51,6 +51,7 @@ export default function Hero({ data }: { data: any }) {
           margin: "0 0 3.5rem",
           width: "71%",
         }}
+        className="hero-h1"
         aria-label="I design for the moment when complexity is no longer manageable and someone has to make it work."
       >
         {WORDS.map((word, i) => {
@@ -88,7 +89,7 @@ export default function Hero({ data }: { data: any }) {
           transition: "opacity 0.7s ease 0.85s, transform 0.7s ease 0.85s",
         }}
       >
-        <p className="hero-bio" style={{ width: "540px" }}>
+        <p className="hero-bio">
           {data.heroBio}
         </p>
         <div className="hero-role">
