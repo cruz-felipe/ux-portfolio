@@ -101,7 +101,7 @@ export default function Hero({ data }: { data: any }) {
         </div>
       </div>
 
-      <a href="#work" aria-label="Scroll to selected work" style={{
+      <a id="hero-scroll" href="#work" aria-label="Scroll to selected work" style={{
         position: "absolute",
         bottom: "2rem",
         left: "2.5rem",

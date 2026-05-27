@@ -200,6 +200,17 @@ export default function ResponsiveStyles() {
         .footer-bottom          { padding: 1.25rem !important; flex-direction: column !important; align-items: flex-start !important; gap: 0.75rem !important; }
         .footer-cta-divider     { display: none !important; }
         footer                  { overflow: hidden; }
+
+        /* SCROLL label — hidden on mobile since hero is flex-start and it overlaps */
+        #hero-scroll            { display: none !important; }
+
+        /* Experience entries — stack period below role, description full width */
+        .experience-entry       { grid-template-columns: 1fr !important; gap: 0.25rem !important; }
+        .experience-period      { white-space: normal !important; font-size: 11px !important; opacity: 0.6; order: -1; }
+
+        /* Case callout — labels flush left, no extra indentation */
+        .case-callout           { padding-left: 0 !important; }
+        .case-callout > div     { padding-left: 0 !important; }
       }
 
 

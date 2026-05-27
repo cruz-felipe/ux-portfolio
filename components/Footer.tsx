@@ -1,19 +1,13 @@
 "use client";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function Footer({ data }: { data: any }) {
+export default function Footer() {
   const year = new Date().getFullYear();
-  const email = data?.contactEmail || 'fcruz@outlook.com';
-  const linkedin = data?.contactLinkedIn || 'https://linkedin.com/in/fmcruz';
-  const illustration = data?.contactIllustration || 'https://www.artstation.com/felipecruz';
-  const headline = data?.contactHeadline || 'Get in touch.';
-  const tagline = data?.footerTagline || 'Senior UI Designer · Team Lead · São Paulo, Brazil';
 
   return (
     <footer id="contact" aria-label="Contact and links" style={{ borderTop: "1px solid var(--border)", overflow: "hidden", position: "relative" }}>
 
       {/* Top — editorial CTA */}
-      <div className="footer-top" style={{ padding: "6rem 2.5rem 4rem", position: "relative" }}>
+      <div style={{ padding: "6rem 2.5rem 4rem", position: "relative" }}>
         {/* Decorative ghost text */}
         <div style={{
           position: "absolute", bottom: "2rem", right: "-1rem",
@@ -28,7 +22,7 @@ export default function Footer({ data }: { data: any }) {
         </p>
 
         {/* Giant headline — the primary CTA itself */}
-        <a href={`mailto:${email}`} style={{
+        <a href="mailto:fcruz@outlook.com" style={{
           display: "block",
           fontFamily: "var(--font-display)",
           fontSize: "clamp(2.8rem, 7vw, 7rem)",
@@ -52,7 +46,7 @@ export default function Footer({ data }: { data: any }) {
         <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", alignItems: "center" }}>
 
           {/* Primary: filled — the action to take */}
-          <a href={`mailto:${email}`}
+          <a href="mailto:fcruz@outlook.com"
             style={{
               display: "inline-flex", alignItems: "center", gap: "0.5rem",
               fontFamily: "var(--font-body)", fontSize: "13px", fontWeight: 500,
@@ -70,10 +64,10 @@ export default function Footer({ data }: { data: any }) {
           </a>
 
           {/* Divider */}
-          <span className="footer-cta-divider" style={{ width: "1px", height: "20px", background: "var(--border)", flexShrink: 0 }} aria-hidden="true" />
+          <span style={{ width: "1px", height: "20px", background: "var(--border)", flexShrink: 0 }} aria-hidden="true" />
 
           {/* Secondary: outlined peers — professional context */}
-          <a href={linkedin} target="_blank" rel="noopener noreferrer"
+          <a href="https://linkedin.com/in/fmcruz" target="_blank" rel="noopener noreferrer"
             style={{
               display: "inline-flex", alignItems: "center", gap: "0.4rem",
               fontFamily: "var(--font-body)", fontSize: "13px", fontWeight: 400,
@@ -90,7 +84,7 @@ export default function Footer({ data }: { data: any }) {
             </svg>
           </a>
 
-          <a href={illustration} target="_blank" rel="noopener noreferrer"
+          <a href="https://www.artstation.com/felipecruz" target="_blank" rel="noopener noreferrer"
             style={{
               display: "inline-flex", alignItems: "center", gap: "0.4rem",
               fontFamily: "var(--font-body)", fontSize: "13px", fontWeight: 400,
@@ -110,7 +104,7 @@ export default function Footer({ data }: { data: any }) {
       </div>
 
       {/* Bottom bar */}
-      <div className="footer-bottom" style={{ borderTop: "1px solid var(--border)", padding: "1.5rem 2.5rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <div style={{ borderTop: "1px solid var(--border)", padding: "1.5rem 2.5rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
           <img src="/logo.svg" alt="Felipe Cruz" style={{ height: "20px", width: "auto", display: "block", background: "none" }} />
           <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--muted)" }}>Senior UI Designer · Team Lead · São Paulo, Brazil</span>

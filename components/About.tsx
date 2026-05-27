@@ -258,7 +258,7 @@ export default function About({ data }: { data: any }) {
             Experience
           </span>
           {(data.experience || [...EXPERIENCE, ...SIDE]).map((job: {role:string;company:string;period:string;note:string}, i: number) => (
-            <div key={i} style={{
+            <div key={i} className="experience-entry" style={{
               display: "grid",
               gridTemplateColumns: "1fr auto",
               gap: "1rem",

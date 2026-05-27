@@ -93,7 +93,7 @@ export default function Nav() {
           onClick={() => setMenuOpen(false)}>
           {links.map(({ label, href }, i) => (
             <button key={label} onClick={() => { scrollTo(href); setMenuOpen(false); }}
-              style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.5rem, 10vw, 4rem)", fontWeight: 800, letterSpacing: "-0.03em", color: "var(--ink)", background: "none", border: "none", padding: 0, textAlign: "left", cursor: "pointer", lineHeight: 1.2, opacity: 0, animation: `fadeUp 0.4s ease ${i * 80}ms forwards` }}>
+              style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.5rem, 10vw, 4rem)", fontWeight: 800, letterSpacing: "-0.03em", color: "var(--ink)", background: "none", border: "none", padding: "0.6rem 0", textAlign: "left", cursor: "pointer", lineHeight: 1.15, opacity: 0, animation: `fadeUp 0.4s ease ${i * 80}ms forwards`, width: "100%" }}>
               {label}
             </button>
           ))}

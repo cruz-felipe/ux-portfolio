@@ -318,6 +318,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
               <div key={work.slug} aria-current="page" style={style}>{inner}</div>
             ) : (
               <Link key={work.slug} href={`/work/${work.slug}`} style={style}
+                onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = "var(--red)";
                   const arrow = e.currentTarget.querySelector(".work-arrow") as SVGElement | null;
