@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import ScrollProgress from "@/components/ScrollProgress";
 import ResponsiveStyles from "@/components/ResponsiveStyles";
+import { headers } from "next/headers";
 
 export const metadata: Metadata = {
   title: "Felipe Cruz — Senior Product Designer",
@@ -26,11 +27,22 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const headersList = await headers();
+  const isCms = headersList.get("x-is-cms") === "1";
+
+  if (isCms) {
+    return (
+      <html lang="en">
+        <body>{children}</body>
+      </html>
+    );
+  }
+
   return (
     <html lang="en">
       <body>
