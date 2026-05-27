@@ -81,8 +81,8 @@ export default function About({ data }: { data: any }) {
       aria-label="About Felipe Cruz"
       ref={ref}
       style={{
-        padding: "var(--space-xl) var(--pad)",
-        borderTop: "0.5px solid var(--border)",
+        padding: "var(--space-xl) var(--col-pad)",
+        borderTop: "1px solid var(--border)",
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(30px)",
         transition: "opacity 0.8s ease, transform 0.8s ease",
@@ -164,7 +164,7 @@ export default function About({ data }: { data: any }) {
             fontWeight: 500,
             letterSpacing: "0.12em",
             textTransform: "uppercase",
-            color: "var(--faint)",
+            color: "var(--muted)",
             marginBottom: "1rem",
           }}>
             {data.aboutBeyondLabel || "Beyond the work"}
@@ -209,7 +209,7 @@ export default function About({ data }: { data: any }) {
             fontWeight: 500,
             letterSpacing: "0.12em",
             textTransform: "uppercase",
-            color: "var(--faint)",
+            color: "var(--muted)",
             display: "block",
             marginBottom: "0.75rem",
           }}>
@@ -240,7 +240,7 @@ export default function About({ data }: { data: any }) {
         style={{
           marginTop: "4rem",
           paddingTop: "var(--space-lg)",
-          borderTop: "0.5px solid var(--border)",
+          borderTop: "1px solid var(--border)",
         }}
       >
         {/* Experience */}
@@ -251,7 +251,7 @@ export default function About({ data }: { data: any }) {
             fontWeight: 500,
             letterSpacing: "0.12em",
             textTransform: "uppercase",
-            color: "var(--faint)",
+            color: "var(--muted)",
             display: "block",
             marginBottom: "1.5rem",
           }}>
@@ -278,7 +278,7 @@ export default function About({ data }: { data: any }) {
                 <div style={{
                   fontFamily: "var(--font-body)",
                   fontSize: "13px",
-                  color: "var(--faint)",
+                  color: "var(--muted)",
                   marginBottom: "0.3rem",
                 }}>
                   {job.company}
@@ -296,7 +296,7 @@ export default function About({ data }: { data: any }) {
               <span className="experience-period" style={{
                 fontFamily: "var(--font-body)",
                 fontSize: "12px",
-                color: "var(--faint)",
+                color: "var(--muted)",
                 whiteSpace: "nowrap",
                 paddingTop: "2px",
               }}>
@@ -314,7 +314,7 @@ export default function About({ data }: { data: any }) {
             fontWeight: 500,
             letterSpacing: "0.12em",
             textTransform: "uppercase",
-            color: "var(--faint)",
+            color: "var(--muted)",
             display: "block",
             marginBottom: "1.5rem",
           }}>
@@ -337,7 +337,7 @@ export default function About({ data }: { data: any }) {
               <div style={{
                 fontFamily: "var(--font-body)",
                 fontSize: "13px",
-                color: "var(--faint)",
+                color: "var(--muted)",
               }}>
                 {ed.school}
               </div>
@@ -347,7 +347,7 @@ export default function About({ data }: { data: any }) {
           <p style={{
             fontFamily: "var(--font-body)",
             fontSize: "13px",
-            color: "var(--faint)",
+            color: "var(--muted)",
             lineHeight: 1.6,
             marginTop: "1.5rem",
           }}>
