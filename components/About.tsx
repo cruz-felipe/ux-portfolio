@@ -71,7 +71,8 @@ function useVisible(threshold = 0.08) {
   return { ref, visible };
 }
 
-export default function About() {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default function About({ data }: { data: any }) {
   const { ref, visible } = useVisible();
 
   return (
@@ -132,9 +133,7 @@ export default function About() {
             marginBottom: "1.25rem",
             opacity: 0.88,
           }}>
-            I&apos;m Felipe. I&apos;ve been at this long enough to know that most
-            design problems are really communication failures. Between design and
-            engineering, between what was decided and what actually shipped.
+            {data.aboutBio1 || "I'm Felipe. I've been at this long enough to know that most design problems are really communication failures."}
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
@@ -145,10 +144,7 @@ export default function About() {
             opacity: 0.72,
             marginBottom: "1.25rem",
           }}>
-            I lead a team in Brazil and contribute as an IC to global products. My job
-            is to build systems that stay consistent at scale and make sure every design
-            decision survives contact with the engineers, analysts and stakeholders who
-            have to deliver it.
+            {data.aboutBio2 || ""}
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
@@ -159,8 +155,7 @@ export default function About() {
             opacity: 0.72,
             marginBottom: "2.5rem",
           }}>
-            Working across cultures taught me that good process may not be universal,
-            but clear communication is.
+            {data.aboutBio3 || ""}
           </p>
 
           <p style={{
@@ -172,7 +167,7 @@ export default function About() {
             color: "var(--muted)",
             marginBottom: "1rem",
           }}>
-            Beyond the work
+            {data.aboutBeyondLabel || "Beyond the work"}
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
@@ -183,9 +178,7 @@ export default function About() {
             opacity: 0.72,
             marginBottom: "1rem",
           }}>
-            I&apos;m Brazilian. I grew up building things with whatever was available,
-            which probably explains why I&apos;m more interested in constraints than
-            in ideal conditions.
+            {data.aboutBeyond1 || ""}
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
@@ -196,13 +189,7 @@ export default function About() {
             opacity: 0.72,
             marginBottom: "1rem",
           }}>
-            Outside of screens I&apos;m a 2nd degree black belt in ITF Taekwondo.
-            Not because I wanted to fight, but because I needed to know I could
-            keep going when things stopped being comfortable (but fighting is
-            pretty cool). I&apos;ve also been drawing since before I can remember,
-            illustration and concept art are where I think without KPIs. I got
-            published at MSP Est&uacute;dios, the studio behind Turma da
-            M&ocirc;nica, Brazil&apos;s most enduring comics universe.
+            {data.aboutBeyond2 || ""}
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
@@ -213,10 +200,7 @@ export default function About() {
             opacity: 0.72,
             marginBottom: "2.5rem",
           }}>
-            I also have a genuine obsession with dinosaurs. Can you imagine how
-            something so complex, so dominant, left behind just enough evidence for
-            us to piece together the whole picture. That&apos;s not so different from
-            what we do with products, is it?
+            {data.aboutBeyond3 || ""}
           </p>
 
           <span style={{
@@ -232,7 +216,7 @@ export default function About() {
             Expertise
           </span>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-            {SKILLS.map((skill) => (
+            {(data.skills || SKILLS).map((skill: string) => (
               <span key={skill} style={{
                 fontFamily: "var(--font-body)",
                 fontSize: "11px",
@@ -273,7 +257,7 @@ export default function About() {
           }}>
             Experience
           </span>
-          {[...EXPERIENCE, ...SIDE].map((job, i) => (
+          {(data.experience || [...EXPERIENCE, ...SIDE]).map((job: {role:string;company:string;period:string;note:string}, i: number) => (
             <div key={i} style={{
               display: "grid",
               gridTemplateColumns: "1fr auto",
@@ -336,7 +320,7 @@ export default function About() {
           }}>
             Education
           </span>
-          {EDUCATION.map((ed, i) => (
+          {(data.education || EDUCATION).map((ed: {degree:string;school:string;last?:boolean}, i: number) => (
             <div key={i} style={{
               padding: "1.4rem 0",
               borderBottom: ed.last ? "none" : "1px solid var(--border)",

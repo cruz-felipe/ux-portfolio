@@ -158,6 +158,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
           userSelect: "none",
         }}>{data.index}</div>
 
+        {/* Title + tagline constrained to 860px */}
         <div style={{ maxWidth: "860px", position: "relative" }}>
           {/* Meta */}
           <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.5rem", flexWrap: "wrap" }}>
@@ -168,32 +169,30 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
             </>)}
           </div>
 
-          {/* Title */}
           <h1 style={{
             fontFamily: "var(--font-display)", fontSize: "clamp(2.4rem, 5vw, 4.8rem)",
             fontWeight: 800, lineHeight: 1.06, letterSpacing: "-0.03em", color: "var(--ink)", marginBottom: "1.5rem",
           }}>{data.title}</h1>
 
-          {/* Tagline */}
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "clamp(1rem, 1.4vw, 1.2rem)",
             fontWeight: 400, lineHeight: 1.7, color: "var(--ink)", opacity: 0.8,
             maxWidth: maxW, marginBottom: "2rem",
           }}>{data.tagline}</p>
+        </div>
 
-          {/* Role + impact callout */}
-          <div className="case-callout" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", paddingTop: "1.5rem", borderTop: "0.5px solid var(--border)" }}>
-            <div>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 0.2rem" }}>My role</p>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 400, lineHeight: 1.65, color: "var(--ink)", opacity: 0.75, margin: 0 }}>{data.roleDetail}</p>
-            </div>
-            {data.impactSummary && (
-              <div>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 0.5rem" }}>Business impact</p>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 400, lineHeight: 1.7, color: "var(--ink)", opacity: 0.75, margin: 0 }}>{data.impactSummary}</p>
-              </div>
-            )}
+        {/* Role + impact callout — full section width */}
+        <div className="case-callout" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", paddingTop: "1.5rem", borderTop: "0.5px solid var(--border)" }}>
+          <div>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 0.2rem" }}>My role</p>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 400, lineHeight: 1.65, color: "var(--ink)", opacity: 0.75, margin: 0 }}>{data.roleDetail}</p>
           </div>
+          {data.impactSummary && (
+            <div>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: "0 0 0.5rem" }}>Business impact</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 400, lineHeight: 1.7, color: "var(--ink)", opacity: 0.75, margin: 0 }}>{data.impactSummary}</p>
+            </div>
+          )}
         </div>
       </section>
 

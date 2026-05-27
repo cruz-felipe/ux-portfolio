@@ -2,29 +2,28 @@
 import { useEffect, useState } from "react";
 
 type Word = { text: string; red: boolean; attach?: boolean };
-const WORDS: Word[] = [
-  { text: "I", red: false },
-  { text: "design", red: false },
-  { text: "for", red: false },
-  { text: "the", red: false },
-  { text: "moment", red: false },
-  { text: "when", red: false },
-  { text: "complexity", red: false },
-  { text: "is", red: false },
-  { text: "no", red: false },
-  { text: "longer", red: false },
-  { text: "manageable", red: false },
-  { text: "and", red: false },
-  { text: "someone", red: false },
-  { text: "has", red: false },
-  { text: "to", red: false },
-  { text: "make", red: true },
-  { text: "it", red: true },
-  { text: "work", red: true },
-  { text: ".", red: false, attach: true },
-];
 
-export default function Hero() {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default function Hero({ data }: { data: any }) {
+  const redWords = (data.heroRedWords || "make,it,work").split(",").map((w: string) => w.trim().toLowerCase());
+  const rawWords = (data.heroHeadline || "I design for the moment when complexity is no longer manageable and someone has to make it work.").split(/\s+/);
+  const WORDS: Word[] = rawWords.map((word: string, i: number) => {
+    const clean = word.replace(/[^a-zA-Z]/g, "").toLowerCase();
+    const isPunct = word === "." || word === "," || word === "!" || word === "?";
+    const isLastWord = i === rawWords.length - 1;
+    const hasPunct = word.endsWith(".") || word.endsWith("!") || word.endsWith("?");
+    if (hasPunct && !isPunct) {
+      return { text: word.slice(0, -1), red: redWords.includes(clean), attach: false };
+    }
+    if (isPunct || (isLastWord && hasPunct)) {
+      return { text: word, red: false, attach: true };
+    }
+    return { text: word, red: redWords.includes(clean), attach: false };
+  });
+  // ensure trailing period
+  if (WORDS.length && !WORDS[WORDS.length-1].attach) {
+    WORDS.push({ text: ".", red: false, attach: true });
+  }
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -90,10 +89,7 @@ export default function Hero() {
         }}
       >
         <p className="hero-bio" style={{ width: "540px" }}>
-          Eleven years designing enterprise products at global scale in BSS/OSS telecom
-          infrastructure, B2B and B2C across 9 countries. I lead local design team, run
-          the cross-functional process and deliver the kind of system that engineers can
-          actually build and business stakeholders can explain.
+          {data.heroBio}
         </p>
         <div className="hero-role">
           <span className="hero-role-label">Currently</span>
