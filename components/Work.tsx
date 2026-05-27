@@ -2,61 +2,38 @@
 import Link from "next/link";
 import { useRef, useEffect, useState } from "react";
 
-const PROJECTS = [
-  {
-    id: "predictive-support-hub",
-    href: "/work/predictive-support-hub",
-    index: "01",
-    title: "Predictive Support Hub",
-    blurb: "3,000 support agents navigating 32 legacy tools on every call. I replaced the ecosystem with a single AI-integrated workspace.",
-    metrics: ["70% AHT reduction", "32→1 consolidation"],
-    featured: true,
-    tag: "AI System Design · Telecom · 2022",
-  },
-  {
-    id: "b2b-sales-rescue",
-    href: "/work/b2b-sales-rescue",
-    index: "02",
-    title: "B2B Sales Rescue",
-    blurb: "Sales agents needed 7 tools and 3 days of training to close one deal. I reduced that to a single flow and half a day.",
-    metrics: ["75% quote acceleration", "83% faster onboarding"],
-    tag: "Enterprise UX · Research · 2023",
-    weight: "primary",
-  },
-  {
-    id: "quota-management",
-    href: "/work/quota-management",
-    index: "03",
-    title: "Quota Management",
-    blurb: "A greenfield B2B asset management platform. No prior product. Designed from workshop sessions to production-ready flows as the solo designer.",
-    metrics: ["13 flows", "3 modules"],
-    tag: "Greenfield Product · BSS · 2024",
-    weight: "primary",
-  },
-  {
-    id: "dane-telecom",
-    href: "/work/dane-telecom",
-    index: "04",
-    title: "Dane Telecom",
-    blurb: "Three months on-site in Copenhagen. The client did not need better components. They needed a designer who understood what was coming next.",
-    metrics: ["50% faster handoff", "32% velocity boost"],
-    tag: "Design System · Copenhagen · 2023",
-    weight: "secondary",
-  },
-  {
-    id: "vocabulary",
-    href: "/work/vocabulary",
-    index: "05",
-    title: "Vocabulary",
-    blurb: "Every flashcard app I tried was built around someone else's curriculum. I wanted one thing: a fast, honest way to learn words. So I built it.",
-    metrics: ["4 languages", "2 learning modes"],
-    personal: true,
-    tag: "Personal · Next.js · Claude API",
-    weight: "secondary",
-  },
-];
+interface Project {
+  id: string;
+  href: string;
+  index: string;
+  title: string;
+  blurb: string;
+  metrics: string[];
+  featured?: boolean;
+  tag: string;
+  weight?: string;
+  personal?: boolean;
+  image?: string;
+}
 
-function FeaturedCard({ project }: { project: typeof PROJECTS[0] }) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function buildProjects(cards: any[]) {
+  return cards.map((c: any) => ({
+    id: c.id,
+    href: `/work/${c.id}`,
+    index: c.index,
+    title: c.title,
+    blurb: c.blurb,
+    metrics: [c.metric1, c.metric2].filter(Boolean),
+    featured: c.weight === "featured",
+    tag: c.tag,
+    weight: c.weight === "featured" ? undefined : c.weight,
+    personal: c.personal || false,
+    image: c.image || "",
+  }));
+}
+
+function FeaturedCard({ project }: { project: Project }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -71,12 +48,12 @@ function FeaturedCard({ project }: { project: typeof PROJECTS[0] }) {
 
   return (
     <div ref={ref} style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(32px)", transition: "opacity 0.7s ease, transform 0.7s cubic-bezier(0.16,1,0.3,1)" }}>
-      <Link href={project.href} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", textDecoration: "none", color: "var(--ink)", background: hovered ? "#0A0A0A" : "var(--ink)", borderRadius: "2px", overflow: "hidden", minHeight: "340px", transition: "background 0.35s ease" }}
+      <Link href={project.href} className="featured-card-link" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", textDecoration: "none", color: "var(--ink)", background: "var(--ink)", borderRadius: "2px", overflow: "hidden", minHeight: "340px" }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
         {/* Left — content */}
-        <div style={{ padding: "3rem", display: "flex", flexDirection: "column", justifyContent: "space-between", position: "relative" }}>
+        <div className="featured-card-content" style={{ padding: "3rem", display: "flex", flexDirection: "column", justifyContent: "space-between", position: "relative" }}>
           <div style={{ position: "absolute", top: "1.5rem", right: "2rem", fontFamily: "var(--font-display)", fontSize: "120px", fontWeight: 800, lineHeight: 1, color: "white", opacity: 0.04, letterSpacing: "-0.05em", pointerEvents: "none", userSelect: "none" }}>01</div>
 
           <div>
@@ -95,7 +72,7 @@ function FeaturedCard({ project }: { project: typeof PROJECTS[0] }) {
 
           <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", paddingTop: "2rem" }}>
             <div style={{ display: "flex", gap: "2rem" }}>
-              {project.metrics.map(m => (
+              {project.metrics.map((m: string) => (
                 <span key={m} style={{ fontFamily: "var(--font-display)", fontSize: "13px", fontWeight: 700, color: "var(--red)" }}>{m}</span>
               ))}
             </div>
@@ -108,28 +85,33 @@ function FeaturedCard({ project }: { project: typeof PROJECTS[0] }) {
           </div>
         </div>
 
-        {/* Right — accent panel */}
-        <div style={{ background: "color-mix(in srgb, var(--red) 18%, #0A0A0A)", display: "flex", alignItems: "flex-end", padding: "3rem", position: "relative", overflow: "hidden" }}>
-          <svg width="100%" height="100%" style={{ position: "absolute", inset: 0, opacity: 0.06 }} xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
-                <path d="M 32 0 L 0 0 0 32" fill="none" stroke="white" strokeWidth="0.5"/>
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-          </svg>
-          <div style={{ position: "relative" }}>
-            <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(3rem, 6vw, 5rem)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, color: "white" }}>32→1</div>
-            <div style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "rgba(255,255,255,0.45)", marginTop: "0.5rem", letterSpacing: "0.04em" }}>Legacy tools consolidated</div>
-          </div>
+        {/* Right — product image, full bleed */}
+        <div style={{ position: "relative", overflow: "hidden" }}>
+          <img
+            src={project.image}
+            alt=""
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "top left",
+              opacity: hovered ? 0.85 : 0.65,
+              transition: "opacity 0.35s ease, transform 0.5s ease",
+              transform: hovered ? "scale(1.03)" : "scale(1)",
+            }}
+          />
+          {/* Edge fade so image feels part of the dark card */}
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(0,0,0,0.3) 0%, transparent 40%)", pointerEvents: "none" }} />
         </div>
       </Link>
     </div>
   );
 }
 
-// Primary cards: large, 2-col grid, full blurb visible
-function PrimaryCard({ project, index }: { project: typeof PROJECTS[0]; index: number }) {
+function PrimaryCard({ project, index }: { project: Project; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -163,8 +145,8 @@ function PrimaryCard({ project, index }: { project: typeof PROJECTS[0]; index: n
 
           <div style={{ position: "absolute", bottom: "1rem", right: "1.5rem", fontFamily: "var(--font-display)", fontSize: "72px", fontWeight: 800, lineHeight: 1, color: hovered ? "white" : "var(--ink)", opacity: hovered ? 0.07 : 0.055, letterSpacing: "-0.04em", pointerEvents: "none", userSelect: "none", transition: "color 0.3s, opacity 0.3s" }}>{project.index}</div>
 
-          <div style={{ display: "flex", gap: "1.25rem", paddingTop: "1rem",  }}>
-            {project.metrics.map(m => (
+          <div style={{ display: "flex", gap: "1.25rem", paddingTop: "1rem" }}>
+            {project.metrics.map((m: string) => (
               <span key={m} style={{ fontFamily: "var(--font-display)", fontSize: "12px", fontWeight: 700, color: hovered ? "var(--red)" : "var(--muted)", transition: "color 0.3s" }}>{m}</span>
             ))}
           </div>
@@ -175,8 +157,7 @@ function PrimaryCard({ project, index }: { project: typeof PROJECTS[0]; index: n
   );
 }
 
-// Secondary cards: compact, 2-col grid, title + metrics only — clearly subordinate
-function SecondaryCard({ project, index }: { project: typeof PROJECTS[0]; index: number }) {
+function SecondaryCard({ project, index }: { project: Project; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -214,7 +195,7 @@ function SecondaryCard({ project, index }: { project: typeof PROJECTS[0]; index:
           </div>
 
           <div style={{ display: "flex", gap: "1rem" }}>
-            {project.metrics.map(m => (
+            {project.metrics.map((m: string) => (
               <span key={m} style={{ fontFamily: "var(--font-display)", fontSize: "11px", fontWeight: 700, color: hovered ? "var(--red)" : "var(--muted)", transition: "color 0.3s" }}>{m}</span>
             ))}
           </div>
@@ -225,7 +206,10 @@ function SecondaryCard({ project, index }: { project: typeof PROJECTS[0]; index:
   );
 }
 
-export default function Work() {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default function Work({ data }: { data: any }) {
+  const PROJECTS = buildProjects(data.workCards || []);
+  const featured = PROJECTS.find(p => p.featured) || PROJECTS[0];
   const primary = PROJECTS.filter(p => p.weight === "primary");
   const secondary = PROJECTS.filter(p => p.weight === "secondary");
 
@@ -236,17 +220,14 @@ export default function Work() {
       </h2>
 
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-        {/* Tier 1: Featured — full width dark card */}
-        <FeaturedCard project={PROJECTS[0]} />
+        <FeaturedCard project={featured} />
 
-        {/* Tier 2: Primary — 2 col, substantial cards */}
         <div className="work-grid-primary" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1rem" }}>
           {primary.map((project, i) => (
             <PrimaryCard key={project.id} project={project} index={i + 1} />
           ))}
         </div>
 
-        {/* Tier 3: Secondary — 2 col, compact cards */}
         <div className="work-grid-secondary" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1rem" }}>
           {secondary.map((project, i) => (
             <SecondaryCard key={project.id} project={project} index={i + 1} />
