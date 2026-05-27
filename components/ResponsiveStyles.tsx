@@ -118,7 +118,7 @@ export default function ResponsiveStyles() {
         .about-bottom         { grid-template-columns: 1fr; gap: 3rem; }
         .work-grid-primary    { grid-template-columns: 1fr 1fr !important; gap: 0.75rem !important; }
         .work-grid-secondary  { grid-template-columns: 1fr 1fr !important; gap: 0.75rem !important; }
-        #work                 { padding: 3.5rem 1.5rem !important; }
+        #work                 { padding: 3rem 1.5rem 4rem !important; }
 
         /* Case study */
         .case-callout   { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
@@ -153,8 +153,9 @@ export default function ResponsiveStyles() {
         #hero-scroll   { display: none !important; }
 
         /* Work */
-        #work                         { padding: 3rem 1.25rem !important; }
+        #work                         { padding: 2.5rem 1.25rem 4rem !important; }
         .work-grid-primary            { grid-template-columns: 1fr !important; }
+        /* Keep secondary card visual weight distinct at 1-col */
         .work-grid-secondary          { grid-template-columns: 1fr !important; }
         .featured-card-link           { grid-template-columns: 1fr !important; min-height: auto !important; }
         .featured-card-link > div:last-child { display: none !important; }
@@ -169,6 +170,7 @@ export default function ResponsiveStyles() {
 
         /* Case study hero */
         .case-hero-inner    { padding: 5.5rem 1.25rem 2.5rem !important; }
+        .case-hero-inner h1 { line-height: 1.1 !important; }
         .case-hero-index    { display: none !important; }
 
         /* Case study sections */

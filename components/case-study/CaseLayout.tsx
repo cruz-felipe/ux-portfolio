@@ -171,7 +171,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
 
           <h1 style={{
             fontFamily: "var(--font-display)", fontSize: "clamp(2.4rem, 5vw, 4.8rem)",
-            fontWeight: 800, lineHeight: 1.06, letterSpacing: "-0.03em", color: "var(--ink)", marginBottom: "1.5rem",
+            fontWeight: 800, lineHeight: 1.04, letterSpacing: "-0.03em", color: "var(--ink)", marginBottom: "1.5rem",
           }}>{data.title}</h1>
 
           <p style={{
@@ -237,12 +237,12 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
               padding: "4rem 2.5rem", borderBottom: "0.5px solid var(--border)",
               display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", alignItems: "start",
             }} className="case-section">
-              <h2 style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: 0, paddingTop: "4px" }}>
+              <h2 style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--red)", opacity: 0.65, margin: 0, paddingTop: "6px" }}>
                 {section.title}
               </h2>
               <div style={{ maxWidth: "700px", width: "100%" }}>
                 {section.pullquote && (
-                  <blockquote className="case-pullquote">{section.pullquote}</blockquote>
+                  <blockquote className="case-pullquote" style={{ marginTop: 0, marginBottom: "2rem" }}>{section.pullquote}</blockquote>
                 )}
                 {Array.isArray(section.body) ? section.body.map((para, pi) => (
                   <p key={pi} className={pi === 0 && !section.pullquote ? "case-body-lead" : undefined} style={{ fontFamily: "var(--font-body)", fontSize: pi === 0 && !section.pullquote ? undefined : "15px", fontWeight: 400, lineHeight: pi === 0 && !section.pullquote ? undefined : 1.8, color: "var(--ink)", opacity: pi === 0 && !section.pullquote ? undefined : 0.78, marginBottom: pi < (section.body as string[]).length - 1 ? "1.25rem" : 0 }}>{para}</p>
@@ -259,7 +259,7 @@ export default function CaseLayout({ data }: { data: CaseStudyData }) {
             )}
 
             {data.artifacts[si]?.component && (
-              <section className="artifact-section" style={{ padding: "3rem 2.5rem", borderBottom: "0.5px solid var(--border)", background: "var(--paper)" }}>
+              <section className="artifact-section" style={{ padding: "3rem 2.5rem", borderBottom: "0.5px solid var(--border)", background: "color-mix(in srgb, var(--ink) 2.5%, var(--paper))" }}>
                 <div className="artifact-scroll" style={{ marginBottom: "1.25rem", overflowX: "auto", minWidth: 0 }}>
                   {data.artifacts[si].component}
                 </div>
